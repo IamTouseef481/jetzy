@@ -1,0 +1,1153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <!-- ######################################################################################################## -->
+    <!-- ........................................................................................................ -->
+    <!-- Lookup Tables                                                                                            -->
+    <!-- ........................................................................................................ -->
+    <!-- ######################################################################################################## -->
+
+
+    <!-- ======================================================================================================== -->
+    <!-- user_relation_status                                                                                     -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="user_relation_status">
+        <createTable tableName="vnext_user_relation_status"  remarks="son, daughter, spouse, etc..">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="INT" autoIncrement="false"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="description" remarks="versioned_string" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!-- friend_status                                                                                            -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="friend_status">
+        <createTable tableName="vnext_friend_status"  remarks="son, daughter, spouse, etc..">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="INT" autoIncrement="false"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="description" remarks="versioned_string" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_friend_status:standard                -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_friend_status:standard">
+        <createIndex
+                indexName="idx_friend_status_created_on"
+                tableName="vnext_friend_status">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_friend_status_modified_on"
+                tableName="vnext_friend_status">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_friend_status_deleted_on"
+                tableName="vnext_friend_status">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_friend_status_description                  -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_friend_status_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_friend_status"
+                                 constraintName="fk_friend_status_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_string"
+        />
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!-- relative_type                                                                                            -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="relative_type">
+        <createTable tableName="vnext_relative_type"  remarks="son, daughter, spouse, etc..">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="INT" autoIncrement="false"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="description" remarks="versioned_string" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_relative_type:standard                -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_relative_type:standard">
+        <createIndex
+                indexName="idx_relative_type_created_on"
+                tableName="vnext_relative_type">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_relative_type_modified_on"
+                tableName="vnext_relative_type">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_relative_type_deleted_on"
+                tableName="vnext_relative_type">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_relative_type_description                  -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_relative_type_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_relative_type"
+                                 constraintName="fk_relative_type_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_string"
+        />
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- user_relation_group_type                                                                                 -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="user_relation_group_type">
+        <createTable tableName="vnext_user_relation_group_type"  remarks="best friends, preferred friends, acquaintances, coworkers, user_defined">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="INT" autoIncrement="false"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="description" remarks="versioned_string" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_user_relation_group_type:standard     -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_user_relation_group_type:standard">
+        <createIndex
+                indexName="idx_user_relation_group_type_created_on"
+                tableName="vnext_user_relation_group_type">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_user_relation_group_type_modified_on"
+                tableName="vnext_user_relation_group_type">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_user_relation_group_type_deleted_on"
+                tableName="vnext_user_relation_group_type">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_user_relation_group_type_description       -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_user_relation_group_type_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_user_relation_group_type"
+                                 constraintName="fk_user_relation_group_type_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_user_versioned_string"
+        />
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- relationship_type                                                                                        -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="relationship_type">
+        <createTable tableName="vnext_relationship_type"  remarks="its complicated, dating, engaged, married, divorced">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="INT" autoIncrement="false"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="description" remarks="versioned_string" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_relationship_type:standard            -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_relationship_type:standard">
+        <createIndex
+                indexName="idx_relationship_type_created_on"
+                tableName="vnext_relationship_type">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_relationship_type_modified_on"
+                tableName="vnext_relationship_type">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_relationship_type_deleted_on"
+                tableName="vnext_relationship_type">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_relationship_type_description              -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_relationship_type_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_relationship_type"
+                                 constraintName="fk_relationship_type_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_string"
+        />
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- interaction_type                                                                                         -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="interaction_type">
+        <createTable tableName="vnext_interaction_type"  remarks="its complicated, dating, engaged, married, divorced">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="INT" autoIncrement="false"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="description" remarks="versioned_string" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_interaction_type:standard             -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_interaction_type:standard">
+        <createIndex
+                indexName="idx_interaction_type_created_on"
+                tableName="vnext_interaction_type">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_interaction_type_modified_on"
+                tableName="vnext_interaction_type">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_interaction_type_deleted_on"
+                tableName="vnext_interaction_type">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_interaction_type_description               -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_interaction_type_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_interaction_type"
+                                 constraintName="fk_interaction_type_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_string"
+        />
+    </changeSet>
+
+    <!-- ######################################################################################################## -->
+    <!-- ........................................................................................................ -->
+    <!-- Standard Tables                                                                                          -->
+    <!-- ........................................................................................................ -->
+    <!-- ######################################################################################################## -->
+
+    <!-- ======================================================================================================== -->
+    <!-- user_relation_group                                                                                      -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="user_relation_group">
+        <createTable tableName="vnext_user_relation_group"  remarks="user defined friend relationship">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="description" remarks="versioned_string" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="user" type="UUID"><constraints nullable="false"/></column>
+            <column name="user_relation_group_type" type="INT"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_user_relation_group:standard          -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_user_relation_group:standard">
+        <createIndex
+                indexName="idx_user_relation_group_created_on"
+                tableName="vnext_user_relation_group">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_user_relation_group_modified_on"
+                tableName="vnext_user_relation_group">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_user_relation_group_deleted_on"
+                tableName="vnext_user_relation_group">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_user_relation_group_description            -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_user_relation_group_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_user_relation_group"
+                                 constraintName="fk_user_relation_group_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_user_versioned_string"
+        />
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- user_relation                                                                                            -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="user_relation">
+        <createTable tableName="vnext_user_relation"  remarks="Denormalized lookup of user to user status.">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <column name="user" type="UUID"><constraints nullable="false"/></column>
+            <column name="relation" remarks="other user or entity." type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="friend" type="UUID"><constraints nullable="true"/></column>
+            <column name="friend_status" remarks="denormalized status lookup" type="INT"><constraints nullable="true"/></column>
+
+            <column name="follow" type="UUID"><constraints nullable="true"/></column>
+            <column name="follow_status" type="INT"><constraints nullable="true"/></column>
+            <column name="followed" type="UUID"><constraints nullable="true"/></column>
+            <column name="followed_status" type="INT"><constraints nullable="true"/></column>
+
+            <column name="mute" type="UUID"><constraints nullable="true"/></column>
+            <column name="mute_status" type="INT"><constraints nullable="true"/></column>
+            <column name="muted" type="UUID"><constraints nullable="true"/></column>
+            <column name="muted_status" type="INT"><constraints nullable="true"/></column>
+
+            <column name="block" type="UUID"><constraints nullable="true"/></column>
+            <column name="block_status" type="INT"><constraints nullable="true"/></column>
+            <column name="blocked" type="UUID"><constraints nullable="true"/></column>
+            <column name="blocked_status" type="INT"><constraints nullable="true"/></column>
+
+            <column name="relative" type="UUID"><constraints nullable="true"/></column>
+            <column name="relative_status" remarks="denormalized status lookup" type="INT"><constraints nullable="true"/></column>
+            <column name="relative_type" type="INT"><constraints nullable="true"/></column>
+
+            <column name="relationship" type="UUID"><constraints nullable="true"/></column>
+            <column name="relationship_status" remarks="denormalized status lookup" type="INT"><constraints nullable="true"/></column>
+            <column name="relationship_type" type="INT"><constraints nullable="true"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_user_relation:standard                -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_user_relation:standard">
+        <createIndex
+                indexName="idx_user_relation_created_on"
+                tableName="vnext_user_relation">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_user_relation_modified_on"
+                tableName="vnext_user_relation">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_user_relation_deleted_on"
+                tableName="vnext_user_relation">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- user_friend                                                                                              -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="user_friend">
+        <createTable tableName="vnext_user_friend"  remarks="Friend relation table">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <column name="user" type="UUID"><constraints nullable="false"/></column>
+            <column name="friend" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="user_friend_request" type="UUID"><constraints nullable="false"/></column>
+            <column name="status" type="INT"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_user_friend:standard                  -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_user_friend">
+        <createIndex
+                indexName="idx_user_friend_created_on"
+                tableName="vnext_user_friend">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_user_friend_modified_on"
+                tableName="vnext_user_friend">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_user_friend_deleted_on"
+                tableName="vnext_user_friend">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- user_friend_request                                                                                      -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="user_friend_request">
+        <createTable tableName="vnext_user_friend_request">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="user" type="UUID"><constraints nullable="false"/></column>
+            <column name="friend" type="UUID"><constraints nullable="false"/></column>
+            <column name="status" type="INT"><constraints nullable="false"/></column>
+
+            <column name="requested_on" type="DATETIME"><constraints nullable="false"/></column>
+            <column name="responded_on" type="DATETIME"><constraints nullable="true"/></column>
+            <column name="viewed_on" type="DATETIME"><constraints nullable="true"/></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="request" remarks="versioned_string" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_user_friend_request:standard          -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_user_friend_request:standard">
+        <createIndex
+                indexName="idx_user_friend_request_created_on"
+                tableName="vnext_user_friend_request">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_user_friend_request_modified_on"
+                tableName="vnext_user_friend_request">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_user_friend_request_deleted_on"
+                tableName="vnext_user_friend_request">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_user_friend_request_request                -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_user_friend_request_request">
+        <addForeignKeyConstraint baseColumnNames="request"
+                                 baseTableName="vnext_user_friend_request"
+                                 constraintName="fk_user_friend_request_request"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_user_versioned_string"
+        />
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- user_friend_lookup                                                                                       -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="user_friend_lookup">
+        <createTable tableName="vnext_user_friend_lookup"  remarks="Friend relation lookup table. An entry for each friend is made to simplify queries.">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="user" type="UUID"><constraints nullable="false"/></column>
+            <column name="friend" type="UUID"><constraints nullable="false"/></column>
+            <column name="source" remarks="user_friend entry that generated this record" type="INT"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_user_friend_lookup:standard           -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_user_friend_lookup:standard">
+        <createIndex
+                indexName="idx_user_friend_lookup_created_on"
+                tableName="vnext_user_friend_lookup">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_user_friend_lookup_modified_on"
+                tableName="vnext_user_friend_lookup">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_user_friend_lookup_deleted_on"
+                tableName="vnext_user_friend_lookup">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_user_friend_lookup:standard           -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_user_friend_lookup:query">
+        <createIndex
+                indexName="idx_user_friend_lookup_query"
+                tableName="vnext_user_friend_lookup">
+            <column name="user"/>
+            <column name="friend"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_user_friend_lookup_source"
+                tableName="vnext_user_friend_lookup">
+            <column name="source"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- user_follow                                                                                              -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="user_follow">
+        <createTable tableName="vnext_user_follow"  remarks="User follow list">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <column name="user" type="UUID"><constraints nullable="false"/></column>
+            <column name="follow" type="UUID"><constraints nullable="false"/></column>
+            <column name="followed_on" type="DATETIME"><constraints nullable="false"/></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="status" type="INT"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_user_follow:standard                  -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_user_follow:standard">
+        <createIndex
+                indexName="idx_user_follow_created_on"
+                tableName="vnext_user_follow">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_user_follow_modified_on"
+                tableName="vnext_user_follow">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_user_follow_deleted_on"
+                tableName="vnext_user_follow">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- user_mute                                         -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="user_mute">
+        <createTable tableName="vnext_user_mute"  remarks="User mute list">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <column name="user" type="UUID"><constraints nullable="false"/></column>
+            <column name="mute" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="status" type="INT"><constraints nullable="false"/></column>
+            <column name="muted_on" type="DATETIME"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_user_mute                        -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_user_mute">
+        <createIndex
+                indexName="idx_user_mute_created_on"
+                tableName="vnext_user_mute">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_user_mute_modified_on"
+                tableName="vnext_user_mute">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_user_mute_deleted_on"
+                tableName="vnext_user_mute">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- user_block                                                                                               -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="user_block">
+        <createTable tableName="vnext_user_block"  remarks="User block list">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <column name="user" type="UUID"><constraints nullable="false"/></column>
+            <column name="block" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="status" type="INT"><constraints nullable="false"/></column>
+            <column name="blocked_on" type="DATETIME"><constraints nullable="false"/></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="reason" remarks="user_versioned_string" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_user_block:standard                   -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_user_block:standard">
+        <createIndex
+                indexName="idx_user_block_created_on"
+                tableName="vnext_user_block">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_user_block_modified_on"
+                tableName="vnext_user_block">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_user_block_deleted_on"
+                tableName="vnext_user_block">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_user_block_reason                          -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_user_block_reason">
+        <addForeignKeyConstraint baseColumnNames="reason"
+                                 baseTableName="vnext_user_block"
+                                 constraintName="fk_user_block_reason"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_user_versioned_string"
+        />
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!-- user_block_lookup                                                                                        -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="user_block_lookup">
+        <createTable tableName="vnext_user_block_lookup"  remarks="Friend relation lookup table. An entry for each friend is made to simplify queries.">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="user" type="UUID"><constraints nullable="false"/></column>
+            <column name="block" type="UUID"><constraints nullable="false"/></column>
+            <column name="source" remarks="user_block entry that generated this record" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_user_friend_lookup:standard           -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_user_block_lookup:standard">
+        <createIndex
+                indexName="idx_user_block_lookup_created_on"
+                tableName="vnext_user_block_lookup">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_user_block_lookup_modified_on"
+                tableName="vnext_user_block_lookup">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_user_block_lookup_deleted_on"
+                tableName="vnext_user_block_lookup">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_user_block_lookup:standard            -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_user_block_lookup:query">
+        <createIndex
+                indexName="idx_user_block_lookup_query"
+                tableName="vnext_user_block_lookup">
+            <column name="user"/>
+            <column name="block"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_user_block_lookup_source"
+                tableName="vnext_user_block_lookup">
+            <column name="source"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!-- user_relative                                                                                            -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="user_relative">
+        <createTable tableName="vnext_user_relative"  remarks="User block list">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="user" type="UUID"><constraints nullable="false"/></column>
+            <column name="relative" type="UUID"><constraints nullable="false"/></column>
+            <column name="user_relative_request" type="UUID"><constraints nullable="false"/></column>
+            <column name="relative_type" type="INT"><constraints nullable="false"/></column>
+            <column name="status" type="INT"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_user_relative:standard                -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_user_relative:standard">
+        <createIndex
+                indexName="idx_user_relative_created_on"
+                tableName="vnext_user_relative">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_user_relative_modified_on"
+                tableName="vnext_user_relative">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_user_relative_deleted_on"
+                tableName="vnext_user_relative">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- user_relative_request                             -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="user_relative_request">
+        <createTable tableName="vnext_user_relative_request">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="user" type="UUID"><constraints nullable="false"/></column>
+            <column name="relative" type="UUID"><constraints nullable="false"/></column>
+            <column name="relative_type" type="INT"><constraints nullable="false"/></column>
+            <column name="from_user_relative_request" remarks="If relative changes the relation with a correction a new entry is created and this field is set to reference the original request" type="UUID"><constraints nullable="true"/></column>
+            <column name="status" type="INT"><constraints nullable="false"/></column>
+
+            <column name="requested_on" type="DATETIME"><constraints nullable="false"/></column>
+            <column name="responded_on" type="DATETIME"><constraints nullable="true"/></column>
+            <column name="viewed_on" type="DATETIME"><constraints nullable="true"/></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="request" remarks="versioned_string" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_user_relative_request:standard        -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_user_relative_request:standard">
+        <createIndex
+                indexName="idx_user_relative_request_created_on"
+                tableName="vnext_user_relative_request">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_user_relative_request_modified_on"
+                tableName="vnext_user_relative_request">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_user_relative_request_deleted_on"
+                tableName="vnext_user_relative_request">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_user_relative_request_request              -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_user_relative_request_request">
+        <addForeignKeyConstraint baseColumnNames="request"
+                                 baseTableName="vnext_user_relative_request"
+                                 constraintName="fk_user_relative_request_request"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_string"
+        />
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- user_relative_lookup                                                                                     -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="user_relative_lookup">
+        <createTable tableName="vnext_user_relative_lookup"  remarks="Relation lookup table. An entry for each user is entered to simplify queries. A son request for example will result in a mother/father/guardian entry and a son entry for each respective user.">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="user" type="UUID"><constraints nullable="false"/></column>
+            <column name="relative" type="UUID"><constraints nullable="false"/></column>
+            <column name="relative_type" type="INT"><constraints nullable="false"/></column>
+            <column name="source" remarks="user_relative entry that generated this record" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_user_relative_lookup:standard         -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_user_relative_lookup:standard">
+        <createIndex
+                indexName="idx_user_relative_lookup_created_on"
+                tableName="vnext_user_relative_lookup">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_user_relative_lookup_modified_on"
+                tableName="vnext_user_relative_lookup">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_user_relative_lookup_deleted_on"
+                tableName="vnext_user_relative_lookup">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- user_relationship                                                                                        -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="user_relationship">
+        <createTable tableName="vnext_user_relationship"  remarks="User relationship (spouse, dating, etc.)">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="user" type="UUID"><constraints nullable="false"/></column>
+            <column name="relationship" type="UUID"><constraints nullable="false"/></column>
+            <column name="user_relationship_request" type="UUID"><constraints nullable="false"/></column>
+            <column name="relationship_type" type="INT"><constraints nullable="false"/></column>
+            <column name="status" type="INT"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_user_relationship:standard            -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_user_relationship:standard">
+        <createIndex
+                indexName="idx_user_relationship_created_on"
+                tableName="vnext_user_relationship">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_user_relationship_modified_on"
+                tableName="vnext_user_relationship">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_user_relationship_deleted_on"
+                tableName="vnext_user_relationship">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- user_relationship_request                                                                                -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="user_relationship_request">
+        <createTable tableName="vnext_user_relationship_request">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="user" type="UUID"><constraints nullable="false"/></column>
+            <column name="relationship" type="UUID"><constraints nullable="false"/></column>
+            <column name="relationship_type" type="INT"><constraints nullable="false"/></column>
+            <column name="from_user_relationship_request" remarks="If relationship changes the relationship with a correction a new entry is created and this field is set to reference the original request" type="UUID"><constraints nullable="true"/></column>
+            <column name="status" type="INT"><constraints nullable="false"/></column>
+
+            <column name="requested_on" type="DATETIME"><constraints nullable="false"/></column>
+            <column name="responded_on" type="DATETIME"><constraints nullable="true"/></column>
+            <column name="viewed_on" type="DATETIME"><constraints nullable="true"/></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="request" remarks="user_versioned_string" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_user_relationship_request:standard    -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_user_relationship_request:standard">
+        <createIndex
+                indexName="idx_user_relationship_request_created_on"
+                tableName="vnext_user_relationship_request">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_Tuser_relationship_request_modified_on"
+                tableName="vnext_user_relationship_request">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_user_relationship_request_deleted_on"
+                tableName="vnext_user_relationship_request">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_Tuser_relationship_request_request         -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_user_relationship_request_request">
+        <addForeignKeyConstraint baseColumnNames="request"
+                                 baseTableName="vnext_user_relationship_request"
+                                 constraintName="fk_user_relationship_request_request"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_user_versioned_string"
+        />
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- user_relationship_lookup                                                                                 -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="user_relationship_lookup">
+        <createTable tableName="vnext_user_relationship_lookup"  remarks="Relationship lookup table. An entry for each user is entered to simplify queries.">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="user" type="UUID"><constraints nullable="false"/></column>
+            <column name="relationship" type="UUID"><constraints nullable="false"/></column>
+            <column name="relationship_type" type="INT"><constraints nullable="false"/></column>
+            <column name="source" remarks="user_relationship entry that generated this record" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_user_relationship_lookup:standard     -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_user_relationship_lookup:standard">
+        <createIndex
+                indexName="idx_user_relationship_lookup_created_on"
+                tableName="vnext_user_relationship_lookup">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_user_relationship_lookup_modified_on"
+                tableName="vnext_user_relationship_lookup">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_user_relationship_lookup_deleted_on"
+                tableName="vnext_user_relationship_lookup">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- user_interaction_history_event                                                                           -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="user_interaction_history_event">
+        <createTable tableName="vnext_user_interaction_history_event"  remarks="User interaction history (view friendship)">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+            <column name="user" remarks="User or Business" type="UUID"><constraints nullable="false"/></column>
+            <column name="interacted_with" remarks="User or Business" type="UUID"><constraints nullable="false"/></column>
+            <column name="interaction_type" type="INT"><constraints nullable="false"/></column>
+            <column name="interaction_subject" type="UUID"><constraints nullable="false"/></column>
+            <column name="interacted_on" type="DATETIME(6)" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- user_relation_group_member                                                                               -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="user_relation_group_member">
+        <createTable tableName="vnext_user_relation_group_member"  remarks="Assign user/follower to specific group">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <column name="user_relation_group" type="UUID"><constraints nullable="false"/></column>
+            <column name="member" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_user_relation_group_member:standard   -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_user_relation_group_member:standard">
+        <createIndex
+                indexName="idx_user_relation_group_member_created_on"
+                tableName="vnext_user_relation_group_member">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_user_relation_group_member_modified_on"
+                tableName="vnext_user_relation_group_member">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_user_relation_group_member_deleted_on"
+                tableName="vnext_user_relation_group_member">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+</databaseChangeLog>

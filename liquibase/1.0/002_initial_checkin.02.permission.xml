@@ -1,0 +1,188 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+
+    <!-- ======================================================================================================== -->
+    <!-- roles                                                                                                    -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="roles">
+        <createTable tableName="roles">
+            <column name="id" type="VARCHAR(255)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="roles_pkey"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- roles:initial_data                        -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="root (generated)" id="roles:initial_data">
+        <loadData
+                tableName="roles"
+                file="./csv/roles.csv"
+                commentLineStartsWith="#"
+                relativeToChangelogFile="true"
+                usePreparedStatements="true"
+        >
+        </loadData>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- resources                                                                                                -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="resources">
+        <createTable tableName="resources">
+            <column name="id" type="VARCHAR(255)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="resources_pkey"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- resources                                 -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="root (generated)" id="resources:initial_data">
+        <loadData
+                tableName="resources"
+                file="./csv/resources.csv"
+                commentLineStartsWith="#"
+                relativeToChangelogFile="true"
+                usePreparedStatements="true"
+        >
+        </loadData>
+    </changeSet>
+
+    <changeSet author="tanbits_keith" id="resources:2.0">
+        <loadData
+                tableName="resources"
+                file="./csv/resources.2.0.csv"
+                commentLineStartsWith="#"
+                relativeToChangelogFile="true"
+                usePreparedStatements="true"
+        >
+        </loadData>
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!-- permissions                                                                                              -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="permissions">
+        <createTable tableName="permissions">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="permissions_pkey"/>
+            </column>
+            <column name="permission" type="INTEGER"/>
+            <column name="role_id" type="VARCHAR(255)"/>
+            <column name="resource_id" type="VARCHAR(255)"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:permissions:permissions_role_id_resource_id_index">
+        <createIndex indexName="permissions_role_id_resource_id_index" tableName="permissions" unique="true">
+            <column name="role_id"/>
+            <column name="resource_id"/>
+        </createIndex>
+    </changeSet>
+
+
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:permissions.resource_id">
+        <addForeignKeyConstraint baseColumnNames="resource_id" baseTableName="permissions" constraintName="permissions_resource_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="resources" validate="true"/>
+    </changeSet>
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:permissions.role_id">
+        <addForeignKeyConstraint baseColumnNames="role_id" baseTableName="permissions" constraintName="permissions_role_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="roles" validate="true"/>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- permissions                               -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="root (generated)" id="permissions:initial_data">
+        <loadData
+                tableName="permissions"
+                file="./csv/permissions.csv"
+                commentLineStartsWith="#"
+                relativeToChangelogFile="true"
+                usePreparedStatements="true"
+        >
+        </loadData>
+    </changeSet>
+    <changeSet author="kebrings_tanbits" id="permissions:2.0">
+        <loadData
+                tableName="permissions"
+                file="./csv/permissions.2.0.csv"
+                commentLineStartsWith="#"
+                relativeToChangelogFile="true"
+                usePreparedStatements="true"
+        >
+        </loadData>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- admin                                                                                                    -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="admins">
+        <createTable tableName="admins">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="admins_pkey"/>
+            </column>
+            <column name="first_name" type="VARCHAR(255)"/>
+            <column name="last_name" type="VARCHAR(255)"/>
+            <column name="city" type="VARCHAR(255)"/>
+            <column name="password" type="VARCHAR(255)"/>
+            <column name="email" type="VARCHAR(255)"/>
+            <column name="role_id" type="INTEGER"/>
+            <column defaultValueBoolean="false" name="is_super_admin" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_admins_deleted_at                     -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:admins:deleted_at">
+        <createIndex indexName="idx_admins_deleted_at" tableName="admins">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+
+</databaseChangeLog>

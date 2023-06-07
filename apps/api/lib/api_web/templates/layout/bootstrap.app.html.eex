@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+  Rendering entire pages is not healthy at all,
+  please leave me alone I am tired and sad.
+-->
+    <head>
+        <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://js.stripe.com">
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>Jetzy Select</title>
+        <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/assets/phoenix-bootstrap.css") %>"/>
+        <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/fusion-min.css") %>"/>
+    </head>
+
+    <body class="select">
+    <div > <%# bg-light min-vh-100 d-flex flex-row align-items-center dark:bg-transparent %>
+
+            <%= @inner_content %>
+
+    </div>
+        <script type="text/javascript" src="<%= Routes.static_path(@conn, "/assets/phoenix-bootstrap.js") %>"></script>
+    </body>
+</html>

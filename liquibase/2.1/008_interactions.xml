@@ -1,0 +1,532 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <!-- ######################################################################################################## -->
+    <!-- ........................................................................................................ -->
+    <!-- Lookup Tables                                                                                            -->
+    <!-- ........................................................................................................ -->
+    <!-- ######################################################################################################## -->
+
+    <!-- ======================================================================================================== -->
+    <!-- reaction_type                                                                                            -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="reaction_type">
+        <createTable tableName="vnext_reaction_type">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="INT" autoIncrement="false"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="description" remarks="versioned_string" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_reaction_type:standard                -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_reaction_type:standard">
+        <createIndex
+                indexName="idx_reaction_type_created_on"
+                tableName="vnext_reaction_type">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_reaction_type_modified_on"
+                tableName="vnext_reaction_type">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_reaction_type_deleted_on"
+                tableName="vnext_reaction_type">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_reaction_type_description                  -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_reaction_type_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_reaction_type"
+                                 constraintName="fk_reaction_type_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_string"
+        />
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!-- reaction_event_type                                                                                      -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="reaction_event_type">
+        <createTable tableName="vnext_reaction_event_type">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="INT" autoIncrement="false"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="description" remarks="versioned_string" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_reaction_event_type:standard          -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_reaction_event_type:standard">
+        <createIndex
+                indexName="idx_reaction_event_type_created_on"
+                tableName="vnext_reaction_event_type">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_reaction_event_type_modified_on"
+                tableName="vnext_reaction_event_type">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_reaction_event_type_deleted_on"
+                tableName="vnext_reaction_event_type">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_reaction_event_type_description            -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_reaction_event_type_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_reaction_event_type"
+                                 constraintName="fk_reaction_event_type_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_string"
+        />
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!-- comment_event_type                                                                                       -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="comment_event_type">
+        <createTable tableName="vnext_comment_event_type">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="INT" autoIncrement="false"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="description" remarks="versioned_string" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_comment_event_type:standard           -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_comment_event_type:standard">
+        <createIndex
+                indexName="idx_comment_event_type_created_on"
+                tableName="vnext_comment_event_type">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_comment_event_type_modified_on"
+                tableName="vnext_comment_event_type">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_comment_event_type_deleted_on"
+                tableName="vnext_comment_event_type">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_comment_event_type_description             -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_comment_event_type_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_comment_event_type"
+                                 constraintName="fk_comment_event_type_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_string"
+        />
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!-- share_event_type                                                                                         -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="share_event_type">
+        <createTable tableName="vnext_share_event_type">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="INT" autoIncrement="false"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="description" remarks="versioned_string" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_share_event_type:standard             -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_share_event_type:standard">
+        <createIndex
+                indexName="idx_share_event_type_created_on"
+                tableName="vnext_share_event_type">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_share_event_type_modified_on"
+                tableName="vnext_share_event_type">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_share_event_type_deleted_on"
+                tableName="vnext_share_event_type">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_share_event_type_description               -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_share_event_type_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_share_event_type"
+                                 constraintName="fk_share_event_type_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_string"
+        />
+    </changeSet>
+
+
+
+    <!-- ######################################################################################################## -->
+    <!-- ........................................................................................................ -->
+    <!-- Standard Tables                                                                                          -->
+    <!-- ........................................................................................................ -->
+    <!-- ######################################################################################################## -->
+
+    <!-- ======================================================================================================== -->
+    <!-- entity_interaction                                                                                       -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="entity_interaction">
+        <createTable tableName="vnext_entity_interaction">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID" remarks="uid"><constraints nullable="false" primaryKey="true" /></column>
+
+            <column name="comments" type="UUID" />
+            <column name="shares" type="UUID" />
+
+            <column name="like" type="UUID" />
+            <column name="dislike" type="UUID" />
+            <column name="heart" type="UUID" />
+            <column name="angry" type="UUID" />
+            <column name="sad" type="UUID" />
+            <column name="laugh" type="UUID" />
+            <column name="confused" type="UUID" />
+            <column name="comfort" type="UUID" />
+            <column name="reaction_09" type="UUID" />
+            <column name="reaction_10" type="UUID" />
+
+            <!-- Standard Time Stamps -->
+            <column name="synchronized_on" type="DATETIME(6)" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ..................................................... -->
+    <!-- idx_entity_interaction_count_synchronized_on          -->
+    <!-- ..................................................... -->
+    <changeSet author="kebrings" id="idx_entity_interaction_synchronized_on">
+        <createIndex
+                indexName="idx_entity_interaction_synchronized_on"
+                tableName="vnext_entity_interaction">
+            <column name="synchronized_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- entity_subject_reaction                                                                               -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="entity_subject_reaction">
+        <createTable tableName="vnext_entity_subject_reaction" remarks="currently selected reaction for user -> subject">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="for_entity" type="UUID"><constraints primaryKey="true" nullable="false"/></column>
+            <column name="subject" type="UUID"><constraints primaryKey="true" nullable="false"/></column>
+
+            <!-- Primary Relations -->
+            <column name="event" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="reaction" remarks="currently selection reaction" type="INT" />
+
+            <!-- Standard Time Stamps -->
+            <column name="modified_on" type="DATETIME(6)" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_entity_subject_reaction_entity        -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_entity_subject_reaction_entity">
+        <createIndex
+                indexName="idx_entity_subject_reaction_entity"
+                tableName="vnext_entity_subject_reaction">
+            <column name="for_entity"/>
+            <column name="subject"/>
+            <column name="modified_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ..................................................... -->
+    <!-- idx_entity_subject_reaction:standard                  -->
+    <!-- ..................................................... -->
+    <changeSet author="kebrings" id="idx_entity_subject_reaction:standard">
+        <createIndex
+                indexName="idx_entity_subject_reaction_modified_on"
+                tableName="vnext_entity_subject_reaction">
+            <column name="modified_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- entity_subject_reaction_history                                                                            -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="entity_subject_reaction_history">
+        <createTable tableName="vnext_entity_subject_reaction_history">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Primary Relations -->
+            <column name="for_entity" type="UUID"><constraints nullable="false"/></column>
+            <column name="subject" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="reaction" type="INT" />
+            <column name="reaction_event_type" type="INT" />
+            <column name="count" type="TINYINT" />
+
+            <!-- Standard Time Stamps -->
+            <column name="modified_on" type="DATETIME(6)" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- .................................................. -->
+    <!-- idx_entity_subject_reaction_history_subject          -->
+    <!-- .................................................. -->
+    <changeSet author="kebrings" id="idx_entity_subject_reaction_history_subject">
+        <createIndex
+                indexName="idx_entity_subject_reaction_history_subject"
+                tableName="vnext_entity_subject_reaction_history">
+            <column name="subject"/>
+            <column name="reaction"/>
+            <column name="count"/>
+            <column name="modified_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- .................................................. -->
+    <!-- idx_entity_subject_reaction_history_entity           -->
+    <!-- .................................................. -->
+    <changeSet author="kebrings" id="idx_entity_subject_reaction_history_entity">
+        <createIndex
+                indexName="idx_entity_subject_reaction_history_entity"
+                tableName="vnext_entity_subject_reaction_history">
+            <column name="for_entity"/>
+            <column name="subject"/>
+            <column name="modified_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- entity_reaction_roll_up                                                                                  -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="entity_reaction_roll_up">
+        <createTable tableName="vnext_entity_reaction_roll_up">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="subject" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+            <column name="reaction" type="INT" autoIncrement="false"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="tally" type="UUID" ><constraints nullable="false" /></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="synchronized_on" type="DATETIME(6)"><constraints nullable="false"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- .................................................. -->
+    <!-- idx_entity_reaction_roll_up                        -->
+    <!-- .................................................. -->
+    <changeSet author="kebrings" id="idx_entity_reaction_roll_up">
+        <createIndex
+                indexName="idx_entity_reaction_roll_up"
+                tableName="vnext_entity_reaction_roll_up">
+            <column name="subject"/>
+            <column name="reaction"/>
+            <column name="synchronized_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- entity_subject_comment_history                                                                           -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="entity_subject_comment_history">
+        <createTable tableName="vnext_entity_subject_comment_history">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Primary Relations -->
+            <column name="for_entity" type="UUID"><constraints nullable="false"/></column>
+            <column name="subject" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="comment" type="UUID" />
+            <column name="comment_event_type" type="INT" />
+            <column name="count" type="TINYINT" />
+
+            <!-- Standard Time Stamps -->
+            <column name="modified_on" type="DATETIME(6)" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- .................................................. -->
+    <!-- idx_entity_subject_comment_history_subject         -->
+    <!-- .................................................. -->
+    <changeSet author="kebrings" id="idx_entity_subject_comment_history_subject">
+        <createIndex
+                indexName="idx_entity_subject_comment_history_subject"
+                tableName="vnext_entity_subject_comment_history">
+            <column name="subject"/>
+            <column name="count"/>
+            <column name="modified_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- .................................................. -->
+    <!-- idx_entity_subject_comment_history_entity          -->
+    <!-- .................................................. -->
+    <changeSet author="kebrings" id="idx_entity_subject_comment_history_entity">
+        <createIndex
+                indexName="idx_entity_subject_comment_history_entity"
+                tableName="vnext_entity_subject_comment_history">
+            <column name="for_entity"/>
+            <column name="subject"/>
+            <column name="modified_on"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!-- entity_subject_share_history                                                                             -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="entity_subject_share_history">
+        <createTable tableName="vnext_entity_subject_share_history">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Primary Relations -->
+            <column name="for_entity" type="UUID"><constraints nullable="false"/></column>
+            <column name="subject" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="share" type="UUID" />
+            <column name="share_event_type" type="INT" />
+            <column name="count" type="TINYINT" />
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME(6)" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- .................................................. -->
+    <!-- idx_entity_subject_share_history_subject           -->
+    <!-- .................................................. -->
+    <changeSet author="kebrings" id="idx_entity_subject_share_history_subject">
+        <createIndex
+                indexName="idx_entity_subject_share_history_subject"
+                tableName="vnext_entity_subject_share_history">
+            <column name="subject"/>
+            <column name="count"/>
+            <column name="created_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- .................................................. -->
+    <!-- idx_entity_subject_share_history_entity            -->
+    <!-- .................................................. -->
+    <changeSet author="kebrings" id="idx_entity_subject_share_history_entity">
+        <createIndex
+                indexName="idx_entity_subject_share_history_entity"
+                tableName="vnext_entity_subject_share_history">
+            <column name="for_entity"/>
+            <column name="subject"/>
+            <column name="created_on"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!-- entity_comment_roll_up                                                                                   -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="entity_comment_roll_up">
+        <createTable tableName="vnext_entity_comment_roll_up">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="subject_type" type="INT" ><constraints nullable="false" /></column>
+            <column name="tally" type="BIGINT" ><constraints nullable="false" /></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="synchronized_on" type="DATETIME(6)"><constraints nullable="false"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- entity_share_roll_up                                                                                     -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="entity_share_roll_up">
+        <createTable tableName="vnext_entity_share_roll_up">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="subject_type" type="INT" ><constraints nullable="false" /></column>
+            <column name="tally" type="BIGINT" ><constraints nullable="false" /></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="synchronized_on" type="DATETIME(6)"><constraints nullable="false"/></column>
+        </createTable>
+    </changeSet>
+
+
+</databaseChangeLog>

@@ -1,0 +1,158 @@
+<html>
+
+<head>
+</head>
+
+<body>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" style="max-width: 692px;">
+    <tbody>
+    <tr>
+        <td colspan="3" height="1" bgcolor="#cccccc" style="font-size: 0px;"></td>
+    </tr>
+    <tr>
+        <td width="1" bgcolor="#cccccc" style="font-size: 0px;"></td>
+        <td>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" align="center" bgcolor="#ffffff">
+                <tbody>
+                <tr>
+                    <td colspan="3" height="10" style="font-size: 0px;"></td>
+                </tr>
+                <tr>
+                    <td style="font-size: 0px;" width="10"></td>
+                    <td>
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                        <tbody>
+                                        <tr>
+                                            <td style="font-size: 0px;" width="95"><img src="https://jetzyapp.com//Images/Email/V1/logo.png" alt="" width="95"></td>
+                                            <td style="font-size: 0px;" width="20"></td>
+                                            <td style="border-bottom: 8px solid rgb(255, 153, 0); font-family: Arial, Helvetica, sans-serif; font-size: 32px;">JETZY - <span style="font-style: italic;">Travel Like a Local</span></td>
+                                            <td style="font-size: 0px;" width="40"></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-size: 0px;" height="40"></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                        <tbody>
+                                        <tr>
+                                            <td width="40" style="font-size: 0px;"></td>
+                                            <td>
+                                                <table border="0" cellspacing="0" cellpadding="0" width="100%" style="margin: 0px; padding: 0px; outline: 0px; width: 100%;">
+                                                    <tbody>
+                                                    <tr>
+                                                        <td style="font-size: 14px; line-height: 18px; font-family: Arial, Helvetica, sans-serif; font-weight: normal; color: rgb(0, 0, 0);">
+                                                            <br>Hi
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td height="10" style="font-size: 0px; line-height: 0px; height: 10px;">
+
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="font-size: 14px; line-height: 18px; font-family: Arial, Helvetica, sans-serif; font-weight: normal; color: rgb(0, 0, 0);">
+                                                            <%= @params["notification"] %>
+                                                            <br><br>
+                                                            Please click on below link to join.
+                                                            <br><br>
+                                                            <a href="<%= @params["url"] %>"> <%= @params["url"] %> </a>
+                                                            <br><br>
+                                                            <h1> <%= @params["referral_code"] %> </h1>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td height="10" style="font-size: 0px; line-height: 0px; height: 10px;">
+
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="font-size: 14px; line-height: 18px; font-family: Arial, Helvetica, sans-serif; font-weight: normal; color: rgb(0, 0, 0);">
+                                                            Thank You!<br>Happy Jetzying
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td height="10" style="font-size: 0px; line-height: 0px; height: 10px;">
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                            <td width="40" style="font-size: 0px;"></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-size: 0px;" height="10"></td>
+                            </tr>
+                            <tr>
+                                <td align="center"><img src="https://jetzyapp.com//Images/Email/V1/line.jpg" align=""></td>
+                            </tr>
+                            <tr>
+                                <td style="font-size: 0px;" height="10"></td>
+                            </tr>
+                            <tr>
+                                <td align="center">
+                                    <table border="0" cellspacing="0" cellpadding="0">
+                                        <tbody>
+                                        <tr>
+                                            <td style="font-family: Arial, Helvetica, sans-serif; font-size: 13px; color: rgb(51, 51, 51);"><a href="https://jetzyapp.com//about-the-app.html" style="text-decoration: none; color: rgb(51, 51, 51);"> ABOUT </a></td>
+                                            <td width="30" align="center" style="font-family: Arial, Helvetica, sans-serif; font-size: 13px; color: rgb(51, 51, 51);"> | </td>
+                                            <td style="font-family: Arial, Helvetica, sans-serif; font-size: 13px; color: rgb(51, 51, 51);"><a href="mailto:contact@jetzyapp.com" style="text-decoration: none; color: rgb(51, 51, 51);"> CONTACT </a></td>
+                                            <td width="30" align="center" style="font-family: Arial, Helvetica, sans-serif; font-size: 13px; color: rgb(51, 51, 51);"> | </td>
+                                            <td style="font-size: 0px;" width="20"></td>
+                                            <td style="font-size: 0px;" width="40">
+                                                <a href="https://instagram.com/jetzyapp"><img src="https://jetzyapp.com//Images/Email/V1/e_instagram.png" alt="" border="0"></a>
+                                            </td>
+                                            <td style="font-size: 0px;" width="40">
+                                                <a href="https://www.facebook.com/jetzyapp"><img src="https://jetzyapp.com//Images/Email/V1/e_fb.png" alt="" border="0"></a>
+                                            </td>
+                                            <td style="font-size: 0px;" width="40">
+                                                <a href="https://twitter.com/Jetzyapp"><img src="https://jetzyapp.com//Images/Email/V1/e_twitter.png" alt="" border="0"></a>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-size: 0px;" height="10"></td>
+                            </tr>
+                            <tr>
+                                <td style="font-family: Arial, Helvetica, sans-serif; font-size: 13px; color: rgb(51, 51, 51); text-align: center;">JETZY - Travel Like a Local<br> <a href="mailto:contact@jetzyapp.com" style="text-decoration: none; color: rgb(51, 51, 51);">contact@jetzyapp.com</a></td>
+                            </tr>
+                            <tr>
+                                <td style="font-size: 0px;" height="10"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                    <td style="font-size: 0px;" width="10"></td>
+                </tr>
+                <tr>
+                    <td colspan="3" height="10" style="font-size: 0px;"></td>
+                </tr>
+                </tbody>
+            </table>
+        </td>
+        <td width="1" bgcolor="#cccccc" style="font-size: 0px;"></td>
+    </tr>
+    <tr>
+        <td colspan="3" bgcolor="#cccccc" height="1" style="font-size: 0px;"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+
+</html>

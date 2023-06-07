@@ -1,0 +1,8 @@
+id,name,is_deleted,deleted_at,inserted_at,updated_at
+shoutout,ShoutOut,false,,2019-07-24 12:21:46.000000,2019-07-24 12:21:46.000000
+event,Event,false,,2019-07-24 12:21:46.000000,2019-07-24 12:21:46.000000
+user,User,false,,2019-07-24 12:21:46.000000,2019-07-24 12:21:46.000000
+interest,Interest,false,,2019-07-24 12:21:46.000000,2019-07-24 12:21:46.000000
+comment,Comment,false,,2019-07-24 12:21:46.000000,2019-07-24 12:21:46.000000
+comment_reply,Comment Reply,false,,2019-07-24 12:21:46.000000,2019-07-24 12:21:46.000000
+reward_offer,Reward Offer,false,,2022-03-01 13:06:10.000000,2022-03-01 13:06:12.000000

@@ -1,0 +1,2319 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <!-- ######################################################################################################## -->
+    <!-- ........................................................................................................ -->
+    <!-- Versioned String Tables                                                                                  -->
+    <!-- ........................................................................................................ -->
+    <!-- ######################################################################################################## -->
+
+    <!-- ======================================================================================================== -->
+    <!-- versioned_string                                                                                         -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="versioned_string">
+        <createTable tableName="vnext_versioned_string" remarks="Simple change log supported title/body field. Lighter footprint than full CMS record.">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+            <column name="editor" type="UUID"><constraints nullable="true"/></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="revision" type="INT UNSIGNED"><constraints nullable="false"/></column>
+            <column name="title" type="NVARCHAR(1024)"><constraints nullable="true"/></column>
+            <column name="body" type="TEXT"><constraints nullable="true"/></column>
+
+            <!-- Moderation  -->
+            <column name="moderation_status" type="TINYINT "><constraints nullable="false"/></column>
+            <column name="flagged" type="TINYINT "><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="modified_on" type="DATETIME(6)" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_versioned_string:standard             -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_versioned_string:standard">
+        <createIndex
+                indexName="idx_versioned_string_editor"
+                tableName="vnext_versioned_string">
+            <column name="editor"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_versioned_string_moderation_status"
+                tableName="vnext_versioned_string">
+            <column name="moderation_status"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_versioned_string_flagged"
+                tableName="vnext_versioned_string">
+            <column name="flagged"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_versioned_string_modified_on"
+                tableName="vnext_versioned_string">
+            <column name="modified_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- versioned_string_history                                                                                 -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="versioned_string_history">
+        <createTable tableName="vnext_versioned_string_history" remarks="Revision Tracking">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <column name="versioned_string" type="UUID"><constraints nullable="false"/></column>
+            <column name="editor" type="UUID"><constraints nullable="true"/></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="revision" type="INT UNSIGNED"><constraints nullable="false"/></column>
+            <column name="title" type="NVARCHAR(1024)"><constraints nullable="true"/></column>
+            <column name="body" type="TEXT"><constraints nullable="true"/></column>
+
+            <!-- Moderation  -->
+            <column name="moderation_status" type="INT"><constraints nullable="false"/></column>
+            <column name="flagged" type="INT"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="modified_on" type="DATETIME(6)" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_versioned_string_history:standard     -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_versioned_string_history:standard">
+        <createIndex
+                indexName="idx_versioned_string_history_string"
+                tableName="vnext_versioned_string_history">
+            <column name="versioned_string"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_versioned_string_history_editor"
+                tableName="vnext_versioned_string_history">
+            <column name="editor"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_versioned_string_history_modified_on"
+                tableName="vnext_versioned_string_history">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_versioned_string_history_moderation_status"
+                tableName="vnext_versioned_string_history">
+            <column name="moderation_status"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_versioned_string_history_flagged"
+                tableName="vnext_versioned_string_history">
+            <column name="flagged"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!-- versioned_link                                                                                         -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="versioned_link">
+        <createTable tableName="vnext_versioned_link" remarks="Simple change log supported title/body field. Lighter footprint than full CMS record.">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+            <column name="editor" type="UUID "><constraints nullable="true"/></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="revision" type="INT UNSIGNED"><constraints nullable="false"/></column>
+            <column name="name" type="NVARCHAR(512)"><constraints nullable="false"/></column>
+            <column name="description" type="NVARCHAR(1024)"><constraints nullable="false"/></column>
+            <column name="link" type="NVARCHAR(1024)"><constraints nullable="false"/></column>
+
+            <!-- Moderation  -->
+            <column name="moderation_status" type="INT"><constraints nullable="false"/></column>
+            <column name="flagged" type="INT"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="modified_on" type="DATETIME(6)" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_versioned_link:standard             -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_versioned_link:standard">
+        <createIndex
+                indexName="idx_versioned_link_editor"
+                tableName="vnext_versioned_link">
+            <column name="editor"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_versioned_link_moderation_status"
+                tableName="vnext_versioned_link">
+            <column name="moderation_status"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_versioned_link_flagged"
+                tableName="vnext_versioned_link">
+            <column name="flagged"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_versioned_link_modified_on"
+                tableName="vnext_versioned_link">
+            <column name="modified_on"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!-- versioned_link_history                                                                                 -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="versioned_link_history">
+        <createTable tableName="vnext_versioned_link_history" remarks="Revision Tracking">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <column name="versioned_link" type="UUID"><constraints nullable="false"/></column>
+            <column name="editor" type="UUID "><constraints nullable="true"/></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="revision" type="INT UNSIGNED"><constraints nullable="false"/></column>
+            <column name="name" type="NVARCHAR(512)"><constraints nullable="false"/></column>
+            <column name="description" type="NVARCHAR(1024)"><constraints nullable="false"/></column>
+            <column name="link" type="NVARCHAR(1024)"><constraints nullable="false"/></column>
+
+            <!-- Moderation  -->
+            <column name="moderation_status" type="INT"><constraints nullable="false"/></column>
+            <column name="flagged" type="INT"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="modified_on" type="DATETIME(6)" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_versioned_link_history:standard     -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_versioned_link_history:standard">
+        <createIndex
+                indexName="idx_versioned_link_history_string"
+                tableName="vnext_versioned_link_history">
+            <column name="versioned_link"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_versioned_link_history_editor"
+                tableName="vnext_versioned_link_history">
+            <column name="editor"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_versioned_link_history_modified_on"
+                tableName="vnext_versioned_link_history">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_versioned_link_history_moderation_status"
+                tableName="vnext_versioned_link_history">
+            <column name="moderation_status"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_versioned_link_history_flagged"
+                tableName="vnext_versioned_link_history">
+            <column name="flagged"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- versioned_image_string                                                                                         -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="versioned_image_string">
+        <createTable tableName="vnext_versioned_image_string" remarks="Simple change log supported title/body field. Lighter footprint than full CMS record.">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+            <column name="editor" type="UUID "><constraints nullable="true"/></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="revision" type="INT UNSIGNED"><constraints nullable="false"/></column>
+            <column name="title" type="NVARCHAR(1024)"><constraints nullable="true"/></column>
+            <column name="body" type="TEXT"><constraints nullable="true"/></column>
+
+            <!-- Moderation  -->
+            <column name="moderation_status" type="INT"><constraints nullable="false"/></column>
+            <column name="flagged" type="INT"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="modified_on" type="DATETIME(6)" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_versioned_image_string:standard             -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_versioned_image_string:standard">
+        <createIndex
+                indexName="idx_versioned_image_string_editor"
+                tableName="vnext_versioned_image_string">
+            <column name="editor"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_versioned_image_string_moderation_status"
+                tableName="vnext_versioned_image_string">
+            <column name="moderation_status"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_versioned_image_string_flagged"
+                tableName="vnext_versioned_image_string">
+            <column name="flagged"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_versioned_image_string_modified_on"
+                tableName="vnext_versioned_image_string">
+            <column name="modified_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- versioned_image_string_history                                                                                 -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="versioned_image_string_history">
+        <createTable tableName="vnext_versioned_image_string_history" remarks="Revision Tracking">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <column name="versioned_image_string" type="UUID"><constraints nullable="false"/></column>
+            <column name="editor" type="UUID "><constraints nullable="true"/></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="revision" type="INT UNSIGNED"><constraints nullable="false"/></column>
+            <column name="title" type="NVARCHAR(1024)"><constraints nullable="true"/></column>
+            <column name="body" type="TEXT"><constraints nullable="true"/></column>
+
+            <!-- Moderation  -->
+            <column name="moderation_status" type="INT"><constraints nullable="false"/></column>
+            <column name="flagged" type="INT"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="modified_on" type="DATETIME(6)" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_versioned_image_string_history:standard     -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_versioned_image_string_history:standard">
+        <createIndex
+                indexName="idx_versioned_image_string_history_string"
+                tableName="vnext_versioned_image_string_history">
+            <column name="versioned_image_string"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_versioned_image_string_history_editor"
+                tableName="vnext_versioned_image_string_history">
+            <column name="editor"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_versioned_image_string_history_modified_on"
+                tableName="vnext_versioned_image_string_history">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_versioned_image_string_history_moderation_status"
+                tableName="vnext_versioned_image_string_history">
+            <column name="moderation_status"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_versioned_image_string_history_flagged"
+                tableName="vnext_versioned_image_string_history">
+            <column name="flagged"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!-- user_about_versioned_string                                                                             -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="user_about_versioned_string">
+        <createTable tableName="vnext_user_about_versioned_string" remarks="Simple change log supported title/body field. Lighter footprint than full CMS record.">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+            <column name="editor" type="UUID "><constraints nullable="true"/></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="revision" type="INT UNSIGNED"><constraints nullable="false"/></column>
+            <column name="title" type="NVARCHAR(1024)"><constraints nullable="true"/></column>
+            <column name="body" type="TEXT"><constraints nullable="true"/></column>
+
+            <!-- Moderation  -->
+            <column name="moderation_status" type="INT"><constraints nullable="false"/></column>
+            <column name="flagged" type="INT"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="modified_on" type="DATETIME(6)" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_user_about_versioned_string:standard -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_user_about_versioned_string:standard">
+        <createIndex
+                indexName="idx_user_about_versioned_string_editor"
+                tableName="vnext_user_about_versioned_string">
+            <column name="editor"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_user_about_versioned_string_moderation_status"
+                tableName="vnext_user_about_versioned_string">
+            <column name="moderation_status"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_user_about_versioned_string_flagged"
+                tableName="vnext_user_about_versioned_string">
+            <column name="flagged"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_user_about_versioned_string_modified_on"
+                tableName="vnext_user_about_versioned_string">
+            <column name="modified_on"/>
+        </createIndex>
+    </changeSet>
+
+
+
+    <!-- ======================================================================================================== -->
+    <!-- user_about_versioned_string_history                                                                     -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="user_about_versioned_string_history">
+        <createTable tableName="vnext_user_about_versioned_string_history" remarks="Revision Tracking">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <column name="user_about_versioned_string" type="UUID"><constraints nullable="false"/></column>
+            <column name="editor" type="UUID "><constraints nullable="true"/></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="revision" type="INT UNSIGNED"><constraints nullable="false"/></column>
+            <column name="title" type="NVARCHAR(1024)"><constraints nullable="true"/></column>
+            <column name="body" type="TEXT"><constraints nullable="true"/></column>
+
+            <!-- Moderation  -->
+            <column name="moderation_status" type="INT"><constraints nullable="false"/></column>
+            <column name="flagged" type="INT"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="modified_on" type="DATETIME(6)" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- .................................................. -->
+    <!-- idx_user_about_versioned_string_history:standard  -->
+    <!-- .................................................. -->
+    <changeSet author="kebrings" id="idx_user_about_versioned_string_history:standard">
+        <createIndex
+                indexName="idx_user_about_versioned_string_history_string"
+                tableName="vnext_user_about_versioned_string_history">
+            <column name="user_about_versioned_string"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_user_about_versioned_string_history_editor"
+                tableName="vnext_user_about_versioned_string_history">
+            <column name="editor"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_user_about_versioned_string_history_modified_on"
+                tableName="vnext_user_about_versioned_string_history">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_user_about_versioned_string_history_moderation_status"
+                tableName="vnext_user_about_versioned_string_history">
+            <column name="moderation_status"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_user_about_versioned_string_history_flagged"
+                tableName="vnext_user_about_versioned_string_history">
+            <column name="flagged"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!-- user_bio_versioned_string                                                                               -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="user_bio_versioned_string">
+        <createTable tableName="vnext_user_bio_versioned_string" remarks="Simple change log supported title/body field. Lighter footprint than full CMS record.">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+            <column name="editor" type="UUID "><constraints nullable="true"/></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="revision" type="INT UNSIGNED"><constraints nullable="false"/></column>
+            <column name="title" type="NVARCHAR(1024)"><constraints nullable="true"/></column>
+            <column name="body" type="TEXT"><constraints nullable="true"/></column>
+
+            <!-- Moderation  -->
+            <column name="moderation_status" type="INT"><constraints nullable="false"/></column>
+            <column name="flagged" type="INT"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="modified_on" type="DATETIME(6)" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_user_bio_versioned_string:standard   -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_user_bio_versioned_string:standard">
+        <createIndex
+                indexName="idx_user_bio_versioned_string_editor"
+                tableName="vnext_user_bio_versioned_string">
+            <column name="editor"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_user_bio_versioned_string_moderation_status"
+                tableName="vnext_user_bio_versioned_string">
+            <column name="moderation_status"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_user_bio_versioned_string_flagged"
+                tableName="vnext_user_bio_versioned_string">
+            <column name="flagged"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_user_bio_versioned_string_modified_on"
+                tableName="vnext_user_bio_versioned_string">
+            <column name="modified_on"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!-- user_bio_versioned_string_history                                                                       -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="user_bio_versioned_string_history">
+        <createTable tableName="vnext_user_bio_versioned_string_history" remarks="Revision Tracking">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <column name="user_bio_versioned_string" type="UUID"><constraints nullable="false"/></column>
+            <column name="editor" type="UUID "><constraints nullable="true"/></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="revision" type="INT UNSIGNED"><constraints nullable="false"/></column>
+            <column name="title" type="NVARCHAR(1024)"><constraints nullable="true"/></column>
+            <column name="body" type="TEXT"><constraints nullable="true"/></column>
+
+            <!-- Moderation  -->
+            <column name="moderation_status" type="INT"><constraints nullable="false"/></column>
+            <column name="flagged" type="INT"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="modified_on" type="DATETIME(6)" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ............................................... -->
+    <!-- idx_user_bio_versioned_string_history:standard -->
+    <!-- ............................................... -->
+    <changeSet author="kebrings" id="idx_user_bio_versioned_string_history_*">
+        <createIndex
+                indexName="idx_user_bio_versioned_string_history_string"
+                tableName="vnext_user_bio_versioned_string_history">
+            <column name="user_bio_versioned_string"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_user_bio_versioned_string_history_editor"
+                tableName="vnext_user_bio_versioned_string_history">
+            <column name="editor"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_user_bio_versioned_string_history_modified_on"
+                tableName="vnext_user_bio_versioned_string_history">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_user_bio_versioned_string_history_moderation_status"
+                tableName="vnext_user_bio_versioned_string_history">
+            <column name="moderation_status"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_user_bio_versioned_string_history_flagged"
+                tableName="vnext_user_bio_versioned_string_history">
+            <column name="flagged"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!-- user_panic_versioned_string                                                                             -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="user_panic_versioned_string">
+        <createTable tableName="vnext_user_panic_versioned_string" remarks="Simple change log supported title/body field. Lighter footprint than full CMS record.">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+            <column name="editor" type="UUID"><constraints nullable="true"/></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="revision" type="INT UNSIGNED"><constraints nullable="false"/></column>
+            <column name="title" type="NVARCHAR(1024)"><constraints nullable="true"/></column>
+            <column name="body" type="TEXT"><constraints nullable="true"/></column>
+
+            <!-- Moderation  -->
+            <column name="moderation_status" type="INT"><constraints nullable="false"/></column>
+            <column name="flagged" type="INT"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="modified_on" type="DATETIME(6)" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- .......................................... -->
+    <!-- idx_user_panic_versioned_string:standard -->
+    <!-- .......................................... -->
+    <changeSet author="kebrings" id="idx_user_panic_versioned_string:standard">
+        <createIndex
+                indexName="idx_user_panic_versioned_string_editor"
+                tableName="vnext_user_panic_versioned_string">
+            <column name="editor"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_user_panic_versioned_string_moderation_status"
+                tableName="vnext_user_panic_versioned_string">
+            <column name="moderation_status"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_user_panic_versioned_string_flagged"
+                tableName="vnext_user_panic_versioned_string">
+            <column name="flagged"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_user_panic_versioned_string_modified_on"
+                tableName="vnext_user_panic_versioned_string">
+            <column name="modified_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- user_panic_versioned_string_history                                                                     -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="user_panic_versioned_string_history">
+        <createTable tableName="vnext_user_panic_versioned_string_history" remarks="Revision Tracking">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <column name="user_panic_versioned_string" type="UUID"><constraints nullable="false"/></column>
+            <column name="editor" type="UUID"><constraints nullable="true"/></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="revision" type="INT UNSIGNED"><constraints nullable="false"/></column>
+            <column name="title" type="NVARCHAR(1024)"><constraints nullable="true"/></column>
+            <column name="body" type="TEXT"><constraints nullable="true"/></column>
+
+            <!-- Moderation  -->
+            <column name="moderation_status" type="INT"><constraints nullable="false"/></column>
+            <column name="flagged" type="INT"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="modified_on" type="DATETIME(6)" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- .................................................. -->
+    <!-- idx_user_panic_versioned_string_history:standard  -->
+    <!-- .................................................. -->
+    <changeSet author="kebrings" id="idx_user_panic_versioned_string_history:standard">
+        <createIndex
+                indexName="idx_user_panic_versioned_string_history_string"
+                tableName="vnext_user_panic_versioned_string_history">
+            <column name="user_panic_versioned_string"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_user_panic_versioned_string_history_editor"
+                tableName="vnext_user_panic_versioned_string_history">
+            <column name="editor"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_user_panic_versioned_string_history_modified_on"
+                tableName="vnext_user_panic_versioned_string_history">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_user_panic_versioned_string_history_moderation_status"
+                tableName="vnext_user_panic_versioned_string_history">
+            <column name="moderation_status"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_user_panic_versioned_string_history_flagged"
+                tableName="vnext_user_panic_versioned_string_history">
+            <column name="flagged"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!-- moderation_versioned_string                                                                             -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="moderation_versioned_string">
+        <createTable tableName="vnext_moderation_versioned_string" remarks="Simple change log supported title/body field. Lighter footprint than full CMS record.">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+            <column name="editor" type="UUID"><constraints nullable="true"/></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="revision" type="INT UNSIGNED"><constraints nullable="false"/></column>
+            <column name="title" type="NVARCHAR(1024)"><constraints nullable="true"/></column>
+            <column name="body" type="TEXT"><constraints nullable="true"/></column>
+
+            <!-- Moderation  -->
+            <column name="moderation_status" type="INT"><constraints nullable="false"/></column>
+            <column name="flagged" type="INT"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="modified_on" type="DATETIME(6)" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- .......................................... -->
+    <!-- idx_moderation_versioned_string:standard  -->
+    <!-- .......................................... -->
+    <changeSet author="kebrings" id="idx_moderation_versioned_string:standard">
+        <createIndex
+                indexName="idx_moderation_versioned_string_editor"
+                tableName="vnext_moderation_versioned_string">
+            <column name="editor"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_moderation_versioned_string_moderation_status"
+                tableName="vnext_moderation_versioned_string">
+            <column name="moderation_status"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_moderation_versioned_string_flagged"
+                tableName="vnext_moderation_versioned_string">
+            <column name="flagged"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_moderation_versioned_string_modified_on"
+                tableName="vnext_moderation_versioned_string">
+            <column name="modified_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- moderation_versioned_string_history                                                                     -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="moderation_versioned_string_history">
+        <createTable tableName="vnext_moderation_versioned_string_history" remarks="Revision Tracking">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <column name="moderation_versioned_string" type="UUID"><constraints nullable="false"/></column>
+            <column name="editor" type="UUID"><constraints nullable="true"/></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="revision" type="INT UNSIGNED"><constraints nullable="false"/></column>
+            <column name="title" type="NVARCHAR(1024)"><constraints nullable="true"/></column>
+            <column name="body" type="TEXT"><constraints nullable="true"/></column>
+
+            <!-- Moderation  -->
+            <column name="moderation_status" type="INT"><constraints nullable="false"/></column>
+            <column name="flagged" type="INT"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="modified_on" type="DATETIME(6)" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ................................................. -->
+    <!-- idx_moderation_versioned_string_history:standard -->
+    <!-- ................................................. -->
+    <changeSet author="kebrings" id="idx_moderation_versioned_string_history:standard">
+        <createIndex
+                indexName="idx_moderation_versioned_string_history_string"
+                tableName="vnext_moderation_versioned_string_history">
+            <column name="moderation_versioned_string"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_moderation_versioned_string_history_editor"
+                tableName="vnext_moderation_versioned_string_history">
+            <column name="editor"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_moderation_versioned_string_history_modified_on"
+                tableName="vnext_moderation_versioned_string_history">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_moderation_versioned_string_history_moderation_status"
+                tableName="vnext_moderation_versioned_string_history">
+            <column name="moderation_status"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_moderation_versioned_string_history_flagged"
+                tableName="vnext_moderation_versioned_string_history">
+            <column name="flagged"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!-- user_versioned_string                                                                                   -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="user_versioned_string">
+        <createTable tableName="vnext_user_versioned_string" remarks="Simple change log supported title/body field. Lighter footprint than full CMS record.">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+            <column name="editor" type="UUID"><constraints nullable="true"/></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="revision" type="INT UNSIGNED"><constraints nullable="false"/></column>
+            <column name="title" type="NVARCHAR(1024)"><constraints nullable="true"/></column>
+            <column name="body" type="TEXT"><constraints nullable="true"/></column>
+
+            <!-- Moderation  -->
+            <column name="moderation_status" type="INT"><constraints nullable="false"/></column>
+            <column name="flagged" type="INT"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="modified_on" type="DATETIME(6)" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_user_versioned_string:standard       -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_user_versioned_string:standard">
+        <createIndex
+                indexName="idx_user_versioned_string_editor"
+                tableName="vnext_user_versioned_string">
+            <column name="editor"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_user_versioned_string_moderation_status"
+                tableName="vnext_user_versioned_string">
+            <column name="moderation_status"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_user_versioned_string_flagged"
+                tableName="vnext_user_versioned_string">
+            <column name="flagged"/>
+        </createIndex>
+
+        <createIndex
+                indexName="idx_user_versioned_string_modified_on"
+                tableName="vnext_user_versioned_string">
+            <column name="modified_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- user_versioned_string_history                                                                           -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="user_versioned_string_history">
+        <createTable tableName="vnext_user_versioned_string_history" remarks="Revision Tracking">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <column name="user_versioned_string" type="UUID"><constraints nullable="false"/></column>
+            <column name="editor" type="UUID"><constraints nullable="true"/></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="revision" type="INT UNSIGNED"><constraints nullable="false"/></column>
+            <column name="title" type="NVARCHAR(1024)"><constraints nullable="true"/></column>
+            <column name="body" type="TEXT"><constraints nullable="true"/></column>
+
+            <!-- Moderation  -->
+            <column name="moderation_status" type="INT"><constraints nullable="false"/></column>
+            <column name="flagged" type="INT"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="modified_on" type="DATETIME(6)" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ............................................. -->
+    <!-- idx_user_versioned_string_history:standard   -->
+    <!-- ............................................. -->
+    <changeSet author="kebrings" id="idx_user_versioned_string_history:standard">
+        <createIndex
+                indexName="idx_user_versioned_string_history_string"
+                tableName="vnext_user_versioned_string_history">
+            <column name="user_versioned_string"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_user_versioned_string_history_editor"
+                tableName="vnext_user_versioned_string_history">
+            <column name="editor"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_user_versioned_string_history_modified_on"
+                tableName="vnext_user_versioned_string_history">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_user_versioned_string_history_moderation_status"
+                tableName="vnext_user_versioned_string_history">
+            <column name="moderation_status"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_user_versioned_string_history_flagged"
+                tableName="vnext_user_versioned_string_history">
+            <column name="flagged"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!-- comment_versioned_string                                                                                   -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="comment_versioned_string">
+        <createTable tableName="vnext_comment_versioned_string" remarks="Simple change log supported title/body field. Lighter footprint than full CMS record.">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+            <column name="editor" type="UUID"><constraints nullable="true"/></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="revision" type="INT UNSIGNED"><constraints nullable="false"/></column>
+            <column name="title" type="NVARCHAR(1024)"><constraints nullable="true"/></column>
+            <column name="body" type="TEXT"><constraints nullable="true"/></column>
+
+            <!-- Moderation  -->
+            <column name="moderation_status" type="INT"><constraints nullable="false"/></column>
+            <column name="flagged" type="INT"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="modified_on" type="DATETIME(6)" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_comment_versioned_string:standard       -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_comment_versioned_string:standard">
+        <createIndex
+                indexName="idx_comment_versioned_string_editor"
+                tableName="vnext_comment_versioned_string">
+            <column name="editor"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_comment_versioned_string_moderation_status"
+                tableName="vnext_comment_versioned_string">
+            <column name="moderation_status"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_comment_versioned_string_flagged"
+                tableName="vnext_comment_versioned_string">
+            <column name="flagged"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_comment_versioned_string_modified_on"
+                tableName="vnext_comment_versioned_string">
+            <column name="modified_on"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!-- comment_versioned_string_history                                                                           -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="comment_versioned_string_history">
+        <createTable tableName="vnext_comment_versioned_string_history" remarks="Revision Tracking">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <column name="comment_versioned_string" type="UUID"><constraints nullable="false"/></column>
+            <column name="editor" type="UUID"><constraints nullable="true"/></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="revision" type="INT UNSIGNED"><constraints nullable="false"/></column>
+            <column name="title" type="NVARCHAR(1024)"><constraints nullable="true"/></column>
+            <column name="body" type="TEXT"><constraints nullable="true"/></column>
+
+            <!-- Moderation  -->
+            <column name="moderation_status" type="INT"><constraints nullable="false"/></column>
+            <column name="flagged" type="INT"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="modified_on" type="DATETIME(6)" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ............................................. -->
+    <!-- idx_comment_versioned_string_history:standard   -->
+    <!-- ............................................. -->
+    <changeSet author="kebrings" id="idx_comment_versioned_string_history:standard">
+        <createIndex
+                indexName="idx_comment_versioned_string_history_string"
+                tableName="vnext_comment_versioned_string_history">
+            <column name="comment_versioned_string"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_comment_versioned_string_history_editor"
+                tableName="vnext_comment_versioned_string_history">
+            <column name="editor"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_comment_versioned_string_history_modified_on"
+                tableName="vnext_comment_versioned_string_history">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_comment_versioned_string_history_moderation_status"
+                tableName="vnext_comment_versioned_string_history">
+            <column name="moderation_status"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_comment_versioned_string_history_flagged"
+                tableName="vnext_comment_versioned_string_history">
+            <column name="flagged"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- post_versioned_string                                                                                   -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="post_versioned_string">
+        <createTable tableName="vnext_post_versioned_string" remarks="Simple change log supported title/body field. Lighter footprint than full CMS record.">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+            <column name="editor" type="UUID"><constraints nullable="true"/></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="revision" type="INT UNSIGNED"><constraints nullable="false"/></column>
+            <column name="title" type="NVARCHAR(1024)"><constraints nullable="true"/></column>
+            <column name="body" type="TEXT"><constraints nullable="true"/></column>
+
+            <!-- Moderation  -->
+            <column name="moderation_status" type="INT"><constraints nullable="false"/></column>
+            <column name="flagged" type="INT"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="modified_on" type="DATETIME(6)" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_post_versioned_string:standard       -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_post_versioned_string:standard">
+        <createIndex
+                indexName="idx_post_versioned_string_editor"
+                tableName="vnext_post_versioned_string">
+            <column name="editor"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_post_versioned_string_moderation_status"
+                tableName="vnext_post_versioned_string">
+            <column name="moderation_status"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_post_versioned_string_flagged"
+                tableName="vnext_post_versioned_string">
+            <column name="flagged"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_post_versioned_string_modified_on"
+                tableName="vnext_post_versioned_string">
+            <column name="modified_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- post_versioned_string_history                                                                           -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="post_versioned_string_history">
+        <createTable tableName="vnext_post_versioned_string_history" remarks="Revision Tracking">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <column name="post_versioned_string" type="UUID"><constraints nullable="false"/></column>
+            <column name="editor" type="UUID"><constraints nullable="true"/></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="revision" type="INT UNSIGNED"><constraints nullable="false"/></column>
+            <column name="title" type="NVARCHAR(1024)"><constraints nullable="true"/></column>
+            <column name="body" type="TEXT"><constraints nullable="true"/></column>
+
+            <!-- Moderation  -->
+            <column name="moderation_status" type="INT"><constraints nullable="false"/></column>
+            <column name="flagged" type="INT"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="modified_on" type="DATETIME(6)" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ............................................. -->
+    <!-- idx_post_versioned_string_history:standard   -->
+    <!-- ............................................. -->
+    <changeSet author="kebrings" id="idx_post_versioned_string_history:standard">
+        <createIndex
+                indexName="idx_post_versioned_string_history_string"
+                tableName="vnext_post_versioned_string_history">
+            <column name="post_versioned_string"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_post_versioned_string_history_editor"
+                tableName="vnext_post_versioned_string_history">
+            <column name="editor"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_post_versioned_string_history_modified_on"
+                tableName="vnext_post_versioned_string_history">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_post_versioned_string_history_moderation_status"
+                tableName="vnext_post_versioned_string_history">
+            <column name="moderation_status"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_post_versioned_string_history_flagged"
+                tableName="vnext_post_versioned_string_history">
+            <column name="flagged"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- moment_versioned_string                                                                                   -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="moment_versioned_string">
+        <createTable tableName="vnext_moment_versioned_string" remarks="Simple change log supported title/body field. Lighter footprint than full CMS record.">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+            <column name="editor" type="UUID"><constraints nullable="true"/></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="revision" type="INT UNSIGNED"><constraints nullable="false"/></column>
+            <column name="title" type="NVARCHAR(1024)"><constraints nullable="true"/></column>
+            <column name="body" type="TEXT"><constraints nullable="true"/></column>
+
+            <!-- Moderation  -->
+            <column name="moderation_status" type="INT"><constraints nullable="false"/></column>
+            <column name="flagged" type="INT"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="modified_on" type="DATETIME(6)" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_moment_versioned_string:standard       -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_moment_versioned_string:standard">
+        <createIndex
+                indexName="idx_moment_versioned_string_editor"
+                tableName="vnext_moment_versioned_string">
+            <column name="editor"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_moment_versioned_string_moderation_status"
+                tableName="vnext_moment_versioned_string">
+            <column name="moderation_status"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_moment_versioned_string_flagged"
+                tableName="vnext_moment_versioned_string">
+            <column name="flagged"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_moment_versioned_string_modified_on"
+                tableName="vnext_moment_versioned_string">
+            <column name="modified_on"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!-- moment_versioned_string_history                                                                           -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="moment_versioned_string_history">
+        <createTable tableName="vnext_moment_versioned_string_history" remarks="Revision Tracking">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <column name="moment_versioned_string" type="UUID"><constraints nullable="false"/></column>
+            <column name="editor" type="UUID"><constraints nullable="true"/></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="revision" type="INT UNSIGNED"><constraints nullable="false"/></column>
+            <column name="title" type="NVARCHAR(1024)"><constraints nullable="true"/></column>
+            <column name="body" type="TEXT"><constraints nullable="true"/></column>
+
+            <!-- Moderation  -->
+            <column name="moderation_status" type="INT"><constraints nullable="false"/></column>
+            <column name="flagged" type="INT"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="modified_on" type="DATETIME(6)" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ............................................. -->
+    <!-- idx_moment_versioned_string_history:standard   -->
+    <!-- ............................................. -->
+    <changeSet author="kebrings" id="idx_moment_versioned_string_history:standard">
+        <createIndex
+                indexName="idx_moment_versioned_string_history_string"
+                tableName="vnext_moment_versioned_string_history">
+            <column name="moment_versioned_string"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_moment_versioned_string_history_editor"
+                tableName="vnext_moment_versioned_string_history">
+            <column name="editor"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_moment_versioned_string_history_modified_on"
+                tableName="vnext_moment_versioned_string_history">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_moment_versioned_string_history_moderation_status"
+                tableName="vnext_moment_versioned_string_history">
+            <column name="moderation_status"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_moment_versioned_string_history_flagged"
+                tableName="vnext_moment_versioned_string_history">
+            <column name="flagged"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- location_versioned_string                                                                               -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="location_versioned_string">
+        <createTable tableName="vnext_location_versioned_string" remarks="Simple change log supported title/body field. Lighter footprint than full CMS record.">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+            <column name="editor" type="UUID"><constraints nullable="true"/></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="revision" type="INT UNSIGNED"><constraints nullable="false"/></column>
+            <column name="title" type="NVARCHAR(1024)"><constraints nullable="true"/></column>
+            <column name="body" type="TEXT"><constraints nullable="true"/></column>
+
+            <!-- Moderation  -->
+            <column name="moderation_status" type="INT"><constraints nullable="false"/></column>
+            <column name="flagged" type="INT"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="modified_on" type="DATETIME(6)" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_location_versioned_string:standard   -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_location_versioned_string:standard">
+        <createIndex
+                indexName="idx_location_versioned_string_editor"
+                tableName="vnext_location_versioned_string">
+            <column name="editor"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_location_versioned_string_moderation_status"
+                tableName="vnext_location_versioned_string">
+            <column name="moderation_status"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_location_versioned_string_flagged"
+                tableName="vnext_location_versioned_string">
+            <column name="flagged"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_location_versioned_string_modified_on"
+                tableName="vnext_location_versioned_string">
+            <column name="modified_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- location_versioned_string_history                                                                       -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="location_versioned_string_history">
+        <createTable tableName="vnext_location_versioned_string_history" remarks="Revision Tracking">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <column name="location_versioned_string" type="UUID"><constraints nullable="false"/></column>
+            <column name="editor" type="UUID"><constraints nullable="true"/></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="revision" type="INT UNSIGNED"><constraints nullable="false"/></column>
+            <column name="title" type="NVARCHAR(1024)"><constraints nullable="true"/></column>
+            <column name="body" type="TEXT"><constraints nullable="true"/></column>
+
+            <!-- Moderation  -->
+            <column name="moderation_status" type="INT"><constraints nullable="false"/></column>
+            <column name="flagged" type="INT"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="modified_on" type="DATETIME(6)" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ................................................ -->
+    <!-- idx_location_versioned_string_history:standard  -->
+    <!-- ................................................ -->
+    <changeSet author="kebrings" id="idx_location_versioned_string_history:standard">
+        <createIndex
+                indexName="idx_location_versioned_string_history_string"
+                tableName="vnext_location_versioned_string_history">
+            <column name="location_versioned_string"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_location_versioned_string_history_editor"
+                tableName="vnext_location_versioned_string_history">
+            <column name="editor"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_location_versioned_string_history_modified_on"
+                tableName="vnext_location_versioned_string_history">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_location_versioned_string_history_moderation_status"
+                tableName="vnext_location_versioned_string_history">
+            <column name="moderation_status"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_location_versioned_string_history_flagged"
+                tableName="vnext_location_versioned_string_history">
+            <column name="flagged"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!-- checkin_versioned_string                                                                                -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="checkin_versioned_string">
+        <createTable tableName="vnext_checkin_versioned_string" remarks="Simple change log supported title/body field. Lighter footprint than full CMS record.">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+            <column name="editor" type="UUID"><constraints nullable="true"/></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="revision" type="INT UNSIGNED"><constraints nullable="false"/></column>
+            <column name="title" type="NVARCHAR(1024)"><constraints nullable="true"/></column>
+            <column name="body" type="TEXT"><constraints nullable="true"/></column>
+
+            <!-- Moderation  -->
+            <column name="moderation_status" type="INT"><constraints nullable="false"/></column>
+            <column name="flagged" type="INT"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="modified_on" type="DATETIME(6)" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- idx_checkin_versioned_string:standard                                                                   -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="idx_checkin_versioned_string:standard">
+        <createIndex
+                indexName="idx_checkin_versioned_string_editor"
+                tableName="vnext_checkin_versioned_string">
+            <column name="editor"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_checkin_versioned_string_moderation_status"
+                tableName="vnext_checkin_versioned_string">
+            <column name="moderation_status"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_checkin_versioned_string_flagged"
+                tableName="vnext_checkin_versioned_string">
+            <column name="flagged"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_checkin_versioned_string_modified_on"
+                tableName="vnext_checkin_versioned_string">
+            <column name="modified_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- checkin_versioned_string_history                                                                        -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="checkin_versioned_string_history">
+        <createTable tableName="vnext_checkin_versioned_string_history" remarks="Revision Tracking">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <column name="checkin_versioned_string" type="UUID"><constraints nullable="false"/></column>
+            <column name="editor" type="UUID"><constraints nullable="true"/></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="revision" type="INT UNSIGNED"><constraints nullable="false"/></column>
+            <column name="title" type="NVARCHAR(1024)"><constraints nullable="true"/></column>
+            <column name="body" type="TEXT"><constraints nullable="true"/></column>
+
+            <!-- Moderation  -->
+            <column name="moderation_status" type="INT"><constraints nullable="false"/></column>
+            <column name="flagged" type="INT"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="modified_on" type="DATETIME(6)" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ................................................ -->
+    <!-- idx_checkin_versioned_string_history:standard   -->
+    <!-- ................................................ -->
+    <changeSet author="kebrings" id="idx_checkin_versioned_string_history:standard">
+        <createIndex
+                indexName="idx_checkin_versioned_string_history_string"
+                tableName="vnext_checkin_versioned_string_history">
+            <column name="checkin_versioned_string"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_checkin_versioned_string_history_editor"
+                tableName="vnext_checkin_versioned_string_history">
+            <column name="editor"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_checkin_versioned_string_history_modified_on"
+                tableName="vnext_checkin_versioned_string_history">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_checkin_versioned_string_history_moderation_status"
+                tableName="vnext_checkin_versioned_string_history">
+            <column name="moderation_status"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_checkin_versioned_string_history_flagged"
+                tableName="vnext_checkin_versioned_string_history">
+            <column name="flagged"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- versioned_name                                                                                           -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="versioned_name">
+        <createTable tableName="vnext_versioned_name" remarks="Revision Tracking">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+
+            <!-- Primary Relations -->
+            <column name="editor" type="UUID"><constraints nullable="true"/></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="revision" type="INT UNSIGNED"><constraints nullable="false"/></column>
+            <column name="first" type="NVARCHAR(255)"><constraints nullable="false"/></column>
+            <column name="middle" type="NVARCHAR(255)"><constraints nullable="false"/></column>
+            <column name="last" type="NVARCHAR(255)"><constraints nullable="false"/></column>
+
+            <!-- Fields and Secondary Relations: Moderation -->
+            <column name="moderation_status" type="INT"><constraints nullable="false"/></column>
+            <column name="flagged" type="INT"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="modified_on" type="DATETIME(6)" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_versioned_name:standard               -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_versioned_name:standard">
+        <createIndex
+                indexName="idx_versioned_name_editor"
+                tableName="vnext_versioned_name">
+            <column name="editor"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_versioned_name_moderation_status"
+                tableName="vnext_versioned_name">
+            <column name="moderation_status"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_versioned_name_flagged"
+                tableName="vnext_versioned_name">
+            <column name="flagged"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_versioned_name_modified_on"
+                tableName="vnext_versioned_name">
+            <column name="modified_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- versioned_name_history                                                                                   -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="versioned_name_history">
+        <createTable tableName="vnext_versioned_name_history" remarks="Revision Tracking">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Primary Relations -->
+            <column name="versioned_name" type="UUID"><constraints nullable="false"/></column>
+            <column name="editor" type="UUID"><constraints nullable="true"/></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="revision" type="INT UNSIGNED"><constraints nullable="false"/></column>
+            <column name="first" type="NVARCHAR(255)"><constraints nullable="false"/></column>
+            <column name="middle" type="NVARCHAR(255)"><constraints nullable="true"/></column>
+            <column name="last" type="NVARCHAR(255)"><constraints nullable="false"/></column>
+
+            <!-- Fields and Secondary Relations: Moderation -->
+            <column name="moderation_status" type="INT"><constraints nullable="false"/></column>
+            <column name="flagged" type="INT"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="modified_on" type="DATETIME(6)" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_versioned_name_history:standard       -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_versioned_name_history:standard">
+        <createIndex
+                indexName="idx_versioned_name_history_string"
+                tableName="vnext_versioned_name_history">
+            <column name="versioned_name"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_versioned_name_history_editor"
+                tableName="vnext_versioned_name_history">
+            <column name="editor"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_versioned_name_history_modified_on"
+                tableName="vnext_versioned_name_history">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_versioned_name_history_moderation_status"
+                tableName="vnext_versioned_name_history">
+            <column name="moderation_status"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_versioned_name_history_flagged"
+                tableName="vnext_versioned_name_history">
+            <column name="flagged"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- versioned_address                                                                                           -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="versioned_address">
+        <createTable tableName="vnext_versioned_address" remarks="Revision Tracking">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Primary Relations -->
+            <column name="editor" type="UUID"><constraints nullable="true"/></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="revision" type="INT UNSIGNED"><constraints nullable="false"/></column>
+
+            <column name="url" remarks="link entity" type="UUID"><constraints nullable="true"/></column>
+            <column name="icon" remarks="entity_image (possibly external)" type="UUID"><constraints nullable="true"/></column>
+
+            <column name="name" type="NVARCHAR(255)"><constraints nullable="false"/></column>
+            <column name="official_name" type="NVARCHAR(512)"><constraints nullable="false"/></column>
+            <column name="description" type="TEXT"><constraints nullable="true"/></column>
+            <column name="note" type="TEXT"><constraints nullable="true"/></column>
+
+            <column name="address_type" type="INT"><constraints nullable="false"/></column>
+            <column name="address_line_one" type="NVARCHAR(512)"><constraints nullable="true"/></column>
+            <column name="address_line_two" type="NVARCHAR(512)"><constraints nullable="true"/></column>
+            <column name="intersection" type="NVARCHAR(512)"><constraints nullable="true"/></column>
+            <column name="postal_code" type="NVARCHAR(64)"><constraints nullable="true"/></column>
+
+            <column name="address_country" type="UUID"><constraints nullable="true"/></column>
+            <column name="address_state" type="UUID"><constraints nullable="true"/></column>
+            <column name="address_city" type="UUID"><constraints nullable="true"/></column>
+
+            <!-- Fields and Secondary Relations: Geo -->
+            <column name="geo_latitude" type="double"><constraints nullable="true"/></column>
+            <column name="geo_longitude" type="double"><constraints nullable="true"/></column>
+            <column name="geo_radius" type="double"><constraints nullable="true"/></column>
+            <column name="geo_zone" type="BIGINT"><constraints nullable="true"/></column>
+
+            <!-- Fields and Secondary Relations: Moderation -->
+            <column name="moderation_status" type="INT"><constraints nullable="false"/></column>
+            <column name="flagged" type="INT"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="modified_on" type="DATETIME(6)" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_versioned_address:standard            -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_versioned_address:standard">
+        <createIndex
+                indexName="idx_versioned_address_editor"
+                tableName="vnext_versioned_address">
+            <column name="editor"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_versioned_address_moderation_status"
+                tableName="vnext_versioned_address">
+            <column name="moderation_status"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_versioned_address_flagged"
+                tableName="vnext_versioned_address">
+            <column name="flagged"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_versioned_address_modified_on"
+                tableName="vnext_versioned_address">
+            <column name="modified_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- versioned_address_history                                                                                   -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="versioned_address_history">
+        <createTable tableName="vnext_versioned_address_history" remarks="Revision Tracking">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Primary Relations -->
+            <column name="versioned_address" type="UUID"><constraints nullable="false"/></column>
+            <column name="editor" type="UUID"><constraints nullable="true"/></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="revision" type="INT UNSIGNED"><constraints nullable="false"/></column>
+            <column name="url" remarks="link entity" type="UUID"><constraints nullable="true"/></column>
+            <column name="icon" remarks="entity_image (possibly external)" type="UUID"><constraints nullable="true"/></column>
+
+            <column name="name" type="NVARCHAR(255)"><constraints nullable="false"/></column>
+            <column name="official_name" type="NVARCHAR(512)"><constraints nullable="false"/></column>
+            <column name="description" type="TEXT"><constraints nullable="true"/></column>
+            <column name="note" type="TEXT"><constraints nullable="true"/></column>
+
+            <column name="address_type" type="INT"><constraints nullable="false"/></column>
+            <column name="address_line_one" type="NVARCHAR(512)"><constraints nullable="true"/></column>
+            <column name="address_line_two" type="NVARCHAR(512)"><constraints nullable="true"/></column>
+            <column name="intersection" type="NVARCHAR(512)"><constraints nullable="true"/></column>
+            <column name="postal_code" type="NVARCHAR(64)"><constraints nullable="true"/></column>
+
+            <column name="address_country" type="UUID"><constraints nullable="true"/></column>
+            <column name="address_state" type="UUID"><constraints nullable="true"/></column>
+            <column name="address_city" type="UUID"><constraints nullable="true"/></column>
+
+            <!-- Fields and Secondary Relations: Geo -->
+            <column name="geo_latitude" type="double"><constraints nullable="true"/></column>
+            <column name="geo_longitude" type="double"><constraints nullable="true"/></column>
+            <column name="geo_radius" type="double"><constraints nullable="true"/></column>
+            <column name="geo_zone" type="BIGINT"><constraints nullable="true"/></column>
+
+
+            <!-- Fields and Secondary Relations: Moderation -->
+            <column name="moderation_status" type="INT"><constraints nullable="false"/></column>
+            <column name="flagged" type="INT"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="modified_on" type="DATETIME(6)" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_versioned_address_history:standard       -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_versioned_address_history:standard">
+        <createIndex
+                indexName="idx_versioned_address_history_string"
+                tableName="vnext_versioned_address_history">
+            <column name="versioned_address"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_versioned_address_history_editor"
+                tableName="vnext_versioned_address_history">
+            <column name="editor"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_versioned_address_history_modified_on"
+                tableName="vnext_versioned_address_history">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_versioned_address_history_moderation_status"
+                tableName="vnext_versioned_address_history">
+            <column name="moderation_status"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_versioned_address_history_flagged"
+                tableName="vnext_versioned_address_history">
+            <column name="flagged"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ######################################################################################################## -->
+    <!-- ........................................................................................................ -->
+    <!-- Lookup Tables                                                                                            -->
+    <!-- ........................................................................................................ -->
+    <!-- ######################################################################################################## -->
+
+    <!-- ======================================================================================================== -->
+    <!-- universal_identifier_resolution_source                                                                   -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="universal_identifier_resolution_source">
+        <createTable tableName="vnext_universal_identifier_resolution_source" remarks="Lookup table defining source tables used by universal_identifier_resolution table.">
+            <column name="identifier" type="INT" autoIncrement="false"><constraints nullable="false" primaryKey="true" /></column>
+            <column name="table_name" type="nvarchar(255)"><constraints nullable="false"/></column>
+            <column name="ecto_name" type="nvarchar(255)"><constraints nullable="false"/></column>
+            <column name="entity_name" type="nvarchar(255)"><constraints nullable="false"/></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="description" remarks="versioned_string" type="UUID"><constraints nullable="true"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_uid_source_table                      -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_uid_source_table">
+        <createIndex
+                indexName="idx_uid_source_table"
+                tableName="vnext_universal_identifier_resolution_source">
+            <column name="table_name"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_uid_source_entity                     -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_uid_source_entity">
+        <createIndex
+                indexName="idx_uid_source_entity"
+                tableName="vnext_universal_identifier_resolution_source">
+            <column name="entity_name"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_uid_source_ecto                       -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_uid_source_ecto">
+        <createIndex
+                indexName="idx_uid_source_ecto"
+                tableName="vnext_universal_identifier_resolution_source">
+            <column name="ecto_name"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- .................................................... -->
+    <!-- idx_universal_identifier_resolution_source:standard  -->
+    <!-- .................................................... -->
+    <changeSet author="kebrings" id="idx_universal_identifier_resolution_source:standard">
+        <createIndex
+                indexName="idx_universal_identifier_resolution_source_created_on"
+                tableName="vnext_universal_identifier_resolution_source">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_universal_identifier_resolution_source_modified_on"
+                tableName="vnext_universal_identifier_resolution_source">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_universal_identifier_resolution_source_deleted_on"
+                tableName="vnext_universal_identifier_resolution_source">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_uid_source_description                 -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_uid_source_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_universal_identifier_resolution_source"
+                                 constraintName="fk_uid_source_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_string"
+        />
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- legacy_resolution_source                                                                                 -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="legacy_resolution_source">
+        <createTable tableName="vnext_legacy_resolution_source" remarks="Lookup table defining legacy MSSQL source tables used by legacy lookup and other related tables and fields.">
+            <column name="identifier" type="INT" autoIncrement="false"><constraints nullable="false" primaryKey="true" /></column>
+            <column name="table_name" type="nvarchar(255)"><constraints nullable="false"/></column>
+            <column name="ecto_name" type="nvarchar(255)"><constraints nullable="false"/></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="description" remarks="versioned_string" type="UUID"><constraints nullable="true"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_legacy_source_table                   -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_legacy_source_table">
+        <createIndex
+                indexName="idx_legacy_source_table"
+                tableName="vnext_legacy_resolution_source">
+            <column name="table_name"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_legacy_source_ecto                    -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_legacy_source_ecto">
+        <createIndex
+                indexName="idx_legacy_source_ecto"
+                tableName="vnext_legacy_resolution_source">
+            <column name="ecto_name"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_legacy_resolution_source:standard     -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_legacy_resolution_source:standard">
+        <createIndex
+                indexName="idx_legacy_resolution_source_created_on"
+                tableName="vnext_legacy_resolution_source">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_legacy_resolution_source_modified_on"
+                tableName="vnext_legacy_resolution_source">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_legacy_resolution_source_deleted_on"
+                tableName="vnext_legacy_resolution_source">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_legacy_source_description              -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_legacy_source_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_legacy_resolution_source"
+                                 constraintName="fk_legacy_source_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_string"
+        />
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!-- tanbits_resolution_source                                                                                 -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="tanbits_resolution_source">
+        <createTable tableName="vnext_tanbits_resolution_source" remarks="Lookup table defining tanbits MSSQL source tables used by tanbits lookup and other related tables and fields.">
+            <column name="identifier" type="INT" autoIncrement="false"><constraints nullable="false" primaryKey="true" /></column>
+            <column name="table_name" type="nvarchar(255)"><constraints nullable="false"/></column>
+            <column name="ecto_name" type="nvarchar(255)"><constraints nullable="false"/></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="description" remarks="versioned_string" type="UUID"><constraints nullable="true"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_tanbits_source_table                   -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_tanbits_source_table">
+        <createIndex
+                indexName="idx_tanbits_source_table"
+                tableName="vnext_tanbits_resolution_source">
+            <column name="table_name"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_tanbits_source_ecto                    -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_tanbits_source_ecto">
+        <createIndex
+                indexName="idx_tanbits_source_ecto"
+                tableName="vnext_tanbits_resolution_source">
+            <column name="ecto_name"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_tanbits_resolution_source:standard     -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_tanbits_resolution_source:standard">
+        <createIndex
+                indexName="idx_tanbits_resolution_source_created_on"
+                tableName="vnext_tanbits_resolution_source">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_tanbits_resolution_source_modified_on"
+                tableName="vnext_tanbits_resolution_source">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_tanbits_resolution_source_deleted_on"
+                tableName="vnext_tanbits_resolution_source">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_tanbits_source_description              -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_tanbits_source_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_tanbits_resolution_source"
+                                 constraintName="fk_tanbits_source_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_string"
+        />
+    </changeSet>
+
+
+
+    <!-- ======================================================================================================== -->
+    <!-- import_error_type                                                                                                 -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="import_error_type">
+        <createTable tableName="vnext_import_error_type">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="INT" autoIncrement="false"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="description" remarks="versioned_string" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_import_error_type                              -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_import_error_type">
+        <createIndex
+                indexName="idx_import_error_type_created_on"
+                tableName="vnext_import_error_type">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_import_error_type_modified_on"
+                tableName="vnext_import_error_type">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_import_error_type_deleted_on"
+                tableName="vnext_import_error_type">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_import_error_type_description                   -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_import_error_type_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_import_error_type"
+                                 constraintName="fk_import_error_type_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_string"
+        />
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!-- import_error_section                                                                                                 -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="import_error_section">
+        <createTable tableName="vnext_import_error_section">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="INT" autoIncrement="false"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="description" remarks="versioned_string" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_import_error_section                              -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_import_error_section">
+        <createIndex
+                indexName="idx_import_error_section_created_on"
+                tableName="vnext_import_error_section">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_import_error_section_modified_on"
+                tableName="vnext_import_error_section">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_import_error_section_deleted_on"
+                tableName="vnext_import_error_section">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_import_error_section_description                   -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_import_error_section_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_import_error_section"
+                                 constraintName="fk_import_error_section_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_string"
+        />
+    </changeSet>
+
+
+    <!-- ######################################################################################################## -->
+    <!-- ........................................................................................................ -->
+    <!-- Standard Tables                                                                                          -->
+    <!-- ........................................................................................................ -->
+    <!-- ######################################################################################################## -->
+
+    <!-- ======================================================================================================== -->
+    <!-- universal_identifier_resolution                                                                          -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="universal_identifier_resolution">
+        <createTable tableName="vnext_universal_identifier_resolution"
+                     remarks="Support foreign key relationships to multiple input tables similar to ref logic in elixir codebase.
+                     Actual IDs are generated using node/module specific generators that use node id and module id + acc to avoid lock contention related to the auto_increment feature.">
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+            <column name="source"  remarks="source/table identifier" type="INT"><constraints nullable="false"/></column>
+            <column name="source_identifier"  remarks="foreign id of record on source table" type="BIGINT"><constraints nullable="true"/></column>
+            <column name="source_uuid"  remarks="foreign id of record on source table" type="UUID"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_universal_identifier_resolution       -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_universal_identifier_resolution">
+        <createIndex
+                indexName="idx_universal_identifier_resolution"
+                tableName="vnext_universal_identifier_resolution">
+            <column name="source"/>
+            <column name="source_identifier"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_universal_identifier_resolution_uuid  -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_universal_identifier_resolution_uuid">
+        <createIndex
+                indexName="idx_universal_identifier_resolution_uuid"
+                tableName="vnext_universal_identifier_resolution">
+            <column name="source"/>
+            <column name="source_uuid"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- legacy_identifier_mapping                                                                                -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="legacy_identifier_mapping">
+        <createTable tableName="vnext_legacy_identifier_mapping" remarks="Universal id resolution">
+            <column name="identifier" type="UUID " autoIncrement="false"><constraints nullable="false" primaryKey="true" /></column>
+
+            <column name="source"  remarks="source/table identifier" type="BIGINT "><constraints nullable="true"/></column>
+            <column name="source_identifier"  remarks="foreign id of record on source table" type="UUID "><constraints nullable="true"/></column>
+
+            <column name="legacy_source" remarks="legacy_resolution_source" type="TINYINT " />
+            <column name="legacy_integer_identifier" type="BIGINT " />
+            <column name="legacy_guid_identifier" type="UUID" />
+            <column name="legacy_string_identifier" type="VARCHAR(128)" />
+            <column name="legacy_sub_identifier" remarks="to differentiate between specific elements pulled from a single source, such as multiple images moved to the image table from a record with multiple image columns" type="INT " />
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- legacy_identifier_mapping - indexes       -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_legacy_identifier_mapping">
+        <createIndex
+                indexName="idx_legacy_identifier_mapping"
+                tableName="vnext_legacy_identifier_mapping">
+            <column name="source"/>
+            <column name="source_identifier"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_legacy_guid                           -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_legacy_guid">
+        <createIndex
+                indexName="idx_legacy_guid"
+                tableName="vnext_legacy_identifier_mapping">
+            <column name="legacy_source"/> <!-- technically guids are unique across tables and can be linked on just guid -->
+            <column name="legacy_guid_identifier"/>
+            <column name="legacy_sub_identifier"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_legacy_id                             -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_legacy_identifier">
+        <createIndex
+                indexName="idx_legacy_identifier"
+                tableName="vnext_legacy_identifier_mapping">
+            <column name="legacy_source"/>
+            <column name="legacy_integer_identifier"/>
+            <column name="legacy_sub_identifier"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_legacy_str                            -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_legacy_str">
+        <createIndex
+                indexName="idx_legacy_str"
+                tableName="vnext_legacy_identifier_mapping">
+            <column name="legacy_source"/>
+            <column name="legacy_string_identifier"/>
+            <column name="legacy_sub_identifier"/>
+        </createIndex>
+    </changeSet>
+
+
+
+    <!-- ======================================================================================================== -->
+    <!-- tanbits_identifier_mapping                                                                                -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="tanbits_identifier_mapping">
+        <createTable tableName="vnext_tanbits_identifier_mapping" remarks="Universal id resolution">
+            <column name="identifier" type="UUID " autoIncrement="false"><constraints nullable="false" primaryKey="true" /></column>
+
+            <column name="source"  remarks="source/table identifier" type="INT"><constraints nullable="true"/></column>
+            <column name="source_identifier"  remarks="foreign id of record on source table" type="UUID"><constraints nullable="true"/></column>
+
+            <column name="tanbits_source" remarks="tanbits_resolution_source" type="INT" />
+            <column name="tanbits_integer_identifier" type="BIGINT " />
+            <column name="tanbits_guid_identifier" type="UUID" />
+            <column name="tanbits_string_identifier" type="VARCHAR(128)" />
+            <column name="tanbits_sub_identifier" remarks="to differentiate between specific elements pulled from a single source, such as multiple images moved to the image table from a record with multiple image columns" type="INT " />
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- tanbits_identifier_mapping - indexes       -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_tanbits_identifier_mapping">
+        <createIndex
+                indexName="idx_tanbits_identifier_mapping"
+                tableName="vnext_tanbits_identifier_mapping">
+            <column name="source"/>
+            <column name="source_identifier"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_tanbits_guid                           -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_tanbits_guid">
+        <createIndex
+                indexName="idx_tanbits_guid"
+                tableName="vnext_tanbits_identifier_mapping">
+            <column name="tanbits_source"/> <!-- technically guids are unique across tables and can be linked on just guid -->
+            <column name="tanbits_guid_identifier"/>
+            <column name="tanbits_sub_identifier"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_tanbits_id                             -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_tanbits_identifier">
+        <createIndex
+                indexName="idx_tanbits_identifier"
+                tableName="vnext_tanbits_identifier_mapping">
+            <column name="tanbits_source"/>
+            <column name="tanbits_integer_identifier"/>
+            <column name="tanbits_sub_identifier"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_tanbits_str                            -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_tanbits_str">
+        <createIndex
+                indexName="idx_tanbits_str"
+                tableName="vnext_tanbits_identifier_mapping">
+            <column name="tanbits_source"/>
+            <column name="tanbits_string_identifier"/>
+            <column name="tanbits_sub_identifier"/>
+        </createIndex>
+    </changeSet>
+
+
+
+
+    <!-- ======================================================================================================== -->
+    <!-- legacy_import_error                                                                                      -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="legacy_import_error">
+        <createTable tableName="vnext_legacy_import_error" remarks="Universal id resolution">
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <column name="status" remarks="status of import error" type="TINYINT" />
+            <column name="import_error_type" remarks="string_encoding,image_download,missing_component,..." type="INT" />
+            <column name="import_error_section" remarks="user_name, post_message, post_image" type="INT" />
+
+            <column name="error_message" remarks="formatted exception versioned_string" type="UUID" />
+            <column name="debug_comment" remarks="debugging comment versioned_string" type="UUID" ><constraints nullable="true"/></column>
+
+            <column name="source"  remarks="source/table identifier" type="INT"><constraints nullable="true"/></column>
+            <column name="source_identifier"  remarks="foreign id of record on source table" type="UUID "><constraints nullable="true"/></column>
+
+            <column name="legacy_source" remarks="legacy_resolution_source" type="TINYINT" />
+            <column name="legacy_integer_identifier" type="BIGINT" />
+            <column name="legacy_guid_identifier" type="UUID" />
+            <column name="legacy_string_identifier" type="VARCHAR(128)" />
+            <column name="legacy_sub_identifier" remarks="to differentiate between specific elements pulled from a single source, such as multiple images moved to the image table from a record with multiple image columns" type="INT " />
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- legacy_import_error - indexes       -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_legacy_import_error">
+        <createIndex
+                indexName="idx_legacy_import_error"
+                tableName="vnext_legacy_import_error">
+            <column name="source"/>
+            <column name="source_identifier"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- legacy_import_error - type_index          -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_legacy_import_error_type">
+        <createIndex
+                indexName="idx_legacy_import_error_type"
+                tableName="vnext_legacy_import_error">
+            <column name="status"/>
+            <column name="import_error_type"/>
+            <column name="import_error_section"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_legacy_import_error:standard          -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_legacy_import_error:standard">
+        <createIndex
+                indexName="idx_legacy_import_error_created_on"
+                tableName="vnext_legacy_import_error">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_legacy_import_error_modified_on"
+                tableName="vnext_legacy_import_error">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_legacy_import_error_deleted_on"
+                tableName="vnext_legacy_import_error">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_legacy_import_error_guid              -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_legacy_import_error_guid">
+        <createIndex
+                indexName="idx_legacy_import_error_guid"
+                tableName="vnext_legacy_import_error">
+            <column name="legacy_source"/> <!-- technically guids are unique across tables and can be linked on just guid -->
+            <column name="legacy_guid_identifier"/>
+            <column name="legacy_sub_identifier"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_legacy_import_error_id                -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_legacy_import_error_id">
+        <createIndex
+                indexName="idx_legacy_import_error_id"
+                tableName="vnext_legacy_import_error">
+            <column name="legacy_source"/>
+            <column name="legacy_integer_identifier"/>
+            <column name="legacy_sub_identifier"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_legacy_import_error_str               -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_legacy_import_error_str">
+        <createIndex
+                indexName="idx_legacy_import_error_str"
+                tableName="vnext_legacy_import_error">
+            <column name="legacy_source"/>
+            <column name="legacy_string_identifier"/>
+            <column name="legacy_sub_identifier"/>
+        </createIndex>
+    </changeSet>
+
+</databaseChangeLog>

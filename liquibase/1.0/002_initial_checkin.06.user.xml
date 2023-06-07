@@ -1,0 +1,766 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+
+    <!-- ======================================================================================================== -->
+    <!-- users                                                                                                    -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="users">
+        <createTable tableName="users">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="users_pkey"/>
+            </column>
+            <column name="first_name" type="VARCHAR(255)"/>
+            <column name="last_name" type="VARCHAR(255)"/>
+            <column name="email" type="CITEXT"/>
+            <column name="gender" type="VARCHAR(255)"/>
+            <column name="dob" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="password" type="VARCHAR(255)"/>
+            <column defaultValueBoolean="false" name="is_deactivated" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="home_town_city" type="VARCHAR(255)"/>
+            <column name="home_town_country" type="VARCHAR(255)"/>
+            <column name="user_about" type="TEXT"/>
+            <column name="login_type" type="VARCHAR(255)"/>
+            <column name="panic_message" type="VARCHAR(255)"/>
+            <column name="quick_blox_id" type="VARCHAR(255)"/>
+            <column name="social_id" type="VARCHAR(255)"/>
+            <column defaultValueBoolean="false" name="is_email_verified" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="current_city" type="VARCHAR(255)"/>
+            <column name="current_country" type="VARCHAR(255)"/>
+            <column name="image_name" type="VARCHAR(255)"/>
+            <column name="quick_blox_password" type="VARCHAR(255)"/>
+            <column name="referral_code" type="VARCHAR(255)"/>
+            <column defaultValueBoolean="false" name="is_referral" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="friend_code" type="VARCHAR(255)"/>
+            <column defaultValueBoolean="false" name="is_deleted" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="dob_full" type="VARCHAR(255)"/>
+            <column name="school" type="VARCHAR(255)"/>
+            <column name="employer" type="VARCHAR(255)"/>
+            <column name="latitude" type="FLOAT8"/>
+            <column name="longitude" type="FLOAT8"/>
+            <column defaultValueBoolean="false" name="is_active" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="image_identifier" type="BIGINT"/>
+            <column name="blur_hash" type="VARCHAR(255)"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="age" type="INTEGER"/>
+            <column defaultValue="NULL::character varying" name="language" type="VARCHAR(255)"/>
+            <column defaultValueBoolean="false" name="is_selfie_verified" type="BOOLEAN"/>
+            <column defaultValue="NULL::character varying" name="user_verification_image" type="VARCHAR(255)"/>
+            <column defaultValue="NULL::character varying" name="verification_token" type="VARCHAR(255)"/>
+            <column name="shareable_link" type="TEXT"/>
+            <column name="small_image_name" type="TEXT"/>
+            <column name="direct_login_link" type="TEXT"/>
+            <column defaultValueBoolean="false" name="is_self_deactivated" type="BOOLEAN"/>
+            <column name="jetzy_exclusive_status" type="PERMISSION_STATUS"/>
+            <column name="jetzy_select_status" type="PERMISSION_STATUS"/>
+            <column name="user_level" type="USER_LEVEL"/>
+            <column name="influencer_level" type="INFLUENCER_LEVEL"/>
+        </createTable>
+        <sql dbms="postgresql" splitStatements="true" stripComments="true">
+            ALTER TABLE users ADD COLUMN IF NOT EXISTS effective_status effective_user_status GENERATED ALWAYS AS (
+            CASE
+            WHEN first_name IS NULL THEN 'pending'::effective_user_status
+            WHEN first_name = '' THEN 'pending'::effective_user_status
+            WHEN is_deleted THEN 'deleted'::effective_user_status
+            WHEN is_deactivated OR is_self_deactivated THEN 'deactivated'::effective_user_status
+            WHEN is_active THEN 'active'::effective_user_status
+            ELSE 'pending'::effective_user_status
+            END
+            ) STORED;
+        </sql>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:users:idx_user_effective_status">
+        <createIndex indexName="idx_user_effective_status" tableName="users">
+            <column name="effective_status"/>
+        </createIndex>
+    </changeSet>
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:users:idx_user_exclusive_status">
+        <createIndex indexName="idx_user_exclusive_status" tableName="users">
+            <column name="jetzy_exclusive_status"/>
+        </createIndex>
+    </changeSet>
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:users:idx_user_select_status">
+        <createIndex indexName="idx_user_select_status" tableName="users">
+            <column name="jetzy_select_status"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:users:users_email_index">
+        <createIndex indexName="users_email_index" tableName="users" unique="true">
+            <column name="email"/>
+        </createIndex>
+    </changeSet>
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:users:users_referral_code_index">
+        <createIndex indexName="users_referral_code_index" tableName="users" unique="true">
+            <column name="referral_code"/>
+        </createIndex>
+    </changeSet>
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:users:users_referral_code_is_active_index">
+        <createIndex indexName="users_referral_code_is_active_index" tableName="users">
+            <column name="referral_code"/>
+            <column defaultValueBoolean="false" name="is_active"/>
+        </createIndex>
+    </changeSet>
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:users:users_trgm_idx">
+        <createIndex indexName="users_trgm_idx" tableName="users">
+            <column computed="true" name="to_tsvector('english'::regconfig, (((((email)::text || ' '::text) || (first_name)::text) || ' '::text) || (COALESCE(last_name, ' '::character varying))::text))"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_users_deleted_at                      -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:users:deleted_at">
+        <createIndex indexName="idx_users_deleted_at" tableName="users">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_users_is_deleted                      -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:users:is_deleted">
+        <createIndex indexName="idx_users_is_deleted" tableName="users">
+            <column name="is_deleted"/>
+        </createIndex>
+    </changeSet>
+
+
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:users:first_name">
+        <createIndex indexName="idx_user_first_name" tableName="users">
+            <column name="first_name"/>
+            <column name="last_name"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:users:last_name">
+        <createIndex indexName="idx_user_last_name" tableName="users">
+            <column name="last_name"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:users:gender">
+        <createIndex indexName="idx_user_gender" tableName="users">
+            <column name="gender"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:users:dob">
+        <createIndex indexName="idx_user_dob" tableName="users">
+            <column name="dob"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:users:current_city">
+        <createIndex indexName="idx_user_current_city" tableName="users">
+            <column name="current_city"/>
+        </createIndex>
+    </changeSet>
+
+
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- users                                     -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="root (generated)" id="users:initial_data">
+        <loadData
+                tableName="users"
+                file="./csv/users.csv"
+                commentLineStartsWith="#"
+                relativeToChangelogFile="true"
+                usePreparedStatements="true"
+        >
+
+            <column name="id" type="UUID"/>
+            <column name="first_name" type="STRING"/>
+            <column name="last_name" type="STRING"/>
+            <column name="email" type="STRING"/>
+            <column name="gender" type="STRING"/>
+            <column name="dob" type="DATE"/>
+            <column name="password" type="STRING"/>
+            <column name="is_deactivated" type="BOOLEAN"/>
+            <column name="home_town_city" type="STRING"/>
+            <column name="home_town_country" type="STRING"/>
+            <column name="user_about" type="STRING"/>
+            <column name="login_type" type="STRING"/>
+            <column name="panic_message" type="STRING"/>
+            <column name="quick_blox_id" type="STRING"/>
+            <column name="social_id" type="STRING"/>
+            <column name="is_email_verified" type="BOOLEAN"/>
+            <column name="current_city" type="STRING"/>
+            <column name="current_country" type="STRING"/>
+            <column name="image_name" type="STRING"/>
+            <column name="quick_blox_password" type="STRING"/>
+            <column name="referral_code" type="STRING"/>
+            <column name="is_referral" type="BOOLEAN"/>
+            <column name="friend_code" type="STRING"/>
+            <column name="is_deleted" type="BOOLEAN"/>
+            <column name="dob_full" type="STRING"/>
+            <column name="school" type="STRING"/>
+            <column name="employer" type="STRING"/>
+            <column name="latitude" type="NUMERIC"/>
+            <column name="longitude" type="NUMERIC"/>
+            <column name="is_active" type="BOOLEAN"/>
+            <column name="image_identifier" type="NUMERIC"/>
+            <column name="blur_hash" type="STRING"/>
+            <column name="deleted_at" type="DATE"/>
+            <column name="inserted_at" type="DATE"/>
+            <column name="updated_at" type="DATE"/>
+            <column name="age" type="NUMERIC"/>
+            <column name="language" type="STRING"/>
+            <column name="is_selfie_verified" type="BOOLEAN"/>
+            <column name="user_verification_image" type="STRING"/>
+            <column name="verification_token" type="STRING"/>
+            <column name="shareable_link" type="STRING"/>
+            <column name="small_image_name" type="STRING"/>
+            <column name="direct_login_link" type="STRING"/>
+            <column name="is_self_deactivated" type="BOOLEAN"/>
+            <column name="jetzy_exclusive_status" type="other"/>
+            <column name="jetzy_select_status" type="other"/>
+            <column name="user_level" type="other"/>
+            <column name="influencer_level" type="other"/>
+            <column name="effective_status" type="SKIP"/>
+
+
+        </loadData>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- user_sessions                                                                                            -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="user_sessions">
+        <createTable tableName="user_sessions">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_sessions_pkey"/>
+            </column>
+            <column name="device_id" type="VARCHAR(255)"/>
+            <column name="last_access_date" type="date"/>
+            <column defaultValueBoolean="false" name="is_active" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="UUID"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:user_sessions:user_sessions_user_id_index">
+        <createIndex indexName="user_sessions_user_id_index" tableName="user_sessions">
+            <column name="user_id"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_user_sessions_deleted_at              -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:user_sessions:deleted_at">
+        <createIndex indexName="idx_user_sessions_deleted_at" tableName="user_sessions">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:user_sessions.user_id">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="user_sessions" constraintName="user_sessions_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- user_social_accounts                                                                                     -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="user_social_accounts">
+        <createTable tableName="user_social_accounts">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_social_accounts_pkey"/>
+            </column>
+            <column name="user_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="type" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="external_id" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:user_social_accounts:user_social_accounts_external_id_type_index">
+        <createIndex indexName="user_social_accounts_external_id_type_index" tableName="user_social_accounts" unique="true">
+            <column name="external_id"/>
+            <column name="type"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:user_social_accounts.user_id">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="user_social_accounts" constraintName="user_social_accounts_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- otp_tokens                                                                                               -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="otp_tokens">
+        <createTable tableName="otp_tokens">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="otp_tokens_pkey"/>
+            </column>
+            <column name="otp" type="INTEGER"/>
+            <column name="last_forget_password_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="last_otp_sent_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="purpose" type="VARCHAR(255)"/>
+            <column name="user_id" type="UUID"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:otp_tokens:otp_tokens_user_id_index">
+        <createIndex indexName="otp_tokens_user_id_index" tableName="otp_tokens" unique="true">
+            <column name="user_id"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:otp_tokens.user_id">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="otp_tokens" constraintName="otp_tokens_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- user_installs                                                                                            -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="user_installs">
+        <createTable tableName="user_installs">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_installs_pkey"/>
+            </column>
+            <column name="fcm_token" type="TEXT"/>
+            <column name="device_token" type="TEXT"/>
+            <column name="os" type="VARCHAR(255)"/>
+            <column name="device_info" type="JSONB"/>
+            <column name="user_id" type="UUID"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="current_jwt" type="TEXT"/>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:user_installs:user_installs_user_id_index">
+        <createIndex indexName="user_installs_user_id_index" tableName="user_installs">
+            <column name="user_id"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:user_installs:user_installs_device_token_index">
+        <createIndex indexName="user_installs_device_token_index" tableName="user_installs" unique="true">
+            <column name="device_token"/>
+        </createIndex>
+    </changeSet>
+
+
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:user_installs:device_type">
+        <createIndex indexName="idx_user_install_device_type" tableName="user_installs">
+            <column name="os"/>
+        </createIndex>
+    </changeSet>
+    
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:user_installs:last_login">
+        <createIndex indexName="idx_user_install_last_login" tableName="user_installs">
+            <column name="inserted_at"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:user_installs.user_id">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="user_installs" constraintName="user_installs_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- user_push_tokens                                                                                         -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="user_push_tokens">
+        <createTable tableName="user_push_tokens">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_push_tokens_pkey"/>
+            </column>
+            <column name="device_id" type="VARCHAR(255)"/>
+            <column name="push_token" type="VARCHAR(255)"/>
+            <column name="device_type" type="VARCHAR(255)"/>
+            <column name="language" type="VARCHAR(255)"/>
+            <column name="user_id" type="UUID"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:user_push_tokens:user_push_tokens_user_id_index">
+        <createIndex indexName="user_push_tokens_user_id_index" tableName="user_push_tokens">
+            <column name="user_id"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_user_push_tokens_deleted_at           -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:user_push_tokens:deleted_at">
+        <createIndex indexName="idx_user_push_tokens_deleted_at" tableName="user_push_tokens">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:user_push_tokens.user_id">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="user_push_tokens" constraintName="user_push_tokens_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- deleted_users                                                                                            -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="deleted_users">
+        <createTable tableName="deleted_users">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="deleted_users_pkey"/>
+            </column>
+            <column name="first_name" type="VARCHAR(255)"/>
+            <column name="last_name" type="VARCHAR(255)"/>
+            <column name="email" type="VARCHAR(255)"/>
+            <column name="gender" type="VARCHAR(255)"/>
+            <column name="dob" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="password" type="VARCHAR(255)"/>
+            <column defaultValueBoolean="false" name="is_deactivated" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="home_town_city" type="VARCHAR(255)"/>
+            <column name="home_town_country" type="VARCHAR(255)"/>
+            <column name="user_about" type="TEXT"/>
+            <column name="login_type" type="VARCHAR(255)"/>
+            <column name="panic_message" type="VARCHAR(255)"/>
+            <column name="quick_blox_id" type="VARCHAR(255)"/>
+            <column name="social_id" type="VARCHAR(255)"/>
+            <column defaultValueBoolean="false" name="is_email_verified" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="current_city" type="VARCHAR(255)"/>
+            <column name="current_country" type="VARCHAR(255)"/>
+            <column name="image_name" type="VARCHAR(255)"/>
+            <column name="quick_blox_password" type="VARCHAR(255)"/>
+            <column name="referral_code" type="VARCHAR(255)"/>
+            <column defaultValueBoolean="false" name="is_referral" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="friend_code" type="VARCHAR(255)"/>
+            <column defaultValueBoolean="false" name="is_deleted" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="dob_full" type="VARCHAR(255)"/>
+            <column name="school" type="VARCHAR(255)"/>
+            <column name="employer" type="VARCHAR(255)"/>
+            <column name="latitude" type="FLOAT8"/>
+            <column name="longitude" type="FLOAT8"/>
+            <column defaultValueBoolean="false" name="is_active" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="image_identifier" type="INTEGER"/>
+            <column name="blur_hash" type="VARCHAR(255)"/>
+            <column defaultValueNumeric="0" name="age" type="INTEGER"/>
+            <column defaultValue="NULL::character varying" name="language" type="VARCHAR(255)"/>
+            <column defaultValueBoolean="false" name="is_selfie_verified" type="BOOLEAN"/>
+            <column defaultValue="NULL::character varying" name="user_verification_image" type="VARCHAR(255)"/>
+            <column defaultValue="NULL::character varying" name="verification_token" type="VARCHAR(255)"/>
+            <column defaultValue="NULL::character varying" name="shareable_link" type="VARCHAR(255)"/>
+            <column defaultValue="NULL::character varying" name="small_image_name" type="VARCHAR(255)"/>
+            <column name="direct_login_link" type="VARCHAR(255)"/>
+            <column defaultValueBoolean="false" name="is_self_deactivated" type="BOOLEAN"/>
+            <column name="user_id" type="UUID"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:deleted_users:deleted_users_referral_code_is_active_index">
+        <createIndex indexName="deleted_users_referral_code_is_active_index" tableName="deleted_users">
+            <column name="referral_code"/>
+            <column defaultValueBoolean="false" name="is_active"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_deleted_users_deleted_at              -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:deleted_users:deleted_at">
+        <createIndex indexName="idx_deleted_users_deleted_at" tableName="deleted_users">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_deleted_users_is_deleted              -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:deleted_users:is_deleted">
+        <createIndex indexName="idx_deleted_users_is_deleted" tableName="deleted_users">
+            <column name="is_deleted"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:deleted_users.user_id">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="deleted_users" constraintName="deleted_users_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- user_approval_log                                                                                        -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="user_approval_log">
+        <createTable tableName="user_approval_log">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_approval_log_pkey"/>
+            </column>
+            <column name="user_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="system" name="approval_source" type="UPDATE_SOURCE"/>
+            <column name="approval_status" type="PERMISSION_STATUS"/>
+            <column name="updated_by_user_id" type="UUID"/>
+            <column name="remark" type="VARCHAR(255)"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:user_approval_log:idx_user_approval_log">
+        <createIndex indexName="idx_user_approval_log" tableName="user_approval_log">
+            <column name="user_id"/>
+            <column name="inserted_at"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:user_approval_log:idx_user_approval_modes">
+        <createIndex indexName="idx_user_approval_modes" tableName="user_approval_log">
+            <column name="updated_by_user_id"/>
+            <column name="inserted_at"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_user_approval_log_deleted_at          -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:user_approval_log:deleted_at">
+        <createIndex indexName="idx_user_approval_log_deleted_at" tableName="user_approval_log">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- user_verification_requests                                                                               -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="user_verification_requests">
+        <createTable tableName="user_verification_requests">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_verification_requests_pkey"/>
+            </column>
+            <column name="user_id" type="UUID"/>
+            <column name="approval_status" type="PERMISSION_STATUS"/>
+            <column name="social_links" type="VARCHAR(255)"/>
+            <column name="email" type="VARCHAR(255)"/>
+            <column name="mobile" type="VARCHAR(255)"/>
+            <column name="contact_preference" type="INTEGER"/>
+            <column name="contact_note" type="VARCHAR(255)"/>
+            <column name="blurb" type="VARCHAR(255)"/>
+            <column name="first_name" type="VARCHAR(255)"/>
+            <column name="last_name" type="VARCHAR(255)"/>
+            <column name="middle_names" type="VARCHAR(255)"/>
+            <column name="more_details" type="VARCHAR(255)"/>
+            <column name="internal_staff_note" type="VARCHAR(255)"/>
+            <column name="staff_note" type="VARCHAR(255)"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:user_verification_requests:user_verification_requests_user_id_index">
+        <createIndex indexName="user_verification_requests_user_id_index" tableName="user_verification_requests" unique="true">
+            <column name="user_id"/>
+        </createIndex>
+    </changeSet>
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:user_verification_requests:user_verification_requests_updated_at_approval_status_index">
+        <createIndex indexName="user_verification_requests_updated_at_approval_status_index" tableName="user_verification_requests">
+            <column name="updated_at"/>
+            <column name="approval_status"/>
+        </createIndex>
+    </changeSet>
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:user_verification_requests:user_verification_requests_inserted_at_approval_status_index">
+        <createIndex indexName="user_verification_requests_inserted_at_approval_status_index" tableName="user_verification_requests">
+            <column name="inserted_at"/>
+            <column name="approval_status"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ............................................ -->
+    <!-- idx_user_verification_requests_deleted_at    -->
+    <!-- ............................................ -->
+    <changeSet author="kebrings" id="idx:user_verification_requests:deleted_at">
+        <createIndex indexName="idx_user_verification_requests_deleted_at" tableName="user_verification_requests">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+</databaseChangeLog>

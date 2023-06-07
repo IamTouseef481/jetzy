@@ -1,0 +1,1001 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <!-- ======================================================================================================== -->
+    <!-- select_sign_up                                                                                           -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="select_sign_up">
+        <createTable tableName="select_sign_up">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="select_sign_up_pkey"/>
+            </column>
+            <column name="status" type="PERMISSION_STATUS">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="referral_code" type="VARCHAR(255)"/>
+            <column name="strategy" type="VARCHAR(255)"/>
+            <column name="source" type="VARCHAR(255)"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:select_sign_up:select_sign_up_user_id_index">
+        <createIndex indexName="select_sign_up_user_id_index" tableName="select_sign_up" unique="true">
+            <column name="user_id"/>
+        </createIndex>
+    </changeSet>
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:select_sign_up:select_sign_up_email_index">
+        <createIndex indexName="select_sign_up_email_index" tableName="select_sign_up">
+            <column name="email"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- feature                                                                                                  -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="feature">
+        <createTable tableName="feature">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="feature_pkey"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="handle" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:feature:feature_handle_index">
+        <createIndex indexName="feature_handle_index" tableName="feature" unique="true">
+            <column name="handle"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- item                                                                                                     -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="item">
+        <createTable tableName="item">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="item_pkey"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="handle" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:item:item_handle_index">
+        <createIndex indexName="item_handle_index" tableName="item" unique="true">
+            <column name="handle"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- feature                                   -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="root (generated)" id="feature:initial_data">
+        <insert tableName="feature">
+            <column name="id" value="8d9db529-4ecb-4a8f-8a11-78a499a6e1d7"/>
+            <column name="name" value="Create Post"/>
+            <column name="handle" value="post"/>
+            <column name="description" value="Ability to create post"/>
+            <column name="deleted_at"/>
+            <column name="inserted_at" valueDate="2022-09-06T05:39:36"/>
+            <column name="updated_at" valueDate="2022-09-06T05:39:36"/>
+        </insert>
+        <insert tableName="feature">
+            <column name="id" value="22a5584b-4bcb-4515-9818-c7bf494793af"/>
+            <column name="name" value="View Post"/>
+            <column name="handle" value="view-post"/>
+            <column name="description" value="Ability to view posts"/>
+            <column name="deleted_at"/>
+            <column name="inserted_at" valueDate="2022-09-06T05:39:36"/>
+            <column name="updated_at" valueDate="2022-09-06T05:39:36"/>
+        </insert>
+        <insert tableName="feature">
+            <column name="id" value="9eb3f133-f461-4bf4-b8c5-7ce47fc26eea"/>
+            <column name="name" value="Comment"/>
+            <column name="handle" value="comment"/>
+            <column name="description" value="Ability to comment on post"/>
+            <column name="deleted_at"/>
+            <column name="inserted_at" valueDate="2022-09-06T05:39:36"/>
+            <column name="updated_at" valueDate="2022-09-06T05:39:36"/>
+        </insert>
+        <insert tableName="feature">
+            <column name="id" value="18298366-88ff-4ffe-9bcf-a2563275de6d"/>
+            <column name="name" value="Invite Friend"/>
+            <column name="handle" value="invite"/>
+            <column name="description" value="Ability to invite friend"/>
+            <column name="deleted_at"/>
+            <column name="inserted_at" valueDate="2022-09-06T05:39:36"/>
+            <column name="updated_at" valueDate="2022-09-06T05:39:36"/>
+        </insert>
+        <insert tableName="feature">
+            <column name="id" value="0e0a2ddd-c118-42bb-ac42-0720af57ffb2"/>
+            <column name="name" value="Message User"/>
+            <column name="handle" value="message-user"/>
+            <column name="description" value="Ability message user"/>
+            <column name="deleted_at"/>
+            <column name="inserted_at" valueDate="2022-09-06T05:39:36"/>
+            <column name="updated_at" valueDate="2022-09-06T05:39:36"/>
+        </insert>
+        <insert tableName="feature">
+            <column name="id" value="176dc448-a577-4ac6-a813-4bd6b76dc5ec"/>
+            <column name="name" value="Event Message"/>
+            <column name="handle" value="message-event"/>
+            <column name="description" value="Ability message on event"/>
+            <column name="deleted_at"/>
+            <column name="inserted_at" valueDate="2022-09-06T05:39:36"/>
+            <column name="updated_at" valueDate="2022-09-06T05:39:36"/>
+        </insert>
+        <insert tableName="feature">
+            <column name="id" value="74bad17f-3663-42a9-afa1-36f75fd608b7"/>
+            <column name="name" value="View Profile"/>
+            <column name="handle" value="view-profile"/>
+            <column name="description" value="Ability to view profile"/>
+            <column name="deleted_at"/>
+            <column name="inserted_at" valueDate="2022-09-06T05:39:36"/>
+            <column name="updated_at" valueDate="2022-09-06T05:39:36"/>
+        </insert>
+        <insert tableName="feature">
+            <column name="id" value="05f51228-6498-44f2-acfb-15a61cba4ce0"/>
+            <column name="name" value="Select"/>
+            <column name="handle" value="select"/>
+            <column name="description" value="Ability to view select feature"/>
+            <column name="deleted_at"/>
+            <column name="inserted_at" valueDate="2022-09-06T05:39:36"/>
+            <column name="updated_at" valueDate="2022-09-06T05:39:36"/>
+        </insert>
+        <insert tableName="feature">
+            <column name="id" value="e9e7fca4-d986-404b-aa8f-7717bf2d3cd6"/>
+            <column name="name" value="Select Reservation"/>
+            <column name="handle" value="select-reservation"/>
+            <column name="description" value="Ability to make a select reservation"/>
+            <column name="deleted_at"/>
+            <column name="inserted_at" valueDate="2022-09-06T05:39:36"/>
+            <column name="updated_at" valueDate="2022-09-06T05:39:36"/>
+        </insert>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- feature_set                                                                                              -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="feature_set">
+        <createTable tableName="feature_set">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="feature_set_pkey"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="handle" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- feature_set                               -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="root (generated)" id="feature_set:initial_data">
+        <insert tableName="feature_set">
+            <column name="id" value="02e555bf-c79a-4552-924a-c97b592b93b8"/>
+            <column name="name" value="Unverified User"/>
+            <column name="handle" value="unverified-user"/>
+            <column name="description" value="Permissions for unverified user"/>
+            <column name="deleted_at"/>
+            <column name="inserted_at" valueDate="2022-09-06T05:39:36"/>
+            <column name="updated_at" valueDate="2022-09-06T05:39:36"/>
+        </insert>
+        <insert tableName="feature_set">
+            <column name="id" value="d958ada5-eb2c-4505-9091-6ed698df9575"/>
+            <column name="name" value="Verified User"/>
+            <column name="handle" value="verified-user"/>
+            <column name="description" value="Permissions for verified user"/>
+            <column name="deleted_at"/>
+            <column name="inserted_at" valueDate="2022-09-06T05:39:36"/>
+            <column name="updated_at" valueDate="2022-09-06T05:39:36"/>
+        </insert>
+    </changeSet>
+
+
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:feature_set:feature_set_handle_index">
+        <createIndex indexName="feature_set_handle_index" tableName="feature_set" unique="true">
+            <column name="handle"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!-- subscription_group                                                                                       -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="subscription_group">
+        <createTable tableName="subscription_group">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="subscription_group_pkey"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="handle" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:subscription_group:subscription_group_handle_index">
+        <createIndex indexName="subscription_group_handle_index" tableName="subscription_group" unique="true">
+            <column name="handle"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- subscription_group                        -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="root (generated)" id="subscription_group:initial_data">
+        <insert tableName="subscription_group">
+            <column name="id" value="6f51c355-77d5-4793-94bf-f7eef502e0d2"/>
+            <column name="name" value="Jetzy Select"/>
+            <column name="handle" value="jetzy-select"/>
+            <column name="description" value="Jetzy Select Subscription Group"/>
+            <column name="deleted_at"/>
+            <column name="inserted_at" valueDate="2022-09-06T05:39:36"/>
+            <column name="updated_at" valueDate="2022-09-06T05:39:36"/>
+        </insert>
+    </changeSet>
+
+
+
+
+    <!-- ======================================================================================================== -->
+    <!-- subscription                                                                                             -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="subscription">
+        <createTable tableName="subscription">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="subscription_pkey"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="handle" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="group_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="enabled" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="definition" type="JSONB">
+                <constraints nullable="false"/>
+            </column>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:subscription:subscription_handle_index">
+        <createIndex indexName="subscription_handle_index" tableName="subscription" unique="true">
+            <column name="handle"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:subscription.group_id">
+        <addForeignKeyConstraint baseColumnNames="group_id" baseTableName="subscription" constraintName="subscription_group_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="subscription_group" validate="true"/>
+    </changeSet>
+
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- subscription                              -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="root (generated)" id="subscription:initial_data">
+        <insert tableName="subscription">
+            <column name="id" value="c392c056-7232-4441-917a-7f6e5b33a505"/>
+            <column name="name" value="Jetzy Select Subscription"/>
+            <column name="handle" value="jetzy-select-subscription"/>
+            <column name="description" value="Jetzy Select Subscription"/>
+            <column name="group_id" value="6f51c355-77d5-4793-94bf-f7eef502e0d2"/>
+            <column name="enabled" valueBoolean="true"/>
+            <column name="definition" value="{}"/>
+            <column name="deleted_at"/>
+            <column name="inserted_at" valueDate="2022-09-06T05:39:37"/>
+            <column name="updated_at" valueDate="2022-09-06T05:39:37"/>
+        </insert>
+        <insert tableName="subscription">
+            <column name="id" value="0ede6505-143f-47b1-ae0e-91d448367f1f"/>
+            <column name="name" value="Jetzy Select Bank Subscription"/>
+            <column name="handle" value="jetzy-select-bank-sub"/>
+            <column name="description" value="Jetzy Select Bank User Subscription"/>
+            <column name="group_id" value="6f51c355-77d5-4793-94bf-f7eef502e0d2"/>
+            <column name="enabled" valueBoolean="true"/>
+            <column name="definition" value="{}"/>
+            <column name="deleted_at"/>
+            <column name="inserted_at" valueDate="2022-09-06T05:39:37"/>
+            <column name="updated_at" valueDate="2022-09-06T05:39:37"/>
+        </insert>
+    </changeSet>
+
+
+
+    <!-- ======================================================================================================== -->
+    <!--                                                                                                          -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="subscription_feature">
+        <createTable tableName="subscription_feature">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="subscription_feature_pkey"/>
+            </column>
+            <column name="subscription_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="feature_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="grant_type" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="monthly_quota" type="INTEGER"/>
+            <column name="daily_quota" type="INTEGER"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+
+
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:subscription_feature.feature_id">
+        <addForeignKeyConstraint baseColumnNames="feature_id" baseTableName="subscription_feature" constraintName="subscription_feature_feature_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="feature" validate="true"/>
+    </changeSet>
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:subscription_feature.subscription_id">
+        <addForeignKeyConstraint baseColumnNames="subscription_id" baseTableName="subscription_feature" constraintName="subscription_feature_subscription_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="subscription" validate="true"/>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- subscription_feature                     -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="root (generated)" id="subscription_feature:initial_data">
+        <insert tableName="subscription_feature">
+            <column name="id" value="6ec3d9e0-65ea-4fb6-b8c9-b2327f92bd6b"/>
+            <column name="subscription_id" value="c392c056-7232-4441-917a-7f6e5b33a505"/>
+            <column name="feature_id" value="05f51228-6498-44f2-acfb-15a61cba4ce0"/>
+            <column name="grant_type" value="unlimited"/>
+            <column name="monthly_quota"/>
+            <column name="daily_quota"/>
+            <column name="deleted_at"/>
+            <column name="inserted_at" valueDate="2022-09-06T05:39:37"/>
+            <column name="updated_at" valueDate="2022-09-06T05:39:37"/>
+        </insert>
+        <insert tableName="subscription_feature">
+            <column name="id" value="924b88fa-e1bf-4391-b613-9899d9824343"/>
+            <column name="subscription_id" value="c392c056-7232-4441-917a-7f6e5b33a505"/>
+            <column name="feature_id" value="e9e7fca4-d986-404b-aa8f-7717bf2d3cd6"/>
+            <column name="grant_type" value="unlimited"/>
+            <column name="monthly_quota"/>
+            <column name="daily_quota"/>
+            <column name="deleted_at"/>
+            <column name="inserted_at" valueDate="2022-09-06T05:39:37"/>
+            <column name="updated_at" valueDate="2022-09-06T05:39:37"/>
+        </insert>
+        <insert tableName="subscription_feature">
+            <column name="id" value="7e7e6f2b-6d9f-4a87-84cc-6dd9f690e5f1"/>
+            <column name="subscription_id" value="0ede6505-143f-47b1-ae0e-91d448367f1f"/>
+            <column name="feature_id" value="05f51228-6498-44f2-acfb-15a61cba4ce0"/>
+            <column name="grant_type" value="unlimited"/>
+            <column name="monthly_quota"/>
+            <column name="daily_quota"/>
+            <column name="deleted_at"/>
+            <column name="inserted_at" valueDate="2022-09-06T05:39:37"/>
+            <column name="updated_at" valueDate="2022-09-06T05:39:37"/>
+        </insert>
+        <insert tableName="subscription_feature">
+            <column name="id" value="a4491356-1d4a-4664-b284-564a9b3f005d"/>
+            <column name="subscription_id" value="0ede6505-143f-47b1-ae0e-91d448367f1f"/>
+            <column name="feature_id" value="e9e7fca4-d986-404b-aa8f-7717bf2d3cd6"/>
+            <column name="grant_type" value="unlimited"/>
+            <column name="monthly_quota"/>
+            <column name="daily_quota"/>
+            <column name="deleted_at"/>
+            <column name="inserted_at" valueDate="2022-09-06T05:39:37"/>
+            <column name="updated_at" valueDate="2022-09-06T05:39:37"/>
+        </insert>
+    </changeSet>
+
+
+
+
+    <!-- ======================================================================================================== -->
+    <!-- package                                                                                                  -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="package">
+        <createTable tableName="package">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="package_pkey"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="handle" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="definition" type="JSONB">
+                <constraints nullable="false"/>
+            </column>
+            <column name="enabled" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="reoccurrence" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:package:package_handle_index">
+        <createIndex indexName="package_handle_index" tableName="package" unique="true">
+            <column name="handle"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- package                                   -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="root (generated)" id="package:initial_data">
+        <insert tableName="package">
+            <column name="id" value="55918613-3e91-4af9-943c-567315c8e3ff"/>
+            <column name="name" value="Jetzy Select Monthly Subscription"/>
+            <column name="handle" value="jetzy-select-monthly"/>
+            <column name="description" value="Jetzy Select Monthly Subscription"/>
+            <column name="definition" value="{}"/>
+            <column name="enabled" valueBoolean="true"/>
+            <column name="reoccurrence" valueNumeric="1"/>
+            <column name="deleted_at"/>
+            <column name="inserted_at" valueDate="2022-09-06T05:39:37"/>
+            <column name="updated_at" valueDate="2022-09-06T05:39:37"/>
+        </insert>
+        <insert tableName="package">
+            <column name="id" value="562d0e86-bcde-4a1f-96c8-04f66ca82e55"/>
+            <column name="name" value="Jetzy Select Bank Customer Monthly Subscription"/>
+            <column name="handle" value="jetzy-select-bank-monthly"/>
+            <column name="description" value="Jetzy Select Bank Monthly Subscription"/>
+            <column name="definition" value="{}"/>
+            <column name="enabled" valueBoolean="true"/>
+            <column name="reoccurrence" valueNumeric="1"/>
+            <column name="deleted_at"/>
+            <column name="inserted_at" valueDate="2022-09-06T05:39:37"/>
+            <column name="updated_at" valueDate="2022-09-06T05:39:37"/>
+        </insert>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- package_item                                                                                             -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="package_item">
+        <createTable tableName="package_item">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="package_item_pkey"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="quantity" type="INTEGER">
+                <constraints nullable="false"/>
+            </column>
+            <column name="package_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="item_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:package_item.item_id">
+        <addForeignKeyConstraint baseColumnNames="item_id" baseTableName="package_item" constraintName="package_item_item_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="item" validate="true"/>
+    </changeSet>
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:package_item.package_id">
+        <addForeignKeyConstraint baseColumnNames="package_id" baseTableName="package_item" constraintName="package_item_package_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="package" validate="true"/>
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!-- package_price                                                                                            -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="package_price">
+        <createTable tableName="package_price">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="package_price_pkey"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="definition" type="JSONB">
+                <constraints nullable="false"/>
+            </column>
+            <column name="price" type="FLOAT8">
+                <constraints nullable="false"/>
+            </column>
+            <column name="region" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="package_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:package_price.package_id">
+        <addForeignKeyConstraint baseColumnNames="package_id" baseTableName="package_price" constraintName="package_price_package_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="package" validate="true"/>
+    </changeSet>
+
+
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- package_price                             -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="root (generated)" id="package_price:initial_data">
+        <insert tableName="package_price">
+            <column name="id" value="324df081-4db5-4c67-806c-dbd794531932"/>
+            <column name="name" value="Monthly"/>
+            <column name="description" value="Monthly Price"/>
+            <column name="definition" value="{}"/>
+            <column name="price" valueNumeric="24.95"/>
+            <column name="region" value="default"/>
+            <column name="package_id" value="55918613-3e91-4af9-943c-567315c8e3ff"/>
+            <column name="deleted_at"/>
+            <column name="inserted_at" valueDate="2022-09-06T05:39:37"/>
+            <column name="updated_at" valueDate="2022-09-06T05:39:37"/>
+        </insert>
+        <insert tableName="package_price">
+            <column name="id" value="6f72f290-47aa-48c0-b869-de35bdd77f58"/>
+            <column name="name" value="Monthly"/>
+            <column name="description" value="Monthly Price"/>
+            <column name="definition" value="{}"/>
+            <column name="price" valueNumeric="24.95"/>
+            <column name="region" value="default"/>
+            <column name="package_id" value="562d0e86-bcde-4a1f-96c8-04f66ca82e55"/>
+            <column name="deleted_at"/>
+            <column name="inserted_at" valueDate="2022-09-06T05:39:37"/>
+            <column name="updated_at" valueDate="2022-09-06T05:39:37"/>
+        </insert>
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!-- package_subscription                                                                                     -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="package_subscription">
+        <createTable tableName="package_subscription">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="package_subscription_pkey"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="package_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="subscription_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:package_subscription.package_id">
+        <addForeignKeyConstraint baseColumnNames="package_id" baseTableName="package_subscription" constraintName="package_subscription_package_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="package" validate="true"/>
+    </changeSet>
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:package_subscription.subscription_id">
+        <addForeignKeyConstraint baseColumnNames="subscription_id" baseTableName="package_subscription" constraintName="package_subscription_subscription_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="subscription" validate="true"/>
+    </changeSet>
+
+
+
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- package_subscription                      -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="root (generated)" id="package_subscription:initial_data">
+        <insert tableName="package_subscription">
+            <column name="id" value="98cbe19d-753c-4e8a-8d1c-c03a9eeed1e2"/>
+            <column name="name" value="Select Subscription"/>
+            <column name="description" value="Monthly Select Subscription"/>
+            <column name="package_id" value="55918613-3e91-4af9-943c-567315c8e3ff"/>
+            <column name="subscription_id" value="c392c056-7232-4441-917a-7f6e5b33a505"/>
+            <column name="deleted_at"/>
+            <column name="inserted_at" valueDate="2022-09-06T05:39:37"/>
+            <column name="updated_at" valueDate="2022-09-06T05:39:37"/>
+        </insert>
+        <insert tableName="package_subscription">
+            <column name="id" value="e86fb616-a3de-4c4a-9add-519d0164f330"/>
+            <column name="name" value="Select Subscription"/>
+            <column name="description" value="Monthly Select Subscription"/>
+            <column name="package_id" value="562d0e86-bcde-4a1f-96c8-04f66ca82e55"/>
+            <column name="subscription_id" value="0ede6505-143f-47b1-ae0e-91d448367f1f"/>
+            <column name="deleted_at"/>
+            <column name="inserted_at" valueDate="2022-09-06T05:39:37"/>
+            <column name="updated_at" valueDate="2022-09-06T05:39:37"/>
+        </insert>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- feature_set_feature                                                                                      -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="feature_set_feature">
+        <createTable tableName="feature_set_feature">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="feature_set_feature_pkey"/>
+            </column>
+            <column name="feature_set_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="feature_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="grant_type" type="FEATURE_GRANT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="monthly_quota" type="INTEGER"/>
+            <column name="daily_quota" type="INTEGER"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:feature_set_feature.feature_id">
+        <addForeignKeyConstraint baseColumnNames="feature_id" baseTableName="feature_set_feature" constraintName="feature_set_feature_feature_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="feature" validate="true"/>
+    </changeSet>
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:feature_set_feature.feature_set_id">
+        <addForeignKeyConstraint baseColumnNames="feature_set_id" baseTableName="feature_set_feature" constraintName="feature_set_feature_feature_set_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="feature_set" validate="true"/>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- feature_set_feature                       -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="root (generated)" id="feature_set_feature:initial_data">
+        <insert tableName="feature_set_feature">
+            <column name="id" value="9b338a05-b583-4883-9a44-e6f8aed26a6b"/>
+            <column name="feature_set_id" value="02e555bf-c79a-4552-924a-c97b592b93b8"/>
+            <column name="feature_id" value="8d9db529-4ecb-4a8f-8a11-78a499a6e1d7"/>
+            <column name="grant_type" value="revoked"/>
+            <column name="monthly_quota"/>
+            <column name="daily_quota"/>
+            <column name="deleted_at"/>
+            <column name="inserted_at" valueDate="2022-09-06T05:39:36"/>
+            <column name="updated_at" valueDate="2022-09-06T05:39:36"/>
+        </insert>
+        <insert tableName="feature_set_feature">
+            <column name="id" value="1177707f-33e8-4e1f-a041-2097728babc3"/>
+            <column name="feature_set_id" value="02e555bf-c79a-4552-924a-c97b592b93b8"/>
+            <column name="feature_id" value="22a5584b-4bcb-4515-9818-c7bf494793af"/>
+            <column name="grant_type" value="quota"/>
+            <column name="monthly_quota"/>
+            <column name="daily_quota" valueNumeric="10"/>
+            <column name="deleted_at"/>
+            <column name="inserted_at" valueDate="2022-09-06T05:39:36"/>
+            <column name="updated_at" valueDate="2022-09-06T05:39:36"/>
+        </insert>
+        <insert tableName="feature_set_feature">
+            <column name="id" value="1489b790-da55-4dfa-9daa-92c06d6ce10d"/>
+            <column name="feature_set_id" value="02e555bf-c79a-4552-924a-c97b592b93b8"/>
+            <column name="feature_id" value="9eb3f133-f461-4bf4-b8c5-7ce47fc26eea"/>
+            <column name="grant_type" value="quota"/>
+            <column name="monthly_quota"/>
+            <column name="daily_quota" valueNumeric="3"/>
+            <column name="deleted_at"/>
+            <column name="inserted_at" valueDate="2022-09-06T05:39:36"/>
+            <column name="updated_at" valueDate="2022-09-06T05:39:36"/>
+        </insert>
+        <insert tableName="feature_set_feature">
+            <column name="id" value="339b0abe-1883-4116-a4ea-3271b0d8984b"/>
+            <column name="feature_set_id" value="02e555bf-c79a-4552-924a-c97b592b93b8"/>
+            <column name="feature_id" value="18298366-88ff-4ffe-9bcf-a2563275de6d"/>
+            <column name="grant_type" value="revoked"/>
+            <column name="monthly_quota"/>
+            <column name="daily_quota"/>
+            <column name="deleted_at"/>
+            <column name="inserted_at" valueDate="2022-09-06T05:39:36"/>
+            <column name="updated_at" valueDate="2022-09-06T05:39:36"/>
+        </insert>
+        <insert tableName="feature_set_feature">
+            <column name="id" value="868c5958-2c0d-4c9a-adcc-0ca9df83bc5b"/>
+            <column name="feature_set_id" value="02e555bf-c79a-4552-924a-c97b592b93b8"/>
+            <column name="feature_id" value="0e0a2ddd-c118-42bb-ac42-0720af57ffb2"/>
+            <column name="grant_type" value="revoked"/>
+            <column name="monthly_quota"/>
+            <column name="daily_quota"/>
+            <column name="deleted_at"/>
+            <column name="inserted_at" valueDate="2022-09-06T05:39:36"/>
+            <column name="updated_at" valueDate="2022-09-06T05:39:36"/>
+        </insert>
+        <insert tableName="feature_set_feature">
+            <column name="id" value="b47d31b9-2430-41ce-82d7-ec35a2e093c0"/>
+            <column name="feature_set_id" value="02e555bf-c79a-4552-924a-c97b592b93b8"/>
+            <column name="feature_id" value="176dc448-a577-4ac6-a813-4bd6b76dc5ec"/>
+            <column name="grant_type" value="revoked"/>
+            <column name="monthly_quota"/>
+            <column name="daily_quota"/>
+            <column name="deleted_at"/>
+            <column name="inserted_at" valueDate="2022-09-06T05:39:36"/>
+            <column name="updated_at" valueDate="2022-09-06T05:39:36"/>
+        </insert>
+        <insert tableName="feature_set_feature">
+            <column name="id" value="0ec464e5-76e6-4840-af13-7903326326f3"/>
+            <column name="feature_set_id" value="02e555bf-c79a-4552-924a-c97b592b93b8"/>
+            <column name="feature_id" value="74bad17f-3663-42a9-afa1-36f75fd608b7"/>
+            <column name="grant_type" value="quota"/>
+            <column name="monthly_quota"/>
+            <column name="daily_quota" valueNumeric="15"/>
+            <column name="deleted_at"/>
+            <column name="inserted_at" valueDate="2022-09-06T05:39:36"/>
+            <column name="updated_at" valueDate="2022-09-06T05:39:36"/>
+        </insert>
+        <insert tableName="feature_set_feature">
+            <column name="id" value="54bdd308-e349-41d6-a552-bbdadf40ab0c"/>
+            <column name="feature_set_id" value="d958ada5-eb2c-4505-9091-6ed698df9575"/>
+            <column name="feature_id" value="8d9db529-4ecb-4a8f-8a11-78a499a6e1d7"/>
+            <column name="grant_type" value="unlimited"/>
+            <column name="monthly_quota"/>
+            <column name="daily_quota"/>
+            <column name="deleted_at"/>
+            <column name="inserted_at" valueDate="2022-09-06T05:39:36"/>
+            <column name="updated_at" valueDate="2022-09-06T05:39:36"/>
+        </insert>
+        <insert tableName="feature_set_feature">
+            <column name="id" value="abbd3876-a648-4fc4-9690-ceeaa19a8bcb"/>
+            <column name="feature_set_id" value="d958ada5-eb2c-4505-9091-6ed698df9575"/>
+            <column name="feature_id" value="22a5584b-4bcb-4515-9818-c7bf494793af"/>
+            <column name="grant_type" value="unlimited"/>
+            <column name="monthly_quota"/>
+            <column name="daily_quota"/>
+            <column name="deleted_at"/>
+            <column name="inserted_at" valueDate="2022-09-06T05:39:36"/>
+            <column name="updated_at" valueDate="2022-09-06T05:39:36"/>
+        </insert>
+        <insert tableName="feature_set_feature">
+            <column name="id" value="fcdcf8a2-24ba-4fd7-bed3-23f1971a9038"/>
+            <column name="feature_set_id" value="d958ada5-eb2c-4505-9091-6ed698df9575"/>
+            <column name="feature_id" value="9eb3f133-f461-4bf4-b8c5-7ce47fc26eea"/>
+            <column name="grant_type" value="unlimited"/>
+            <column name="monthly_quota"/>
+            <column name="daily_quota"/>
+            <column name="deleted_at"/>
+            <column name="inserted_at" valueDate="2022-09-06T05:39:36"/>
+            <column name="updated_at" valueDate="2022-09-06T05:39:36"/>
+        </insert>
+        <insert tableName="feature_set_feature">
+            <column name="id" value="779b8db5-31db-455f-82af-4dd686dfdd72"/>
+            <column name="feature_set_id" value="d958ada5-eb2c-4505-9091-6ed698df9575"/>
+            <column name="feature_id" value="18298366-88ff-4ffe-9bcf-a2563275de6d"/>
+            <column name="grant_type" value="unlimited"/>
+            <column name="monthly_quota"/>
+            <column name="daily_quota"/>
+            <column name="deleted_at"/>
+            <column name="inserted_at" valueDate="2022-09-06T05:39:36"/>
+            <column name="updated_at" valueDate="2022-09-06T05:39:36"/>
+        </insert>
+        <insert tableName="feature_set_feature">
+            <column name="id" value="e3e0e713-b0d0-48b6-a660-f4571079c906"/>
+            <column name="feature_set_id" value="d958ada5-eb2c-4505-9091-6ed698df9575"/>
+            <column name="feature_id" value="0e0a2ddd-c118-42bb-ac42-0720af57ffb2"/>
+            <column name="grant_type" value="unlimited"/>
+            <column name="monthly_quota"/>
+            <column name="daily_quota"/>
+            <column name="deleted_at"/>
+            <column name="inserted_at" valueDate="2022-09-06T05:39:36"/>
+            <column name="updated_at" valueDate="2022-09-06T05:39:36"/>
+        </insert>
+        <insert tableName="feature_set_feature">
+            <column name="id" value="13970e81-1c49-4f81-adf1-ac4ccafe1414"/>
+            <column name="feature_set_id" value="d958ada5-eb2c-4505-9091-6ed698df9575"/>
+            <column name="feature_id" value="176dc448-a577-4ac6-a813-4bd6b76dc5ec"/>
+            <column name="grant_type" value="unlimited"/>
+            <column name="monthly_quota"/>
+            <column name="daily_quota"/>
+            <column name="deleted_at"/>
+            <column name="inserted_at" valueDate="2022-09-06T05:39:36"/>
+            <column name="updated_at" valueDate="2022-09-06T05:39:36"/>
+        </insert>
+        <insert tableName="feature_set_feature">
+            <column name="id" value="7b0cfca6-d509-4d61-a80e-0ad490bc7fc9"/>
+            <column name="feature_set_id" value="d958ada5-eb2c-4505-9091-6ed698df9575"/>
+            <column name="feature_id" value="74bad17f-3663-42a9-afa1-36f75fd608b7"/>
+            <column name="grant_type" value="unlimited"/>
+            <column name="monthly_quota"/>
+            <column name="daily_quota"/>
+            <column name="deleted_at"/>
+            <column name="inserted_at" valueDate="2022-09-06T05:39:36"/>
+            <column name="updated_at" valueDate="2022-09-06T05:39:36"/>
+        </insert>
+    </changeSet>
+
+
+
+
+
+</databaseChangeLog>

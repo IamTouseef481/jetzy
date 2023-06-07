@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jetzy Select</title>
+    <link rel="stylesheet" href="/assets/phoenix-bootstrap.css">
+    <link rel="icon" type ="logo" href="./select-resources/images/jetzy logo.png">
+    <script src="/assets/phoenix-bootstrap.js"></script>
+    <script src="https://kit.fontawesome.com/23459846c9.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="<%= @google_client_id %>.apps.googleusercontent.com">
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v15.0&appId=139508639447584&autoLogAppEvents=1" nonce="ZD3Swks6"></script>
+    <script type="text/javascript" src="https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js"></script>
+    <meta name="appleid-signin-client-id" content="<%= @apple_client_id %>">
+    <meta name="appleid-signin-scope" content="[SCOPES]">
+    <meta name="appleid-signin-redirect-uri" content="[REDIRECT_URI]">
+    <meta name="appleid-signin-state" content="[STATE]">
+    <meta name="appleid-signin-nonce" content="[NONCE]">
+    <meta name="appleid-signin-use-popup" content="true">
+</head>
+<body>
+<script type="text/javascript" src="https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js"></script>
+<div id="fb-root"></div>
+<div class="bg-light min-vh-100 d-flex flex-row align-items-center dark:bg-transparent">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card-group d-block d-md-flex row">
+                    <div class="card col-md-7 p-4 mb-0">
+                        <div class="card-body">
+                            <form method="post" action="/login">
+                                <input type="hidden" name="_csrf_token" value="<%= @csrf_token %>"/>
+                                <h1>Login</h1>
+                                <p class="text-medium-emphasis">Sign In to your account</p>
+                                <%= if (@flash.info) do %>
+                                    <p class="alert alert-info" role="alert"><%= @flash.info %></p>
+                                <% end %>
+                                <%= if (@flash.error) do %>
+                                    <p class="alert alert-danger" role="alert"><%= @flash.error %></p>
+                                <% end %>
+
+                                <div class="input-group mb-3"><span class="input-group-text"></span>
+                                    <input name="user" class="form-control" type="text" placeholder="Username">
+                                </div>
+                                <div class="input-group mb-4"><span class="input-group-text"></span>
+                                    <input name="password" class="form-control" type="password" placeholder="Password">
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <input class="btn btn-primary px-4" name="login" value="Login" type="submit"/>
+                                    </div>
+                                    <div class="col-6 text-end">
+                                        <input class="btn btn-link px-0" value="Forgot password?" name="forgot-password" type="submit"/>
+                                    </div>
+                                </div>
+                                <div class="row mt-3">
+                                    <div class="col">
+                                        <hr/>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="g-signin2" style="height:40px" data-onsuccess="onSignIn"></div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="fb-login-button" data-width="" data-size="large" data-button-type="login_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false"></div>
+                                    </div>
+                                    <div class="col">
+                                        <div id="appleid-signin" style="height:40px" data-color="black" data-border="true" data-type="sign in"></div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="card col-md-5 text-white bg-primary py-5">
+                        <div class="card-body text-center">
+                            <div>
+                                <h2>Sign up</h2>
+                                <p>If you don't have an account yet sign up to be invited to Jetzy Select, otherwise login using your Jetzy App credentials.</p>
+                                <button class="btn btn-lg btn-outline-light mt-3" type="button">Sign Up Now!</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="assets/phoenix-bootstrap.js"></script>
+    <script>
+        function onSignIn(googleUser) {
+          var profile = googleUser.getBasicProfile();
+          console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+          console.log('Name: ' + profile.getName());
+          console.log('Image URL: ' + profile.getImageUrl());
+          console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+        }
+
+
+      function statusChangeCallback(response) {  // Called with the results from FB.getLoginStatus().
+        console.log('statusChangeCallback');
+        console.log(response);                   // The current login status of the person.
+        if (response.status === 'connected') {   // Logged into your webpage and Facebook.
+          testAPI();
+        } else {                                 // Not logged into your webpage or we are unable to tell.
+          document.getElementById('status').innerHTML = 'Please log ' +
+            'into this webpage.';
+        }
+      }
+
+
+      function checkLoginState() {               // Called when a person is finished with the Login Button.
+        FB.getLoginStatus(function(response) {   // See the onlogin handler
+          statusChangeCallback(response);
+        });
+      }
+
+
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '{app-id}',
+          cookie     : true,                     // Enable cookies to allow the server to access the session.
+          xfbml      : true,                     // Parse social plugins on this webpage.
+          version    : '{api-version}'           // Use this Graph API version for this call.
+        });
+
+
+        FB.getLoginStatus(function(response) {   // Called after the JS SDK has been initialized.
+          statusChangeCallback(response);        // Returns the login status.
+        });
+      };
+
+      function testAPI() {                      // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
+        console.log('Welcome!  Fetching your information.... ');
+        FB.api('/me', function(response) {
+          console.log('Successful login for: ' + response.name);
+          document.getElementById('status').innerHTML =
+            'Thanks for logging in, ' + response.name + '!';
+        });
+      }
+    </script>
+</div>
+
+</body>

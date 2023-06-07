@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <!-- ######################################################################################################## -->
+    <!-- ........................................................................................................ -->
+    <!-- Lookup Tables                                                                                            -->
+    <!-- ........................................................................................................ -->
+    <!-- ######################################################################################################## -->
+
+    <!-- ======================================================================================================== -->
+    <!-- share_type                                                                                                 -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="zakavel" id="contact">
+        <createTable tableName="contact">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID" autoIncrement="false"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="email" type="nvarchar(64)"><constraints nullable="false"/></column>
+            <column name="mobile" type="nvarchar(64)"><constraints nullable="false"/></column>
+            <column name="first_name" type="nvarchar(64)"><constraints nullable="true"/></column>
+            <column name="last_name" type="nvarchar(64)"><constraints nullable="true"/></column>
+            <column name="user_id" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_post                                  -->
+    <!-- ......................................... -->
+    <changeSet author="zakavel" id="idx_contact">
+        <createIndex
+                indexName="idx_contact_created_on"
+                tableName="contact">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_contact_modified_on"
+                tableName="contact">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_contact_deleted_on"
+                tableName="contact">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_contacts_index_email                   -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="zakavel" id="fk_contacts_index_email">
+        <addForeignKeyConstraint baseColumnNames="email"
+                                 baseTableName="contact"
+                                 constraintName="fk_contacts_index_email"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_string"
+        />
+    </changeSet>
+</databaseChangeLog>

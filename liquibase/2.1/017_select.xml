@@ -1,0 +1,3415 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+
+
+    <!-- ######################################################################################################## -->
+    <!-- ........................................................................................................ -->
+    <!-- Lookup Tables                                                                                            -->
+    <!-- ........................................................................................................ -->
+    <!-- ######################################################################################################## -->
+
+
+    <!-- ======================================================================================================== -->
+    <!-- menu_item_image_type                                                                                      -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="menu_item_image_type">
+        <createTable tableName="vnext_menu_item_image_type" remarks="Location Type Lookup Table: Neighborhood, region, borough, etc.">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="INT" autoIncrement="false"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="description" remarks="versioned_string" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_menu_item_image_type:standard                -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_menu_item_image_type:standard">
+        <createIndex
+                indexName="idx_menu_item_image_type_created_on"
+                tableName="vnext_menu_item_image_type">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_menu_item_image_type_modified_on"
+                tableName="vnext_menu_item_image_type">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_menu_item_image_type_deleted_on"
+                tableName="vnext_menu_item_image_type">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_menu_item_image_type_description                  -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_menu_item_image_type_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_menu_item_image_type"
+                                 constraintName="fk_menu_item_image_type_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_string"
+        />
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!-- day_of_week                                                                                              -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="day_of_week">
+        <createTable tableName="vnext_day_of_week">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="INT" autoIncrement="false"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="description" remarks="versioned_string" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_day_of_week:standard                  -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_day_of_week:standard">
+        <createIndex
+                indexName="idx_day_of_week_created_on"
+                tableName="vnext_day_of_week">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_day_of_week_modified_on"
+                tableName="vnext_day_of_week">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_day_of_week_deleted_on"
+                tableName="vnext_day_of_week">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_day_of_week_description                    -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_day_of_week_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_day_of_week"
+                                 constraintName="fk_day_of_week_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_string"
+        />
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!-- data_source                                                                                              -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="data_source">
+        <createTable tableName="vnext_data_source">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="INT" autoIncrement="false"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="description" remarks="versioned_string" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_data_source:standard                  -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_data_source:standard">
+        <createIndex
+                indexName="idx_data_source_created_on"
+                tableName="vnext_data_source">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_data_source_modified_on"
+                tableName="vnext_data_source">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_data_source_deleted_on"
+                tableName="vnext_data_source">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_data_source_description                    -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_data_source_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_data_source"
+                                 constraintName="fk_data_source_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_string"
+        />
+    </changeSet>
+
+
+
+    <!-- ======================================================================================================== -->
+    <!-- data_source_type                                                                                              -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="data_source_type">
+        <createTable tableName="vnext_data_source_type">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="INT" autoIncrement="false"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="description" remarks="versioned_string" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_data_source_type:standard                  -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_data_source_type:standard">
+        <createIndex
+                indexName="idx_data_source_type_created_on"
+                tableName="vnext_data_source_type">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_data_source_type_modified_on"
+                tableName="vnext_data_source_type">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_data_source_type_deleted_on"
+                tableName="vnext_data_source_type">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_data_source_type_description                    -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_data_source_type_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_data_source_type"
+                                 constraintName="fk_data_source_type_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_string"
+        />
+    </changeSet>
+
+
+
+    <!-- ======================================================================================================== -->
+    <!-- offer_deal_type                                                                                              -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="offer_deal_type">
+        <createTable tableName="vnext_offer_deal_type">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="INT" autoIncrement="false"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="description" remarks="versioned_string" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_offer_deal_type:standard                  -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_offer_deal_type:standard">
+        <createIndex
+                indexName="idx_offer_deal_type_created_on"
+                tableName="vnext_offer_deal_type">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_offer_deal_type_modified_on"
+                tableName="vnext_offer_deal_type">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_offer_deal_type_deleted_on"
+                tableName="vnext_offer_deal_type">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_offer_deal_type_description                    -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_offer_deal_type_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_offer_deal_type"
+                                 constraintName="fk_offer_deal_type_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_string"
+        />
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!-- offer_deal_category                                                                                      -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="offer_deal_category">
+        <createTable tableName="vnext_offer_deal_category">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="INT" autoIncrement="false"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="description" remarks="versioned_string" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_offer_deal_category:standard          -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_offer_deal_category:standard">
+        <createIndex
+                indexName="idx_offer_deal_category_created_on"
+                tableName="vnext_offer_deal_category">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_offer_deal_category_modified_on"
+                tableName="vnext_offer_deal_category">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_offer_deal_category_deleted_on"
+                tableName="vnext_offer_deal_category">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_offer_deal_category_description                    -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_offer_deal_category_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_offer_deal_category"
+                                 constraintName="fk_offer_deal_category_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_string"
+        />
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!-- business_activity_event_attribute_type                                                                   -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="business_activity_event_attribute_type">
+        <createTable tableName="vnext_business_activity_event_attribute_type">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="INT" autoIncrement="false"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="description" remarks="versioned_string" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- .................................................................... -->
+    <!-- idx_business_activity_event_attribute_type:standard                  -->
+    <!-- .................................................................... -->
+    <changeSet author="kebrings" id="idx_business_activity_event_attribute_type:standard">
+        <createIndex
+                indexName="idx_business_activity_event_attribute_type_created_on"
+                tableName="vnext_business_activity_event_attribute_type">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_business_activity_event_attribute_type_modified_on"
+                tableName="vnext_business_activity_event_attribute_type">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_business_activity_event_attribute_type_deleted_on"
+                tableName="vnext_business_activity_event_attribute_type">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_business_activity_event_attribute_type_description                    -->
+    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_business_activity_event_attribute_type_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_business_activity_event_attribute_type"
+                                 constraintName="fk_business_activity_event_attribute_type_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_string"
+        />
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- business_activity_event_type                                                                             -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="business_activity_event_type">
+        <createTable tableName="vnext_business_activity_event_type">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="INT" autoIncrement="false"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="description" remarks="versioned_string" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- .......................................................... -->
+    <!-- idx_business_activity_event_type:standard                  -->
+    <!-- .......................................................... -->
+    <changeSet author="kebrings" id="idx_business_activity_event_type:standard">
+        <createIndex
+                indexName="idx_business_activity_event_type_created_on"
+                tableName="vnext_business_activity_event_type">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_business_activity_event_type_modified_on"
+                tableName="vnext_business_activity_event_type">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_business_activity_event_type_deleted_on"
+                tableName="vnext_business_activity_event_type">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_business_activity_event_type_description                    -->
+    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_business_activity_event_type_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_business_activity_event_type"
+                                 constraintName="fk_business_activity_event_type_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_string"
+        />
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- business_activity_event_sub_type                                                                         -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="business_activity_event_sub_type">
+        <createTable tableName="vnext_business_activity_event_sub_type">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="INT" autoIncrement="false"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="description" remarks="versioned_string" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- .............................................................. -->
+    <!-- idx_business_activity_event_sub_type:standard                  -->
+    <!-- .............................................................. -->
+    <changeSet author="kebrings" id="idx_business_activity_event_sub_type:standard">
+        <createIndex
+                indexName="idx_business_activity_event_sub_type_created_on"
+                tableName="vnext_business_activity_event_sub_type">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_business_activity_event_sub_type_modified_on"
+                tableName="vnext_business_activity_event_sub_type">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_business_activity_event_sub_type_deleted_on"
+                tableName="vnext_business_activity_event_sub_type">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_business_activity_event_sub_type_description                    -->
+    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_business_activity_event_sub_type_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_business_activity_event_sub_type"
+                                 constraintName="fk_business_activity_event_sub_type_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_string"
+        />
+    </changeSet>
+
+
+
+    <!-- ======================================================================================================== -->
+    <!-- offer_activity_type                                                                                      -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="offer_activity_type">
+        <createTable tableName="vnext_offer_activity_type">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="INT" autoIncrement="false"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="description" remarks="versioned_string" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_offer_activity_type:standard          -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_offer_activity_type:standard">
+        <createIndex
+                indexName="idx_offer_activity_type_created_on"
+                tableName="vnext_offer_activity_type">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_offer_activity_type_modified_on"
+                tableName="vnext_offer_activity_type">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_offer_activity_type_deleted_on"
+                tableName="vnext_offer_activity_type">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_offer_activity_type_description            -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_offer_activity_type_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_offer_activity_type"
+                                 constraintName="fk_offer_activity_type_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_string"
+        />
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!-- price_point                                                                                              -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="price_point">
+        <createTable tableName="vnext_price_point">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="INT" autoIncrement="false"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="description" remarks="versioned_string" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_price_point:standard                  -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_price_point:standard">
+        <createIndex
+                indexName="idx_price_point_created_on"
+                tableName="vnext_price_point">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_price_point_modified_on"
+                tableName="vnext_price_point">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_price_point_deleted_on"
+                tableName="vnext_price_point">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_price_point_description                    -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_price_point_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_price_point"
+                                 constraintName="fk_price_point_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_string"
+        />
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- dress_code                                                                                               -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="dress_code">
+        <createTable tableName="vnext_dress_code">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="INT" autoIncrement="false"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="description" remarks="versioned_string" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME(6)"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_dress_code:standard                   -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_dress_code:standard">
+        <createIndex
+                indexName="idx_dress_code_created_on"
+                tableName="vnext_dress_code">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_dress_code_modified_on"
+                tableName="vnext_dress_code">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_dress_code_deleted_on"
+                tableName="vnext_dress_code">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_dress_code_description                     -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_dress_code_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_dress_code"
+                                 constraintName="fk_dress_code_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_string"
+        />
+    </changeSet>
+
+
+
+    <!-- ######################################################################################################## -->
+    <!-- ........................................................................................................ -->
+    <!-- Versioned String Tables                                                                                  -->
+    <!-- ........................................................................................................ -->
+    <!-- ######################################################################################################## -->
+
+    <!-- ======================================================================================================== -->
+    <!-- versioned_menu_item                                                                                         -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="versioned_menu_item">
+        <createTable tableName="vnext_versioned_menu_item" remarks="Simple change log supported title/body field. Lighter footprint than full CMS record.">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+            <column name="editor" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="revision" type="INT UNSIGNED"><constraints nullable="false"/></column>
+
+            <column name="name" type="NVARCHAR(255)"><constraints nullable="false"/></column>
+            <column name="description" type="NVARCHAR(2048)"><constraints nullable="false"/></column>
+            <column name="market_price" type="INT"><constraints nullable="false"/></column>
+            <column name="price" type="INTEGER UNSIGNED"><constraints nullable="true"/></column>
+            <column name="currency" type="INT"><constraints nullable="false"/></column>
+
+            <column name="order_in_advance" type="TIME"><constraints nullable="true"/></column>
+
+            <!-- Moderation  -->
+            <column name="moderation_status" type="INT"><constraints nullable="false"/></column>
+            <column name="flagged" type="INT"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="modified_on" type="DATETIME(6)" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_versioned_menu_item:standard             -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_versioned_menu_item:standard">
+        <createIndex
+                indexName="idx_versioned_menu_item_editor"
+                tableName="vnext_versioned_menu_item">
+            <column name="editor"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_versioned_menu_item_moderation_status"
+                tableName="vnext_versioned_menu_item">
+            <column name="moderation_status"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_versioned_menu_item_flagged"
+                tableName="vnext_versioned_menu_item">
+            <column name="flagged"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_versioned_menu_item_modified_on"
+                tableName="vnext_versioned_menu_item">
+            <column name="modified_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- versioned_menu_item_history                                                                                 -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="versioned_menu_item_history">
+        <createTable tableName="vnext_versioned_menu_item_history" remarks="Revision Tracking">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <column name="versioned_menu_item" type="UUID"><constraints nullable="false"/></column>
+            <column name="editor" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Fields and Secondary Relations -->
+
+            <column name="name" type="NVARCHAR(255)"><constraints nullable="false"/></column>
+            <column name="description" type="NVARCHAR(2048)"><constraints nullable="false"/></column>
+            <column name="market_price" type="INT"><constraints nullable="false"/></column>
+            <column name="price" type="INTEGER UNSIGNED"><constraints nullable="true"/></column>
+            <column name="currency" type="INT"><constraints nullable="false"/></column>
+
+            <column name="order_in_advance" type="TIME"><constraints nullable="true"/></column>
+
+            <!-- Moderation  -->
+            <column name="moderation_status" type="INT"><constraints nullable="false"/></column>
+            <column name="flagged" type="INT"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="modified_on" type="DATETIME(6)" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+        </createTable>
+
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_versioned_menu_item_history:standard  -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_versioned_menu_item_history:standard">
+        <createIndex
+                indexName="idx_versioned_menu_item_history_string"
+                tableName="vnext_versioned_menu_item_history">
+            <column name="versioned_menu_item"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_versioned_menu_item_history_editor"
+                tableName="vnext_versioned_menu_item_history">
+            <column name="editor"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_versioned_menu_item_history_modified_on"
+                tableName="vnext_versioned_menu_item_history">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_versioned_menu_item_history_moderation_status"
+                tableName="vnext_versioned_menu_item_history">
+            <column name="moderation_status"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_versioned_menu_item_history_moderation"
+                tableName="vnext_versioned_menu_item_history">
+            <column name="flagged"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!-- versioned_menu_item_option                                                                                         -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="versioned_menu_item_option">
+        <createTable tableName="vnext_versioned_menu_item_option" remarks="Simple change log supported title/body field. Lighter footprint than full CMS record.">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+            <column name="editor" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="revision" type="INT UNSIGNED"><constraints nullable="false"/></column>
+
+            <column name="name" type="NVARCHAR(255)"><constraints nullable="false"/></column>
+            <column name="description" type="NVARCHAR(2048)"><constraints nullable="false"/></column>
+            <column name="market_price" type="INT"><constraints nullable="false"/></column>
+            <column name="price" type="INTEGER UNSIGNED"><constraints nullable="true"/></column>
+            <column name="currency" type="INT"><constraints nullable="false"/></column>
+            <column name="order_in_advance" type="TIME"><constraints nullable="true"/></column>
+
+            <!-- Moderation  -->
+            <column name="moderation_status" type="INT"><constraints nullable="false"/></column>
+            <column name="flagged" type="INT"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="modified_on" type="DATETIME(6)" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_versioned_menu_item_option:standard             -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_versioned_menu_item_option:standard">
+        <createIndex
+                indexName="idx_versioned_menu_item_option_editor"
+                tableName="vnext_versioned_menu_item_option">
+            <column name="editor"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_versioned_menu_item_option_moderation_status"
+                tableName="vnext_versioned_menu_item_option">
+            <column name="moderation_status"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_versioned_menu_item_option_flagged"
+                tableName="vnext_versioned_menu_item_option">
+            <column name="flagged"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_versioned_menu_item_option_modified_on"
+                tableName="vnext_versioned_menu_item_option">
+            <column name="modified_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- versioned_menu_item_option_history                                                                                 -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="versioned_menu_item_option_history">
+        <createTable tableName="vnext_versioned_menu_item_option_history" remarks="Revision Tracking">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <column name="versioned_menu_item_option" type="UUID"><constraints nullable="false"/></column>
+            <column name="editor" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Fields and Secondary Relations -->
+
+            <column name="name" type="NVARCHAR(255)"><constraints nullable="false"/></column>
+            <column name="description" type="NVARCHAR(2048)"><constraints nullable="false"/></column>
+            <column name="market_price" type="INT"><constraints nullable="false"/></column>
+            <column name="price" type="INTEGER UNSIGNED"><constraints nullable="true"/></column>
+            <column name="currency" type="INT"><constraints nullable="false"/></column>
+
+            <column name="order_in_advance" type="TIME"><constraints nullable="true"/></column>
+
+            <!-- Moderation  -->
+            <column name="moderation_status" type="INT"><constraints nullable="false"/></column>
+            <column name="flagged" type="INT"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_versioned_menu_item_option_history:standard  -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_versioned_menu_item_option_history:standard">
+        <createIndex
+                indexName="idx_versioned_menu_item_option_history_string"
+                tableName="vnext_versioned_menu_item_option_history">
+            <column name="versioned_menu_item_option"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_versioned_menu_item_option_history_editor"
+                tableName="vnext_versioned_menu_item_option_history">
+            <column name="editor"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_versioned_menu_item_option_history_modified_on"
+                tableName="vnext_versioned_menu_item_option_history">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_versioned_menu_item_option_history_moderation_status"
+                tableName="vnext_versioned_menu_item_option_history">
+            <column name="moderation_status"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_versioned_menu_item_option_history_flagged"
+                tableName="vnext_versioned_menu_item_option_history">
+            <column name="flagged"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- versioned_activity                                                                                       -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="versioned_activity">
+        <createTable tableName="vnext_versioned_activity" remarks="Simple change log supported title/body field. Lighter footprint than full CMS record.">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+            <column name="editor" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="revision" type="INT UNSIGNED"><constraints nullable="false"/></column>
+            <column name="title" type="NVARCHAR(1024)"><constraints nullable="false"/></column>
+            <column name="body" type="TEXT"><constraints nullable="false"/></column>
+
+            <!-- Moderation  -->
+            <column name="moderation_status" type="INT"><constraints nullable="false"/></column>
+            <column name="flagged" type="INT"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="modified_on" type="DATETIME(6)" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+        </createTable>
+
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_versioned_activity:standard           -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_versioned_activity:standard">
+        <createIndex
+                indexName="idx_versioned_activity_editor"
+                tableName="vnext_versioned_activity">
+            <column name="editor"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_versioned_activity_moderation_status"
+                tableName="vnext_versioned_activity">
+            <column name="moderation_status"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_versioned_activity_flagged"
+                tableName="vnext_versioned_activity">
+            <column name="flagged"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_versioned_activity_modified_on"
+                tableName="vnext_versioned_activity">
+            <column name="modified_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- versioned_activity_history                                                                                 -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="versioned_activity_history">
+        <createTable tableName="vnext_versioned_activity_history" remarks="Revision Tracking">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <column name="versioned_activity" type="UUID"><constraints nullable="false"/></column>
+            <column name="editor" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="revision" type="INT UNSIGNED"><constraints nullable="false"/></column>
+            <column name="title" type="NVARCHAR(1024)"><constraints nullable="false"/></column>
+            <column name="body" type="TEXT"><constraints nullable="false"/></column>
+
+            <!-- Moderation  -->
+            <column name="moderation_status" type="INT"><constraints nullable="false"/></column>
+            <column name="flagged" type="INT"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="modified_on" type="DATETIME(6)" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_versioned_activity_history:standard     -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_versioned_activity_history:standard">
+        <createIndex
+                indexName="idx_versioned_activity_history_string"
+                tableName="vnext_versioned_activity_history">
+            <column name="versioned_activity"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_versioned_activity_history_editor"
+                tableName="vnext_versioned_activity_history">
+            <column name="editor"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_versioned_activity_history_modified_on"
+                tableName="vnext_versioned_activity_history">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_versioned_activity_history_moderation_status"
+                tableName="vnext_versioned_activity_history">
+            <column name="moderation_status"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_versioned_activity_history_flagged"
+                tableName="vnext_versioned_activity_history">
+            <column name="flagged"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!-- versioned_business                                                                                       -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="versioned_business">
+        <createTable tableName="vnext_versioned_business" remarks="Simple change log supported title/body field. Lighter footprint than full CMS record.">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+            <column name="editor" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="revision" type="INT UNSIGNED"><constraints nullable="false"/></column>
+            <column name="title" type="NVARCHAR(1024)"><constraints nullable="false"/></column>
+            <column name="body" type="TEXT"><constraints nullable="false"/></column>
+
+            <!-- Moderation  -->
+            <column name="moderation_status" type="INT"><constraints nullable="false"/></column>
+            <column name="flagged" type="INT"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="modified_on" type="DATETIME(6)" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_versioned_business:standard           -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_versioned_business:standard">
+        <createIndex
+                indexName="idx_versioned_business_editor"
+                tableName="vnext_versioned_business">
+            <column name="editor"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_versioned_business_moderation_status"
+                tableName="vnext_versioned_business">
+            <column name="moderation_status"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_versioned_business_flagged"
+                tableName="vnext_versioned_business">
+            <column name="flagged"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_versioned_business_modified_on"
+                tableName="vnext_versioned_business">
+            <column name="modified_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- versioned_business_history                                                                                 -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="versioned_business_history">
+        <createTable tableName="vnext_versioned_business_history" remarks="Revision Tracking">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <column name="versioned_business" type="UUID"><constraints nullable="false"/></column>
+            <column name="editor" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="revision" type="INT UNSIGNED"><constraints nullable="false"/></column>
+            <column name="title" type="NVARCHAR(1024)"><constraints nullable="false"/></column>
+            <column name="body" type="TEXT"><constraints nullable="false"/></column>
+
+            <!-- Moderation  -->
+            <column name="moderation_status" type="INT"><constraints nullable="false"/></column>
+            <column name="flagged" type="INT"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="modified_on" type="DATETIME(6)" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_versioned_business_history:standard     -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_versioned_business_history:standard">
+        <createIndex
+                indexName="idx_versioned_business_history_string"
+                tableName="vnext_versioned_business_history">
+            <column name="versioned_business"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_versioned_business_history_editor"
+                tableName="vnext_versioned_business_history">
+            <column name="editor"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_versioned_business_history_modified_on"
+                tableName="vnext_versioned_business_history">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_versioned_business_history_moderation_status"
+                tableName="vnext_versioned_business_history">
+            <column name="moderation_status"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_versioned_business_history_flagged"
+                tableName="vnext_versioned_business_history">
+            <column name="flagged"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!-- versioned_deal                                                                                       -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="versioned_deal">
+        <createTable tableName="vnext_versioned_deal" remarks="Simple change log supported title/body field. Lighter footprint than full CMS record.">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+            <column name="editor" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="revision" type="INT UNSIGNED"><constraints nullable="false"/></column>
+            <column name="title" type="NVARCHAR(1024)"><constraints nullable="false"/></column>
+            <column name="body" type="TEXT"><constraints nullable="false"/></column>
+
+            <!-- Moderation  -->
+            <column name="moderation_status" type="INT"><constraints nullable="false"/></column>
+            <column name="flagged" type="INT"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="modified_on" type="DATETIME(6)" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+        </createTable>
+
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_versioned_deal:standard           -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_versioned_deal:standard">
+        <createIndex
+                indexName="idx_versioned_deal_editor"
+                tableName="vnext_versioned_deal">
+            <column name="editor"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_versioned_deal_moderation_status"
+                tableName="vnext_versioned_deal">
+            <column name="moderation_status"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_versioned_deal_flagged"
+                tableName="vnext_versioned_deal">
+            <column name="flagged"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_versioned_deal_modified_on"
+                tableName="vnext_versioned_deal">
+            <column name="modified_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- versioned_deal_history                                                                                 -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="versioned_deal_history">
+        <createTable tableName="vnext_versioned_deal_history" remarks="Revision Tracking">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <column name="versioned_deal" type="UUID"><constraints nullable="false"/></column>
+            <column name="editor" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="revision" type="INT UNSIGNED"><constraints nullable="false"/></column>
+            <column name="title" type="NVARCHAR(1024)"><constraints nullable="false"/></column>
+            <column name="body" type="TEXT"><constraints nullable="false"/></column>
+
+            <!-- Moderation  -->
+            <column name="moderation_status" type="INT"><constraints nullable="false"/></column>
+            <column name="flagged" type="INT"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="modified_on" type="DATETIME(6)" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_versioned_deal_history:standard     -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_versioned_deal_history:standard">
+        <createIndex
+                indexName="idx_versioned_deal_history_string"
+                tableName="vnext_versioned_deal_history">
+            <column name="versioned_deal"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_versioned_deal_history_editor"
+                tableName="vnext_versioned_deal_history">
+            <column name="editor"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_versioned_deal_history_modified_on"
+                tableName="vnext_versioned_deal_history">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_versioned_deal_history_moderation_status"
+                tableName="vnext_versioned_deal_history">
+            <column name="moderation_status"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_versioned_deal_history_flagged"
+                tableName="vnext_versioned_deal_history">
+            <column name="flagged"/>
+        </createIndex>
+    </changeSet>
+
+
+
+    <!-- ======================================================================================================== -->
+    <!-- versioned_night_life                                                                                       -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="versioned_night_life">
+        <createTable tableName="vnext_versioned_night_life" remarks="Simple change log supported title/body field. Lighter footprint than full CMS record.">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+            <column name="editor" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="revision" type="INT UNSIGNED"><constraints nullable="false"/></column>
+            <column name="title" type="NVARCHAR(1024)"><constraints nullable="false"/></column>
+            <column name="body" type="TEXT"><constraints nullable="false"/></column>
+
+            <!-- Moderation  -->
+            <column name="moderation_status" type="INT"><constraints nullable="false"/></column>
+            <column name="flagged" type="INT"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="modified_on" type="DATETIME(6)" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_versioned_night_life:standard           -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_versioned_night_life:standard">
+        <createIndex
+                indexName="idx_versioned_night_life_editor"
+                tableName="vnext_versioned_night_life">
+            <column name="editor"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_versioned_night_life_moderation_status"
+                tableName="vnext_versioned_night_life">
+            <column name="moderation_status"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_versioned_night_life_flagged"
+                tableName="vnext_versioned_night_life">
+            <column name="flagged"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_versioned_night_life_modified_on"
+                tableName="vnext_versioned_night_life">
+            <column name="modified_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- versioned_night_life_history                                                                                 -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="versioned_night_life_history">
+        <createTable tableName="vnext_versioned_night_life_history" remarks="Revision Tracking">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <column name="versioned_night_life" type="UUID"><constraints nullable="false"/></column>
+            <column name="editor" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="revision" type="INT UNSIGNED"><constraints nullable="false"/></column>
+            <column name="title" type="NVARCHAR(1024)"><constraints nullable="false"/></column>
+            <column name="body" type="TEXT"><constraints nullable="false"/></column>
+
+            <!-- Moderation  -->
+            <column name="moderation_status" type="INT"><constraints nullable="false"/></column>
+            <column name="flagged" type="INT"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="modified_on" type="DATETIME(6)" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_versioned_night_life_history:standard     -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_versioned_night_life_history:standard">
+        <createIndex
+                indexName="idx_versioned_night_life_history_string"
+                tableName="vnext_versioned_night_life_history">
+            <column name="versioned_night_life"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_versioned_night_life_history_editor"
+                tableName="vnext_versioned_night_life_history">
+            <column name="editor"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_versioned_night_life_history_modified_on"
+                tableName="vnext_versioned_night_life_history">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_versioned_night_life_history_moderation_status"
+                tableName="vnext_versioned_night_life_history">
+            <column name="moderation_status"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_versioned_night_life_history_flagged"
+                tableName="vnext_versioned_night_life_history">
+            <column name="flagged"/>
+        </createIndex>
+    </changeSet>
+
+
+
+    <!-- ######################################################################################################## -->
+    <!-- ........................................................................................................ -->
+    <!-- Standard Tables                                                                                          -->
+    <!-- ........................................................................................................ -->
+    <!-- ######################################################################################################## -->
+
+    <!-- ======================================================================================================== -->
+    <!-- vnext_payment_provider                                                                                   -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="vnext_payment_provider">
+        <createTable tableName="vnext_payment_provider">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="description" remarks="versioned string" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="kebrings" id="vnext_payment_provider:initial_data">
+        <insert tableName="vnext_versioned_string">
+            <column name="identifier" value="ebba54e8-538e-41c9-b5be-363740638b47"/>
+            <column name="editor"/>
+
+            <column name="revision" value="1"/>
+            <column name="title" value="Stripe"/>
+            <column name="body" value="Stripe Payment Processor"/>
+
+            <column name="moderation_status" value="0"/>
+            <column name="flagged" value="0"/>
+
+            <column name="modified_on" valueDate="2022-10-08T05:39:36"/>
+        </insert>
+
+        <insert tableName="vnext_versioned_string_history">
+            <column name="identifier" value="443220bb-5e72-46de-8cd0-d1023c51c532"/>
+            <column name="versioned_string" value="ebba54e8-538e-41c9-b5be-363740638b47"/>
+            <column name="editor"/>
+
+            <column name="revision" value="1"/>
+            <column name="title" value="Stripe"/>
+            <column name="body" value="Stripe Payment Processor"/>
+
+            <column name="moderation_status" value="0"/>
+            <column name="flagged" value="0"/>
+
+            <column name="modified_on" valueDate="2022-10-08T05:39:36"/>
+        </insert>
+
+        <insert tableName="vnext_payment_provider">
+            <column name="identifier" value="cb20bb7d-e752-4529-a974-4dd2cbad68fc"/>
+            <column name="description" value="ebba54e8-538e-41c9-b5be-363740638b47"/>
+
+            <column name="deleted_on"/>
+            <column name="modified_on" valueDate="2022-10-08T05:39:36"/>
+            <column name="created_on" valueDate="2022-10-08T05:39:36"/>
+        </insert>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- vnext_user_payment_provider_account                                                                      -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="vnext_user_payment_provider_account">
+        <createTable tableName="vnext_user_payment_provider_account">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="user" type="UUID"><constraints nullable="false"/></column>
+            <column name="payment_provider" type="UUID"><constraints nullable="false"/></column>
+            <column name="account" type="VARCHAR(255)"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="uniq_user_payment_provider_account">
+        <createIndex indexName="uniq_user_payment_provider_account" tableName="vnext_user_payment_provider_account" unique="true">
+            <column name="user"/>
+            <column name="payment_provider"/>
+        </createIndex>
+    </changeSet>
+
+
+
+    <!-- ======================================================================================================== -->
+    <!-- data_source_id_map                                                                                       -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="data_source_id_map">
+        <createTable tableName="vnext_data_source_id_map">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="data_source" type="UUID"><constraints nullable="false"/></column>
+            <column name="data_source_type" type="INT"><constraints nullable="false"/></column>
+            <column name="data_source_identifier" type="UUID"><constraints nullable="false"/></column>
+            <column name="universal_identifier" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_data_source_id_map:standard           -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_data_source_id_map:standard">
+        <createIndex
+                indexName="idx_data_source_id_map_provider"
+                tableName="vnext_data_source_id_map">
+            <column name="data_source"/>
+            <column name="data_source_type"/>
+            <column name="data_source_identifier"/>
+        </createIndex>
+
+        <createIndex
+                indexName="idx_data_source_id_map_uid"
+                tableName="vnext_data_source_id_map">
+            <column name="universal_identifier"/>
+        </createIndex>
+
+        <createIndex
+                indexName="idx_data_source_id_map_created_on"
+                tableName="vnext_data_source_id_map">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_data_source_id_map_modified_on"
+                tableName="vnext_data_source_id_map">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_data_source_id_map_deleted_on"
+                tableName="vnext_data_source_id_map">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!-- business_activity_event_relevant_attribute                                                               -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="business_activity_event_relevant_attribute">
+        <createTable tableName="vnext_business_activity_event_relevant_attribute">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+            <column name="type" remarks="hotel, business, sky diver, tour guide, etc." type="INT"><constraints nullable="false"/></column>
+            <column name="attribute" type="INT"><constraints nullable="false"/></column>
+            <column name="weight" type="BIGINT"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- .............................................................. -->
+    <!-- idx_business_activity_event_relevant_attribute:standard        -->
+    <!-- .............................................................. -->
+    <changeSet author="kebrings" id="idx_business_activity_event_relevant_attribute:standard">
+        <createIndex
+                indexName="idx_business_activity_event_relevant_attribute_type"
+                tableName="vnext_business_activity_event_relevant_attribute">
+            <column name="type"/>
+            <column name="attribute"/>
+            <column name="weight"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_business_activity_event_relevant_attribute_created_on"
+                tableName="vnext_business_activity_event_relevant_attribute">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_business_activity_event_relevant_attribute_modified_on"
+                tableName="vnext_business_activity_event_relevant_attribute">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_business_activity_event_relevant_attribute_deleted_on"
+                tableName="vnext_business_activity_event_relevant_attribute">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- hotel                                                                                                    -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="hotel">
+        <createTable tableName="vnext_hotel">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="owner" type="UUID"><constraints nullable="true"/></column>
+            <column name="description" remarks="versioned_business" type="UUID"><constraints nullable="false"/></column>
+            <column name="details" remarks="cms" type="UUID"><constraints nullable="true"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_hotel:standard                        -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_hotel:standard">
+        <createIndex
+                indexName="idx_hotel_owner"
+                tableName="vnext_hotel">
+            <column name="owner"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_hotel_details"
+                tableName="vnext_hotel">
+            <column name="details"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_hotel_created_on"
+                tableName="vnext_hotel">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_hotel_modified_on"
+                tableName="vnext_hotel">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_hotel_deleted_on"
+                tableName="vnext_hotel">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_hotel_description                          -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_hotel_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_hotel"
+                                 constraintName="fk_hotel_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_business"
+        />
+    </changeSet>
+
+
+
+    <!-- ======================================================================================================== -->
+    <!-- hotel_attribute                                                                                          -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="hotel_attribute">
+        <createTable tableName="vnext_hotel_attribute">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="hotel" type="UUID"><constraints nullable="false"/></column>
+            <column name="attribute" type="INT"><constraints nullable="false"/></column>
+            <column name="value" type="BIGINT"><constraints nullable="true"/></column>
+            <column name="description" remarks="versioned_string" type="UUID"><constraints nullable="true"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_hotel_attribute:standard              -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_hotel_attribute:standard">
+        <createIndex
+                indexName="idx_hotel_attribute_attribute"
+                tableName="vnext_hotel_attribute">
+            <column name="attribute"/>
+            <column name="value"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_hotel_attribute_created_on"
+                tableName="vnext_hotel_attribute">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_hotel_attribute_modified_on"
+                tableName="vnext_hotel_attribute">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_hotel_attribute_deleted_on"
+                tableName="vnext_hotel_attribute">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_hotel_attribute_description                -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_hotel_attribute_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_hotel_attribute"
+                                 constraintName="fk_hotel_attribute_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_string"
+        />
+        <addForeignKeyConstraint baseColumnNames="hotel"
+                                 baseTableName="vnext_hotel_attribute"
+                                 constraintName="fk_hotel_attribute_hotel"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_hotel"
+        />
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- hotel_location                                                                                           -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="hotel_location">
+        <createTable tableName="vnext_hotel_location">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="hotel" type="UUID"><constraints nullable="false"/></column>
+            <column name="location" remarks="location" type="UUID"><constraints nullable="false"/></column>
+            <column name="description" remarks="versioned_business" type="UUID"><constraints nullable="true"/></column>
+            <column name="details" remarks="cms" type="UUID"><constraints nullable="true"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_hotel_location:standard               -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_hotel_location:standard">
+        <createIndex
+                indexName="idx_hotel_location_location"
+                tableName="vnext_hotel_location">
+            <column name="location"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_hotel_location_details"
+                tableName="vnext_hotel_location">
+            <column name="details"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_hotel_location_created_on"
+                tableName="vnext_hotel_location">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_hotel_location_modified_on"
+                tableName="vnext_hotel_location">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_hotel_location_deleted_on"
+                tableName="vnext_hotel_location">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_hotel_location_description                          -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_hotel_location_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_hotel_location"
+                                 constraintName="fk_hotel_location_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_business"
+        />
+        <addForeignKeyConstraint baseColumnNames="hotel"
+                                 baseTableName="vnext_hotel_location"
+                                 constraintName="fk_hotel_location_hotel"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_hotel"
+        />
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!-- hotel_location_attribute                                                                                 -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="hotel_location_attribute">
+        <createTable tableName="vnext_hotel_location_attribute">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="hotel_location" type="UUID"><constraints nullable="false"/></column>
+            <column name="attribute" type="INT"><constraints nullable="false"/></column>
+            <column name="value" type="BIGINT"><constraints nullable="true"/></column>
+            <column name="description" remarks="versioned_string" type="UUID"><constraints nullable="true"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_hotel_location_attribute:standard     -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_hotel_location_attribute:standard">
+        <createIndex
+                indexName="idx_hotel_location_attribute_attribute"
+                tableName="vnext_hotel_location_attribute">
+            <column name="attribute"/>
+            <column name="value"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_hotel_location_attribute_created_on"
+                tableName="vnext_hotel_location_attribute">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_hotel_location_attribute_modified_on"
+                tableName="vnext_hotel_location_attribute">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_hotel_location_attribute_deleted_on"
+                tableName="vnext_hotel_location_attribute">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_hotel_location_attribute_description       -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_hotel_location_attribute_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_hotel_location_attribute"
+                                 constraintName="fk_hotel_location_attribute_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_string"
+        />
+        <addForeignKeyConstraint baseColumnNames="hotel_location"
+                                 baseTableName="vnext_hotel_location_attribute"
+                                 constraintName="fk_hotel_location_attribute_hotel_location"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_hotel_location"
+        />
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- business                                                                                                 -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="business">
+        <createTable tableName="vnext_business">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="owner" type="UUID"><constraints nullable="true"/></column>
+            <column name="description" remarks="versioned_business" type="UUID"><constraints nullable="false"/></column>
+            <column name="details" remarks="cms" type="UUID"><constraints nullable="true"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_business:standard                     -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_business:standard">
+        <createIndex
+                indexName="idx_business_owner"
+                tableName="vnext_business">
+            <column name="owner"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_business_details"
+                tableName="vnext_business">
+            <column name="details"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_business_created_on"
+                tableName="vnext_business">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_business_modified_on"
+                tableName="vnext_business">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_business_deleted_on"
+                tableName="vnext_business">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_business_description                       -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_business_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_business"
+                                 constraintName="fk_business_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_business"
+        />
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- business_attribute                                                                                       -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="business_attribute">
+        <createTable tableName="vnext_business_attribute">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="business" type="UUID"><constraints nullable="false"/></column>
+            <column name="attribute" type="INT"><constraints nullable="false"/></column>
+            <column name="value" type="BIGINT"><constraints nullable="true"/></column>
+            <column name="description" remarks="versioned_string" type="UUID"><constraints nullable="true"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_business_attribute:standard           -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_business_attribute:standard">
+        <createIndex
+                indexName="idx_business_attribute_attribute"
+                tableName="vnext_business_attribute">
+            <column name="attribute"/>
+            <column name="value"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_business_attribute_created_on"
+                tableName="vnext_business_attribute">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_business_attribute_modified_on"
+                tableName="vnext_business_attribute">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_business_attribute_deleted_on"
+                tableName="vnext_business_attribute">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_business_attribute_description             -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_business_attribute_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_business_attribute"
+                                 constraintName="fk_business_attribute_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_string"
+        />
+        <addForeignKeyConstraint baseColumnNames="business"
+                                 baseTableName="vnext_business_attribute"
+                                 constraintName="fk_business_attribute_business"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_business"
+        />
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- business_location                                                                                        -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="business_location">
+        <createTable tableName="vnext_business_location">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="business" type="UUID"><constraints nullable="false"/></column>
+            <column name="location" remarks="location" type="UUID"><constraints nullable="false"/></column>
+            <column name="description" remarks="versioned_business" type="UUID"><constraints nullable="true"/></column>
+            <column name="details" remarks="cms" type="UUID"><constraints nullable="true"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_business_location:standard            -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_business_location:standard">
+        <createIndex
+                indexName="idx_business_location_location"
+                tableName="vnext_business_location">
+            <column name="location"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_business_location_details"
+                tableName="vnext_business_location">
+            <column name="details"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_business_location_created_on"
+                tableName="vnext_business_location">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_business_location_modified_on"
+                tableName="vnext_business_location">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_business_location_deleted_on"
+                tableName="vnext_business_location">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_business_location_description              -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_business_location_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_business_location"
+                                 constraintName="fk_business_location_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_business"
+        />
+        <addForeignKeyConstraint baseColumnNames="business"
+                                 baseTableName="vnext_business_location"
+                                 constraintName="fk_business_location_business"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_business"
+        />
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!-- business_location_attribute                                                                              -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="business_location_attribute">
+        <createTable tableName="vnext_business_location_attribute">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="business_location" type="UUID"><constraints nullable="false"/></column>
+            <column name="attribute" type="INT"><constraints nullable="false"/></column>
+            <column name="value" type="BIGINT"><constraints nullable="true"/></column>
+            <column name="description" remarks="versioned_string" type="UUID"><constraints nullable="true"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ............................................ -->
+    <!-- idx_business_location_attribute:standard     -->
+    <!-- ............................................ -->
+    <changeSet author="kebrings" id="idx_business_location_attribute:standard">
+        <createIndex
+                indexName="idx_business_location_attribute_attribute"
+                tableName="vnext_business_location_attribute">
+            <column name="attribute"/>
+            <column name="value"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_business_location_attribute_created_on"
+                tableName="vnext_business_location_attribute">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_business_location_attribute_modified_on"
+                tableName="vnext_business_location_attribute">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_business_location_attribute_deleted_on"
+                tableName="vnext_business_location_attribute">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_business_location_attribute_description    -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_business_location_attribute_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_business_location_attribute"
+                                 constraintName="fk_business_location_attribute_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_string"
+        />
+        <addForeignKeyConstraint baseColumnNames="business_location"
+                                 baseTableName="vnext_business_location_attribute"
+                                 constraintName="fk_business_location_attribute_business_location"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_business_location"
+        />
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- vendor                                                                                                   -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="vendor">
+        <createTable tableName="vnext_vendor">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="owner" type="UUID"><constraints nullable="true"/></column>
+            <column name="description" remarks="versioned_business" type="UUID"><constraints nullable="false"/></column>
+            <column name="details" remarks="cms" type="UUID"><constraints nullable="true"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_vendor:standard                       -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_vendor:standard">
+        <createIndex
+                indexName="idx_vendor_owner"
+                tableName="vnext_vendor">
+            <column name="owner"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_vendor_details"
+                tableName="vnext_vendor">
+            <column name="details"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_vendor_created_on"
+                tableName="vnext_vendor">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_vendor_modified_on"
+                tableName="vnext_vendor">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_vendor_deleted_on"
+                tableName="vnext_vendor">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_vendor_description                         -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_vendor_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_vendor"
+                                 constraintName="fk_vendor_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_business"
+        />
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!-- vendor_attribute                                                                                         -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="vendor_attribute">
+        <createTable tableName="vnext_vendor_attribute">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="vendor" type="UUID"><constraints nullable="false"/></column>
+            <column name="attribute" type="INT"><constraints nullable="false"/></column>
+            <column name="value" type="BIGINT"><constraints nullable="true"/></column>
+            <column name="description" remarks="versioned_string" type="UUID"><constraints nullable="true"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_vendor_attribute:standard             -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_vendor_attribute:standard">
+        <createIndex
+                indexName="idx_vendor_attribute_attribute"
+                tableName="vnext_vendor_attribute">
+            <column name="attribute"/>
+            <column name="value"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_vendor_attribute_created_on"
+                tableName="vnext_vendor_attribute">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_vendor_attribute_modified_on"
+                tableName="vnext_vendor_attribute">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_vendor_attribute_deleted_on"
+                tableName="vnext_vendor_attribute">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_vendor_attribute_description               -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_vendor_attribute_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_vendor_attribute"
+                                 constraintName="fk_vendor_attribute_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_string"
+        />
+        <addForeignKeyConstraint baseColumnNames="vendor"
+                                 baseTableName="vnext_vendor_attribute"
+                                 constraintName="fk_vendor_attribute_vendor"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_vendor"
+        />
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- vendor_location                                                                                          -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="vendor_location">
+        <createTable tableName="vnext_vendor_location">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="vendor" type="UUID"><constraints nullable="false"/></column>
+            <column name="location" remarks="location" type="UUID"><constraints nullable="false"/></column>
+            <column name="description" remarks="versioned_business" type="UUID"><constraints nullable="false"/></column>
+            <column name="details" remarks="cms" type="UUID"><constraints nullable="true"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_vendor_location:standard              -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_vendor_location:standard">
+        <createIndex
+                indexName="idx_vendor_location_location"
+                tableName="vnext_vendor_location">
+            <column name="location"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_vendor_location_details"
+                tableName="vnext_vendor_location">
+            <column name="details"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_vendor_location_created_on"
+                tableName="vnext_vendor_location">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_vendor_location_modified_on"
+                tableName="vnext_vendor_location">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_vendor_location_deleted_on"
+                tableName="vnext_vendor_location">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_vendor_location_description                -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_vendor_location_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_vendor_location"
+                                 constraintName="fk_vendor_location_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_business"
+        />
+        <addForeignKeyConstraint baseColumnNames="vendor"
+                                 baseTableName="vnext_vendor_location"
+                                 constraintName="fk_vendor_location_vendor"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_vendor"
+        />
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- vendor_location_attribute                                                                                -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="vendor_location_attribute">
+        <createTable tableName="vnext_vendor_location_attribute">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="vendor_location" type="UUID"><constraints nullable="false"/></column>
+            <column name="attribute" type="INT"><constraints nullable="false"/></column>
+            <column name="value" type="BIGINT"><constraints nullable="true"/></column>
+            <column name="description" remarks="versioned_string" type="UUID"><constraints nullable="true"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_vendor_location_attribute:standard    -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_vendor_location_attribute:standard">
+        <createIndex
+                indexName="idx_vendor_location_attribute_attribute"
+                tableName="vnext_vendor_location_attribute">
+            <column name="attribute"/>
+            <column name="value"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_vendor_location_attribute_created_on"
+                tableName="vnext_vendor_location_attribute">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_vendor_location_attribute_modified_on"
+                tableName="vnext_vendor_location_attribute">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_vendor_location_attribute_deleted_on"
+                tableName="vnext_vendor_location_attribute">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_vendor_location_attribute_description       -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_vendor_location_attribute_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_vendor_location_attribute"
+                                 constraintName="fk_vendor_location_attribute_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_string"
+        />
+        <addForeignKeyConstraint baseColumnNames="vendor_location"
+                                 baseTableName="vnext_vendor_location_attribute"
+                                 constraintName="fk_vendor_location_attribute_vendor_location"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_vendor_location"
+        />
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- restaurant                                                                                               -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="restaurant">
+        <createTable tableName="vnext_restaurant">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="owner" type="UUID"><constraints nullable="true"/></column>
+            <column name="description" remarks="versioned_business" type="UUID"><constraints nullable="false"/></column>
+            <column name="details" remarks="cms" type="UUID"><constraints nullable="true"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_restaurant:standard                   -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_restaurant:standard">
+        <createIndex
+                indexName="idx_restaurant_owner"
+                tableName="vnext_restaurant">
+            <column name="owner"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_restaurant_details"
+                tableName="vnext_restaurant">
+            <column name="details"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_restaurant_created_on"
+                tableName="vnext_restaurant">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_restaurant_modified_on"
+                tableName="vnext_restaurant">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_restaurant_deleted_on"
+                tableName="vnext_restaurant">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_restaurant_description                     -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_restaurant_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_restaurant"
+                                 constraintName="fk_restaurant_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_business"
+        />
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- restaurant_attribute                                                                                     -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="restaurant_attribute">
+        <createTable tableName="vnext_restaurant_attribute">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="restaurant" type="UUID"><constraints nullable="false"/></column>
+            <column name="attribute" type="INT"><constraints nullable="false"/></column>
+            <column name="value" type="BIGINT"><constraints nullable="true"/></column>
+            <column name="description" remarks="versioned_string" type="UUID"><constraints nullable="true"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_restaurant_attribute:standard         -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_restaurant_attribute:standard">
+        <createIndex
+                indexName="idx_restaurant_attribute_attribute"
+                tableName="vnext_restaurant_attribute">
+            <column name="attribute"/>
+            <column name="value"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_restaurant_attribute_created_on"
+                tableName="vnext_restaurant_attribute">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_restaurant_attribute_modified_on"
+                tableName="vnext_restaurant_attribute">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_restaurant_attribute_deleted_on"
+                tableName="vnext_restaurant_attribute">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_restaurant_attribute_description           -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_restaurant_attribute_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_restaurant_attribute"
+                                 constraintName="fk_restaurant_attribute_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_string"
+        />
+        <addForeignKeyConstraint baseColumnNames="restaurant"
+                                 baseTableName="vnext_restaurant_attribute"
+                                 constraintName="fk_restaurant_attribute_restaurant"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_restaurant"
+        />
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- restaurant_location                                                                                      -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="restaurant_location">
+        <createTable tableName="vnext_restaurant_location">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="restaurant" type="UUID"><constraints nullable="false"/></column>
+            <column name="location" remarks="location" type="UUID"><constraints nullable="false"/></column>
+            <column name="description" remarks="versioned_business" type="UUID"><constraints nullable="false"/></column>
+            <column name="details" remarks="cms" type="UUID"><constraints nullable="true"/></column>
+
+
+
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_restaurant_location:standard          -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_restaurant_location:standard">
+        <createIndex
+                indexName="idx_restaurant_location_location"
+                tableName="vnext_restaurant_location">
+            <column name="location"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_restaurant_location_details"
+                tableName="vnext_restaurant_location">
+            <column name="details"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_restaurant_location_created_on"
+                tableName="vnext_restaurant_location">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_restaurant_location_modified_on"
+                tableName="vnext_restaurant_location">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_restaurant_location_deleted_on"
+                tableName="vnext_restaurant_location">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_restaurant_location_description            -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_restaurant_location_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_restaurant_location"
+                                 constraintName="fk_restaurant_location_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_business"
+        />
+        <addForeignKeyConstraint baseColumnNames="restaurant"
+                                 baseTableName="vnext_restaurant_location"
+                                 constraintName="fk_restaurant_location_restaurant"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_restaurant"
+        />
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- restaurant_location_attribute                                                                            -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="restaurant_location_attribute">
+        <createTable tableName="vnext_restaurant_location_attribute">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="restaurant_location" type="UUID"><constraints nullable="false"/></column>
+            <column name="attribute" type="INT"><constraints nullable="false"/></column>
+            <column name="value" type="BIGINT"><constraints nullable="true"/></column>
+            <column name="description" remarks="versioned_string" type="UUID"><constraints nullable="true"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+
+
+    <!-- .............................................. -->
+    <!-- idx_restaurant_location_attribute:standard     -->
+    <!-- .............................................. -->
+    <changeSet author="kebrings" id="idx_restaurant_location_attribute:standard">
+        <createIndex
+                indexName="idx_restaurant_location_attribute_attribute"
+                tableName="vnext_restaurant_location_attribute">
+            <column name="attribute"/>
+            <column name="value"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_restaurant_location_attribute_created_on"
+                tableName="vnext_restaurant_location_attribute">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_restaurant_location_attribute_modified_on"
+                tableName="vnext_restaurant_location_attribute">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_restaurant_location_attribute_deleted_on"
+                tableName="vnext_restaurant_location_attribute">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_restaurant_location_attribute_description       -->
+    <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_restaurant_location_attribute_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_restaurant_location_attribute"
+                                 constraintName="fk_restaurant_location_attribute_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_string"
+        />
+        <addForeignKeyConstraint baseColumnNames="restaurant_location"
+                                 baseTableName="vnext_restaurant_location_attribute"
+                                 constraintName="fk_restaurant_location_attribute_restaurant_location"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_restaurant_location"
+        />
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!-- offer_deal                                                                                               -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="offer_deal">
+        <createTable tableName="vnext_offer_deal">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="deal_source" type="UUID"><constraints nullable="false"/></column>
+            <column name="deal_type" type="INT"><constraints nullable="false"/></column>
+            <column name="deal_category" type="INT"><constraints nullable="false"/></column>
+            <column name="subject" remarks="universal_identifier" type="UUID"><constraints nullable="true"/></column>
+            <column name="description" remarks="versioned_deal" type="UUID"><constraints nullable="false"/></column>
+            <column name="details" remarks="cms" type="UUID"><constraints nullable="true"/></column>
+
+            <column name="featured" type="INT"><constraints nullable="false"/></column>
+            <column name="display_discount" type="INT"><constraints nullable="false"/></column>
+            <column name="active" type="INT"><constraints nullable="false"/></column>
+            <column name="user_limit" type="BIGINT"><constraints nullable="false"/></column>
+
+            <column name="valid_from" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="true"/></column>
+            <column name="valid_until" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="true"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- offer_deal_attribute                                                                                     -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="offer_deal_attribute">
+        <createTable tableName="vnext_offer_deal_attribute">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="offer_deal" type="UUID"><constraints nullable="false"/></column>
+            <column name="attribute" type="INT"><constraints nullable="false"/></column>
+            <column name="value" type="BIGINT"><constraints nullable="true"/></column>
+            <column name="description" remarks="versioned_string" type="UUID"><constraints nullable="true"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_offer_deal_attribute:standard         -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_offer_deal_attribute:standard">
+        <createIndex
+                indexName="idx_offer_deal_attribute_attribute"
+                tableName="vnext_offer_deal_attribute">
+            <column name="attribute"/>
+            <column name="value"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_offer_deal_attribute_created_on"
+                tableName="vnext_offer_deal_attribute">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_offer_deal_attribute_modified_on"
+                tableName="vnext_offer_deal_attribute">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_offer_deal_attribute_deleted_on"
+                tableName="vnext_offer_deal_attribute">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_offer_deal_attribute_description           -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_offer_deal_attribute_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_offer_deal_attribute"
+                                 constraintName="fk_offer_deal_attribute_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_string"
+        />
+        <addForeignKeyConstraint baseColumnNames="offer_deal"
+                                 baseTableName="vnext_offer_deal_attribute"
+                                 constraintName="fk_offer_deal_attribute_offer_deal"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_offer_deal"
+        />
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- offer_activity                                                                                           -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="offer_activity">
+        <createTable tableName="vnext_offer_activity">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="activity_source" type="UUID"><constraints nullable="false"/></column>
+            <column name="activity_type" type="INT"><constraints nullable="false"/></column>
+            <column name="subject" remarks="universal_identifier" type="UUID"><constraints nullable="true"/></column>
+
+            <column name="description" remarks="versioned_activity" type="UUID"><constraints nullable="false"/></column>
+            <column name="details" remarks="cms" type="UUID"><constraints nullable="true"/></column>
+
+            <column name="featured" type="INT"><constraints nullable="false"/></column>
+            <column name="display_discount" type="INT"><constraints nullable="false"/></column>
+            <column name="active" type="INT"><constraints nullable="false"/></column>
+
+            <column name="price" type="BIGINT"><constraints nullable="true"/></column>
+            <column name="duration" type="BIGINT"><constraints nullable="true"/></column>
+
+            <column name="valid_from" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="true"/></column>
+            <column name="valid_until" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="true"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_offer_activity:standard               -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_offer_activity:standard">
+        <createIndex
+                indexName="idx_activity_source"
+                tableName="vnext_offer_activity">
+            <column name="activity_source"/>
+            <column name="activity_type"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_offer_activity_subject"
+                tableName="vnext_offer_activity">
+            <column name="subject"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_offer_activity_details"
+                tableName="vnext_offer_activity">
+            <column name="details"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_offer_activity_active"
+                tableName="vnext_offer_activity">
+            <column name="active"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_offer_activity_featured"
+                tableName="vnext_offer_activity">
+            <column name="featured"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_offer_activity_created_on"
+                tableName="vnext_offer_activity">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_offer_activity_modified_on"
+                tableName="vnext_offer_activity">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_offer_activity_deleted_on"
+                tableName="vnext_offer_activity">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_offer_activity_description                 -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_offer_activity_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_offer_activity"
+                                 constraintName="fk_offer_activity_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_activity"
+        />
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!-- offer_activity_attribute                                                                                 -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="offer_activity_attribute">
+        <createTable tableName="vnext_offer_activity_attribute">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="offer_activity" type="UUID"><constraints nullable="false"/></column>
+            <column name="attribute" type="INT"><constraints nullable="false"/></column>
+            <column name="value" type="BIGINT"><constraints nullable="true"/></column>
+            <column name="description" remarks="versioned_string" type="UUID"><constraints nullable="true"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_offer_activity_attribute:standard     -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_offer_activity_attribute:standard">
+        <createIndex
+                indexName="idx_offer_activity_attribute_attribute"
+                tableName="vnext_offer_activity_attribute">
+            <column name="attribute"/>
+            <column name="value"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_offer_activity_attribute_created_on"
+                tableName="vnext_offer_activity_attribute">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_offer_activity_attribute_modified_on"
+                tableName="vnext_offer_activity_attribute">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_offer_activity_attribute_deleted_on"
+                tableName="vnext_offer_activity_attribute">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_offer_activity_attribute_description       -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_offer_activity_attribute_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_offer_activity_attribute"
+                                 constraintName="fk_offer_activity_attribute_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_string"
+        />
+        <addForeignKeyConstraint baseColumnNames="offer_activity"
+                                 baseTableName="vnext_offer_activity_attribute"
+                                 constraintName="fk_offer_activity_attribute_offer_activity"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_offer_activity"
+        />
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- offer_night_life                                                                                         -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="offer_night_life">
+        <createTable tableName="vnext_offer_night_life">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="offer_night_life_source" type="UUID"><constraints nullable="false"/></column>
+            <column name="offer_night_life_type" type="INT"><constraints nullable="false"/></column>
+            <column name="subject" remarks="universal_identifier" type="UUID"><constraints nullable="true"/></column>
+
+            <column name="description" remarks="versioned_night_life" type="UUID"><constraints nullable="false"/></column>
+            <column name="details" remarks="cms" type="UUID"><constraints nullable="true"/></column>
+
+            <column name="featured" type="INT"><constraints nullable="false"/></column>
+            <column name="display_discount" type="INT"><constraints nullable="false"/></column>
+            <column name="active" type="INT"><constraints nullable="false"/></column>
+
+            <column name="price" type="BIGINT"><constraints nullable="true"/></column>
+            <column name="duration" type="BIGINT"><constraints nullable="true"/></column>
+
+            <column name="active_from" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="true"/></column>
+            <column name="active_until" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="true"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+
+
+
+    <!-- ......................................... -->
+    <!-- idx_offer_night_life:standard               -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_offer_night_life:standard">
+        <createIndex
+                indexName="idx_offer_night_life_source"
+                tableName="vnext_offer_night_life">
+            <column name="offer_night_life_source"/>
+            <column name="offer_night_life_type"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_offer_night_life_subject"
+                tableName="vnext_offer_night_life">
+            <column name="subject"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_offer_night_life_details"
+                tableName="vnext_offer_night_life">
+            <column name="details"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_offer_night_life_active"
+                tableName="vnext_offer_night_life">
+            <column name="active"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_offer_night_life_featured"
+                tableName="vnext_offer_night_life">
+            <column name="featured"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_offer_night_life_created_on"
+                tableName="vnext_offer_night_life">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_offer_night_life_modified_on"
+                tableName="vnext_offer_night_life">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_offer_night_life_deleted_on"
+                tableName="vnext_offer_night_life">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_offer_night_life_description                 -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_offer_night_life_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_offer_night_life"
+                                 constraintName="fk_offer_night_life_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_night_life"
+        />
+    </changeSet>
+
+
+
+    <!-- ======================================================================================================== -->
+    <!-- offer_night_life_attribute                                                                               -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="offer_night_life_attribute">
+        <createTable tableName="vnext_offer_night_life_attribute">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="offer_night_life" type="UUID"><constraints nullable="false"/></column>
+            <column name="attribute" type="INT"><constraints nullable="false"/></column>
+            <column name="value" type="BIGINT"><constraints nullable="true"/></column>
+            <column name="description" remarks="versioned_string" type="UUID"><constraints nullable="true"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_offer_night_life_attribute:standard   -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_offer_night_life_attribute:standard">
+        <createIndex
+                indexName="idx_offer_night_life_attribute_attribute"
+                tableName="vnext_offer_night_life_attribute">
+            <column name="attribute"/>
+            <column name="value"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_offer_night_life_attribute_created_on"
+                tableName="vnext_offer_night_life_attribute">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_offer_night_life_attribute_modified_on"
+                tableName="vnext_offer_night_life_attribute">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_offer_night_life_attribute_deleted_on"
+                tableName="vnext_offer_night_life_attribute">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_offer_night_life_attribute_description     -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_offer_night_life_attribute_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_offer_night_life_attribute"
+                                 constraintName="fk_offer_night_life_attribute_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_string"
+        />
+        <addForeignKeyConstraint baseColumnNames="offer_night_life"
+                                 baseTableName="vnext_offer_night_life_attribute"
+                                 constraintName="fk_offer_night_life_attribute_offer_night_life"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_offer_night_life"
+        />
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!-- menu                                                                                                     -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="menu">
+        <createTable tableName="vnext_menu">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="restaurant" remarks="restaurant or restaurant_location" type="UUID"><constraints nullable="false"/></column>
+            <column name="description" remarks="versioned_string" type="UUID"><constraints nullable="false"/></column>
+
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- menu_section                                                                                             -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="menu_section">
+        <createTable tableName="vnext_menu_section">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="menu" type="UUID"><constraints nullable="false"/></column>
+            <column name="description" remarks="versioned_string" type="UUID"><constraints nullable="false"/></column>
+            <column name="annual_period_from" type="DATETIME"><constraints nullable="true"/></column>
+            <column name="annual_period_until" type="DATETIME"><constraints nullable="true"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!-- menu_item                                                                                                -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="menu_item">
+        <createTable tableName="vnext_menu_item">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="description" remarks="versioned_menu_item" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!-- menu_item_option                                                                                         -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="menu_item_option">
+        <createTable tableName="vnext_menu_item_option">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="description" remarks="versioned_menu_item_option" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- menu_item_image                                                                                          -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="menu_item_image">
+        <createTable tableName="vnext_menu_item_image">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="menu_item" type="UUID"><constraints nullable="false"/></column>
+            <column name="image" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="locale_language" type="INT" remarks="Locale Language"><constraints nullable="false"/></column>
+            <column name="locale_country" type="INT" remarks="Locale Country"><constraints nullable="false"/></column>
+            <column name="localized" type="INT" defaultValueNumeric="0"><constraints nullable="false"/></column>
+            <column name="status" type="INT"><constraints nullable="false"/></column>
+            <column name="added_by" remarks="entity/user/system" type="UUID"><constraints nullable="false"/></column>
+            <column name="menu_item_image_type" type="INT"><constraints nullable="false"/></column>
+            <column name="weight" type="BIGINT"><constraints nullable="true"/></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="description" type="UUID" remarks="versioned_image_string"><constraints nullable="true"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!-- menu_item_menu_item_option                                                                               -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="menu_item_menu_item_option">
+        <createTable tableName="vnext_menu_item_menu_item_option">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="menu_item" type="UUID"><constraints nullable="false"/></column>
+            <column name="menu_item_option" remarks="versioned_menu_item" type="UUID"><constraints nullable="false"/></column>
+            <column name="weight" type="BIGINT"><constraints nullable="false"/></column>
+            <column name="description" remarks="versioned_string" type="UUID"><constraints nullable="true"/></column>
+
+            <!-- overrides -->
+            <column name="market_price" type="INT"><constraints nullable="true"/></column>
+            <column name="price" type="INTEGER UNSIGNED"><constraints nullable="true"/></column>
+            <column name="currency" type="INT"><constraints nullable="true"/></column>
+            <column name="order_in_advance" type="TIME"><constraints nullable="true"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!-- menu_option_image                                                                                        -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="menu_option_image">
+        <createTable tableName="vnext_menu_option_image">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="menu_option" type="UUID"><constraints nullable="false"/></column>
+            <column name="image" type="UUID"><constraints nullable="false"/></column>
+            <column name="weight" type="BIGINT"><constraints nullable="false"/></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="locale_language" type="INT" remarks="Locale Language"><constraints nullable="false"/></column>
+            <column name="locale_country" type="INT" remarks="Locale Country"><constraints nullable="false"/></column>
+            <column name="localized" type="INT" defaultValueNumeric="0"><constraints nullable="false"/></column>
+            <column name="status" type="INT"><constraints nullable="false"/></column>
+            <column name="added_by" remarks="entity/user/system" type="UUID"><constraints nullable="false"/></column>
+            <column name="menu_item_image_type" type="INT"><constraints nullable="false"/></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="description" type="UUID" remarks="versioned_image_string"><constraints nullable="true"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- menu_section_availability                                                                                -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="menu_section_availability">
+        <createTable tableName="vnext_menu_section_availability">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="menu_section" type="BIGINT"><constraints nullable="false"/></column>
+            <column name="day_of_week" type="INT"><constraints nullable="false"/></column>
+            <column name="available_from" remarks="if null, restaurant open hours" type="TIME"><constraints nullable="true"/></column>
+            <column name="available_until" remarks="if null, restaurant close hours" type="TIME"><constraints nullable="true"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+
+
+    <!-- ======================================================================================================== -->
+    <!-- user_referral_code                                                                                -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="user_referral_code">
+        <createTable tableName="vnext_user_referral_code">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="user" type="UUID"><constraints nullable="false"/></column>
+            <column name="weight" type="BIGINT"><constraints nullable="false"/></column>
+            <column name="code" type="VARCHAR(128)"><constraints nullable="false" unique="true"/></column>
+            <column name="status" type="INT"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- user_referral_code_redemption                                                                            -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="user_referral_code_redemption">
+        <createTable tableName="vnext_user_referral_code_redemption">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="user" remarks="denormalized for querying from user_referral_code" type="UUID"><constraints nullable="false"/></column>
+            <column name="user_referral_code" type="UUID"><constraints nullable="false"/></column>
+            <column name="referred_user" type="UUID"><constraints nullable="false"/></column>
+            <column name="entered_referral_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="true"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+
+
+    <!-- ======================================================================================================== -->
+    <!-- select_sign_up                                                                                           -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="vnext_select_sign_up">
+        <createTable tableName="vnext_select_sign_up">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="status" type="PERMISSION_STATUS">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user" type="UUID">
+                <constraints nullable="true"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="referral_code" type="VARCHAR(255)"/>
+            <column name="strategy" type="VARCHAR(255)"/>
+            <column name="source" type="VARCHAR(255)"/>
+            <column name="deleted_on" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="modified_on" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_on" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="kebrings" id="vnext_select_sign_up update identifier field">
+        <dropTable tableName="vnext_select_sign_up"/>
+        <createTable tableName="vnext_select_sign_up">
+            <column name="identifier" type="UUID">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="status" type="PERMISSION_STATUS">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user" type="UUID">
+                <constraints nullable="true"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="referral_code" type="VARCHAR(255)"/>
+            <column name="strategy" type="VARCHAR(255)"/>
+            <column name="source" type="VARCHAR(255)"/>
+            <column name="deleted_on" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="modified_on" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_on" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+
+</databaseChangeLog>

@@ -1,0 +1,321 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Jetzy | Live the Jetzy Life!</title>
+    <meta name="description" content="Jetzy is the social media App for travelers and flashpackers, who love to travel the world.">
+    <meta name="keywords" content="Jetzy, Jetzyapp, Jetzy app, Jetzy Social Media, Jetzy Travel, Travel, Travel deals, Travel deals to, Vegas travel, Travel beach, Travel hotels, Travel air, Travel spain Barcelona, Travel London, Travel, Katy Perry, Ty Sawyer, Shama Zehra, Best Travel, Fashion, Fashion travel, Shopping, Shopping travel, Travel new york city, Travel Orlando, Travel united states, European travel, Travel New york, Vacations, Holidays, Vacations travel, Beach, Beach travel, Deals on travel, Social, Social travel, Meet locals, Meet up, Trip, Islands, Island, Island travel, Travel Australia, Best travel deals, Flashpacker, Flashpacking, Millennial, Millennials, Dating, Travel app, Connect, Meet, Backpacks, Wine, Wine travel, Wine tours, Biking, Bike tours, Tours, Culture, Museums, Restaurants, LGBT travel, Paris, Paris Travel, Thailand, Thailand travel, Rome, Rome deals, Berlin, Berlin Travel, Barcelona, Barcelona travel, Spain travel, Italy, Germany, India, England, UK, Ireland, Russia, Turkey, China, Hong Kong, Singapore, Africa, Asia, New Zealand, Budapest, Instanbul, Spa, Spa travel, Cruise ship, Cruiseship deal, Brazil, Greece, Greek Island, Adventure, Escape, Green travel, Live like a local, Authentic travel, France, Portugal, Egypt, Sydney, Queensland Australia, Indonesia, Indonesia travel, Bali, Bali travel, Tahiti, Tahiti deals, Tahiti islands, Bora Bora, Bora Bora honeymoon, Destination, Wedding, Moorea, Surf Travel, Surf destination, Top 10 travel destinations, Food, travel, Milan Travel, Travel apparel, Travel bags , Free travel, Travel rewards " />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" href="Splash/css/style.css">
+    <link rel="stylesheet" href="Splash/css/responsive.css">
+    <link rel="shortcut icon" href="Images/favicon.ico">
+    <link rel="icon" type="image/gif" href="Images/animated_favicon1.gif">
+    <script src="Splash/js/jquery-1.8.3.min.js"></script>
+    <script src="Splash/js/waypoints.min.js"></script>
+    <script src="Splash/js/TweenMax.min.js"></script>
+    <script src="Splash/js/jquery.video.js"></script>
+    <script src="Splash/js/TC.js"></script>
+    <meta property="og:image" content="https://www.jetzyapp.com/images/logo.png" />
+    <!-- Include this to make the og:image larger -->
+    <meta name="twitter:card" content="summary_large_image">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <video autoplay poster="" id="bgvid" loop>
+        <source src="Splash/video/1492354.webm" type="video/webm">
+        <source src="Splash/video/1492354.mp4" type="video/mp4">
+    </video>
+    <div id="pageContainer">
+        <div class="wrapper clearfix">
+            <!--Edit Start-->
+            <header class="footer clearfix">
+                <div class="contactWrap clearfix">
+                    <div class="contact fLeft">
+                        <ul class="footerNav">
+                            <li class="active"><a href="/">Home</a></li>
+                            <li style="display: none"><a href="/about-the-app.html">About</a></li>
+                            <li><a href="/termsofuse.html">Terms of Use</a></li>
+                            <li><a href="/privacy.html">Privacy Policy</a></li>
+                            <li><a href="/careers">Careers</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </header>
+            <!--Edit End-->
+            <div class="header innHeader clearfix">
+                <div class="headerInner clearfix">
+                    <h1 class="logo">
+                        <a href="https://www.jetzyapp.com/">
+                            <img src="Splash/images/logo.png" alt="">
+                        </a>
+                    </h1>
+                </div>
+            </div>
+            <div class="ourmissionCont content clearfix">
+                <div class="missionContent clearfix">
+                    <h2 style="margin-bottom: 0">Jetzy Terms of Use</h2>
+                    <h3 style="display: none">&nbsp;</h3>
+
+                    <p>
+                        The website located at jetzyapp.com, and the mobile application called, "Jetzy" (the "<strong>App</strong>" and, together with the website, the "<strong>Site</strong>") and the services offered through the Site (the "<strong>Services</strong>") are copyrighted works belonging to SZ Global, Inc. ("<strong>Company</strong>", "<strong>us</strong>", "<strong>our</strong>", and "<strong>we</strong>").  Certain features of the Site or Services may be subject to additional guidelines, terms, or rules, which will be posted on the Site or Services in connection with such features.  All such additional terms, guidelines, and rules are incorporated by reference into these Terms. In the event of a conflict between the additional terms and any provision in these Terms, the additional terms will prevail, but only with respect to the Service to which the additional terms apply.
+                    </p>
+                    <p>THESE TERMS OF USE ("TERMS") SET FORTH THE LEGALLY BINDING TERMS AND CONDITIONS THAT GOVERN YOUR USE OF THE SITE AND SERVICES.  BY ACCESSING OR USING THE SITE OR SERVICES OR DOWNLOADING THE APP, YOU ARE ACCEPTING THESE TERMS (ON BEHALF OF YOURSELF OR THE ENTITY THAT YOU REPRESENT), AND YOU REPRESENT AND WARRANT THAT (1) YOU HAVE READ, UNDERSTAND, AND AGREE TO BE BOUND BY THESE TERMS, (2) YOU ARE OF LEGAL AGE TO FORM A BINDING CONTRACT WITH COMPANY, AND (3) YOU HAVE THE AUTHORITY TO ENTER INTO THE TERMS (ON BEHALF OF YOURSELF OR THE ENTITY THAT YOU REPRESENT).  IF YOU DO NOT AGREE WITH ALL OF THE PROVISIONS OF THESE TERMS, DO NOT ACCESS AND/OR USE THE SITE OR SERVICES.</p>
+                    <p>THESE TERMS INCLUDE A CLASS ACTION WAIVER AND A WAIVER OF JURY TRIALS, REQUIRE BINDING ARBITRATION ON AN INDIVIDUAL BASIS TO RESOLVE DISPUTES, AND ALSO LIMIT THE REMEDIES AVAILABLE TO YOU IN THE EVENT OF A DISPUTE.</p>
+                    <p class="head">1. Accounts</p>
+                    <p>
+
+                        <strong>1.1 Account Creation</strong>.  In order to use certain features of the Site or Services, you must register for an account ("<strong>Account</strong>") and provide certain information about yourself as prompted by the account registration form.  You represent and warrant that: (a) all required registration information you submit is truthful and accurate; (b) you will maintain the accuracy of such information.  You may delete your Account at any time, for any reason, by following the instructions on the Site or Services or uninstalling the App.  You may not have more than one Account. You agree not to create an Account or use the Site or Services if you have been previously removed by us or banned from any of the Services. Company reserves the right in its sole discretion to suspend or terminate your Account and refuse any and all current or future use of the Site or Services (or any portion thereof) at any time for any reason. You agree that Company will not be liable to you or to any third party for any suspension or termination of your Account or any refusal of any use of the Site or Services (or any portion thereof). Information on your profile ("<strong>Profile Information</strong>") may include information and content you provide and/or upload as well as information we collect from your account with social networking sites, such as Facebook, Twitter and LinkedIn (each an "<strong>SNS</strong>"). Company reserves the right in its sole discretion to remove Profile Information at any time for any reason. You agree that Company will not be liable to you or to any third party for such removal.
+                    </p>
+                    <p>
+                        <strong>1.2 Account Responsibilities</strong>.  You are responsible for maintaining the confidentiality of your Account login information and are fully responsible for all activities that occur under your Account.  You agree to immediately notify Company at contact@jetzyapp.com of any unauthorized use, or suspected unauthorized use of your Account or any other breach of security.  Company cannot and will not be liable for any loss or damage arising from your failure to comply with the above requirements.
+                    </p>
+
+                    <p>
+                        <strong>1.3 Social Networking Sites</strong>. The Services may allow users to connect with various SNSs. By connecting your SNS account, you represent that you are entitled to grant us access to your SNS account without breach by you of any SNS terms and conditions and without obligating us to pay any fees or making us subject to any usage limitations. By granting Company access to your SNS account, you understand that we may access, make available, and store any information, content, or other materials that you have provided to or stored in your SNS account ("<strong>SNS Content</strong>") accessible through the Site and Services so that it is available on your Account. Unless otherwise specified in the Terms, all SNS Content will be deemed your User Content (as defined below) for all purposes of the Terms. PLEASE NOTE THAT YOUR RELATIONSHIP WITH EACH SNS IS GOVERNED SOLELY BY YOUR AGREEMENT(S) WITH SUCH SNS, AND WE DISCLAIM ANY LIABILITY FOR PERSONALLY IDENTIFIABLE INFORMATION THAT MAY BE PROVIDED TO US BY AN SNS IN VIOLATION OF THE PRIVACY SETTINGS THAT YOU HAVE SET IN THE SNS. Company makes no effort to review any SNS Content for any purpose, including but not limited to, for accuracy, legality or noninfringement, and Company is not responsible for any SNS Content.
+                    </p>
+
+                    <p class="head">2. Access to the Site and Servicesp</p>
+                    <p>
+                        <strong>2.1 License</strong>.  Subject to these Terms, Company grants you a non-transferable, non-exclusive, revocable, limited license to use and access, solely for your own personal, noncommercial use (a) the App on any compatible device that you own or control, and (b) the other aspects of Site and Services. Furthermore, with respect to any App accessed through or downloaded from the Apple App Store or Google Play Store (each an "<strong>App Store</strong>" and references to the App Store include the corporate entity and its subsidiaries making the App Store available to you), you agree to comply with all applicable third party terms of the App Store (i.e., Apple App Store's "Usage Rules") (the "<strong>Usage Rules</strong>") when using the App. To the extent the terms of these Terms provide for usage rules that are less restrictive than or otherwise in conflict with the Usage Rules, the more restrictive term applies.
+                    </p>
+                    <p>
+                        <strong>2.2 Certain Restrictions</strong>.  The rights granted to you in these Terms are subject to the following restrictions: (a) you shall not license, sell, rent, lease, transfer, assign, distribute, host, or otherwise commercially exploit the Site or Services, whether in whole or in part, or any content displayed on the Site or Services; (b) you shall not modify, make derivative works of, disassemble, reverse compile or reverse engineer any part of the Site or Services; (c) you shall not access the Site or Services in order to build a similar or competitive website, product, or service; and (d) except as expressly stated herein, no part of the Site or Services may be copied, reproduced, distributed, republished, downloaded, displayed, posted or transmitted in any form or by any means.  Unless otherwise indicated, any future release, update, or other addition to functionality of the Site or Services shall be subject to these Terms.  All copyright and other proprietary notices on the Site or Services (or on any content displayed on the Site or Services) must be retained on all copies thereof. Company makes no representation that the Site or Services are appropriate for use in locations other than the United States.
+                    </p>
+                    <p>
+                        <strong>2.4 No Support or Maintenance; Updates</strong>.  You acknowledge and agree that Company will have no obligation to provide you with any support or maintenance in connection with the Site or Services. You agree that Company is not obligated to create or provide any corrections, updates, upgrades, bug fixes, and/or enhancements of the Site or Services (each an "Update"). However, in the event Company decides to offer an Update, you agree that Company may amend these Terms in connection with such Update without specific notice to you and that your use of the Site or Services following such Update is conditioned upon your acceptance of any revised Terms. By using the Site or Services following an Update, you are representing that you have reviewed the then-current version of these Terms and agree to be bound by such version. All Updates will be governed by the version of these Terms published by Company as of the date you use the Site or Services following such Update.
+                    </p>
+                    <p>
+                        <strong>2.5 Ownership.</strong>  Excluding any User Content that you may provide (defined below), you acknowledge that (a) the Site and Services are and will remain the sole property of Company and is subject to protection under U.S. and foreign copyright laws and (b) all the intellectual property rights, including copyrights, patents, trademarks, and trade secrets, in the Site and Services and content made available through the Site and Services are owned by Company or Company's suppliers.  Company's name, logo, and the product names associated with the Site or Services belong to Company (or its suppliers, where applicable), and no right or license is granted to use them by implication, estoppel or otherwise. Neither these Terms nor your access to the Site or Services transfers to you or any third party any rights, title or interest in or to such intellectual property rights, except for the limited access rights expressly set forth in Section 2.1.  Company and its suppliers reserve all rights not granted in these Terms.  There are no implied licenses granted under these Terms.
+                    </p>
+                    <p>
+                        <strong>2.6 Feedback.</strong> You agree that submission of any ideas, suggestions, and/or proposals to us ("Feedback") is at your own risk and that Company has no obligations (including without limitation obligations of confidentiality) with respect to such Feedback. You represent and warrant that you have all rights necessary to submit the Feedback. You hereby grant to Company a fully paid, royalty-free, perpetual, irrevocable, worldwide, non-exclusive, and fully sublicensable right and license to use, reproduce, perform, display, distribute, adapt, modify, re-format, create derivative works of, and otherwise commercially or non-commercially exploit in any manner it deems appropriate, any and all Feedback, and to sublicense the foregoing rights. Company will treat any Feedback you provide to Company as non-confidential and non-proprietary.  You agree that you will not submit to Company any information or ideas that you consider to be confidential or proprietary.
+                    </p>
+                    <p class="head">3. User Content </p>
+
+                    <p>
+                        <strong>3.1 User Content</strong>.  "User Content" means any and all information and content that a user submits to, or uses with, the Site or Services (e.g., content in the user's profile or postings).  You are solely responsible for your User Content.  You assume all risks associated with use of your User Content, including any reliance on its accuracy, completeness or usefulness by others, or any disclosure of your User Content that personally identifies you or any third party.  You hereby represent and warrant that your User Content does not violate our Acceptable Use Policy (defined in Section 3.3).  You may not represent or imply to others that your User Content is in any way provided, sponsored or endorsed by Company.  Because you alone are responsible for your User Content, you may expose yourself to liability if, for example, your User Content violates the Acceptable Use Policy.  Company is not obligated to backup any User Content, and your User Content may be deleted at any time without prior notice.  You are solely responsible for creating and maintaining your own backup copies of your User Content if you desire. Company has no responsibility or liability for the deletion or accuracy of any User Content; the failure to store, transmit, or receive transmission of User Content; or the security, privacy, storage, or transmission of other communications originating with or involving use of the Site or Services. You acknowledge that Company has no obligation to pre-screen User Content, although Company reserves the right in its sole discretion to pre-screen, refuse, or remove any User Content at any time for any reason. PLEASE MAKE SURE THAT YOU ONLY PROVIDE INFORMATION TO THE SERVICES THAT YOU ARE ALLOWED TO PROVIDE WITHOUT VIOLATING ANY OBLIGATIONS YOU MIGHT HAVE TOWARDS A THIRD PARTY, INCLUDING ANY CONFIDENTIALITY OBLIGATIONS. PLEASE DO NOT PROVIDE ANY INFORMATION THAT YOU ARE NOT ALLOWED TO SHARE WITH OTHERS, INCLUDING BY CONTRACT OR LAW; PLEASE NOTE THAT ANY INFORMATION YOU PROVIDE WILL BE ACCESSIBLE BY USERS OF THE SITE AND SERVICES.
+
+                    </p>
+                    <p>
+                        <strong>3.2 License</strong>.  You hereby grant (and you represent and warrant that you have the right to grant) to Company an irrevocable, nonexclusive, royalty-free and fully paid, worldwide license to reproduce, distribute, publicly display and perform, prepare derivative works of, incorporate into other works, and otherwise use and exploit your User Content, and to grant sublicenses of the foregoing rights, solely for the purposes of including your User Content in the Site and Services and operating and providing the Site and Services.  You hereby irrevocably waive (and agree to cause to be waived) any claims and assertions of moral rights or attribution with respect to your User Content.
+                    </p>
+                    <p>
+                        <strong>3.3 Acceptable Use Policy</strong>.  The following terms constitute our "Acceptable Use Policy":<br>
+                        <strong>(a)</strong> You agree not to use the Site or Services to collect, upload, transmit, display, or distribute any User Content (i) that violates any third-party right, including any copyright, trademark, patent, trade secret, moral right, privacy right, right of publicity, or any other intellectual property or proprietary right; (ii) that is unlawful, harassing, abusive, tortious, threatening, harmful, invasive of another's privacy, vulgar, defamatory, false, intentionally misleading, trade libelous, pornographic, obscene, patently offensive, promotes racism, bigotry, hatred, or physical harm of any kind against any group or individual or is otherwise objectionable; (iii) that is harmful to minors in any way; or (iv) that is in violation of any law, regulation, or obligations or restrictions imposed by any third party.
+                        In addition, you agree not to: (i) upload, transmit, or distribute to or through the Site or Services any computer viruses, worms, or any software intended to damage or alter a computer system or data; (ii) send through the Site or
+                        <br>
+                        <strong>(b)</strong> Services unsolicited or unauthorized advertising, promotional materials, junk mail, spam, chain letters, pyramid schemes, or any other form of duplicative or unsolicited messages, whether commercial or otherwise; (iii) use the Site or Services to harvest, collect, gather or assemble information or data regarding other users, including e-mail addresses, without their consent; (iv) interfere with, disrupt, or create an undue burden on servers or networks connected to the Site or Services, or violate the regulations, policies or procedures of such networks; (v) attempt to gain unauthorized access to the Site or Services (or to other computer systems or networks connected to or used together with the Site or Services), whether through password mining or any other means; (vi) harass or interfere with any other user's use and enjoyment of the Site or Services; or (vi) use software or automated agents or scripts to produce multiple accounts on the Site or Services, or to generate automated searches, requests, or queries to (or to strip, scrape, or mine data from) the Site or Services (provided, however, that we conditionally grant to the operators of public search engines revocable permission to use spiders to copy materials from the Site or Services for the sole purpose of and solely to the extent necessary for creating publicly available searchable indices of the materials, but not caches or archives of such materials, subject to the parameters set forth in our robots.txt file).
+                    </p>
+                    <p>
+                        <strong>3.4 Enforcement.</strong>  We reserve the right (but have no obligation) to review any User Content, and to investigate and/or take appropriate action against you in our sole discretion if you violate the Acceptable Use Policy or any other provision of these Terms or otherwise create liability for us or any other person.  Such action may include removing or modifying your User Content, terminating your Account, and/or reporting you to law enforcement authorities.
+                    </p>
+                    <p>
+                        <strong>3.5 Forum Guidelines.</strong> The Site or Services may include various areas that enable you to post information, provide feedback, recommendations, reviews, and comments, and otherwise interact with other users, either through postings or by interacting in real-time (the "<strong>Forums</strong>"). In connection with such Forums, you agree to abide by any rules that Company publishes in connection therewith, including but not limited to, the prohibition on use of the Site or Services for any unlawful purpose. Although Company may from time to time review the Forums, you acknowledge and agree that Company is under no obligation to monitor or control, and will have no liability for, any information available via the Forums. You acknowledge that any opinions, statement, recommendation, offers, advice or other information presented or disseminated on the Forums are those of their respective authors who are solely responsible and liable for their content. Company reserves the right, in its sole discretion, to refuse to post or remove any material submitted or posted on the Forums.
+                    </p>
+                    <p><strong>3.6 Ownership</strong>. Each user owns its own User Content. By making available your User Content on or in the Site or Services, you represent that you own or have all rights necessary to grant the licenses to User Content herein.</p>
+
+                    <p class="head">4. App Stores</p>
+                    <p>You acknowledge and agree that the availability of the App is dependent on the App Store from which you received the App. You and Company acknowledge that these Terms are between you and Company and not with the App Store and that Company, and not the App Store, is responsible for the App and the content thereof. Company is responsible for providing any maintenance and support services with respect to the App and the App Store has no obligation whatsoever to furnish any maintenance and support services with respect to the App. Company is solely responsible for any product warranties, whether express or implied by law, to the extent not effectively disclaimed. In the event of any failure of the App to conform to any applicable warranty, you may notify the App Store, and the App Store may refund the purchase price for the App to you; and to the maximum extent permitted by applicable law, the App Stores will not have any other warranty obligation whatsoever with respect to the App, and any other claims, losses, liabilities, damages, costs or expenses attributable to any failure to conform to any warranty will be Company's sole responsibility. You and Company acknowledge that Company, and not the App Store, is responsible for addressing any claims relating to the App or your possession and/or use of that App, including, but not limited to: (1) product liability claims; (2) any claim that the App fails to conform to any applicable legal or regulatory requirement; and (3) claims arising under consumer protection or similar legislation. You and Company acknowledge that, in the event of any third party claim that the App infringes or your possession and use of that App that third party's intellectual property rights, Company, and not the App Store, will be solely responsible for the investigation, defense, settlement and discharge of any such intellectual property infringement claim. You represent and warrant that (i) you are not located in a country that is subject to a U.S. Government embargo, or that has been designated by the U.S. Government as a "terrorist supporting" country; and (ii) you are not listed on any U.S. Government list of prohibited or restricted parties. You agree to comply with, and your license to use the App is conditioned upon your compliance with, all applicable third party terms of agreement (e.g., the App Store's terms and policies and the Usage Rules) when using the App. Company and you acknowledge and agree that the App Stores and their subsidiaries, are third party beneficiaries of these Terms, and that, upon your acceptance of the terms and conditions of these Terms, the App Stores will have the right (and will be deemed to have accepted the right) to enforce these Terms against you as a third party beneficiary thereof.</p>
+
+                    <p class="head">5. Rewards</p>
+                    <p>
+                        When you interact with the Site and Services while logged into your Account, such as by starting or responding to a chat, posting content or sharing content via an SNS, you will earn points ("Points"). You can use your Points to redeem rewards. Points are earned solely by interacting the Site and Services and cannot be purchased. Points are purely promotional.  Company reserves the right to correct inaccurate Points represented in your Account. POINTS HAVE NO CASH VALUE OR MONETARY VALUE, AND ARE NOT REDEEMABLE OR EXCHANGABLE FOR CASH.  POINTS THAT REMAIN ON YOUR ACCOUNT WILL EXPIRE AND WILL BE FORFEITED IF THIS AGREEMENT, YOUR ACCOUNT OR THE SERVICES ARE TERMINATED. The current means of earning Points and number of Points earned is available in the "rewards" section of the App. COMPANY RESERVES THE RIGHT, WITHOUT LIMITATION, TO TERMINATE, CHANGE, LIMIT, MODIFY, OR CANCEL ANY OF THE ABOVE MEANS OF EARNING POINTS AND THE NUMBER OF POINTS EARNED, AT ANY TIME, WITH OR WITHOUT NOTICE.
+                    </p>
+                    <p class="head">6. Indemnification.</p>
+                    <p>
+                        You agree to indemnify and hold Company (and its officers, employees, and agents) harmless, including costs and attorneys' fees, from any claim or demand made by any third party due to or arising out of (a) your use of, or inability to use, the Site or Services; (b) your violation of these Terms; (c) your violation of applicable laws or regulations; (d) your User Content; (e) your violation of any rights of another party, including any users; or (f) your interaction with any other user.  Company reserves the right, at your expense, to assume the exclusive defense and control of any matter for which you are required to indemnify us, and you agree to cooperate with our defense of these claims.  You agree not to settle any matter without the prior written consent of Company.  Company will use reasonable efforts to notify you of any such claim, action or proceeding upon becoming aware of it.
+                    </p>
+                    <p class="head">7. Third-Party Links & Ads; Other Users and Third Parties; Release</p>
+                    <p>7.1 <strong>Third-Party Links & Ads.</strong>  The Site or Services may contain links to third-party websites and services, and/or display advertisements for third parties (collectively, "<strong>Third-Party Links & Ads</strong>").  Such Third-Party Links & Ads are not under the control of Company, and Company is not responsible for any Third-Party Links & Ads.  Company provides access to these Third-Party Links & Ads only as a convenience to you, and does not review, approve, monitor, endorse, warrant, or make any representations with respect to Third-Party Links & Ads.  You use all Third-Party Links & Ads at your own risk, and should apply a suitable level of caution and discretion in doing so.  When you click on any of the Third-Party Links & Ads, the applicable third party's terms and policies apply, including the third party's privacy and data gathering practices.  You should make whatever investigation you feel necessary or appropriate before proceeding with any transaction in connection with such Third-Party Links & Ads.</p>
+                    <p>
+                        <strong>7.2 Other Users and Third Parties.</strong>  Each user of the Site or Services is solely responsible for any and all of its own User Content.  Because we do not control User Content, you acknowledge and agree that we are not responsible for any User Content, whether provided by you or by others.  We make no guarantees regarding the accuracy, currency, suitability, or quality of any User Content.  Your interactions with other users of the Site or Services are solely between you and such users.  You agree that Company will not be responsible for any loss or damage incurred as the result of any such interactions.  If there is a dispute between you and any user of the Site or Services, we are under no obligation to become involved. Your correspondence or business dealings with, or participation in promotions of, third parties found in or through the Services, including payment and delivery of related goods or services, and any other terms, conditions, warranties or representations associated with such dealings, are solely between you and such third party. You further acknowledge and agree that Company shall not be responsible or liable, directly or indirectly, for any damage or loss caused or alleged to be caused by or in connection with the use of, or reliance upon, any such content, information, statements, advertising, goods or services or other materials available on or through any such website or resource. You acknowledge that Company does not attempt to confirm, and does not confirm, any user's purported identity. We do not investigate any user's reputation, conduct, morality, criminal background or verify the information that any user submits to the Site or Services. We do not endorse any persons who use or register for the Site or Services. You are responsible for determining the identity and suitability of others whom you may contact or who may contact you by means of the Site or Services. You agree to exercise caution and good judgment in all interactions with other users. Company encourages you to communicate directly with others through the tools available on the Site and Services and to review users' profile pages and feedback from other users. You may also wish to consider using a third-party service that provides additional user verification.
+
+                    </p>
+                    <p><strong>7.3 Release.</strong>  You hereby release and forever discharge Company (and our officers, employees, agents, successors, and assigns) from, and hereby waive and relinquish, each and every past, present and future dispute, claim, controversy, demand, right, obligation, liability, action and cause of action of every kind and nature (including personal injuries, death, and property damage), that has arisen or arises directly or indirectly out of, or that relates directly or indirectly to, the Site or Services (including any interactions with, or act or omission of, other users of the Site or Services or any Third-Party Links & Ads).  IF YOU ARE A CALIFORNIA RESIDENT, YOU HEREBY WAIVE CALIFORNIA CIVIL CODE SECTION 1542 IN CONNECTION WITH THE FOREGOING, WHICH STATES: "A GENERAL RELEASE DOES NOT EXTEND TO CLAIMS WHICH THE CREDITOR DOES NOT KNOW OR SUSPECT TO EXIST IN HIS OR HER FAVOR AT THE TIME OF EXECUTING THE RELEASE, WHICH IF KNOWN BY HIM OR HER MUST HAVE MATERIALLY AFFECTED HIS OR HER SETTLEMENT WITH THE DEBTOR."</p>
+                    <p class="head">8. Disclaimers</p>
+                    <p>YOU EXPRESSLY ACKNOWLEDGE AND AGREE THAT YOUR USE OF THE SITE AND SERVICES IS AT YOUR SOLE RISK AND THAT, TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, THE SITE AND SERVICES AND ANY CONTENT, PRODUCTS, SERVICES OR INFORMATION PROVIDED BY THE SITE OR SERVICES ARE PROVIDED ON AN "AS-IS" AND "AS AVAILABLE" BASIS, WITH ALL FAULTS AND WITHOUT WARRANTY OF ANY KIND, AND COMPANY (AND OUR SUPPLIERS) EXPRESSLY DISCLAIM ANY AND ALL WARRANTIES AND CONDITIONS OF ANY KIND, WHETHER EXPRESS, IMPLIED, OR STATUTORY, INCLUDING ALL WARRANTIES AND CONDITIONS WITH RESPECT TO THE SITE AND SERVICES AND ANY CONTENT, PRODUCTS, SERVICES OR INFORMATION PROVIDED BY THE SITE OR SERVICES EITHER EXPRESS, IMPLIED OR STATUTORY, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES AND/OR CONDITIONS OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, QUIET ENJOYMENT, ACCURACY, OR NON-INFRINGEMENT.  WE (AND OUR SUPPLIERS) MAKE NO WARRANTY, REPRESENTATION OR CONDITION THAT: (1) THE SIRE OR SERVICES WILL MEET YOUR REQUIREMENTS; (2) YOUR USE OF THE SITE OR SERVICES WILL BE UNINTERRUPTED, TIMELY, SECURE OR ERROR-FREE; (3) THE RESULTS THAT MAY BE OBTAINED FROM USE OF THE SITE OR SERVICES WILL BE ACCURATE OR RELIABLE; OR (4) ANY ERRORS IN THE SITE OR SERVICES WILL BE CORRECTED.</p>
+                    <p>
+                        ANY CONTENT DOWNLOADED FROM OR OTHERWISE ACCESSED THROUGH THE SITE OR SERVICES IS ACCESSED AT YOUR OWN RISK, AND YOU SHALL BE SOLELY RESPONSIBLE FOR ANY DAMAGE TO YOUR PROPERTY OR PERSON, INCLUDING, BUT NOT LIMITED TO, YOUR COMPUTER SYSTEM AND ANY DEVICE YOU USE TO ACCESS THE SITE OR SERVICES, OR ANY OTHER LOSS THAT RESULTS FROM ACCESSING SUCH CONTENT.
+                    </p>
+                    <p>
+                        YOU ACKNOWLEDGE AND AGREE THAT COMPANY (AND ITS SUPPLIERS) ARE NOT LIABLE, AND YOU AGREE NOT TO SEEK TO HOLD COMPANY (AND ITS SUPPLIERS) LIABLE, FOR THE CONDUCT OF THIRD PARTIES, INCLUDING OPERATORS OF EXTERNAL SITES, AND THAT THE RISK OF INJURY FROM SUCH THIRD PARTIES RESTS ENTIRELY WITH YOU. COMPANY MAKES NO WARRANTY THAT THE GOODS OR SERVICES PROVIDED BY THIRD PARTIES WILL MEET YOUR REQUIREMENTS OR BE AVAILABLE ON AN UNINTERRUPTED, SECURE, OR ERROR-FREE BASIS.  COMPANY MAKES NO WARRANTY REGARDING THE QUALITY OF ANY SUCH GOODS OR SERVICES, OR THE ACCURACY, TIMELINESS, TRUTHFULNESS, COMPLETENESS OR RELIABILITY OF ANY USER CONTENT OBTAINED THROUGH THE SITE OR SERVICES.
+                        THE SERVICES MAY BE SUBJECT TO DELAYS, CANCELLATIONS AND OTHER DISRUPTIONS.  COMPANY MAKES NO WARRANTY, REPRESENTATION OR CONDITION WITH RESPECT TO SERVICES, INCLUDING BUT NOT LIMITED TO, THE QUALITY, EFFECTIVENESS, REPUTATION AND OTHER CHARACTERISTICS OF SERVICES.
+                    </p>
+                    <p>
+                        NO ADVICE OR INFORMATION, WHETHER ORAL OR WRITTEN, OBTAINED FROM COMPANY OR THROUGH THE SITE OR SERVICES WILL CREATE ANY WARRANTY NOT EXPRESSLY MADE HEREIN.
+                    </p>
+                    <p>
+                        YOU ARE SOLELY RESPONSIBLE FOR ALL OF YOUR COMMUNICATIONS AND INTERACTIONS WITH OTHER USERS OF THE SITE AND SERVICES. YOU UNDERSTAND THAT COMPANY DOES NOT MAKE ANY ATTEMPT TO VERIFY THE STATEMENTS OF USERS OF THE SITE OR SERVICES.
+                    </p>
+                    <p>
+                        FROM TIME TO TIME, COMPANY MAY OFFER NEW "BETA" FEATURES OR TOOLS WITH WHICH ITS USERS MAY EXPERIMENT.  SUCH FEATURES OR TOOLS ARE OFFERED SOLELY FOR EXPERIMENTAL PURPOSES AND WITHOUT ANY WARRANTY OF ANY KIND, AND MAY BE MODIFIED OR DISCONTINUED AT COMPANY'S SOLE DISCRETION.  THE PROVISIONS OF THIS SECTION APPLY WITH FULL FORCE TO SUCH FEATURES OR TOOLS.
+                    </p>
+                    <p>
+                        IF APPLICABLE LAW REQUIRES ANY WARRANTIES WITH RESPECT TO THE SITE OR SERVICES, ALL SUCH WARRANTIES ARE LIMITED IN DURATION TO NINETY (90) DAYS FROM THE DATE OF FIRST USE.  SOME JURISDICTIONS DO NOT ALLOW THE EXCLUSION OF IMPLIED WARRANTIES, SO THE ABOVE EXCLUSION MAY NOT APPLY TO YOU.  SOME JURISDICTIONS DO NOT ALLOW LIMITATIONS ON HOW LONG AN IMPLIED WARRANTY LASTS, SO THE ABOVE LIMITATION MAY NOT APPLY TO YOU.
+                    </p>
+
+
+                    <p class="head">9. Limitation on Liability</p>
+                    <p>TO THE MAXIMUM EXTENT PERMITTED BY LAW, IN NO EVENT SHALL COMPANY (OR OUR SUPPLIERS) BE LIABLE TO YOU OR ANY THIRD PARTY FOR ANY LOST PROFITS, LOST DATA, COSTS OF PROCUREMENT OF SUBSTITUTE PRODUCTS, OR ANY INDIRECT, CONSEQUENTIAL, EXEMPLARY, INCIDENTAL, SPECIAL OR PUNITIVE DAMAGES ARISING FROM OR RELATING TO THESE TERMS OR YOUR USE OF, OR INABILITY TO USE, THE SITE OR SERVICES , HOWEVER CAUSED, WHETHER BASED ON BREACH OF CONTRACT, TORT (INCLUDING NEGLIGENCE), PROPRIETARY RIGHTS INFRINGEMENT, PRODUCT LIABILITY OR OTHERWISE, EVEN IF COMPANY HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.  ACCESS TO, AND USE OF, THE SITE AND SERVICES IS AT YOUR OWN DISCRETION AND RISK, AND YOU WILL BE SOLELY RESPONSIBLE FOR ANY DAMAGE TO YOUR DEVICE OR COMPUTER SYSTEM, OR LOSS OF DATA RESULTING THEREFROM.</p>
+                    <p>
+                        TO THE MAXIMUM EXTENT PERMITTED BY LAW, NOTWITHSTANDING ANYTHING TO THE CONTRARY CONTAINED HEREIN, OUR (AND OUR SUPPLIERS') LIABILITY TO YOU FOR ANY DAMAGES ARISING FROM OR RELATED TO THESE TERMS (FOR ANY CAUSE WHATSOEVER AND REGARDLESS OF THE FORM OF THE ACTION), WILL AT ALL TIMES BE LIMITED TO THE GREATER OF (A) THE FEES PAID TO COMPANY BY YOU IN THE PRECEDING TWELVE (12) MONTHS AND (B) FIFTY US DOLLARS (U.S. $50).  THE EXISTENCE OF MORE THAN ONE CLAIM WILL NOT ENLARGE THIS LIMIT.  YOU AGREE THAT OUR SUPPLIERS WILL HAVE NO LIABILITY OF ANY KIND ARISING FROM OR RELATING TO THESE TERMS.
+                    </p>
+                    <p>
+                        YOU AND COMPANY AGREE THAT ANY CAUSE OF ACTION ARISING OUT OF OR RELATED TO THE TERMS, THE SITE OR THE SERVICES MUST COMMENCE WITHIN ONE (1) YEAR AFTER THE CAUSE OF ACTION ACCRUES. OTHERWISE, SUCH CAUSE OF ACTION IS PERMANENTLY BARRED.
+                    </p>
+                    <p>
+                        SOME JURISDICTIONS DO NOT ALLOW THE LIMITATION OR EXCLUSION OF LIABILITY FOR INCIDENTAL OR CONSEQUENTIAL DAMAGES, SO THE ABOVE LIMITATION OR EXCLUSION MAY NOT APPLY TO YOU. THE LIMITATIONS OF DAMAGES SET FORTH ABOVE ARE FUNDAMENTAL ELEMENTS OF THE BASIS OF THE BARGAIN BETWEEN COMPANY AND YOU.
+                    </p>
+
+                    <p class="head">10.Term and Termination.</p>
+                    <p>Subject to this Section, these Terms will remain in full force and effect while you use the Site or Services.  You may terminate your Account at any time, for any reason, by following the instructions on the Site or Services or uninstalling the App.  We may suspend or terminate your rights to use the Site and/or Services (including your Account) at any time for any reason at our sole discretion, including for any use of the Site or Services in violation of these Terms.  Upon termination of your rights under these Terms, your Account and right to access and use the Site and Services will terminate immediately and any Points remaining in your Account will expire.  You understand that any termination of your Account may involve deletion of your User Content associated with your Account from our live databases.  Company will not have any liability whatsoever to you for any termination of your rights under these Terms, including for termination of your Account or deletion of your User Content.  Even after your rights under these Terms are terminated, all provisions of these Terms which by their nature should survive, will survive, including, without limitation, ownership provisions, warranty disclaimers, and limitations of liability.</p>
+                    <p class="head">11.Copyright Policy.</p>
+                    <p>
+                        Company respects the intellectual property of others and asks that users of our Site and Services do the same.  In connection with our Site and Services, we have adopted and implemented a policy respecting copyright law that provides for the removal of any infringing materials and for the termination, in appropriate circumstances, of users of our Site or Services who are repeat infringers of intellectual property rights, including copyrights.  If you believe that one of our users is, through the use of our Site or Services , unlawfully infringing the copyright(s) in a work, and wish to have the allegedly infringing material removed, the following information in the form of a written notification (pursuant to 17 U.S.C. § 512(c)) must be provided to our designated Copyright Agent:
+                    </p>
+                    <p>
+                        <div class="listBox">
+                    <p>1. your physical or electronic signature;</p>
+
+                    <p>2. identification of the copyrighted work(s) that you claim to have been infringed;</p>
+
+                    <p>3. identification of the material on our services that you claim is infringing and that you request us to remove;</p>
+
+                    <p>4. sufficient information to permit us to locate such material;</p>
+
+                    <p>5. your address, telephone number, and e-mail address;</p>
+
+                    <p>6. a statement that you have a good faith belief that use of the objectionable material is not authorized by the copyright owner, its agent, or under the law; and</p>
+
+                    <p>7. a statement that the information in the notification is accurate, and under penalty of perjury, that you are either the owner of the copyright that has allegedly been infringed or that you are authorized to act on behalf of the copyright owner.</p>
+                </div>
+                </p>
+                <p>Please note that, pursuant to 17 U.S.C. § 512(f), any misrepresentation of material fact (falsities) in a written notification automatically subjects the complaining party to liability for any damages, costs and attorney's fees incurred by us in connection with the written notification and allegation of copyright infringement.</p>
+
+                <p>
+                    The designated Copyright Agent for Company is: Ty Sawyer
+                    <br>
+                    Designated Agent: Ty Sawyer, Co-Founder<br>
+                    Address of Agent: 205 E. 42nd, 16th Floor, NY, NY 10017<br>
+                    Telephone: 4079213454<br>
+                    Fax: N/A<br>
+                    Email:Ty@Jetzyapp.com
+                </p>
+                <p class="head">12. General</p>
+                <p>
+                    <strong>12.1 Changes.</strong>  These Terms are subject to occasional revision, and if we make any substantial changes, we may notify you by sending you an e-mail to the last e-mail address you provided to us (if any), and/or by prominently posting notice of the changes on our Site or Services.  We will notify you of any changes to our Terms by posting the new Terms here: jetzyapp.com/terms. You are responsible for providing us with your most current e-mail address.  In the event that the last e-mail address that you have provided us is not valid, or for any reason is not capable of delivering to you the notice described above, our dispatch of the e-mail containing such notice will nonetheless constitute effective notice of the changes described in the notice.  Any changes to these Terms will be effective upon the earlier of thirty (30) calendar days following our dispatch of an e-mail notice to you (if applicable) or thirty (30) calendar days following our posting of notice of the changes on our Site or Services.  These changes will be effective immediately for new users of our Site or Services.  Continued use of our Site or Services following notice of such changes shall indicate your acknowledgement of such changes and agreement to be bound by the terms and conditions of such changes.
+                </p>
+                <p>
+                    <strong>12.2 Arbitration Agreement; Class Waiver; Waiver of Trial by Jury.  Please read this Section ("Arbitration Agreement") carefully.  It is part of your contract with Company and affects your rights.  It contains procedures for MANDATORY BINDING ARBITRATION AND A CLASS ACTION WAIVER.</strong>
+                </p>
+
+                <div class="listBox">
+                    <p><strong>(a)</strong> Applicability of Arbitration Agreement.  All claims and disputes (excluding claims for injunctive or other equitable relief as set forth below) in connection with the Terms or the use of any product or service provided by Company that cannot be resolved informally or in small claims court shall be resolved by binding arbitration on an individual basis under the terms of this Arbitration Agreement.  Unless otherwise agreed to, all arbitration proceedings shall be held in English.  This Arbitration Agreement applies to you and Company, and to any subsidiaries, affiliates, agents, employees, predecessors in interest, successors, and assigns, as well as all authorized or unauthorized users or beneficiaries of services or goods provided under the Terms.</p>
+                    <p><strong>(b)</strong> Notice Requirement and Informal Dispute Resolution.  Before either party may seek arbitration, the party must first send to the other party a written Notice of Dispute ("<strong>Notice</strong>") describing the nature and basis of the claim or dispute, and the requested relief.  A Notice to Company should be sent to: contact@jetzyapp.com.  After the Notice is received, you and Company may attempt to resolve the claim or dispute informally.  If you and Company do not resolve the claim or dispute within thirty (30) days after the Notice is received, either party may begin an arbitration proceeding The amount of any settlement offer made by any party may not be disclosed to the arbitrator until after the arbitrator has determined the amount of the award, if any, to which either party is entitled.</p>
+                    <p><strong>(c)</strong> Arbitration Rules.  Arbitration shall be initiated through the American Arbitration Association ("<strong>AAA</strong>"), an established alternative dispute resolution provider ("<strong>ADR Provider</strong>") that offers arbitration as set forth in this section.  If AAA is not available to arbitrate, the parties shall agree to select an alternative ADR Provider.  The rules of the ADR Provider shall govern all aspects of the arbitration, including but not limited to the method of initiating and/or demanding arbitration, except to the extent such rules are in conflict with the Terms.  The AAA Consumer Arbitration Rules ("Arbitration Rules") governing the arbitration are available online at www.adr.org or by calling the AAA at 1-800-778-7879.  The arbitration shall be conducted by a single, neutral arbitrator.  Any claims or disputes where the total amount of the award sought is less than Ten Thousand U.S. Dollars (US $10,000.00) may be resolved through binding non-appearance-based arbitration, at the option of the party seeking relief.  For claims or disputes where the total amount of the award sought is Ten Thousand U.S. Dollars (US $10,000.00) or more, the right to a hearing will be determined by the Arbitration Rules.  Any hearing will be held in a location within 100 miles of your residence, unless you reside outside of the United States, and unless the parties agree otherwise.  If you reside outside of the U.S. the arbitrator shall give the parties reasonable notice of the date, time and place of any oral hearings.  Any judgment on the award rendered by the arbitrator may be entered in any court of competent jurisdiction.  If the arbitrator grants you an award that is greater than the last settlement offer that Company made to you prior to the initiation of arbitration, the will pay you the greater of the award or $2,500.00.  Each party shall bear its own costs (including attorney's fees) and disbursements arising out of the arbitration and shall pay an equal share of the fees and costs of the ADR Provider.</p>
+                    <p>
+                        <strong>(d)</strong> Additional Rules for Non-Appearance Based Arbitration.  If non-appearance based arbitration is elected, the arbitration shall be conducted by telephone, online and/or based solely on written submissions; the specific manner shall be chosen by the party initiating the arbitration.  The arbitration shall not involve any personal appearance by the parties or witnesses unless otherwise agreed by the parties.
+                    </p>
+                    <p>
+                        <strong>(e)</strong> Time Limits.  If you or Company pursue arbitration, the arbitration action must be initiated and/or demanded within the statute of limitations (i.e., the legal deadline for filing a claim) and within any deadline imposed under the AAA Rules for the pertinent claim.
+                    </p>
+                    <p>
+                        <strong>(f)</strong> Authority of Arbitrator.  If arbitration is initiated, the arbitrator will decide the rights and liabilities, if any, of you and Company, and the dispute will not be consolidated with any other matters or joined with any other cases or parties.  The arbitrator shall have the authority to grant motions dispositive of all or part of any claim.  The arbitrator shall have the authority to award monetary damages, and to grant any non-monetary remedy or relief available to an individual under applicable law, the AAA Rules, and the Terms.  The arbitrator shall issue a written award and statement of decision describing the essential findings and conclusions on which the award is based, including the calculation of any damages awarded.  The arbitrator has the same authority to award relief on an individual basis that a judge in a court of law would have.  The award of the arbitrator is final and binding upon you and Company.
+                    </p>
+                    <p>
+                        <strong>(g)</strong> Waiver of July Trial.  THE PARTIES HEREBY WAIVE THEIR CONSTITUTIONAL AND STATUTORY RIGHTS TO GO TO COURT AND HAVE A TRIAL IN FRONT OF A JUDGE OR A JURY, instead electing that all claims and disputes shall be resolved by arbitration under this Arbitration Agreement.  Arbitration procedures are typically more limited, more efficient and less costly than rules applicable in a court and are subject to very limited review by a court.  In the event any litigation should arise between you and Company in any state or federal court in a suit to vacate or enforce an arbitration award or otherwise, YOU AND COMPANY WAIVE ALL RIGHTS TO A JURY TRIAL, instead electing that the dispute be resolved by a judge.
+                    </p>
+                    <p><strong>(h)</strong> Waiver of Class or Consolidated Actions.  ALL CLAIMS AND DISPUTES WITHIN THE SCOPE OF THIS ARBITRATION AGREEMENT MUST BE ARBITRATED OR LITIGATED ON AN INDIVIDUAL BASIS AND NOT ON A CLASS BASIS, AND CLAIMS OF MORE THAN ONE CUSTOMER OR USER CANNOT BE ARBITRATED OR LITIGATED JOINTLY OR CONSOLIDATED WITH THOSE OF ANY OTHER CUSTOMER OR USER.</p>
+                    <p>
+                        <strong>(i)</strong> Confidentiality.  All aspects of the arbitration proceeding, including but not limited to the award of the arbitrator and compliance therewith, shall be strictly confidential.  The parties agree to maintain confidentiality unless otherwise required by law.  This paragraph shall not prevent a party from submitting to a court of law any information necessary to enforce this Agreement, to enforce an arbitration award, or to seek injunctive or equitable relief.
+                    </p>
+                    <p><strong>(j)</strong> Severability.  If any part or parts of this Arbitration Agreement are found under the law to be invalid or unenforceable by a court of competent jurisdiction, then such specific part or parts shall be of no force and effect and shall be severed and the remainder of this Arbitration Agreement shall continue in full force and effect.</p>
+                    <p><strong>(k)</strong> Right to Waive.  Any or all of the rights and limitations set forth in this Arbitration Agreement may be waived by the party against whom the claim is asserted.  Such waiver shall not waive or affect any other portion of this Arbitration Agreement.</p>
+                    <p><strong>(l)</strong> Survival.  This Arbitration Agreement will survive the termination of your relationship with Company.</p>
+                    <p><strong>(m)</strong> Small Claims Court.  Notwithstanding the foregoing, either you or Company may bring an individual action in small claims court.</p>
+                    <p><strong>(n)</strong> Emergency Equitable Relief.  Notwithstanding the foregoing, either party may seek emergency equitable relief before a state or federal court in order to maintain the status quo pending arbitration.  A request for interim measures shall not be deemed a waiver of any other rights or obligations under this Arbitration Agreement.</p>
+                    <p><strong>(o)</strong>Claims Not Subject to Arbitration.  Notwithstanding the foregoing, claims of defamation, violation of the Computer Fraud and Abuse Act, and infringement or misappropriation of the other party's patent, copyright, trademark or trade secrets shall not be subject to this Arbitration Agreement.</p>
+                    <p><strong>(p)</strong> Courts.  In any circumstances where the foregoing Arbitration Agreement permits the parties to litigate in court, the parties hereby agree to submit to the personal jurisdiction of the courts located within New York, New York, for such purpose.</p>
+                    <p><strong>(q)</strong>Governing Law. These Terms and any action related thereto will be governed and interpreted by and under the laws of the State of New York, consistent with the Federal Arbitration Act, without giving effect to any principles that provide for the application of the law of another jurisdiction.  The United Nations Convention on Contracts for the International Sale of Goods does not apply to these Terms.</p>
+
+                </div>
+                <p>
+                    <strong>12.3 Export.</strong>  The Site and Services may be subject to U.S. export control laws and may be subject to export or import regulations in other countries.  You agree not to export, reexport, or transfer, directly or indirectly, any U.S. technical data acquired from Company, or any products utilizing such data, in violation of the United States export laws or regulations.
+                </p>
+                <p><strong>12.4 Disclosures</strong>.  Company is located at the address set forth below.  If you are a California resident, you may report complaints to the Complaint Assistance Unit of the Division of Consumer Product of the California Department of Consumer Affairs by contacting them in writing at 400 R Street, Sacramento, CA 95814, or by telephone at (800) 952-5210.</p>
+                <p><strong>12.5 Electronic Communications.</strong>  The communications between you and Company use electronic means, whether you use the Site or Services or send us emails, or whether Company posts notices on the Site or Services or communicates with you via email.  For contractual purposes, you (a) consent to receive communications from Company in an electronic form; and (b) agree that all terms and conditions, agreements, notices, disclosures, and other communications that Company provides to you electronically satisfy any legal requirement that such communications would satisfy if it were be in a hardcopy writing.  The foregoing does not affect your non-waivable rights.</p>
+                <p><strong>12.6 Notices.</strong> Where Company requires that you provide an e-mail address, you are responsible for providing Company with your most current e-mail address.  In the event that the last e-mail address you provided to Company is not valid, or for any reason is not capable of delivering to you any notices required/ permitted by the Terms, Company's dispatch of the e-mail containing such notice will nonetheless constitute effective notice.  You may give notice to Company at the following address:  205 E 42nd, 16th Floor, New York, NY 10017.  Such notice shall be deemed given when received by Company by letter delivered by nationally recognized overnight delivery service or first class postage prepaid mail at the above address.</p>
+                <p><strong>12.7 Miscellaneous.</strong>  These Terms constitute the entire agreement between you and us regarding the use of the Site and Services.  Our failure to exercise or enforce any right or provision of these Terms shall not operate as a waiver of such right or provision.  The section titles in these Terms are for convenience only and have no legal or contractual effect.  The word "including" means "including without limitation".  If any provision of these Terms is, for any reason, held to be invalid or unenforceable, the other provisions of these Terms will be unimpaired and the invalid or unenforceable provision will be deemed modified so that it is valid and enforceable to the maximum extent permitted by law.  Your relationship to Company is that of an independent contractor, and neither party is an agent or partner of the other.  These Terms, and your rights and obligations herein, may not be assigned, subcontracted, delegated, or otherwise transferred by you without Company's prior written consent, and any attempted assignment, subcontract, delegation, or transfer in violation of the foregoing will be null and void.  Company may freely assign these Terms.  The terms and conditions set forth in these Terms shall inure to the benefit of and be binding upon permitted assignees.</p>
+                <p><strong>12.8 International Users.</strong>  The Site and Services can be accessed from countries around the world and may contain references to Services that are not available in your country.  These references do not imply that Company intends to announce such Services in your country.  The Site and Services are controlled and offered by Company from its facilities in the United States of America. Company makes no representations that the Site or Services are appropriate or available for use in other locations.  Those who access or use the Site or Services from other jurisdictions do so at their own volition and are responsible for compliance with local law.</p>
+                <p><strong>12.9 Force Majeure. </strong>Company shall not be liable for any delay or failure to perform resulting from causes outside its reasonable control, including, but not limited to, acts of God, war, terrorism, riots, embargos, acts of civil or military authorities, fire, floods, accidents, strikes or shortages of transportation facilities, fuel, energy, labor or materials.</p>
+                <p><strong>12.10 Copyright/Trademark Information.</strong>  Copyright © 2015 SZ Global, Inc.  All rights reserved.  All trademarks, logos and service marks ("Marks") displayed on the Site or Services are our property or the property of other third parties.  You are not permitted to use these Marks without our prior written consent or the consent of such third party which may own the Marks.</p>
+                <p>
+                    <strong>12.11 Contact Information:</strong>
+                    <br>
+                    SZ Global, Inc.<br>
+                    Address: 205 E 42nd, 16th Floor, New York, NY 10017<br>
+                    Telephone: 212-706-8329<br>
+                    Email: contact@jetzyapp.com
+                </p>
+
+            </div>
+        </div>
+        <footer class="footer clearfix">
+            <div class="contactWrap clearfix">
+                <div class="contact fLeft">
+                    <ul class="footerNav">
+                        <li><a href="/">Home</a></li>
+                        <li style="display:none"><a href="about-the-app.html">About The App</a></li>
+                        <li class="active"><a href="javascript:void(0)">Terms of Use</a></li>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="JetzyAppFaq.html">FAQ</a></li>
+                        <li> <a href="/careers">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="contact fRight"><span>Contact Us:</span> <a href="mailto:contact@jetzyapp.com">contact@jetzyapp.com</a></div>
+            </div>
+            <div class="copyrightCont clearfix">
+
+                <p class="copyright">
+                    S Z Global Inc.<br />
+                    <!--Designed and Developed by <a href="http://bit.ly/1BYKaMb" target="_blank" style="color: #97b0ff; text-decoration: underline">Icreon Tech</a>-->
+                </p>
+                <span class="logo2">
+                    <img src="Splash/images/logo2.png" alt="">
+                </span>
+                <div class="socialCont">
+                    <ul class="social">
+                        <li>Follow us</li>
+                        <li>
+                            <a href="https://www.facebook.com/jetzyapp" target="_blank">
+                                <img src="Splash/images/fb2.png" alt="">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://twitter.com/jetzyapp" target="_blank">
+                                <img src="Splash/images/twitter2.png" alt="">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://instagram.com/jetzyapp" target="_blank">
+                                <img src="Splash/images/instagram2.png" alt="">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    </div>
+    <script>
+        $(function () {
+            TC.homePage.init();
+        });
+    </script>
+
+</body>
+</html>

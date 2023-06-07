@@ -1,0 +1,8 @@
+id,permission,role_id,resource_id,inserted_at,updated_at
+# I used UUID.uuid5(:url, "Jetzy.Resources.admin.messages") style uuid generators.
+# it is important for UUIDS to be non-sequential to prevent malicious browser/api call attacks.
+2c65379d-689d-571c-a5de-f2bc4b627c5a,4,admin,captions,2022-09-07 14:34:28,2022-09-07 14:34:29.000000
+49cfe775-eac5-5f4f-9a2e-6912f896f01b,4,admin,admin-rewards,2022-09-02 19:03:31,2022-09-02 19:03:32.000000
+badf8b3d-81c3-5aae-a8de-a0464e6448ff,4,admin,upload-user-csv,2022-09-07 14:34:28,2022-09-07 14:34:29.000000
+976d4e72-2281-5454-935a-905d9098d134,1,user,nearby-recommendations,2022-07-18 17:49:27,2022-07-18 17:49:33.000000
+88585db5-742e-5d3c-9633-13f687823ef5,1,admin,nearby-recommendations,2022-07-18 17:49:27,2022-07-18 17:49:33.000000

@@ -1,0 +1,101 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <!-- ======================================================================================================== -->
+    <!-- user_last_activity_logs                                                                                  -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="user_last_activity_logs">
+        <createTable tableName="user_last_activity_logs">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_last_activity_logs_pkey"/>
+            </column>
+            <column name="end_point" type="VARCHAR(255)"/>
+            <column name="app_version" type="VARCHAR(255)"/>
+            <column name="api_version" type="INTEGER"/>
+            <column name="device_id" type="VARCHAR(255)"/>
+            <column name="device_type" type="INTEGER"/>
+            <column name="user_id" type="UUID"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:user_last_activity_logs:user_last_activity_logs_user_id_index">
+        <createIndex indexName="user_last_activity_logs_user_id_index" tableName="user_last_activity_logs">
+            <column name="user_id"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_user_last_activity_logs_deleted_at    -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:user_last_activity_logs:deleted_at">
+        <createIndex indexName="idx_user_last_activity_logs_deleted_at" tableName="user_last_activity_logs">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:user_last_activity_logs.user_id">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="user_last_activity_logs" constraintName="user_last_activity_logs_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- api_user_activity_logs                                                                                   -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="api_user_activity_logs">
+        <createTable tableName="api_user_activity_logs">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="api_user_activity_logs_pkey"/>
+            </column>
+            <column name="old_user_id" type="VARCHAR(255)"/>
+            <column name="end_point" type="VARCHAR(255)"/>
+            <column name="when" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="api_token" type="VARCHAR(255)"/>
+            <column name="api_version" type="INTEGER"/>
+            <column name="request_content" type="TEXT"/>
+            <column name="error_class" type="VARCHAR(255)"/>
+            <column name="error_code" type="VARCHAR(255)"/>
+            <column name="error_description" type="TEXT"/>
+            <column name="device_id" type="VARCHAR(255)"/>
+            <column name="device_type" type="INTEGER"/>
+            <column name="app_version" type="VARCHAR(255)"/>
+            <column name="user_id" type="UUID"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:api_user_activity_logs:api_user_activity_logs_user_id_index">
+        <createIndex indexName="api_user_activity_logs_user_id_index" tableName="api_user_activity_logs">
+            <column name="user_id"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:api_user_activity_logs.user_id">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="api_user_activity_logs" constraintName="api_user_activity_logs_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+
+</databaseChangeLog>

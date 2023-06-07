@@ -1,0 +1,3 @@
+prod.secret.exs
+stage.secret.exs
+sphinx.secret.exs

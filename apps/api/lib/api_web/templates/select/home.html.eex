@@ -1,0 +1,521 @@
+
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<meta name="google-signin-client_id" content="<%= @google_client_id %>.apps.googleusercontent.com">
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v15.0&appId=139508639447584&autoLogAppEvents=1" nonce="ZD3Swks6"></script>
+<script type="text/javascript" src="https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js"></script>
+<meta name="appleid-signin-client-id" content="<%= @apple_client_id %>">
+<meta name="appleid-signin-scope" content="[SCOPES]">
+<meta name="appleid-signin-redirect-uri" content="[REDIRECT_URI]">
+<meta name="appleid-signin-state" content="[STATE]">
+<meta name="appleid-signin-nonce" content="[NONCE]">
+<meta name="appleid-signin-use-popup" content="true">
+<script type="text/javascript" src="https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js"></script>
+<div id="fb-root"></div>
+
+<%
+ show_login = @account && "d-none" || ""
+%>
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+  <div class="container m-auto">
+    <a class="navbar-brand" href="#">
+      <img src="img/logo.png" alt="..." height="36">
+    </a>
+    <button class="navbar-toggler"
+    type="button"
+    data-bs-toggle="collapse"
+    data-bs-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="https://jetzyapp.com/">Home     </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://jetzyapp.com/termsofuse.html">       Term of Use</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="https://jetzyapp.com/privacy.html">Privacy Policy</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://jetzyapp.com/careers">Careers</a>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- end of page navbar -->
+<!-- page header -->
+<header class="header">
+    <div class="overlay"></div>
+    <div class="header-content">
+        <h1 class="header-title">Jetzy Select Concierge</h1>
+        <p class="header-subtitle">Get VIP access to the world's most exclusive and authentic
+            venues, restaurants and deals with the push of a button </p>
+
+        <div id="initial-buttons">
+        <%= if @account do %>
+        <form method="post" action="/account">
+            <input type="hidden" id="csrf-token" name="_csrf_token" value="<%= @csrf_token %>"/>
+            <button  class="btn btn-theme-color modal-toggle"><i class=""></i>Get Started Now <%= @account %></button></a>
+        </form>
+        <% end %>
+
+        <%= if !@account do %>
+            <button id="open-sign-up" class="btn btn-theme-color modal-toggle"><i class=""></i>Existing Jetzy Member </button>
+
+            <button id="open-sign-in" class="btn btn-theme-color modal-toggle"><i class=""></i>New Jetzy Member </button>
+
+        <% end %>
+        </div>
+
+        <div class="d-none bootstrap-section" id="login-modal">
+            <div class="">
+                <div id="log-in-form" class="d-none">
+                    <div class="login-pop-up card-group d-block d-md-flex row">
+                        <div class="card p-4 mb-0">
+                            <div class="card-body">
+                                <form method="post" action="/login">
+                                    <input type="hidden" id="csrf-token" name="_csrf_token" value="<%= @csrf_token %>"/>
+                                    <h1 class="text-gold">Login</h1>
+                                    <p class="text-medium-emphasis">Sign In to your jetzy account</p>
+
+                                    <div class="alert alert-danger d-none" id="login-form-flash">
+
+                                    </div>
+
+                                    <div class="input-group mb-3"><span class="input-group-text"></span>
+                                        <input name="user" class="form-control" type="text" placeholder="Username">
+                                    </div>
+                                    <div class="input-group mb-4"><span class="input-group-text"></span>
+                                        <input name="password" class="form-control" type="password" placeholder="Password">
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <input class="btn btn-primary px-4" id="login-submit" name="login" value="Login" type="submit"/>
+                                        </div>
+                                        <div class="col-6 text-end">
+                                            <button class="btn btn-link px-0 show-forgot-password-form" >Forgot password?</button>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-3">
+                                        <div class="col">
+                                            <hr/>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-3 ml-2">
+                                            <div class="g-signin2" style="height:28px" data-onsuccess="onSignIn"></div>
+                                        </div>
+                                        <div class="col-3 ml-2">
+                                            <div class="fb-login-button" data-width="" data-size="medium" data-button-type="login_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false"></div>
+                                        </div>
+                                        <div class="col-3 ml-2">
+                                            <div id="appleid-signin" style="height:28px" data-color="black" data-border="true" data-type="sign in"></div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="card-footer login-switch-footer">
+                                <hr/>
+                                <p>If you don't have an account yet sign up to be invited to Jetzy Select, otherwise login using your Jetzy App credentials.</p>
+                                <button class="btn btn-dark mt-3 show-sign-up-form" type="button">Sign Up Now!</button>
+                            </div>
+                        </div>
+                        <div class="card login-switch-form text-white bg-primary py-5">
+                            <div class="card-body">
+                                <h1>Sign up</h1>
+                                <div class="text-center">
+                                    <p>If you don't have an account yet sign up to be invited to Jetzy Select, otherwise login using your Jetzy App credentials.</p>
+                                    <button class="btn btn-outline-light mt-3 show-sign-up-form" type="button">Sign Up Now!</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="forgot-password-form" class="d-none">
+                    <div class="login-pop-up card-group d-block d-md-flex row">
+                        <div class="card p-4 mb-0">
+                            <div class="card-body">
+                                <form method="post" action="/login">
+                                    <input type="hidden" name="_csrf_token" value="<%= @csrf_token %>"/>
+                                    <h1 class="text-gold">Reset Password</h1>
+                                    <p class="text-medium-emphasis">Request password reset link.</p>
+                                    <div class="alert alert-danger d-none" id="forgot-password-form-flash"></div>
+
+
+                                    <div id="forgot-password-form-pg1">
+                                        <div class="input-group mb-3"><span class="input-group-text"></span>
+                                            <input name="user" class="form-control" type="text" placeholder="Email">
+                                        </div>
+                                    </div>
+                                    <div id="forgot-password-form-pg2" class="d-none">
+                                        <div class="input-group mb-3"><span class="input-group-text"></span>
+                                            <input name="code" class="form-control" type="text" placeholder="Reset Code">
+                                        </div>
+                                        <div class="input-group mb-3"><span class="input-group-text"></span>
+                                            <input name="password" class="form-control" type="password" placeholder="New Password">
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <input class="btn btn-primary px-4" id="forgot-password-submit" name="login" value="Reset Password" type="submit"/>
+                                        </div>
+                                        <div class="col-6 text-end">
+                                            <button class="btn btn-link px-0 show-login-form" name="login">Login</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="card-footer login-switch-footer">
+                                <hr/>
+                                <p>If you don't have an account yet sign up to be invited to Jetzy Select, otherwise login using your Jetzy App credentials.</p>
+                                <button class="btn btn-dark mt-3 show-sign-up-form" type="button">Sign Up Now!</button>
+                            </div>
+                        </div>
+                        <div class="card login-switch-form text-white bg-primary py-5">
+                            <div class="card-body">
+                                <h1>Sign up</h1>
+                                <div class="text-center">
+                                    <p>If you don't have an account yet sign up to be invited to Jetzy Select, otherwise login using your Jetzy App credentials.</p>
+                                    <button class="btn btn-outline-light mt-3 show-sign-up-form" type="button">Sign Up Now!</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div id="sign-up-form" class="d-none" >
+                    <div class="login-pop-up card-group d-block d-md-flex row">
+                        <div class="card p-4 mb-0">
+                            <div class="card-body">
+                                <form method="post" action="/login">
+                                    <input type="hidden" name="_csrf_token" value="<%= @csrf_token %>"/>
+                                    <h1 class="text-gold">Sign Up</h1>
+                                    <p class="text-medium-emphasis">Register Your Account</p>
+
+                                    <div class="alert alert-danger d-none" id="sign-up-form-flash"></div>
+
+                                    <div id="sign-up-pg1">
+                                        <div class="input-group mb-3"><span class="input-group-text"></span>
+                                            <input name="referral" class="form-control" type="text" placeholder="Referral Code">
+                                        </div>
+                                        <div class="input-group mb-3"><span class="input-group-text"></span>
+                                            <input name="user" class="form-control" type="text" placeholder="Email">
+                                        </div>
+                                        <div class="input-group mb-4"><span class="input-group-text"></span>
+                                            <input name="password" class="form-control" type="password" placeholder="Password">
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <button class="btn btn-primary px-3 sign-up-next" name="sign-up-next">Next</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div id="sign-up-pg2" class="d-none">
+                                        <div class="input-group mb-3"><span class="input-group-text"></span>
+                                            <input name="first_name" class="form-control" type="text" placeholder="First Name">
+                                        </div>
+                                        <div class="input-group mb-3"><span class="input-group-text"></span>
+                                            <input name="last_name" class="form-control" type="text" placeholder="Last Name">
+                                        </div>
+                                        <div class="input-group mb-3"><span class="input-group-text"></span>
+                                            <input name="age" max=120 min=18  class="form-control" type="number" placeholder="Age">
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <button class="btn btn-primary px-3 sign-up-back" name="sign-up-back">Back</button>
+                                                <input class="btn btn-primary px-3" name="sign-up" id="sign-up-submit" value="Register" type="submit" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </form>
+                            </div>
+                            <div class="card-footer login-switch-footer">
+                                <hr/>
+                                <p>If you already have an account login using your Jetzy App credentials.</p>
+                                <button class="btn btn-dark mt-3 show-login-form" type="button">Log In!</button>
+                            </div>
+                        </div>
+                        <div class="card login-switch-form text-white bg-primary py-5">
+                            <div class="card-body">
+                                <h1>Login</h1>
+                                <div class="text-center">
+                                    <p>If you already have an account login using your Jetzy App credentials.</p>
+                                    <button class="btn btn-outline-light mt-3 show-login-form" type="button">Log In!</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div><!-- end of modal -->
+
+
+    </div>
+
+
+
+</header>
+
+
+
+
+<!-- end of page header -->
+
+
+<!-- modal -->
+<div class="modalBox">
+    <div class="modalBox-body">
+        <iframe  height="450px" class="border-0"
+                 src="">
+        </iframe>
+    </div>
+</div>
+<!-- end of modal -->
+
+
+<!-- modal 2 -->
+
+<!-- page container -->
+<div class="container page-container">
+    <div class="col-md-10 col-lg-8 m-auto">
+        <h6 class="title mb-4">Membership</h6>
+        <p class="mb-5">If you have received an invitation code, please sign up to see your offered price
+            If not, you can still apply by filling out a form. If selected, you will receive an email explaining the details and pricing of the membership.
+            Jetzy Select ..... access your exclusive perks at your fingertips! Click here to APPLY
+        </p>
+    </div>
+
+    <!-- row -->
+    <div class="row mb-4">
+        <div class="col-md-4">
+            <a href="javascript:void(0)" class="overlay-img">
+
+
+                <img src="<%= Routes.static_path(@conn, "/img/select/img-1.jpg") %>" alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, weber Landing page">
+                <div class="overlay"></div>
+                <div class="des">
+                    <h1 class="title">Restaurants, NightClubs and Bars </h1>
+                    <h6 class="subtitle"></h6>
+                        <p>JETZY SELECT partners with elite restaurants, hotels, nightlife venues, retailers and more to make sure that you receive a VIP treatment. With the membership, you will receive priority for the table with free welcome champagne, cocktails or small plates, or 20 percent or more off the full bill, or sometimes both. Plus you can get guest list access for your party at hundreds of the country's famous restaurants and nightlife venues.</p>
+
+                </div>
+            </a>
+        </div>
+        <div class="col-md-4">
+            <a href="javascript:void(0)" class="overlay-img">
+                <img src="<%= Routes.static_path(@conn, "/img/select/img-2.jpg") %>" alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, weber Landing page">
+                <div class="overlay"></div>
+                <div class="des">
+                    <h1 class="title">Travel </h1>
+                    <h6 class="subtitle"></h6>
+                        <p>With JETZY SELECT, you can get access to the greatest and most exclusive travel perks and special member rates for flights, hotels, cars, yachts, etc</p>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-4">
+            <a href="javascript:void(0)" class="overlay-img">
+                <img src="<%= Routes.static_path(@conn, "/img/select/img-3.jpg") %>" alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, weber Landing page">
+                <div class="overlay"></div>
+                <div class="des">
+                    <h1 class="title">Private Events</h1>
+                    <h6 class="subtitle"></h6>
+                        <p>As a member of the JETZY SELECT Community, you will acquire access to exclusive festivities, local happenings, and private events including complimentary cocktail hours, rooftop soirées, gallery openings, menu tastings, galas and more.</p>
+                </div>
+            </a>
+        </div>
+    </div><!-- end of row -->
+
+    <!-- <a href="#">Load More <i class="ti-angle-double-right angle"></i></a>-->
+
+
+    <div class="col-md-10 col-lg-8 m-auto">
+        <h6 class="title mb-4 mt-5 pt-5">Testimonials</h6>
+        <p class="mb-5"></p>
+    </div>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="face front-face">
+                        <img src="Select/assets/imgs/test1.jpeg"
+                            alt="" class="profile">
+                        <div class="pt-3 text-uppercase name">
+                            Silvia Ges
+                        </div>
+                        <div class="designation">Traveller/ Influencer</div>
+                    </div>
+                    <div class="face back-face">
+                        <span class="fas fa-quote-left"></span>
+                        <div class="testimonial">
+                            "For work, I travel a lot which means when I travel in different places. Thanks to Jetzy I can meet local people and discover awesome new places”
+                        </div>
+                        <span class="fas fa-quote-right"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="face front-face">
+                        <img src="Select/assets/imgs/test2.jpeg"
+                            alt="" class="profile">
+                        <div class="pt-3 text-uppercase name">
+                            Kelsey Stalter
+                        </div>
+                        <div class="designation">Singer/Dancer/Actress </div>
+                    </div>
+                    <div class="face back-face">
+                        <span class="fas fa-quote-left"></span>
+                        <div class="testimonial">
+                            “A Network like jetzy helps me meet like minded people from all walks of life”
+                        </div>
+                        <span class="fas fa-quote-right"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="face front-face">
+                        <img src="Select/assets/imgs/test3.jpeg"
+                            alt="" class="profile">
+                        <div class="pt-3 text-uppercase name">
+                            Alexendra Connor
+                        </div>
+                        <div class="designation">Hiker/ Travel Guide</div>
+                    </div>
+                    <div class="face back-face">
+                        <span class="fas fa-quote-left"></span>
+                        <div class="testimonial">
+                            “I love traveling and I think Jetzy is a really good idea to meet new people and find new spots”
+                        </div>
+                        <span class="fas fa-quote-right"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- box-sizing: border-box;
+
+        position: absolute;
+        width: 76px;
+        height: 76px;
+        left: 1007px;
+        top: 360px;
+
+        background: url(image);
+        border-radius: 8px; -->
+
+    <!-- <a href="#">Sign Up<i class="ti-angle-double-right angle"></i></a> -->
+
+</div> <!-- end of page container -->
+
+<!--footer & pre footer -->
+<div class="contact-section">
+    <div class="overlay"></div>
+    <!-- container -->
+    <div class="container">
+
+        <!--
+        <div class="col-md-10 col-lg-8 m-auto">
+            <h6 class="title mb-2">Contact Us</h6>
+            <p class="mb-5">Feel Free To Drop Us A Line.</p>
+            <form action="" class="form-group">
+                <input type="text" size="50" class="form-control" placeholder="Your Name" required>
+                <input type="email" class="form-control" placeholder="Enter Email"requried>
+                <textarea name="comment" id="comment" rows="6"   class="form-control" placeholder="Write Something"></textarea>
+                <input type="submit" value="Send Message" class="form-control">
+            </form>
+        </div>
+        -->
+
+        <!-- footer -->
+        <!-- ti-heart text-dange-->
+        <footer class="footer">
+            <p class="infos">&copy; <script>document.write(new Date().getFullYear())</script>,  <i class="r"></i> <a href="<%= @jetzy_website %>">Jetzy</a></p>
+            <span>|</span>
+            <div class="links">
+                <!--© Copyright - 2022   |    Jetzy    |   All Rights Reserved-->
+                <!--
+                <a href="#">About</a>
+                <a href="#">Explore</a>
+                -->
+                <a href="#">All Rights Reserved</a>
+            </div>
+        </footer><!-- end of footer -->
+
+    </div><!-- end of container -->
+</div><!-- end of pre footer -->
+
+<!-- Dorang js -->
+
+<script type="text/javascript">
+    window.csrf = "<%= @csrf_token %>";
+</script>
+<script type="text/javascript" src="<%= Routes.static_path(@conn, "/assets/select.js") %>"></script>
+<script>
+        function onSignIn(googleUser) {
+          var profile = googleUser.getBasicProfile();
+          console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+          console.log('Name: ' + profile.getName());
+          console.log('Image URL: ' + profile.getImageUrl());
+          console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+        }
+
+
+      function statusChangeCallback(response) {  // Called with the results from FB.getLoginStatus().
+        console.log('statusChangeCallback');
+        console.log(response);                   // The current login status of the person.
+        if (response.status === 'connected') {   // Logged into your webpage and Facebook.
+          testAPI();
+        } else {                                 // Not logged into your webpage or we are unable to tell.
+          document.getElementById('status').innerHTML = 'Please log ' +
+            'into this webpage.';
+        }
+      }
+
+
+      function checkLoginState() {               // Called when a person is finished with the Login Button.
+        FB.getLoginStatus(function(response) {   // See the onlogin handler
+          statusChangeCallback(response);
+        });
+      }
+
+
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '{app-id}',
+          cookie     : true,                     // Enable cookies to allow the server to access the session.
+          xfbml      : true,                     // Parse social plugins on this webpage.
+          version    : '{api-version}'           // Use this Graph API version for this call.
+        });
+
+
+        FB.getLoginStatus(function(response) {   // Called after the JS SDK has been initialized.
+          statusChangeCallback(response);        // Returns the login status.
+        });
+      };
+
+      function testAPI() {                      // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
+        console.log('Welcome!  Fetching your information.... ');
+        FB.api('/me', function(response) {
+          console.log('Successful login for: ' + response.name);
+          document.getElementById('status').innerHTML =
+            'Thanks for logging in, ' + response.name + '!';
+        });
+      }
+    </script>

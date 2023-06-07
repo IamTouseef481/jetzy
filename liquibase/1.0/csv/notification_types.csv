@@ -1,0 +1,34 @@
+id,description,is_deleted,deleted_at,inserted_at,updated_at,event,message
+0c0a7251-84de-11ec-8d5d-6113089c0a5b,Post Comment,true,,2018-08-02 11:54:27.000000,2018-08-02 11:54:27.000000,feed_post_comment,{{full_name}} has commented on your post.
+0c0a7258-84de-11ec-8d5d-6003089c0a5c,Shoutout Comment Reply,false,,2018-08-02 11:54:27.000000,2018-08-02 11:54:27.000000,feed_shoutout_comment_reply,{{full_name}} has replied to your comment.
+0c0a7258-84de-11ec-8d5d-6003089c0a5d,Post Like,false,,2018-08-02 11:54:27.000000,2018-08-02 11:54:27.000000,feed_post_like,{{full_name}} liked your post.
+0c0a7258-84de-11ec-8d5d-6003089c0a5f,Message,true,,2018-08-02 11:54:25.000000,2018-08-02 11:54:28.000000,user_message_chat,{{full_name}} wants to chat with you.
+0c0a7258-84de-11ec-8d5d-6003089c0b5a,Request Accepted or Rejected,true,,2018-08-02 11:54:27.000000,2018-08-02 11:54:27.000000,user_friend_request_response,{{full_name}} has accepted your friend request.
+0a0a7258-84de-11ec-8d5d-6003089c0b5a,Event Invitation from friend,true,,2018-08-02 11:54:27.000000,2018-08-02 11:54:27.000000,event_invitation_from_friend,{{full_name}} has requested you to join her/his event.
+0c0a7258-84de-11ec-8d5d-6003089c0d5a,Invite For private Group,true,,2018-08-02 11:54:27.000000,2018-08-02 11:54:27.000000,private_group_invite_received,{{full_name}} you have been invited to join {{private_group_name}}
+0c0a7258-84de-11ec-8d5d-6003089c0e5a,Request For private Group,true,,2018-08-02 11:54:27.000000,2018-08-02 11:54:27.000000,private_group_request_received,{{full_name}} has requested to join your private group.
+0c0a7258-84de-11ec-8d5d-6003089c0f5a,Response of Private Group,true,,2018-08-02 11:54:27.000000,2018-08-02 11:54:27.000000,private_group_invitation_response,{{full_name}} has {{response}} your request to join your group {{private_group_name}}.
+0c0a7258-84de-11ec-8d5d-6003089c0a6a,Complete sign up reminder,true,,2018-08-02 11:54:27.000000,2018-08-02 11:54:27.000000,profile_reminder,Please complete your profile so people may get to know you better.
+0c0a7258-84de-11ec-8d5d-6003089c0a7a,Most popular profile on jetzy,true,,2018-08-02 11:54:27.000000,2018-08-02 11:54:27.000000,profile_popular,Can show a promotional message to user based on the profile view count.
+0c0a7258-84de-11ec-8d5d-6003089c0a8a,Follow,true,,2018-08-02 11:54:27.000000,2018-08-02 11:54:27.000000,follow,{{full_name}} has started following you.
+0c0a7258-84de-11ec-8d5d-6003089c0a9a,Event that you created,true,,2018-08-02 11:54:27.000000,2018-08-02 11:54:27.000000,events_by_me,"Congratulations, you have successfully created a post on Jetzy"
+0c0a7258-84de-11ec-8d5d-6003089c0a10,Event that is coming soon,true,,2018-08-02 11:54:27.000000,2018-08-02 11:54:27.000000,events_coming_soon,"Your event {{event_name}} is close, are you excited!"
+0c0a7258-84de-11ec-8d5d-6003089c0a12,Event by location near you,true,,2018-08-02 11:54:27.000000,2018-08-02 11:54:27.000000,event_in_my_location,{{event_name}} is happening near you.
+0c0a7258-84de-11ec-8d5d-6003089c0a13,private group request accepted or rejected,true,,2018-08-02 11:54:27.000000,2018-08-02 11:54:27.000000,private_group_request_accepted,{{full_name}} you are now a part of {{private_group_name}}.
+0c0a7258-84de-11ec-8d5d-6003089c0a14,Post Tagging,true,,2018-08-02 11:54:27.000000,2018-08-02 11:54:27.000000,post_tagging,{{full_name}} tagged you in a post.
+0c0a7258-84de-11ec-8d5d-6003089c0a15,Comment Tagging,true,,2018-08-02 11:54:27.000000,2018-08-02 11:54:27.000000,comment_tagging,{{full_name}} tagged you in a comment.
+0c0a7258-84de-11ec-8d5d-6003089c0a17,Accept Follow Request,true,,2018-08-02 11:54:27.000000,2018-08-02 11:54:27.000000,accept_follow,{{full_name}} has accepted your follow request.
+0c0a7258-84de-11ec-8d5d-6003089c0a18,Follow Request from a User,true,,2018-08-02 11:54:27.000000,2018-08-02 11:54:27.000000,follow_request,{{full_name}} has sent you a follow request.
+c13fce8e-e6c6-4b45-878f-6ee031e5a036,Post comment reply like,false,,2022-03-28 13:41:48.000000,2022-03-28 13:41:48.000000,post_comment_reply_like,{{full_name}} has liked your reply.
+c12fce9e-e6c6-4b45-878f-6ee031e5a036,Post comment like,false,,2022-03-28 13:41:48.000000,2022-03-28 13:41:48.000000,post_comment_like,{{full_name}} has liked your comment.
+0c0a7258-84de-11ec-8d6d-6003089c0a18,Add member to chat group,true,,2022-03-28 13:41:48.000000,2022-03-28 13:41:48.000000,add_member_to_chat_group,{{full_name}} added you.
+0c0a7258-84de-11ec-8d7d-6003089c0a18,Chat group created,true,,2022-03-28 13:41:48.000000,2022-03-28 13:41:48.000000,chat_group_created,{{full_name}} created group {{group_name}}.
+0c0a7258-84de-11ec-8d5d-6003089c0a11,Edit an Event,true,,2018-08-02 11:54:27.000000,2022-09-06 05:36:35.000000,events_modified,{{full_name}} has modified a post that you have been tagged in.
+d2b17898-e9de-4652-a745-7c120399b669,Recommendations,false,,2022-09-06 05:38:23.000000,2022-09-06 05:38:23.000000,ask_for_recommendation,{{full_name}} has asked you to add {{favorite}}
+0c0a7258-84de-11ec-8d5d-6003089c0a16,Incoming message,false,,2018-08-02 11:54:27.000000,2022-09-06 05:38:23.000000,incoming_message,{{full_name}} sent you a message.
+0c0a7258-84de-11ec-8d5d-6003089c0a5e,Friend Request,true,,2018-08-02 11:54:27.000000,2022-09-06 05:38:23.000000,user_friend_request,{{full_name}} wants to add you as friend.
+0c0a7258-84de-11ec-8d5d-6003089c0c5a,Comment on Event,true,,2018-08-02 11:54:27.000000,2022-09-06 05:38:23.000000,event_comments,{{full_name}} is commenting on the event you created.
+0c0a7258-23de-11ec-8d5d-6003089c0b00,Invite user to follow an Interest,false,,2022-03-28 13:40:10.000000,2022-09-06 05:38:23.000000,interest_invite,{{first_name}} has invited you to follow {{interest_name}}.
+0c0a7258-23de-11ec-8d5d-6003089c0b01,Accept Request to follow an Interest,false,,2022-03-28 13:41:48.000000,2022-09-06 05:38:23.000000,accept_interest,{{first_name}} has accepted your invite request to follow {{interest_name}}.
+c92802b1-f740-408a-8d2d-e49a6f844958,Incoming message in private event group,false,,2022-09-06 05:39:34.000000,2022-09-06 05:39:34.000000,incoming_event_message,{{full_name}} sent you a message in {{room_name}}.
+c12fce8e-e6c6-4b45-878f-6ee031e5a036,Incoming group message,false,,2022-03-28 13:41:48.000000,2022-09-06 05:39:35.000000,incoming_group_message,{{full_name}} has sent a message on {{room_name}}

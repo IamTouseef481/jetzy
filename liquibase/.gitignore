@@ -1,0 +1,11 @@
+liquibase.prod.properties
+liquibase.stage.properties
+liquibase.properties.*
+liquibase.properties
+liquibase.iml
+backup.dump
+*.dump
+temp.xml
+script.sql
+stage-update
+.live

@@ -1,0 +1,5 @@
+touch -a .env
+source .env
+iex -S mix phx.server
+
+

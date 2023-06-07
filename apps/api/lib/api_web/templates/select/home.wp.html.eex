@@ -1,0 +1,544 @@
+<a class="skip-link screen-reader-text" href="#content">Skip to content</a>
+<div id="boxed-wrapper">
+    <div class="fusion-sides-frame"></div>
+    <div id="wrapper" class="fusion-wrapper">
+        <div id="home" style="position:relative;top:-1px;"></div>
+        <header class="fusion-header-wrapper">
+            <div class="fusion-header-v1 fusion-logo-alignment fusion-logo-left fusion-sticky-menu- fusion-sticky-logo- fusion-mobile-logo-  fusion-mobile-menu-design-modern">
+                <div class="fusion-header-sticky-height"></div>
+                <div class="fusion-header">
+                    <div class="fusion-row">
+                        <!-- <a class="login" style="position:absolute;right:0px;top:0px;color:white" href="/login">Login</a> -->
+                        <div class="fusion-logo" data-margin-top="10px" data-margin-bottom="31px" data-margin-left="0px" data-margin-right="0px">
+                            <a id="sign-up" class="fusion-logo-link" href="https://jetzy.com/">
+                                <!-- standard logo -->
+                                <img src="img/logo.png" srcset="img/logo.png 1x" width="121" height="121" alt="jetzy Logo" data-retina_logo_url="" class="fusion-standard-logo">
+                            </a>
+                        </div>
+                        <nav class="fusion-main-menu" aria-label="Main Menu">
+                            <div class="fusion-overlay-search">
+                                <form role="search" class="searchform fusion-search-form  fusion-search-form-clean" method="get" action="https://jetzy.com/">
+                                    <div class="fusion-search-form-content">
+                                        <div class="fusion-search-field search-field">
+                                            <label><span class="screen-reader-text">Search for:</span>
+                                                <input type="search" value="" name="s" class="s" placeholder="Search..." required="" aria-required="true" aria-label="Search...">
+                                            </label>
+                                        </div>
+                                        <div class="fusion-search-button search-button">
+                                            <input type="submit" class="fusion-search-submit searchsubmit" aria-label="Search" value="">
+                                        </div>
+                                    </div>
+                                </form>
+                                <div class="fusion-search-spacer"></div>
+                                <a href="#" role="button" aria-label="Close Search" class="fusion-close-search"></a>
+                            </div>
+                        </nav>
+                        <nav class="fusion-mobile-nav-holder fusion-mobile-menu-text-align-left" aria-label="Main Menu Mobile"></nav>
+                        <div class="fusion-clearfix"></div>
+                        <div class="fusion-mobile-menu-search">
+                            <form role="search" class="searchform fusion-search-form  fusion-search-form-clean" method="get" action="https://jetzy.com/">
+                                <div class="fusion-search-form-content">
+                                    <div class="fusion-search-field search-field">
+                                        <label><span class="screen-reader-text">Search for:</span>
+                                            <input type="search" value="" name="s" class="s" placeholder="Search..." required="" aria-required="true" aria-label="Search...">
+                                        </label>
+                                    </div>
+                                    <div class="fusion-search-button search-button">
+                                        <input type="submit" class="fusion-search-submit searchsubmit" aria-label="Search" value="">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="fusion-clearfix"></div>
+        </header>
+        <div id="sliders-container" class="fusion-slider-visibility">
+        </div>
+        <main id="main" class="clearfix width-100">
+            <div class="fusion-row" style="max-width:100%;">
+                <section id="content" class="full-width">
+                    <div id="post-10" class="post-10 page type-page status-publish hentry">
+                        <span class="entry-title rich-snippet-hidden">Home</span><span class="vcard rich-snippet-hidden"><span class="fn"><a href="https://jetzy.com/">Jetzy</a></span></span><span class="updated rich-snippet-hidden">2022-08-09T15:03:33+00:00</span>
+                        <div class="post-content">
+                            <div class="fusion-fullwidth fullwidth-box fusion-builder-row-1 fusion-flex-container video-background has-pattern-background has-mask-background top-header nonhundred-percent-fullwidth hundred-percent-height hundred-percent-height-center-content non-hundred-percent-height-scrolling" style="background-color: rgba(255, 255, 255, 0); background-image: linear-gradient(rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.43) 100%); background-position: center center; background-repeat: no-repeat; border-width: 0px; border-color: var(--awb-color3); border-style: solid; height: auto;">
+                                <div class="fullwidth-video">
+                                    <video preload="auto" autoplay="" playsinline="" loop="" muted="">
+                                        <source src="movie/select-movie.mp4" type="video/mp4">
+                                    </video>
+                                </div>
+                                <div class="fullwidth-overlay" style="background-image: linear-gradient(180deg, rgba(0,0,0,0.45) 0%,rgba(0,0,0,0.43) 100%);background-color:rgba(255,255,255,0);"></div>
+                                <div class="fusion-builder-row fusion-row fusion-flex-align-items-flex-start" style="max-width:1248px;margin-left: calc(-4% / 2 );margin-right: calc(-4% / 2 );">
+                                    <div class="fusion-layout-column fusion_builder_column fusion-builder-column-0 fusion_builder_column_1_6 1_6 fusion-flex-column">
+                                        <div class="fusion-column-wrapper fusion-flex-justify-content-flex-start fusion-content-layout-column" style="background-position:left top;background-repeat:no-repeat;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover;padding: 0px 0px 0px 0px;"></div>
+                                        <style type="text/css">.fusion-body .fusion-builder-column-0{width:16.666666666667% !important;margin-top : 0px;margin-bottom : 20px;}.fusion-builder-column-0 > .fusion-column-wrapper {padding-top : 0px !important;padding-right : 0px !important;margin-right : 11.52%;padding-bottom : 0px !important;padding-left : 0px !important;margin-left : 11.52%;}@media only screen and (max-width:1024px) {.fusion-body .fusion-builder-column-0{width:16.666666666667% !important;order : 0;}.fusion-builder-column-0 > .fusion-column-wrapper {margin-right : 11.52%;margin-left : 11.52%;}}@media only screen and (max-width:640px) {.fusion-body .fusion-builder-column-0{width:100% !important;order : 0;}.fusion-builder-column-0 > .fusion-column-wrapper {margin-right : 1.92%;margin-left : 1.92%;}}</style>
+                                    </div>
+                                    <div class="fusion-layout-column fusion_builder_column fusion-builder-column-1 fusion_builder_column_2_3 2_3 fusion-flex-column fusion-flex-align-self-center">
+                                        <div class="fusion-column-wrapper fusion-flex-justify-content-center fusion-content-layout-column" style="background-position:left top;background-repeat:no-repeat;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover;padding: 0px 0px 0px 0px;">
+                                            <style type="text/css">@media only screen and (max-width:1024px) {.fusion-title.fusion-title-1{margin-top:10px!important; margin-right:0px!important;margin-bottom:20px!important;margin-left:0px!important;}}@media only screen and (max-width:640px) {.fusion-title.fusion-title-1{margin-top:10px!important; margin-right:0px!important;margin-bottom:10px!important; margin-left:0px!important;}}</style>
+                                            <div class="fusion-title title fusion-title-1 fusion-sep-none fusion-title-center fusion-title-text fusion-title-size-one" style="font-size:70px;margin-top:10px;margin-right:0px;margin-bottom:20px;margin-left:0px;">
+                                                <h1 class="title-heading-center fusion-responsive-typography-calculated" style="margin:0;font-size:1em;color:#ffffff;--fontSize:70;line-height:1.14;">EXPLORE THE WORLD WITH US</h1>
+                                            </div>
+                                            <div style="text-align:center;">
+                                                <style>.fusion-body .fusion-button.button-1{border-radius:0px 0px 0px 0px;}</style>
+                                                <div style="padding: 30px; display:flex; justify-content: center;  align-items: center; width: 100%">
+                                                    <form action="/sign-up" method="post" class="wpcf7-form init" novalidate="novalidate" data-status="init">
+                                                        <div style="display: none;padding: 30em 10em;">
+                                                            <input type="hidden" name="txn" value="<%= @txn %>">
+                                                            <input type="hidden" name="strategy" value="<%= @strategy %>">
+                                                            <input type="hidden" name="src" value="<%= @src %>">
+                                                            <input type="hidden" name="_csrf_token" value="<%= @csrf_token %>">
+                                                        </div>
+
+
+
+                                                        <div class="fusion-layout-column" style="margin:0 14px 16px 0;">
+                                                            <input type="submit" class="wpcf7-form-control wpcf7-submit" value="Jetzy Login" style="padding-left: 20px; padding-right: 20px; width:100%">
+                                                        </div>
+                                                        <div class="fusion-layout-column" style=" margin-bottom:16px;">
+                                                            <input type="submit" class="wpcf7-form-control wpcf7-submit" value="Sign Up" style="padding-left: 20px; padding-right: 20px; width:100%">
+                                                        </div>
+
+                                                        <div style="clear:both"></div>
+
+
+
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <style type="text/css">.fusion-body .fusion-builder-column-1{width:66.666666666667% !important;margin-top : 0px;margin-bottom : 20px;}.fusion-builder-column-1 > .fusion-column-wrapper {padding-top : 0px !important;padding-right : 0px !important;margin-right : 2.88%;padding-bottom : 0px !important;padding-left : 0px !important;margin-left : 2.88%;}@media only screen and (max-width:1024px) {.fusion-body .fusion-builder-column-1{width:66.666666666667% !important;order : 0;}.fusion-builder-column-1 > .fusion-column-wrapper {margin-right : 2.88%;margin-left : 2.88%;}}@media only screen and (max-width:640px) {.fusion-body .fusion-builder-column-1{width:100% !important;order : 0;}.fusion-builder-column-1 > .fusion-column-wrapper {margin-right : 1.92%;margin-left : 1.92%;}}</style>
+                                    </div>
+                                    <div class="fusion-layout-column fusion_builder_column fusion-builder-column-2 fusion_builder_column_1_6 1_6 fusion-flex-column">
+                                        <div class="fusion-column-wrapper fusion-flex-justify-content-flex-start fusion-content-layout-column" style="background-position:left top;background-repeat:no-repeat;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover;padding: 0px 0px 0px 0px;"></div>
+                                        <style type="text/css">.fusion-body .fusion-builder-column-2{width:16.666666666667% !important;margin-top : 0px;margin-bottom : 20px;}.fusion-builder-column-2 > .fusion-column-wrapper {padding-top : 0px !important;padding-right : 0px !important;margin-right : 11.52%;padding-bottom : 0px !important;padding-left : 0px !important;margin-left : 11.52%;}@media only screen and (max-width:1024px) {.fusion-body .fusion-builder-column-2{width:16.666666666667% !important;order : 0;}.fusion-builder-column-2 > .fusion-column-wrapper {margin-right : 11.52%;margin-left : 11.52%;}}@media only screen and (max-width:640px) {.fusion-body .fusion-builder-column-2{width:100% !important;order : 0;}.fusion-builder-column-2 > .fusion-column-wrapper {margin-right : 1.92%;margin-left : 1.92%;}}</style>
+                                    </div>
+                                </div>
+                                <style type="text/css">.fusion-body .fusion-flex-container.fusion-builder-row-1{ padding-top : 0px;margin-top : 0px;padding-right : 30px;padding-bottom : 0px;margin-bottom : 0px;padding-left : 30px;}</style>
+                            </div>
+                            <div class="fusion-fullwidth fullwidth-box fusion-builder-row-2 fusion-flex-container has-pattern-background has-mask-background nonhundred-percent-fullwidth non-hundred-percent-height-scrolling" style="background-color: rgba(255,255,255,0);background-position: center center;background-repeat: no-repeat;border-width: 0px 0px 0px 0px;border-color:var(--awb-color3);border-style:solid;">
+                                <div class="fusion-builder-row fusion-row fusion-flex-align-items-flex-start" style="max-width:1248px;margin-left: calc(-4% / 2 );margin-right: calc(-4% / 2 );">
+                                    <div class="fusion-layout-column fusion_builder_column fusion-builder-column-3 fusion_builder_column_1_3 1_3 fusion-flex-column">
+                                        <div class="fusion-column-wrapper fusion-flex-justify-content-flex-start fusion-content-layout-column" style="background-position:left top;background-repeat:no-repeat;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover;padding: 0px 0px 0px 0px;">
+                                            <div class="fusion-builder-row fusion-builder-row-inner fusion-row fusion-flex-align-items-flex-start" style="width:104% !important;max-width:104% !important;margin-left: calc(-4% / 2 );margin-right: calc(-4% / 2 );">
+                                                <div class="fusion-layout-column fusion_builder_column_inner fusion-builder-nested-column-0 fusion_builder_column_inner_1_1 1_1 fusion-flex-column no-shadow">
+                                                    <div class="fusion-column-wrapper fusion-flex-justify-content-flex-start fusion-content-layout-column" style="background-position:left top;background-repeat:no-repeat;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover;padding: 0px 0px 0px 0px;">
+                                                        <div style="text-align:center;"><span class=" fusion-imageframe imageframe-none imageframe-1 hover-type-none">
+                                                            <img width="600" height="600" title="1" src="img/1.jpg" alt="" class="img-responsive wp-image-53" srcset="img/1-200x200.jpg 200w, img/1-400x400.jpg 400w, img/1.jpg 600w" sizes="(max-width: 640px) 100vw, 600px">
+                                                        </span></div>
+                                                    </div>
+                                                    <style type="text/css">.fusion-body .fusion-builder-nested-column-0{width:100% !important;margin-top : 0px;margin-bottom : 20px;}.fusion-builder-nested-column-0 > .fusion-column-wrapper {padding-top : 0px !important;padding-right : 0px !important;margin-right : 1.92%;padding-bottom : 0px !important;padding-left : 0px !important;margin-left : 1.92%;}@media only screen and (max-width:1024px) {.fusion-body .fusion-builder-nested-column-0{width:100% !important;order : 0;}.fusion-builder-nested-column-0 > .fusion-column-wrapper {margin-right : 1.92%;margin-left : 1.92%;}}@media only screen and (max-width:640px) {.fusion-body .fusion-builder-nested-column-0{width:100% !important;order : 0;}.fusion-builder-nested-column-0 > .fusion-column-wrapper {margin-right : 1.92%;margin-left : 1.92%;}}</style>
+                                                </div>
+                                                <div class="fusion-layout-column fusion_builder_column_inner fusion-builder-nested-column-1 fusion_builder_column_inner_1_1 1_1 fusion-flex-column no-shadow">
+                                                    <div class="fusion-column-wrapper fusion-flex-justify-content-flex-start fusion-content-layout-column" style="background-position:left top;background-repeat:no-repeat;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover;padding: 0px 0px 0px 0px;">
+                                                        <style type="text/css">@media only screen and (max-width:1024px) {.fusion-title.fusion-title-2{margin-top:10px!important; margin-right:0px!important;margin-bottom:15px!important;margin-left:0px!important;}}@media only screen and (max-width:640px) {.fusion-title.fusion-title-2{margin-top:10px!important; margin-right:0px!important;margin-bottom:10px!important; margin-left:0px!important;}}</style>
+                                                        <div class="fusion-title title fusion-title-2 fusion-sep-none fusion-title-text fusion-title-size-two" style="font-size:25px;margin-top:10px;margin-right:0px;margin-bottom:15px;margin-left:0px;">
+                                                            <h2 class="title-heading-left fusion-responsive-typography-calculated" style="margin:0;font-size:1em;--fontSize:25;line-height:var(--awb-typography1-line-height);">Travel</h2>
+                                                        </div>
+                                                        <div class="fusion-text fusion-text-1">
+                                                            <p>Travel suggestions provides access to the greatest and most exclusive travel destinations across the world, providing unprecedented expertise and bespoke itineraries.</p>
+                                                        </div>
+                                                    </div>
+                                                    <style type="text/css">.fusion-body .fusion-builder-nested-column-1{width:100% !important;margin-top : 0px;margin-bottom : 0px;}.fusion-builder-nested-column-1 > .fusion-column-wrapper {padding-top : 0px !important;padding-right : 0px !important;margin-right : 1.92%;padding-bottom : 0px !important;padding-left : 0px !important;margin-left : 1.92%;}@media only screen and (max-width:1024px) {.fusion-body .fusion-builder-nested-column-1{width:100% !important;order : 0;}.fusion-builder-nested-column-1 > .fusion-column-wrapper {margin-right : 1.92%;margin-left : 1.92%;}}@media only screen and (max-width:640px) {.fusion-body .fusion-builder-nested-column-1{width:100% !important;order : 0;}.fusion-builder-nested-column-1 > .fusion-column-wrapper {margin-right : 1.92%;margin-left : 1.92%;}}</style>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <style type="text/css">.fusion-body .fusion-builder-column-3{width:33.333333333333% !important;margin-top : 0px;margin-bottom : 20px;}.fusion-builder-column-3 > .fusion-column-wrapper {padding-top : 0px !important;padding-right : 0px !important;margin-right : 5.76%;padding-bottom : 0px !important;padding-left : 0px !important;margin-left : 5.76%;}@media only screen and (max-width:1024px) {.fusion-body .fusion-builder-column-3{width:100% !important;order : 0;}.fusion-builder-column-3 > .fusion-column-wrapper {margin-right : 1.92%;margin-left : 1.92%;}}@media only screen and (max-width:640px) {.fusion-body .fusion-builder-column-3{width:100% !important;order : 0;}.fusion-builder-column-3 > .fusion-column-wrapper {margin-right : 1.92%;margin-left : 1.92%;}}</style>
+                                    </div>
+                                    <div class="fusion-layout-column fusion_builder_column fusion-builder-column-4 fusion_builder_column_1_3 1_3 fusion-flex-column">
+                                        <div class="fusion-column-wrapper fusion-flex-justify-content-flex-start fusion-content-layout-column" style="background-position:left top;background-repeat:no-repeat;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover;padding: 0px 0px 0px 0px;">
+                                            <div class="fusion-builder-row fusion-builder-row-inner fusion-row fusion-flex-align-items-flex-start" style="width:104% !important;max-width:104% !important;margin-left: calc(-4% / 2 );margin-right: calc(-4% / 2 );">
+                                                <div class="fusion-layout-column fusion_builder_column_inner fusion-builder-nested-column-2 fusion_builder_column_inner_1_1 1_1 fusion-flex-column no-shadow">
+                                                    <div class="fusion-column-wrapper fusion-flex-justify-content-flex-start fusion-content-layout-column" style="background-position:left top;background-repeat:no-repeat;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover;padding: 0px 0px 0px 0px;">
+                                                        <div style="text-align:center;"><span class=" fusion-imageframe imageframe-none imageframe-2 hover-type-none"><img width="600" height="600" src="img/pexels-andrea-piacquadio-761854.jpg" alt="" class="img-responsive wp-image-54" srcset="img/pexels-andrea-piacquadio-761854-200x200.jpg 200w, img/pexels-andrea-piacquadio-761854-400x400.jpg 400w, img/pexels-andrea-piacquadio-761854.jpg 600w" sizes="(max-width: 640px) 100vw, 600px"></span></div>
+                                                    </div>
+                                                    <style type="text/css">.fusion-body .fusion-builder-nested-column-2{width:100% !important;margin-top : 0px;margin-bottom : 20px;}.fusion-builder-nested-column-2 > .fusion-column-wrapper {padding-top : 0px !important;padding-right : 0px !important;margin-right : 1.92%;padding-bottom : 0px !important;padding-left : 0px !important;margin-left : 1.92%;}@media only screen and (max-width:1024px) {.fusion-body .fusion-builder-nested-column-2{width:100% !important;order : 0;}.fusion-builder-nested-column-2 > .fusion-column-wrapper {margin-right : 1.92%;margin-left : 1.92%;}}@media only screen and (max-width:640px) {.fusion-body .fusion-builder-nested-column-2{width:100% !important;order : 0;}.fusion-builder-nested-column-2 > .fusion-column-wrapper {margin-right : 1.92%;margin-left : 1.92%;}}</style>
+                                                </div>
+                                                <div class="fusion-layout-column fusion_builder_column_inner fusion-builder-nested-column-3 fusion_builder_column_inner_1_1 1_1 fusion-flex-column no-shadow">
+                                                    <div class="fusion-column-wrapper fusion-flex-justify-content-flex-start fusion-content-layout-column" style="background-position:left top;background-repeat:no-repeat;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover;padding: 0px 0px 0px 0px;">
+                                                        <style type="text/css">@media only screen and (max-width:1024px) {.fusion-title.fusion-title-3{margin-top:10px!important; margin-right:0px!important;margin-bottom:15px!important;margin-left:0px!important;}}@media only screen and (max-width:640px) {.fusion-title.fusion-title-3{margin-top:10px!important; margin-right:0px!important;margin-bottom:10px!important; margin-left:0px!important;}}</style>
+                                                        <div class="fusion-title title fusion-title-3 fusion-sep-none fusion-title-text fusion-title-size-two" style="font-size:25px;margin-top:10px;margin-right:0px;margin-bottom:15px;margin-left:0px;">
+                                                            <h2 class="title-heading-left fusion-responsive-typography-calculated" style="margin:0;font-size:1em;--fontSize:25;line-height:var(--awb-typography1-line-height);">Restaurant</h2>
+                                                        </div>
+                                                        <div class="fusion-text fusion-text-2">
+                                                            <p>Jetzy Select’s experts with their personal connections and deep relationships with leading chefs and sommeliers, means priority reservations and unforgettable experiences for you .</p>
+                                                        </div>
+                                                    </div>
+                                                    <style type="text/css">.fusion-body .fusion-builder-nested-column-3{width:100% !important;margin-top : 0px;margin-bottom : 20px;}.fusion-builder-nested-column-3 > .fusion-column-wrapper {padding-top : 0px !important;padding-right : 0px !important;margin-right : 1.92%;padding-bottom : 0px !important;padding-left : 0px !important;margin-left : 1.92%;}@media only screen and (max-width:1024px) {.fusion-body .fusion-builder-nested-column-3{width:100% !important;order : 0;}.fusion-builder-nested-column-3 > .fusion-column-wrapper {margin-right : 1.92%;margin-left : 1.92%;}}@media only screen and (max-width:640px) {.fusion-body .fusion-builder-nested-column-3{width:100% !important;order : 0;}.fusion-builder-nested-column-3 > .fusion-column-wrapper {margin-right : 1.92%;margin-left : 1.92%;}}</style>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <style type="text/css">.fusion-body .fusion-builder-column-4{width:33.333333333333% !important;margin-top : 0px;margin-bottom : 20px;}.fusion-builder-column-4 > .fusion-column-wrapper {padding-top : 0px !important;padding-right : 0px !important;margin-right : 5.76%;padding-bottom : 0px !important;padding-left : 0px !important;margin-left : 5.76%;}@media only screen and (max-width:1024px) {.fusion-body .fusion-builder-column-4{width:100% !important;order : 0;}.fusion-builder-column-4 > .fusion-column-wrapper {margin-right : 1.92%;margin-left : 1.92%;}}@media only screen and (max-width:640px) {.fusion-body .fusion-builder-column-4{width:100% !important;order : 0;}.fusion-builder-column-4 > .fusion-column-wrapper {margin-right : 1.92%;margin-left : 1.92%;}}</style>
+                                    </div>
+                                    <div class="fusion-layout-column fusion_builder_column fusion-builder-column-5 fusion_builder_column_1_3 1_3 fusion-flex-column">
+                                        <div class="fusion-column-wrapper fusion-flex-justify-content-flex-start fusion-content-layout-column" style="background-position:left top;background-repeat:no-repeat;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover;padding: 0px 0px 0px 0px;">
+                                            <div class="fusion-builder-row fusion-builder-row-inner fusion-row fusion-flex-align-items-flex-start" style="width:104% !important;max-width:104% !important;margin-left: calc(-4% / 2 );margin-right: calc(-4% / 2 );">
+                                                <div class="fusion-layout-column fusion_builder_column_inner fusion-builder-nested-column-4 fusion_builder_column_inner_1_1 1_1 fusion-flex-column no-shadow">
+                                                    <div class="fusion-column-wrapper fusion-flex-justify-content-flex-start fusion-content-layout-column" style="background-position:left top;background-repeat:no-repeat;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover;padding: 0px 0px 0px 0px;">
+                                                        <div style="text-align:center;"><span class=" fusion-imageframe imageframe-none imageframe-3 hover-type-none"><img width="600" height="600" src="img/pexels-ichad-windhiagiri-7082467.jpg" alt="" class="img-responsive wp-image-55" srcset="img/pexels-ichad-windhiagiri-7082467-200x200.jpg 200w, img/pexels-ichad-windhiagiri-7082467-400x400.jpg 400w, img/pexels-ichad-windhiagiri-7082467.jpg 600w" sizes="(max-width: 640px) 100vw, 600px"></span></div>
+                                                    </div>
+                                                    <style type="text/css">.fusion-body .fusion-builder-nested-column-4{width:100% !important;margin-top : 0px;margin-bottom : 20px;}.fusion-builder-nested-column-4 > .fusion-column-wrapper {padding-top : 0px !important;padding-right : 0px !important;margin-right : 1.92%;padding-bottom : 0px !important;padding-left : 0px !important;margin-left : 1.92%;}@media only screen and (max-width:1024px) {.fusion-body .fusion-builder-nested-column-4{width:100% !important;order : 0;}.fusion-builder-nested-column-4 > .fusion-column-wrapper {margin-right : 1.92%;margin-left : 1.92%;}}@media only screen and (max-width:640px) {.fusion-body .fusion-builder-nested-column-4{width:100% !important;order : 0;}.fusion-builder-nested-column-4 > .fusion-column-wrapper {margin-right : 1.92%;margin-left : 1.92%;}}</style>
+                                                </div>
+                                                <div class="fusion-layout-column fusion_builder_column_inner fusion-builder-nested-column-5 fusion_builder_column_inner_1_1 1_1 fusion-flex-column no-shadow">
+                                                    <div class="fusion-column-wrapper fusion-flex-justify-content-flex-start fusion-content-layout-column" style="background-position:left top;background-repeat:no-repeat;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover;padding: 0px 0px 0px 0px;">
+                                                        <style type="text/css">@media only screen and (max-width:1024px) {.fusion-title.fusion-title-4{margin-top:10px!important; margin-right:0px!important;margin-bottom:15px!important;margin-left:0px!important;}}@media only screen and (max-width:640px) {.fusion-title.fusion-title-4{margin-top:10px!important; margin-right:0px!important;margin-bottom:10px!important; margin-left:0px!important;}}</style>
+                                                        <div class="fusion-title title fusion-title-4 fusion-sep-none fusion-title-text fusion-title-size-two" style="font-size:25px;margin-top:10px;margin-right:0px;margin-bottom:15px;margin-left:0px;">
+                                                            <h2 class="title-heading-left fusion-responsive-typography-calculated" style="margin:0;font-size:1em;--fontSize:25;line-height:var(--awb-typography1-line-height);">Venues</h2>
+                                                        </div>
+                                                        <div class="fusion-text fusion-text-3">
+                                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a odio et nisl porta dictum id at velit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a odio et nisl porta dictum id at velit.</p>
+                                                        </div>
+                                                    </div>
+                                                    <style type="text/css">.fusion-body .fusion-builder-nested-column-5{width:100% !important;margin-top : 0px;margin-bottom : 20px;}.fusion-builder-nested-column-5 > .fusion-column-wrapper {padding-top : 0px !important;padding-right : 0px !important;margin-right : 1.92%;padding-bottom : 0px !important;padding-left : 0px !important;margin-left : 1.92%;}@media only screen and (max-width:1024px) {.fusion-body .fusion-builder-nested-column-5{width:100% !important;order : 0;}.fusion-builder-nested-column-5 > .fusion-column-wrapper {margin-right : 1.92%;margin-left : 1.92%;}}@media only screen and (max-width:640px) {.fusion-body .fusion-builder-nested-column-5{width:100% !important;order : 0;}.fusion-builder-nested-column-5 > .fusion-column-wrapper {margin-right : 1.92%;margin-left : 1.92%;}}</style>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <style type="text/css">.fusion-body .fusion-builder-column-5{width:33.333333333333% !important;margin-top : 0px;margin-bottom : 20px;}.fusion-builder-column-5 > .fusion-column-wrapper {padding-top : 0px !important;padding-right : 0px !important;margin-right : 5.76%;padding-bottom : 0px !important;padding-left : 0px !important;margin-left : 5.76%;}@media only screen and (max-width:1024px) {.fusion-body .fusion-builder-column-5{width:100% !important;order : 0;}.fusion-builder-column-5 > .fusion-column-wrapper {margin-right : 1.92%;margin-left : 1.92%;}}@media only screen and (max-width:640px) {.fusion-body .fusion-builder-column-5{width:100% !important;order : 0;}.fusion-builder-column-5 > .fusion-column-wrapper {margin-right : 1.92%;margin-left : 1.92%;}}</style>
+                                    </div>
+                                </div>
+                                <style type="text/css">.fusion-body .fusion-flex-container.fusion-builder-row-2{ padding-top : 100px;margin-top : 0px;padding-right : 30px;padding-bottom : 60px;margin-bottom : 0px;padding-left : 30px;}</style>
+                            </div>
+                            <div class="fusion-fullwidth fullwidth-box fusion-builder-row-3 fusion-flex-container has-pattern-background has-mask-background nonhundred-percent-fullwidth non-hundred-percent-height-scrolling" style="background-color: rgba(255,255,255,0);background-position: center center;background-repeat: no-repeat;border-width: 0px 0px 0px 0px;border-color:var(--awb-color3);border-style:solid;">
+                                <div class="fusion-builder-row fusion-row fusion-flex-align-items-flex-start" style="max-width:1248px;margin-left: calc(-4% / 2 );margin-right: calc(-4% / 2 );">
+                                    <div class="fusion-layout-column fusion_builder_column fusion-builder-column-6 fusion_builder_column_1_1 1_1 fusion-flex-column">
+                                        <div class="fusion-column-wrapper fusion-flex-justify-content-flex-start fusion-content-layout-column" style="background-position:left top;background-repeat:no-repeat;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover;padding: 0px 0px 0px 0px;">
+                                            <div class="fusion-menu-anchor" id="book"></div>
+                                        </div>
+                                        <style type="text/css">.fusion-body .fusion-builder-column-6{width:100% !important;margin-top : 0px;margin-bottom : 20px;}.fusion-builder-column-6 > .fusion-column-wrapper {padding-top : 0px !important;padding-right : 0px !important;margin-right : 1.92%;padding-bottom : 0px !important;padding-left : 0px !important;margin-left : 1.92%;}@media only screen and (max-width:1024px) {.fusion-body .fusion-builder-column-6{width:100% !important;order : 0;}.fusion-builder-column-6 > .fusion-column-wrapper {margin-right : 1.92%;margin-left : 1.92%;}}@media only screen and (max-width:640px) {.fusion-body .fusion-builder-column-6{width:100% !important;order : 0;}.fusion-builder-column-6 > .fusion-column-wrapper {margin-right : 1.92%;margin-left : 1.92%;}}</style>
+                                    </div>
+                                </div>
+                                <style type="text/css">.fusion-body .fusion-flex-container.fusion-builder-row-3{ padding-top : 0px;margin-top : 0px;padding-right : 30px;padding-bottom : 0px;margin-bottom : 0px;padding-left : 30px;}</style>
+                            </div>
+                            <div class="fusion-fullwidth fullwidth-box fusion-builder-row-4 fusion-flex-container has-pattern-background has-mask-background nonhundred-percent-fullwidth non-hundred-percent-height-scrolling" style="background-color: #f2f2f2;background-position: center center;background-repeat: no-repeat;border-width: 0px 0px 0px 0px;border-color:var(--awb-color3);border-style:solid;">
+                                <div class="fusion-builder-row fusion-row fusion-flex-align-items-flex-start" style="max-width:1248px;margin-left: calc(-4% / 2 );margin-right: calc(-4% / 2 );">
+                                    <div class="fusion-layout-column fusion_builder_column fusion-builder-column-7 fusion_builder_column_1_1 1_1 fusion-flex-column">
+                                        <div class="fusion-column-wrapper fusion-flex-justify-content-flex-start fusion-content-layout-column" style="background-position:left top;background-repeat:no-repeat;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover;padding: 0px 0px 0px 0px;">
+                                            <style type="text/css">@media only screen and (max-width:1024px) {.fusion-title.fusion-title-5{margin-top:10px!important; margin-right:0px!important;margin-bottom:20px!important;margin-left:0px!important;}}@media only screen and (max-width:640px) {.fusion-title.fusion-title-5{margin-top:10px!important; margin-right:0px!important;margin-bottom:10px!important; margin-left:0px!important;}}</style>
+                                            <div class="fusion-title title fusion-title-5 fusion-sep-none fusion-title-center fusion-title-text fusion-title-size-two" style="margin-top:10px;margin-right:0px;margin-bottom:20px;margin-left:0px;">
+                                                <h2 class="title-heading-center fusion-responsive-typography-calculated" style="margin:0;--fontSize:40;line-height:var(--awb-typography1-line-height);">Get VIP access to the world’s most exclusive and authentic venues, restaurants and deals with the push of a button</h2>
+                                            </div>
+                                        </div>
+                                        <style type="text/css">.fusion-body .fusion-builder-column-7{width:100% !important;margin-top : 0px;margin-bottom : 20px;}.fusion-builder-column-7 > .fusion-column-wrapper {padding-top : 0px !important;padding-right : 0px !important;margin-right : 1.92%;padding-bottom : 0px !important;padding-left : 0px !important;margin-left : 1.92%;}@media only screen and (max-width:1024px) {.fusion-body .fusion-builder-column-7{width:100% !important;order : 0;}.fusion-builder-column-7 > .fusion-column-wrapper {margin-right : 1.92%;margin-left : 1.92%;}}@media only screen and (max-width:640px) {.fusion-body .fusion-builder-column-7{width:100% !important;order : 0;}.fusion-builder-column-7 > .fusion-column-wrapper {margin-right : 1.92%;margin-left : 1.92%;}}</style>
+                                    </div>
+                                    <div class="fusion-layout-column fusion_builder_column fusion-builder-column-8 fusion-flex-column">
+                                        <div class="fusion-column-wrapper fusion-flex-justify-content-flex-start fusion-content-layout-column" style="background-position:left top;background-repeat:no-repeat;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover;padding: 0px 0px 0px 0px;"></div>
+                                        <style type="text/css">.fusion-body .fusion-builder-column-8{width:10% !important;margin-top : 0px;margin-bottom : 20px;}.fusion-builder-column-8 > .fusion-column-wrapper {padding-top : 0px !important;padding-right : 0px !important;margin-right : 19.2%;padding-bottom : 0px !important;padding-left : 0px !important;margin-left : 19.2%;}@media only screen and (max-width:1024px) {.fusion-body .fusion-builder-column-8{width:10% !important;order : 0;}.fusion-builder-column-8 > .fusion-column-wrapper {margin-right : 19.2%;margin-left : 19.2%;}}@media only screen and (max-width:640px) {.fusion-body .fusion-builder-column-8{width:100% !important;order : 0;}.fusion-builder-column-8 > .fusion-column-wrapper {margin-right : 1.92%;margin-left : 1.92%;}}</style>
+                                    </div>
+                                    <div class="fusion-layout-column fusion_builder_column fusion-builder-column-9 fusion-flex-column">
+                                        <div class="fusion-column-wrapper fusion-flex-justify-content-flex-start fusion-content-layout-column" style="background-position:left top;background-repeat:no-repeat;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover;background-color:#ffffff;padding: 20px 0px 5px 80px;">
+                                            <div role="form" class="wpcf7" id="wpcf7-f24-p10-o1" lang="en-US" dir="ltr">
+                                                <div class="screen-reader-response">
+                                                    <p role="status" aria-live="polite" aria-atomic="true"></p>
+                                                    <ul></ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <style type="text/css">.fusion-body .fusion-builder-column-9{width:80% !important;margin-top : 0px;margin-bottom : 20px;}.fusion-builder-column-9 > .fusion-column-wrapper {padding-top : 20 !important;padding-right : 0 !important;margin-right : 2.4%;padding-bottom : 5 !important;padding-left : 80 !important;margin-left : 2.4%;}@media only screen and (max-width:1024px) {.fusion-body .fusion-builder-column-9{width:100% !important;order : 0;}.fusion-builder-column-9 > .fusion-column-wrapper {margin-right : 1.92%;margin-left : 1.92%;}}@media only screen and (max-width:640px) {.fusion-body .fusion-builder-column-9{width:100% !important;order : 0;}.fusion-builder-column-9 > .fusion-column-wrapper {padding-top : 20px !important;padding-right : 20px !important;margin-right : 1.92%;padding-bottom : 20px !important;padding-left : 20px !important;margin-left : 1.92%;}}</style>
+                                    </div>
+                                    <div class="fusion-layout-column fusion_builder_column fusion-builder-column-10 fusion-flex-column">
+                                        <div class="fusion-column-wrapper fusion-flex-justify-content-flex-start fusion-content-layout-column" style="background-position:left top;background-repeat:no-repeat;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover;padding: 0px 0px 0px 0px;"></div>
+                                        <style type="text/css">.fusion-body .fusion-builder-column-10{width:10% !important;margin-top : 0px;margin-bottom : 20px;}.fusion-builder-column-10 > .fusion-column-wrapper {padding-top : 0px !important;padding-right : 0px !important;margin-right : 19.2%;padding-bottom : 0px !important;padding-left : 0px !important;margin-left : 19.2%;}@media only screen and (max-width:1024px) {.fusion-body .fusion-builder-column-10{width:10% !important;order : 0;}.fusion-builder-column-10 > .fusion-column-wrapper {margin-right : 19.2%;margin-left : 19.2%;}}@media only screen and (max-width:640px) {.fusion-body .fusion-builder-column-10{width:100% !important;order : 0;}.fusion-builder-column-10 > .fusion-column-wrapper {margin-right : 1.92%;margin-left : 1.92%;}}</style>
+                                    </div>
+                                </div>
+                                <style type="text/css">.fusion-body .fusion-flex-container.fusion-builder-row-4{ padding-top : 80px;margin-top : 0px;padding-right : 30px;padding-bottom : 60px;margin-bottom : 0px;padding-left : 30px;}</style>
+                            </div>
+                            <div class="fusion-fullwidth fullwidth-box fusion-builder-row-5 fusion-flex-container has-pattern-background has-mask-background nonhundred-percent-fullwidth non-hundred-percent-height-scrolling" style="background-color: rgba(255,255,255,0);background-position: center center;background-repeat: no-repeat;border-width: 0px 0px 0px 0px;border-color:var(--awb-color3);border-style:solid;">
+                                <div class="fusion-builder-row fusion-row fusion-flex-align-items-center" style="max-width:1248px;margin-left: calc(-4% / 2 );margin-right: calc(-4% / 2 );">
+                                    <div class="fusion-layout-column fusion_builder_column fusion-builder-column-11 fusion_builder_column_1_2 1_2 fusion-flex-column">
+                                        <div class="fusion-column-wrapper fusion-flex-justify-content-flex-start fusion-content-layout-column" style="background-position:left top;background-repeat:no-repeat;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover;padding: 0px 0px 0px 0px;">
+                                            <style type="text/css">@media only screen and (max-width:1024px) {.fusion-title.fusion-title-6{margin-top:10px!important; margin-right:0px!important;margin-bottom:20px!important;margin-left:0px!important;}}@media only screen and (max-width:640px) {.fusion-title.fusion-title-6{margin-top:10px!important; margin-right:0px!important;margin-bottom:10px!important; margin-left:0px!important;}}</style>
+                                            <div class="fusion-title title fusion-title-6 fusion-sep-none fusion-title-text fusion-title-size-two" style="margin-top:10px;margin-right:0px;margin-bottom:20px;margin-left:0px;">
+                                                <h2 class="title-heading-left fusion-responsive-typography-calculated" style="margin:0;--fontSize:40;line-height:var(--awb-typography1-line-height);">Pricing</h2>
+                                            </div>
+                                            <div class="fusion-text fusion-text-4">
+                                                <p>We want to offer invitation code members <strong>first-month free</strong> and <strong>$25/month</strong> thereafter. For those joining without invite code, we will offer them <strong>$50/month</strong> from scratch after the vetting process through a form that they will receive after they leave their email address on the website</p>
+                                            </div>
+                                            <div>
+                                                <style>.fusion-body .fusion-button.button-2{border-radius:0px 0px 0px 0px;}</style>
+                                                <a class="fusion-button button-flat fusion-button-default-size button-default button-2 fusion-button-default-span fusion-button-default-type" target="_self" href="#sign-up"><span class="fusion-button-text">Sign Up</span></a>
+                                            </div>
+                                        </div>
+                                        <style type="text/css">.fusion-body .fusion-builder-column-11{width:50% !important;margin-top : 0px;margin-bottom : 20px;}.fusion-builder-column-11 > .fusion-column-wrapper {padding-top : 0px !important;padding-right : 0px !important;margin-right : 3.84%;padding-bottom : 0px !important;padding-left : 0px !important;margin-left : 3.84%;}@media only screen and (max-width:1024px) {.fusion-body .fusion-builder-column-11{width:100% !important;order : 0;}.fusion-builder-column-11 > .fusion-column-wrapper {margin-right : 1.92%;margin-left : 1.92%;}}@media only screen and (max-width:640px) {.fusion-body .fusion-builder-column-11{width:100% !important;order : 0;}.fusion-builder-column-11 > .fusion-column-wrapper {margin-right : 1.92%;margin-left : 1.92%;}}</style>
+                                    </div>
+                                    <div class="fusion-layout-column fusion_builder_column fusion-builder-column-12 fusion_builder_column_1_2 1_2 fusion-flex-column">
+                                        <div class="fusion-column-wrapper fusion-flex-justify-content-flex-start fusion-content-layout-column" style="background-position:left top;background-repeat:no-repeat;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover;padding: 0px 0px 0px 0px;">
+                                            <div><span class=" fusion-imageframe imageframe-none imageframe-4 hover-type-none" style="max-width:500px;"><img width="600" height="600" src="img/pexels-spencer-davis-4388168.jpg" alt="" class="img-responsive wp-image-72" srcset="img/pexels-spencer-davis-4388168-200x200.jpg 200w, img/pexels-spencer-davis-4388168-400x400.jpg 400w, img/pexels-spencer-davis-4388168.jpg 600w" sizes="(max-width: 640px) 100vw, 600px"></span></div>
+                                        </div>
+                                        <style type="text/css">.fusion-body .fusion-builder-column-12{width:50% !important;margin-top : 0px;margin-bottom : 20px;}.fusion-builder-column-12 > .fusion-column-wrapper {padding-top : 0px !important;padding-right : 0px !important;margin-right : 3.84%;padding-bottom : 0px !important;padding-left : 0px !important;margin-left : 3.84%;}@media only screen and (max-width:1024px) {.fusion-body .fusion-builder-column-12{width:100% !important;order : 0;}.fusion-builder-column-12 > .fusion-column-wrapper {margin-right : 1.92%;margin-left : 1.92%;}}@media only screen and (max-width:640px) {.fusion-body .fusion-builder-column-12{width:100% !important;order : 0;}.fusion-builder-column-12 > .fusion-column-wrapper {margin-right : 1.92%;margin-left : 1.92%;}}</style>
+                                    </div>
+                                </div>
+                                <style type="text/css">.fusion-body .fusion-flex-container.fusion-builder-row-5{ padding-top : 80px;margin-top : 0px;padding-right : 30px;padding-bottom : 60px;margin-bottom : 0px;padding-left : 30px;}</style>
+                            </div>
+                            <div class="fusion-fullwidth fullwidth-box fusion-builder-row-6 fusion-flex-container has-pattern-background has-mask-background nonhundred-percent-fullwidth non-hundred-percent-height-scrolling" style="background-color: #f2f2f2;background-position: center center;background-repeat: no-repeat;border-width: 0px 0px 0px 0px;border-color:var(--awb-color3);border-style:solid;">
+                                <div class="fusion-builder-row fusion-row fusion-flex-align-items-center" style="max-width:1248px;margin-left: calc(-4% / 2 );margin-right: calc(-4% / 2 );">
+                                    <div class="fusion-layout-column fusion_builder_column fusion-builder-column-13 fusion_builder_column_1_2 1_2 fusion-flex-column">
+                                        <div class="fusion-column-wrapper fusion-flex-justify-content-flex-start fusion-content-layout-column" style="background-position:left top;background-repeat:no-repeat;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover;padding: 0px 0px 0px 0px;">
+                                            <div>
+                                                <div style="display:inline-block; max-width:100%;width:500px;">
+                                                    <style>.fusion-imageframe.imageframe-5 img{aspect-ratio:100 / 100;}</style>
+                                                    <span class=" fusion-imageframe imageframe-none imageframe-5 hover-type-none has-aspect-ratio"><img width="1920" height="1280" src="img/pexels-te-lensfix-1371360.jpg" class="img-responsive wp-image-34 img-with-aspect-ratio" alt="" srcset="img/pexels-te-lensfix-1371360-200x133.jpg 200w, img/pexels-te-lensfix-1371360-400x267.jpg 400w, img/pexels-te-lensfix-1371360-600x400.jpg 600w, img/pexels-te-lensfix-1371360-800x533.jpg 800w, img/pexels-te-lensfix-1371360-1200x800.jpg 1200w, img/pexels-te-lensfix-1371360.jpg 1920w" sizes="(max-width: 640px) 100vw, 600px"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <style type="text/css">.fusion-body .fusion-builder-column-13{width:50% !important;margin-top : 0px;margin-bottom : 20px;}.fusion-builder-column-13 > .fusion-column-wrapper {padding-top : 0px !important;padding-right : 0px !important;margin-right : 3.84%;padding-bottom : 0px !important;padding-left : 0px !important;margin-left : 3.84%;}@media only screen and (max-width:1024px) {.fusion-body .fusion-builder-column-13{width:50% !important;order : 0;}.fusion-builder-column-13 > .fusion-column-wrapper {margin-right : 3.84%;margin-left : 3.84%;}}@media only screen and (max-width:640px) {.fusion-body .fusion-builder-column-13{width:100% !important;order : 0;}.fusion-builder-column-13 > .fusion-column-wrapper {margin-right : 1.92%;margin-left : 1.92%;}}</style>
+                                    </div>
+                                    <div class="fusion-layout-column fusion_builder_column fusion-builder-column-14 fusion_builder_column_1_2 1_2 fusion-flex-column">
+                                        <div class="fusion-column-wrapper fusion-flex-justify-content-flex-start fusion-content-layout-column" style="background-position:left top;background-repeat:no-repeat;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover;padding: 0px 0px 0px 0px;">
+                                            <style type="text/css">@media only screen and (max-width:1024px) {.fusion-title.fusion-title-7{margin-top:10px!important; margin-right:0px!important;margin-bottom:20px!important;margin-left:0px!important;}}@media only screen and (max-width:640px) {.fusion-title.fusion-title-7{margin-top:10px!important; margin-right:0px!important;margin-bottom:10px!important; margin-left:0px!important;}}</style>
+                                            <div class="fusion-title title fusion-title-7 fusion-sep-none fusion-title-text fusion-title-size-two" style="margin-top:10px;margin-right:0px;margin-bottom:20px;margin-left:0px;">
+                                                <h2 class="title-heading-left fusion-responsive-typography-calculated" style="margin:0;--fontSize:40;line-height:var(--awb-typography1-line-height);">Membership</h2>
+                                            </div>
+                                            <div class="fusion-text fusion-text-5">
+                                                <p>Jetzy Select offers a monthly membership to select individuals seeking the most authentic and exclusive lifestyle experiences in every city they go to.</p>
+                                                <p>Jetzy Select is your popular travel buddy that somehow knows everyone and always have hookups to latest venues and exclusive experiences. From extraordinary private events to VIP perks, Jetzy Select opens the door to elevated living for you.</p>
+                                                <p>Becoming a Jetzy Select member means having the world at your fingertips.</p>
+                                                <p>Want to feel like a local? Let our app find a cooking lesson or an exclusive tour. Going out? Let our app secure you tickets to the biggest events or VIP entry into clubs and nightlife venues.</p>
+                                            </div>
+                                            <div>
+                                                <style>.fusion-body .fusion-button.button-3{border-radius:0px 0px 0px 0px;}</style>
+                                                <a class="fusion-button button-flat fusion-button-default-size button-default button-3 fusion-button-default-span fusion-button-default-type" target="_self" href="#contact"><span class="fusion-button-text">Contact Us</span></a>
+                                            </div>
+                                        </div>
+                                        <style type="text/css">.fusion-body .fusion-builder-column-14{width:50% !important;margin-top : 0px;margin-bottom : 20px;}.fusion-builder-column-14 > .fusion-column-wrapper {padding-top : 0px !important;padding-right : 0px !important;margin-right : 3.84%;padding-bottom : 0px !important;padding-left : 0px !important;margin-left : 3.84%;}@media only screen and (max-width:1024px) {.fusion-body .fusion-builder-column-14{width:100% !important;order : 0;}.fusion-builder-column-14 > .fusion-column-wrapper {margin-right : 1.92%;margin-left : 1.92%;}}@media only screen and (max-width:640px) {.fusion-body .fusion-builder-column-14{width:100% !important;order : 0;}.fusion-builder-column-14 > .fusion-column-wrapper {margin-right : 1.92%;margin-left : 1.92%;}}</style>
+                                    </div>
+                                </div>
+                                <style type="text/css">.fusion-body .fusion-flex-container.fusion-builder-row-6{ padding-top : 80px;margin-top : 0px;padding-right : 30px;padding-bottom : 60px;margin-bottom : 0px;padding-left : 30px;}</style>
+                            </div>
+                            <div class="fusion-fullwidth fullwidth-box fusion-builder-row-7 fusion-flex-container has-pattern-background has-mask-background nonhundred-percent-fullwidth non-hundred-percent-height-scrolling" style="background-color: rgba(255,255,255,0);background-position: center center;background-repeat: no-repeat;border-width: 0px 0px 0px 0px;border-color:var(--awb-color3);border-style:solid;">
+                                <div class="fusion-builder-row fusion-row fusion-flex-align-items-flex-start" style="max-width:1248px;margin-left: calc(-4% / 2 );margin-right: calc(-4% / 2 );">
+                                    <div class="fusion-layout-column fusion_builder_column fusion-builder-column-15 fusion_builder_column_1_1 1_1 fusion-flex-column">
+                                        <div class="fusion-column-wrapper fusion-flex-justify-content-flex-start fusion-content-layout-column" style="background-position:left top;background-repeat:no-repeat;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover;padding: 0px 0px 0px 0px;">
+                                            <div class="fusion-menu-anchor" id="contact"></div>
+                                        </div>
+                                        <style type="text/css">.fusion-body .fusion-builder-column-15{width:100% !important;margin-top : 0px;margin-bottom : 20px;}.fusion-builder-column-15 > .fusion-column-wrapper {padding-top : 0px !important;padding-right : 0px !important;margin-right : 1.92%;padding-bottom : 0px !important;padding-left : 0px !important;margin-left : 1.92%;}@media only screen and (max-width:1024px) {.fusion-body .fusion-builder-column-15{width:100% !important;order : 0;}.fusion-builder-column-15 > .fusion-column-wrapper {margin-right : 1.92%;margin-left : 1.92%;}}@media only screen and (max-width:640px) {.fusion-body .fusion-builder-column-15{width:100% !important;order : 0;}.fusion-builder-column-15 > .fusion-column-wrapper {margin-right : 1.92%;margin-left : 1.92%;}}</style>
+                                    </div>
+                                </div>
+                                <style type="text/css">.fusion-body .fusion-flex-container.fusion-builder-row-7{ padding-top : 0px;margin-top : 0px;padding-right : 30px;padding-bottom : 0px;margin-bottom : 0px;padding-left : 30px;}</style>
+                            </div>
+                            <div class="fusion-fullwidth fullwidth-box fusion-builder-row-8 fusion-flex-container has-pattern-background has-mask-background nonhundred-percent-fullwidth non-hundred-percent-height-scrolling" style="background-color: rgba(255,255,255,0);background-position: center center;background-repeat: no-repeat;border-width: 0px 0px 0px 0px;border-color:var(--awb-color3);border-style:solid;">
+                                <div class="fusion-builder-row fusion-row fusion-flex-align-items-flex-start" style="max-width:1248px;margin-left: calc(-4% / 2 );margin-right: calc(-4% / 2 );">
+                                    <div class="fusion-layout-column fusion_builder_column fusion-builder-column-16 fusion_builder_column_1_1 1_1 fusion-flex-column">
+                                        <div class="fusion-column-wrapper fusion-flex-justify-content-flex-start fusion-content-layout-column" style="background-position:left top;background-repeat:no-repeat;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover;padding: 0px 0px 0px 0px;">
+                                            <style type="text/css">@media only screen and (max-width:1024px) {.fusion-title.fusion-title-8{margin-top:10px!important; margin-right:0px!important;margin-bottom:10px!important;margin-left:0px!important;}}@media only screen and (max-width:640px) {.fusion-title.fusion-title-8{margin-top:10px!important; margin-right:0px!important;margin-bottom:10px!important; margin-left:0px!important;}}</style>
+                                            <div class="fusion-title title fusion-title-8 fusion-sep-none fusion-title-center fusion-title-text fusion-title-size-six" style="margin-top:10px;margin-right:0px;margin-bottom:10px;margin-left:0px;">
+                                                <h6 class="title-heading-center fusion-responsive-typography-calculated" style="margin:0;--fontSize:20;--minFontSize:20px;line-height:var(--awb-typography1-line-height);">Contact Us</h6>
+                                            </div>
+                                            <style type="text/css">@media only screen and (max-width:1024px) {.fusion-title.fusion-title-9{margin-top:10px!important; margin-right:0px!important;margin-bottom:20px!important;margin-left:0px!important;}}@media only screen and (max-width:640px) {.fusion-title.fusion-title-9{margin-top:10px!important; margin-right:0px!important;margin-bottom:10px!important; margin-left:0px!important;}}</style>
+                                            <div class="fusion-title title fusion-title-9 fusion-sep-none fusion-title-center fusion-title-text fusion-title-size-two" style="margin-top:10px;margin-right:0px;margin-bottom:20px;margin-left:0px;">
+                                                <h2 class="title-heading-center fusion-responsive-typography-calculated" style="margin:0;--fontSize:40;line-height:var(--awb-typography1-line-height);">Drop Us A Message</h2>
+                                            </div>
+                                            <div class="fusion-separator fusion-full-width-sep" style="align-self: center;margin-left: auto;margin-right: auto;margin-bottom:30px;width:100%;"></div>
+                                        </div>
+                                        <style type="text/css">.fusion-body .fusion-builder-column-16{width:100% !important;margin-top : 0px;margin-bottom : 20px;}.fusion-builder-column-16 > .fusion-column-wrapper {padding-top : 0px !important;padding-right : 0px !important;margin-right : 1.92%;padding-bottom : 0px !important;padding-left : 0px !important;margin-left : 1.92%;}@media only screen and (max-width:1024px) {.fusion-body .fusion-builder-column-16{width:100% !important;order : 0;}.fusion-builder-column-16 > .fusion-column-wrapper {margin-right : 1.92%;margin-left : 1.92%;}}@media only screen and (max-width:640px) {.fusion-body .fusion-builder-column-16{width:100% !important;order : 0;}.fusion-builder-column-16 > .fusion-column-wrapper {margin-right : 1.92%;margin-left : 1.92%;}}</style>
+                                    </div>
+                                    <div class="fusion-layout-column fusion_builder_column fusion-builder-column-17 fusion_builder_column_2_5 2_5 fusion-flex-column">
+                                        <div class="fusion-column-wrapper fusion-flex-justify-content-flex-start fusion-content-layout-column" style="background-position:left top;background-repeat:no-repeat;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover;padding: 0px 0px 0px 0px;">
+                                            <div class="fusion-content-boxes content-boxes columns row fusion-columns-1 fusion-columns-total-3 fusion-content-boxes-1 content-boxes-icon-on-side content-left" data-animationoffset="top-into-view">
+                                                <style type="text/css">.fusion-content-boxes-1 .heading .content-box-heading {color:var(--awb-color8);}
+                                                .fusion-content-boxes-1 .fusion-content-box-hover .link-area-link-icon-hover .heading .content-box-heading,
+                                                .fusion-content-boxes-1 .fusion-content-box-hover .link-area-link-icon-hover .heading .heading-link .content-box-heading,
+                                                .fusion-content-boxes-1 .fusion-content-box-hover .link-area-box-hover .heading .content-box-heading,
+                                                .fusion-content-boxes-1 .fusion-content-box-hover .link-area-box-hover .heading .heading-link .content-box-heading,
+                                                .fusion-content-boxes-1 .fusion-content-box-hover .link-area-link-icon-hover.link-area-box .fusion-read-more,
+                                                .fusion-content-boxes-1 .fusion-content-box-hover .link-area-link-icon-hover.link-area-box .fusion-read-more::after,
+                                                .fusion-content-boxes-1 .fusion-content-box-hover .link-area-link-icon-hover.link-area-box .fusion-read-more::before,
+                                                .fusion-content-boxes-1 .fusion-content-box-hover .fusion-read-more:hover:after,
+                                                .fusion-content-boxes-1 .fusion-content-box-hover .fusion-read-more:hover:before,
+                                                .fusion-content-boxes-1 .fusion-content-box-hover .fusion-read-more:hover,
+                                                .fusion-content-boxes-1 .fusion-content-box-hover .link-area-box-hover.link-area-box .fusion-read-more,
+                                                .fusion-content-boxes-1 .fusion-content-box-hover .link-area-box-hover.link-area-box .fusion-read-more::after,
+                                                .fusion-content-boxes-1 .fusion-content-box-hover .link-area-box-hover.link-area-box .fusion-read-more::before,
+                                                .fusion-content-boxes-1 .fusion-content-box-hover .link-area-link-icon-hover .icon .circle-no,
+                                                .fusion-content-boxes-1 .heading .heading-link:hover .content-box-heading {
+                                                    color: #624f33;
+                                                }
+                                                .fusion-content-boxes-1 .fusion-content-box-hover .link-area-box-hover .icon .circle-no {
+                                                    color: #624f33 !important;
+                                                }.fusion-content-boxes-1 .fusion-content-box-hover .link-area-box.link-area-box-hover .fusion-content-box-button {background: #000000;color: var(--awb-color1);}.fusion-content-boxes-1 .fusion-content-box-hover .link-area-box.link-area-box-hover .fusion-content-box-button .fusion-button-text {color: var(--awb-color1);}
+                                                .fusion-content-boxes-1 .fusion-content-box-hover .link-area-link-icon-hover .heading .icon > span {
+                                                    background-color: transparent !important;
+                                                }
+                                                .fusion-content-boxes-1 .fusion-content-box-hover .link-area-box-hover .heading .icon > span {
+                                                    border-color: #624f33 !important;
+                                                }
+                                                </style>
+                                                <div class="fusion-column content-box-column content-box-column content-box-column-1 col-lg-12 col-md-12 col-sm-12 fusion-content-box-hover content-box-column-last-in-row">
+                                                    <div class="col content-box-wrapper content-wrapper link-area-link-icon icon-hover-animation-fade" style="background-color:rgba(181,181,181,0);" data-animationoffset="top-into-view">
+                                                        <div class="heading heading-with-icon icon-left">
+                                                            <div class="icon"><i style="border-color:var(--awb-color8);border-width:0px;background-color:rgba(209,209,209,0);box-sizing:content-box;height:40px;width:40px;line-height:40px;border-radius:50%#624f33;color:#624f33;font-size:20px;" aria-hidden="true" class="fontawesome-icon fa-phone-alt fas circle-yes"></i></div>
+                                                            <h2 class="content-box-heading fusion-responsive-typography-calculated" style="font-size:20px;--fontSize:20;line-height:var(--awb-typography1-line-height);padding-left:60px;">Phone</h2>
+                                                        </div>
+                                                        <div class="fusion-clearfix"></div>
+                                                        <div class="content-container" style="padding-left:60px;color:var(--awb-color8);">
+                                                            <p><a href="tel:555.555.555">555.555.555</a></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="fusion-column content-box-column content-box-column content-box-column-2 col-lg-12 col-md-12 col-sm-12 fusion-content-box-hover content-box-column-last-in-row">
+                                                    <div class="col content-box-wrapper content-wrapper link-area-link-icon icon-hover-animation-fade" style="background-color:rgba(181,181,181,0);" data-animationoffset="top-into-view">
+                                                        <div class="heading heading-with-icon icon-left">
+                                                            <div class="icon"><i style="border-color:var(--awb-color8);border-width:0px;background-color:rgba(209,209,209,0);box-sizing:content-box;height:40px;width:40px;line-height:40px;border-radius:50%#624f33;color:#624f33;font-size:20px;" aria-hidden="true" class="fontawesome-icon fa-envelope-open fas circle-yes"></i></div>
+                                                            <h2 class="content-box-heading fusion-responsive-typography-calculated" style="font-size:20px;--fontSize:20;line-height:var(--awb-typography1-line-height);padding-left:60px;">Email</h2>
+                                                        </div>
+                                                        <div class="fusion-clearfix"></div>
+                                                        <div class="content-container" style="padding-left:60px;color:var(--awb-color8);">
+                                                            <p><a href="mailto:info@gmail.com">info@gmail.com</a></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="fusion-column content-box-column content-box-column content-box-column-3 col-lg-12 col-md-12 col-sm-12 fusion-content-box-hover content-box-column-last content-box-column-last-in-row">
+                                                    <div class="col content-box-wrapper content-wrapper link-area-link-icon icon-hover-animation-fade" style="background-color:rgba(181,181,181,0);" data-animationoffset="top-into-view">
+                                                        <div class="heading heading-with-icon icon-left">
+                                                            <div class="icon"><i style="border-color:var(--awb-color8);border-width:0px;background-color:rgba(209,209,209,0);box-sizing:content-box;height:40px;width:40px;line-height:40px;border-radius:50%#624f33;color:#624f33;font-size:20px;" aria-hidden="true" class="fontawesome-icon fa-map-marker-alt fas circle-yes"></i></div>
+                                                            <h2 class="content-box-heading fusion-responsive-typography-calculated" style="font-size:20px;--fontSize:20;line-height:var(--awb-typography1-line-height);padding-left:60px;">Address</h2>
+                                                        </div>
+                                                        <div class="fusion-clearfix"></div>
+                                                        <div class="content-container" style="padding-left:60px;color:var(--awb-color8);">
+                                                            <p>Lorem ipsum</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <style type="text/css">
+                                                    .fusion-content-boxes-1 .fusion-content-box-hover .heading-link:hover .icon i.circle-yes,
+                                                    .fusion-content-boxes-1 .fusion-content-box-hover .link-area-box:hover .heading-link .icon i.circle-yes,
+                                                    .fusion-content-boxes-1 .fusion-content-box-hover .link-area-link-icon-hover .heading .icon i.circle-yes,
+                                                    .fusion-content-boxes-1 .fusion-content-box-hover .link-area-box-hover .heading .icon i.circle-yes {
+                                                        background-color: transparent !important;
+                                                        border-color: #624f33 !important;
+                                                    }
+                                                </style>
+                                                <div class="fusion-clearfix"></div>
+                                            </div>
+                                        </div>
+                                        <style type="text/css">.fusion-body .fusion-builder-column-17{width:40% !important;margin-top : 0px;margin-bottom : 20px;}.fusion-builder-column-17 > .fusion-column-wrapper {padding-top : 0px !important;padding-right : 0px !important;margin-right : 4.8%;padding-bottom : 0px !important;padding-left : 0px !important;margin-left : 4.8%;}@media only screen and (max-width:1024px) {.fusion-body .fusion-builder-column-17{width:100% !important;order : 0;}.fusion-builder-column-17 > .fusion-column-wrapper {margin-right : 1.92%;margin-left : 1.92%;}}@media only screen and (max-width:640px) {.fusion-body .fusion-builder-column-17{width:100% !important;order : 0;}.fusion-builder-column-17 > .fusion-column-wrapper {margin-right : 1.92%;margin-left : 1.92%;}}</style>
+                                    </div>
+                                    <div class="fusion-layout-column fusion_builder_column fusion-builder-column-18 fusion_builder_column_3_5 3_5 fusion-flex-column contact-col">
+                                        <div class="fusion-column-wrapper fusion-flex-justify-content-flex-start fusion-content-layout-column" style="background-position:left top;background-repeat:no-repeat;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:cover;padding: 0px 0px 0px 0px;">
+                                            <div role="form" class="wpcf7" id="wpcf7-f63-p10-o2" lang="en-US" dir="ltr">
+                                                <div class="screen-reader-response">
+                                                    <p role="status" aria-live="polite" aria-atomic="true"></p>
+                                                    <ul></ul>
+                                                </div>
+                                                <form action="/#wpcf7-f63-p10-o2" method="post" class="wpcf7-form init" novalidate="novalidate" data-status="init">
+                                                    <div style="display: none;">
+                                                        <input type="hidden" name="_wpcf7" value="63">
+                                                        <input type="hidden" name="_wpcf7_version" value="5.6.1">
+                                                        <input type="hidden" name="_wpcf7_locale" value="en_US">
+                                                        <input type="hidden" name="_wpcf7_unit_tag" value="wpcf7-f63-p10-o2">
+                                                        <input type="hidden" name="_wpcf7_container_post" value="10">
+                                                        <input type="hidden" name="_wpcf7_posted_data_hash" value="">
+                                                    </div>
+                                                    <div class="fusion-columns fusion-clearfix" style="margin-bottom: 0px;">
+                                                        <div class="col-lg-6 col-md-6 col-sm-12">
+                                                            <p> <span class="wpcf7-form-control-wrap" data-name="text-862"><input type="text" name="text-862" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false" placeholder="First Name"></span></p>
+                                                        </div>
+                                                        <div class="col-lg-6 col-md-6 col-sm-12">
+                                                            <p><span class="wpcf7-form-control-wrap" data-name="text-259"><input type="text" name="text-259" value="" size="40" class="wpcf7-form-control wpcf7-text" aria-invalid="false" placeholder="Last Name"></span></p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="fusion-columns fusion-clearfix" style="margin-bottom: 0px;">
+                                                        <div class="col-lg-6 col-md-6 col-sm-12">
+                                                            <p><span class="wpcf7-form-control-wrap" data-name="email-218"><input type="email" name="email-218" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-email wpcf7-validates-as-required wpcf7-validates-as-email" aria-required="true" aria-invalid="false" placeholder="Email Address"></span></p>
+                                                        </div>
+                                                        <div class="col-lg-6 col-md-6 col-sm-12">
+                                                            <p><span class="wpcf7-form-control-wrap" data-name="text-875"><input type="text" name="text-875" value="" size="40" class="wpcf7-form-control wpcf7-text" aria-invalid="false" placeholder="Subject"></span></p>
+                                                        </div>
+                                                    </div>
+                                                    <p style="margin-bottom: 30px;">
+                                                        <span class="wpcf7-form-control-wrap" data-name="textarea-674"><textarea name="textarea-674" cols="40" rows="10" class="wpcf7-form-control wpcf7-textarea wpcf7-validates-as-required" aria-required="true" aria-invalid="false" placeholder="How Can We Help?"></textarea></span>
+                                                    </p>
+                                                    <p style="text-align:left;" class="submit-btn"><input type="submit" value="SEND" class="wpcf7-form-control has-spinner wpcf7-submit"><span class="wpcf7-spinner"></span></p>
+                                                    <div class="fusion-alert alert custom alert-custom fusion-alert-center wpcf7-response-output alert-dismissable" role="alert" style="border-width:1px;">
+                                                        <div class="fusion-alert-content-wrapper"><span class="fusion-alert-content"></span></div>
+                                                        <button type="button" class="close toggle-alert" data-dismiss="alert" aria-label="Close">×</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <style type="text/css">.fusion-body .fusion-builder-column-18{width:60% !important;margin-top : 0px;margin-bottom : 20px;}.fusion-builder-column-18 > .fusion-column-wrapper {padding-top : 0px !important;padding-right : 0px !important;margin-right : 3.2%;padding-bottom : 0px !important;padding-left : 0px !important;margin-left : 3.2%;}@media only screen and (max-width:1024px) {.fusion-body .fusion-builder-column-18{width:100% !important;order : 0;}.fusion-builder-column-18 > .fusion-column-wrapper {margin-right : 1.92%;margin-left : 1.92%;}}@media only screen and (max-width:640px) {.fusion-body .fusion-builder-column-18{width:100% !important;order : 0;}.fusion-builder-column-18 > .fusion-column-wrapper {margin-right : 1.92%;margin-left : 1.92%;}}</style>
+                                    </div>
+                                </div>
+                                <style type="text/css">.fusion-body .fusion-flex-container.fusion-builder-row-8{ padding-top : 80px;margin-top : 0px;padding-right : 30px;padding-bottom : 60px;margin-bottom : 0px;padding-left : 30px;}</style>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <!-- fusion-row -->
+        </main>
+        <!-- #main -->
+        <div class="fusion-footer">
+            <footer id="footer" class="fusion-footer-copyright-area">
+                <div class="fusion-row">
+                    <div class="fusion-copyright-content">
+                        <div class="fusion-copyright-notice">
+                            <div>
+                                © Copyright  -&nbsp;<script>document.write(new Date().getFullYear());</script>2022&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; <a href="https://jetzy.com" target="_blank">Jetzy&nbsp;&nbsp;</a>&nbsp;  |&nbsp;&nbsp;&nbsp;All Rights Reserved&nbsp;  &nbsp;
+                            </div>
+                        </div>
+                        <div class="fusion-social-links-footer">
+                            <div class="fusion-social-networks">
+                                <div class="fusion-social-networks-wrapper"><a class="fusion-social-network-icon fusion-tooltip fusion-facebook awb-icon-facebook" style="" data-placement="top" data-title="Facebook" data-toggle="tooltip" title="" href="#" target="_blank" rel="noreferrer" data-original-title="Facebook"><span class="screen-reader-text">Facebook</span></a><a class="fusion-social-network-icon fusion-tooltip fusion-twitter awb-icon-twitter" style="" data-placement="top" data-title="Twitter" data-toggle="tooltip" title="" href="#" target="_blank" rel="noopener noreferrer" data-original-title="Twitter"><span class="screen-reader-text">Twitter</span></a><a class="fusion-social-network-icon fusion-tooltip fusion-instagram awb-icon-instagram" style="" data-placement="top" data-title="Instagram" data-toggle="tooltip" title="" href="#" target="_blank" rel="noopener noreferrer" data-original-title="Instagram"><span class="screen-reader-text">Instagram</span></a><a class="fusion-social-network-icon fusion-tooltip fusion-pinterest awb-icon-pinterest" style="" data-placement="top" data-title="Pinterest" data-toggle="tooltip" title="" href="#" target="_blank" rel="noopener noreferrer" data-original-title="Pinterest"><span class="screen-reader-text">Pinterest</span></a></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- fusion-fusion-copyright-content -->
+                </div>
+                <!-- fusion-row -->
+            </footer>
+            <!-- #footer -->
+        </div>
+        <!-- fusion-footer -->
+        <div class="fusion-sliding-bar-wrapper">
+        </div>
+    </div>
+    <!-- wrapper -->
+</div>
+<!-- #boxed-wrapper -->
+<div class="fusion-top-frame"></div>
+<div class="fusion-bottom-frame"></div>
+<div class="fusion-boxed-shadow"></div>
+<a class="fusion-one-page-text-link fusion-page-load-link" tabindex="-1" href="#" aria-hidden="true">Page load link</a>
+<div class="avada-footer-scripts">
+    <script>
+            window.RS_MODULES = window.RS_MODULES || {};
+            window.RS_MODULES.modules = window.RS_MODULES.modules || {};
+            window.RS_MODULES.waiting = window.RS_MODULES.waiting || [];
+            window.RS_MODULES.defered = true;
+            window.RS_MODULES.moduleWaiting = window.RS_MODULES.moduleWaiting || {};
+            window.RS_MODULES.type = 'compiled';
+         </script>
+    <script type="text/javascript">var fusionNavIsCollapsed=function(e){var t,n;window.innerWidth<=e.getAttribute("data-breakpoint")?(e.classList.add("collapse-enabled"),e.classList.contains("expanded")||(e.setAttribute("aria-expanded","false"),window.dispatchEvent(new Event("fusion-mobile-menu-collapsed",{bubbles:!0,cancelable:!0}))),(n=e.querySelectorAll(".menu-item-has-children.expanded")).length&&n.forEach(function(e){e.querySelector(".fusion-open-nav-submenu").setAttribute("aria-expanded","false")})):(null!==e.querySelector(".menu-item-has-children.expanded .fusion-open-nav-submenu-on-click")&&e.querySelector(".menu-item-has-children.expanded .fusion-open-nav-submenu-on-click").click(),e.classList.remove("collapse-enabled"),e.setAttribute("aria-expanded","true"),null!==e.querySelector(".fusion-custom-menu")&&e.querySelector(".fusion-custom-menu").removeAttribute("style")),e.classList.add("no-wrapper-transition"),clearTimeout(t),t=setTimeout(()=>{e.classList.remove("no-wrapper-transition")},400),e.classList.remove("loading")},fusionRunNavIsCollapsed=function(){var e,t=document.querySelectorAll(".fusion-menu-element-wrapper");for(e=0;e<t.length;e++)fusionNavIsCollapsed(t[e])};function avadaGetScrollBarWidth(){var e,t,n,l=document.createElement("p");return l.style.width="100%",l.style.height="200px",(e=document.createElement("div")).style.position="absolute",e.style.top="0px",e.style.left="0px",e.style.visibility="hidden",e.style.width="200px",e.style.height="150px",e.style.overflow="hidden",e.appendChild(l),document.body.appendChild(e),t=l.offsetWidth,e.style.overflow="scroll",t==(n=l.offsetWidth)&&(n=e.clientWidth),document.body.removeChild(e),jQuery("html").hasClass("awb-scroll")&&10<t-n?10:t-n}fusionRunNavIsCollapsed(),window.addEventListener("fusion-resize-horizontal",fusionRunNavIsCollapsed);</script>
+    <link rel="stylesheet" id="rs-plugin-settings-css" href="css/rs6.css" type="text/css" media="all">
+    <style id="rs-plugin-settings-inline-css" type="text/css">
+        #rs-demo-id {}
+    </style>
+    <script type="text/javascript" src="js/regenerator_runtime.js" id="regenerator-runtime-js"></script>
+    <script type="text/javascript" src="js/pollyfill.js" id="wp-polyfill-js"></script>
+    <script type="text/javascript" id="contact-form-7-js-extra">
+            /* <![CDATA[ */
+            var wpcf7 = {"api":{"root":"https:\/\/wordpress-649294-2801231.cloudwaysapps.com\/wp-json\/","namespace":"contact-form-7\/v1"}};
+            /* ]]> */
+         </script>
+    <script type="text/javascript" src="js/select-index.js" id="contact-form-7-js"></script>
+    <script type="text/javascript" src="js/rbtools.js" defer="" async="" id="tp-tools-js"></script>
+    <script type="text/javascript" src="js/rs6.js" defer="" async="" id="revmin-js"></script>
+    <script type="text/javascript" src="js/fusion-min.js" id="fusion-scripts-js"></script>
+    <script type="text/javascript">
+            jQuery( document ).ready( function() {
+            	var ajaxurl = 'https://wordpress-649294-2801231.cloudwaysapps.com/wp-admin/admin-ajax.php';
+            	if ( 0 < jQuery( '.fusion-login-nonce' ).length ) {
+            		jQuery.get( ajaxurl, { 'action': 'fusion_login_nonce' }, function( response ) {
+            			jQuery( '.fusion-login-nonce' ).html( response );
+            		});
+            	}
+            });
+
+         </script>
+</div>
+<section class="to-top-container to-top-right" aria-labelledby="awb-to-top-label">
+    <a href="#" id="toTop" class="fusion-top-top-link">
+        <span id="awb-to-top-label" class="screen-reader-text">Go to Top</span>
+    </a>
+</section>

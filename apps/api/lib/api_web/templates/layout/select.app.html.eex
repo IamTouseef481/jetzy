@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+  Rendering entire pages is not healthy at all,
+  please leave me alone I am tired and sad.
+-->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Jetzy Select Concierge">
+
+    <title>Jetzy Select Concierge</title>
+
+    <!-- Bootstrap + Dorang main styles -->
+    <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/assets/select/select.css") %>">
+    <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/jquery.js") %>" id="jquery-core-js"></script>
+    <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/jquery_migrate.js") %>" id="jquery-migrate-js"></script>
+</head>
+<body data-spy="scroll" data-target=".navbar" data-offset="40" id="home" class="dark-theme select">
+
+<%= @inner_content %>
+
+<script type="text/javascript" src="<%= Routes.static_path(@conn, "/assets/phoenix-bootstrap.js") %>"></script>
+</body>
+</html>

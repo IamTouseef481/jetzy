@@ -1,0 +1,188 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <!-- ======================================================================================================== -->
+    <!-- report_sources                                                                                           -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="report_sources">
+        <createTable tableName="report_sources">
+            <column name="id" type="VARCHAR(255)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="report_sources_pkey"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+            <column defaultValueBoolean="false" name="is_deleted" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_report_sources_deleted_at             -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:report_sources:deleted_at">
+        <createIndex indexName="idx_report_sources_deleted_at" tableName="report_sources">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_report_sources_is_deleted             -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:report_sources:is_deleted">
+        <createIndex indexName="idx_report_sources_is_deleted" tableName="report_sources">
+            <column name="is_deleted"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- report_sources                            -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="root (generated)" id="report_sources:initial_data">
+        <loadData
+                tableName="report_sources"
+                file="./csv/report_sources.csv"
+                commentLineStartsWith="#"
+                relativeToChangelogFile="true"
+                usePreparedStatements="true"
+        >
+        </loadData>
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!-- report_messages                                                                                          -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="report_messages">
+        <createTable tableName="report_messages">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="report_messages_pkey"/>
+            </column>
+            <column name="report_source_id" type="VARCHAR(255)"/>
+            <column defaultValueBoolean="false" name="is_deleted" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="TEXT"/>
+            <column name="item_id" type="UUID"/>
+            <column name="user_id" type="UUID"/>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:report_messages:report_messages_report_source_id_index">
+        <createIndex indexName="report_messages_report_source_id_index" tableName="report_messages">
+            <column name="report_source_id"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_report_messages_deleted_at            -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:report_messages:deleted_at">
+        <createIndex indexName="idx_report_messages_deleted_at" tableName="report_messages">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_report_messages_is_deleted            -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:report_messages:is_deleted">
+        <createIndex indexName="idx_report_messages_is_deleted" tableName="report_messages">
+            <column name="is_deleted"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:report_messages.report_source_id">
+        <addForeignKeyConstraint baseColumnNames="report_source_id" baseTableName="report_messages" constraintName="report_messages_report_source_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="report_sources" validate="true"/>
+    </changeSet>
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:report_messages.user_id">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="report_messages" constraintName="report_messages_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+    <!-- ======================================================================================================== -->
+    <!--                                                                                                          -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="user_reports">
+        <createTable tableName="user_reports">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_reports_pkey"/>
+            </column>
+            <column name="reported_id" type="VARCHAR(255)"/>
+            <column name="report_type" type="VARCHAR(255)"/>
+            <column name="description" type="TEXT"/>
+            <column defaultValueBoolean="false" name="is_deleted" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="UUID"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:user_reports:user_reports_user_id_index">
+        <createIndex indexName="user_reports_user_id_index" tableName="user_reports">
+            <column name="user_id"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_user_reports_deleted_at               -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:user_reports:deleted_at">
+        <createIndex indexName="idx_user_reports_deleted_at" tableName="user_reports">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_user_reports_is_deleted               -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:user_reports:is_deleted">
+        <createIndex indexName="idx_user_reports_is_deleted" tableName="user_reports">
+            <column name="is_deleted"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:user_reports.user_id">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="user_reports" constraintName="user_reports_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+
+</databaseChangeLog>

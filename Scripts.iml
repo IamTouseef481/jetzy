@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module version="4">
+  <component name="FacetManager">
+    <facet type="Elixir" name="Elixir">
+      <configuration sdkName="" />
+    </facet>
+  </component>
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$/scripts">
+      <sourceFolder url="file://$MODULE_DIR$/scripts" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/scripts/lib" isTestSource="false" />
+    </content>
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

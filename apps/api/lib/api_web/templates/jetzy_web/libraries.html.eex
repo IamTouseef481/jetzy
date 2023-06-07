@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Jetzy |Travel like a Local!</title>
+    <meta name="description" content="Jetzy is the social media App for travelers and flashpackers, who love to travel the world.">
+    <meta name="keywords" content="Jetzy, Jetzyapp, Jetzy app, Jetzy Social Media, Jetzy Travel, Travel, Travel deals, Travel deals to, Vegas travel, Travel beach, Travel hotels, Travel air, Travel spain Barcelona, Travel London, Travel, Katy Perry, Ty Sawyer, Shama Zehra, Best Travel, Fashion, Fashion travel, Shopping, Shopping travel, Travel new york city, Travel Orlando, Travel united states, European travel, Travel New york, Vacations, Holidays, Vacations travel, Beach, Beach travel, Deals on travel, Social, Social travel, Meet locals, Meet up, Trip, Islands, Island, Island travel, Travel Australia, Best travel deals, Flashpacker, Flashpacking, Millennial, Millennials, Dating, Travel app, Connect, Meet, Backpacks, Wine, Wine travel, Wine tours, Biking, Bike tours, Tours, Culture, Museums, Restaurants, LGBT travel, Paris, Paris Travel, Thailand, Thailand travel, Rome, Rome deals, Berlin, Berlin Travel, Barcelona, Barcelona travel, Spain travel, Italy, Germany, India, England, UK, Ireland, Russia, Turkey, China, Hong Kong, Singapore, Africa, Asia, New Zealand, Budapest, Instanbul, Spa, Spa travel, Cruise ship, Cruiseship deal, Brazil, Greece, Greek Island, Adventure, Escape, Green travel, Live like a local, Authentic travel, France, Portugal, Egypt, Sydney, Queensland Australia, Indonesia, Indonesia travel, Bali, Bali travel, Tahiti, Tahiti deals, Tahiti islands, Bora Bora, Bora Bora honeymoon, Destination, Wedding, Moorea, Surf Travel, Surf destination, Top 10 travel destinations, Food, travel, Milan Travel, Travel apparel, Travel bags , Free travel, Travel rewards " />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" href="Splash/css/style.css">
+    <link rel="stylesheet" href="Splash/css/responsive.css">
+    <link rel="shortcut icon" href="Images/favicon.ico">
+    <link rel="icon" type="image/gif" href="Images/animated_favicon1.gif">
+
+    <script src="Splash/js/jquery-1.8.3.min.js"></script>
+    <script src="Splash/js/waypoints.min.js"></script>
+    <script src="Splash/js/TweenMax.min.js"></script>
+    <script src="Splash/js/jquery.video.js"></script>
+    <script src="Splash/js/TC.js"></script>
+
+    <meta property="og:image" content="https://www.jetzyapp.com/images/logo.png" />
+    <!-- Include this to make the og:image larger -->
+    <meta name="twitter:card" content="summary_large_image">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <video autoplay poster="" id="bgvid" loop>
+        <source src="Splash/video/1492354.webm" type="video/webm">
+        <source src="Splash/video/1492354.mp4" type="video/mp4">
+    </video>
+    <div id="pageContainer">
+        <div class="wrapper clearfix">
+            <div class="header innHeader clearfix">
+                <div class="headerInner clearfix">
+                    <h1 class="logo"><a href="https://www.jetzyapp.com/">
+                        <img src="Splash/images/logo.png" alt=""></a></h1>
+                </div>
+            </div>
+            <div class="ourmissionCont content clearfix">
+                <div class="missionContent clearfix">
+                    <h2>Open Source Libraries used in Jetzy</h2>
+                    <h3></h3>
+                    <ul class="listBoxul doublecol">
+                        <li>Facebook Sdk</li>
+                        <li>Twitter4j 4.0.2</li>
+                        <li>Signpost-core:1.2.1.2</li>
+                        <li>Signpost-commonshttp4:1.2.1.2</li>
+                        <li>Soundcloud android-crop:0.9.10</li>
+                        <li>Quickblox-android-sdk-core-2.1</li>
+                        <li>Quickblox-android-sdk-location-2.1</li>
+                        <li>Io.nlopez.clusterer :library:1.0.4</li>
+                        <li>HockeySDK:3.5.0-b.4</li>
+                        <li>Quickblox-android-sdk-messages-2.1</li>
+                        <li>Quickblox-android-sdk-content-2.1</li>
+                        <li>Android-viewbadger</li>
+                        <li>Flurl</li>
+                        <li>Marvin.JsonPatch</li>
+                        <li>Newtonsoft.Json</li>
+                        <li>Ninject</li>
+                        <li>Openstacknet</li>
+                        <li>PushSharp</li>
+                        <li>Image Resizer</li>
+
+
+                    </ul>
+                    <p>
+                        <strong>HAPPY JETZING!</strong><br>
+                        Technology Partner :   <a href="http://bit.ly/1BYKaMb" target="_blank">ICREON Tech</a>
+                    </p>
+
+                    <img src="Splash/images/thumb_icreon.png" /><p>Icreon is a technology strategy & platform development firm. Founded in 2000, Icreon has over 15 years of experience in building immersive technology ecosystems. The company is best known for building mobile, web & connected experiences in multiple industries, partnering with the world's smartest business leaders, entrepreneurs & growing businesses. Working with clients like National Geographic Channel, Fox Traveller, the New York City Marathon & Playbill – the travel, tourism & social connectivity space runs deep in Icreon's veins. Today, with presences in North America, Europe, Africa & Asia – the global technology firm focuses on bringing its expertise in strategy, engineering & design to tomorrow's business models.</p>
+                </div>
+            </div>
+            <footer class="footer clearfix">
+                <div class="contactWrap clearfix">
+                    <div class="contact fLeft" style="display: none">
+                        <ul class="footerNav">
+                            <li><a href="/">Home</a></li>
+                            <li class="active"><a href="javascript:void(0)">About</a></li>
+                            <li><a href="privacy.html">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                    <div class="contact fRight"><span>Contact Us:</span> <a href="mailto:contact@jetzyapp.com">contact@jetzyapp.com</a></div>
+                </div>
+                <div class="copyrightCont clearfix">
+
+                    <p class="copyright">
+                        S Z Global Inc.<br />
+                        Designed and Developed by <a href="http://bit.ly/1TCFgZS" target="_blank" style="color: #97b0ff; text-decoration: underline">Icreon Tech</a>
+                    </p>
+                    <span class="logo2">
+                        <img src="Splash/images/logo2.png" alt=""></span>
+                    <div class="socialCont">
+                        <ul class="social">
+                            <li>Follow us</li>
+                            <li><a href="https://www.facebook.com/jetzyapp" target="_blank">
+                                <img src="Splash/images/fb2.png" alt=""></a></li>
+                            <li><a href="https://twitter.com/Jetzyapp" target="_blank">
+                                <img src="Splash/images/twitter2.png" alt=""></a></li>
+                            <li><a href="https://instagram.com/jetzyapp" target="_blank">
+                                <img src="Splash/images/instagram2.png" alt=""></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <script>
+        $(function () {
+            TC.homePage.init();
+        });
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,112 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <!-- ======================================================================================================== -->
+    <!-- default_profile_images                                                                                   -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="default_profile_images">
+        <createTable tableName="default_profile_images">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="default_profile_images_pkey"/>
+            </column>
+            <column name="image_name" type="VARCHAR(255)"/>
+            <column name="image_identifier" type="BIGINT"/>
+            <column name="blur_hash" type="VARCHAR(255)"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="small_image_name" type="TEXT"/>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_default_profile_images_deleted_at     -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:default_profile_images:deleted_at">
+        <createIndex indexName="idx_default_profile_images_deleted_at" tableName="default_profile_images">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- mail_content_settings                                                                                    -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="mail_content_settings">
+        <createTable tableName="mail_content_settings">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="mail_content_settings_pkey"/>
+            </column>
+            <column name="subject" type="VARCHAR(255)"/>
+            <column name="body_text" type="TEXT"/>
+            <column name="description" type="TEXT"/>
+            <column name="from" type="VARCHAR(255)"/>
+            <column name="bcc" type="VARCHAR(255)"/>
+            <column defaultValueBoolean="false" name="is_active" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_mail_content_settings_deleted_at      -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:mail_content_settings:deleted_at">
+        <createIndex indexName="idx_mail_content_settings_deleted_at" tableName="mail_content_settings">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- statuses                                                                                                 -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="statuses">
+        <createTable tableName="statuses">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="statuses_pkey"/>
+            </column>
+            <column name="status" type="VARCHAR(255)"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_statuses_deleted_at                   -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:statuses:deleted_at">
+        <createIndex indexName="idx_statuses_deleted_at" tableName="statuses">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- statuses                                  -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="root (generated)" id="statuses:initial_data">
+        <loadData
+                tableName="statuses"
+                file="./csv/statuses.csv"
+                commentLineStartsWith="#"
+                relativeToChangelogFile="true"
+                usePreparedStatements="true"
+        >
+        </loadData>
+    </changeSet>
+
+</databaseChangeLog>

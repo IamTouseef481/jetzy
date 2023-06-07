@@ -1,0 +1,736 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>DATABASE</ID>
+  <OriginalElement>8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.address_components</OriginalElement>
+  <nodes>
+    <node x="9237.53532712059" y="1261.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_shoutouts</node>
+    <node x="2244.5" y="3235.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.frequently_asked_questions</node>
+    <node x="640.0" y="3235.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.report_sources</node>
+    <node x="9482.53532712059" y="1357.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_geo_locations</node>
+    <node x="3598.5" y="3235.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_notifications_types</node>
+    <node x="1707.2216701534107" y="2843.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_moment_likes</node>
+    <node x="5640.474721059965" y="1309.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.interests</node>
+    <node x="0.0" y="3608.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.reward_offers</node>
+    <node x="304.0" y="3235.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.careers</node>
+    <node x="7588.010785152786" y="1876.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.address_components</node>
+    <node x="7071.010785152786" y="2116.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_interests_tagged</node>
+    <node x="12202.802451819452" y="1417.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.permissions</node>
+    <node x="1938.2216701534107" y="2783.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_moments_images</node>
+    <node x="12087.802451819452" y="2116.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_comments_tagged</node>
+    <node x="640.0" y="3464.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.report_messages</node>
+    <node x="2464.474721059966" y="2032.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_moments</node>
+    <node x="2820.5" y="3235.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.default_profile_images</node>
+    <node x="1132.204545454545" y="1333.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.push_notification_logs</node>
+    <node x="3097.5" y="3235.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.statuses</node>
+    <node x="15.0" y="3235.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.reward_tiers</node>
+    <node x="7061.121212121212" y="1381.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_countries</node>
+    <node x="1204.5" y="3235.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.mail_content_settings</node>
+    <node x="10720.177451819452" y="492.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_post_types</node>
+    <node x="2564.5" y="3235.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.event_emails</node>
+    <node x="2764.204545454545" y="2843.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.address_moment_mappings</node>
+    <node x="669.204545454545" y="1405.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_referrals</node>
+    <node x="3579.474721059966" y="1393.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.users_notifications_records</node>
+    <node x="3058.204545454545" y="2723.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.notification_records</node>
+    <node x="11189.177451819452" y="480.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.notification_types</node>
+    <node x="2262.2216701534103" y="2879.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.had_cdn_moments</node>
+    <node x="0.0" y="468.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.drop_down_master_tables</node>
+    <node x="9917.371212121212" y="2855.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.address_shoutout_mappings</node>
+    <node x="117.20454545454504" y="1405.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_blocks</node>
+    <node x="9686.219118486119" y="2164.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_shoutouts_images</node>
+    <node x="909.5" y="3235.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.reward_managers</node>
+    <node x="3117.474721059966" y="1393.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_images</node>
+    <node x="12207.802451819452" y="504.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.resources</node>
+    <node x="11971.802451819452" y="1417.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.comment_sources</node>
+    <node x="4139.474721059966" y="1381.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_reports</node>
+    <node x="6150.474721059965" y="1333.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.invite_friend_requests</node>
+    <node x="7954.371212121214" y="2843.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_references</node>
+    <node x="7990.121212121212" y="1429.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.had_cdn_users</node>
+    <node x="11740.802451819452" y="1357.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.admins</node>
+    <node x="7759.121212121212" y="1345.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_inquiries</node>
+    <node x="7292.121212121212" y="1381.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_profile_images</node>
+    <node x="3275.7019937872556" y="2128.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.like_details</node>
+    <node x="8660.907276214033" y="2152.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_shoutout_interests</node>
+    <node x="24.0" y="4221.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.reward_images</node>
+    <node x="1383.204545454545" y="1417.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.like_sources</node>
+    <node x="7330.010785152786" y="2164.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.private_interests_codes</node>
+    <node x="9950.219118486119" y="2140.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_shoutouts_privates</node>
+    <node x="10606.0580543933" y="2867.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.comment_replies</node>
+    <node x="1476.5" y="3235.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.sys_diagrams</node>
+    <node x="10951.177451819452" y="420.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.city_lat_longs</node>
+    <node x="348.20454545454504" y="1369.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.drop_down_sub_master_tables</node>
+    <node x="11800.986821668579" y="504.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.roles</node>
+    <node x="11509.802451819452" y="1345.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.admin_tests</node>
+    <node x="4626.474721059965" y="1297.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_filters</node>
+    <node x="6806.282276214033" y="2164.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_preferd_interests</node>
+    <node x="10216.219118486119" y="2092.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_shoutout_images</node>
+    <node x="900.204545454545" y="1405.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_chat_sessions</node>
+    <node x="1732.5" y="3235.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.jetzy_test_septs</node>
+    <node x="3888.5" y="3235.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.schema_migrations</node>
+    <node x="5409.474721059965" y="1393.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_sessions</node>
+    <node x="10548.3080543933" y="2104.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.comments</node>
+    <node x="6438.282276214033" y="2152.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.register_user_with_private_interests</node>
+    <node x="7523.121212121212" y="1417.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_social_accounts</node>
+    <node x="1614.204545454545" y="1417.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_prefered_friends</node>
+    <node x="5919.474721059965" y="1405.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_preferences</node>
+    <node x="9420.219118486119" y="2092.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_shoutouts_tagged</node>
+    <node x="1857.204545454545" y="1345.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_friends</node>
+    <node x="6809.121212121212" y="1393.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_point_balances</node>
+    <node x="2377.474721059966" y="1345.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_follows</node>
+    <node x="1988.5" y="3235.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.splashs</node>
+    <node x="10881.075757575758" y="1393.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.notification_settings</node>
+    <node x="10489.177451819452" y="456.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.shoutout_types</node>
+    <node x="4868.474721059965" y="1381.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_emergency_contacts</node>
+    <node x="11116.075757575758" y="1429.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_roles</node>
+    <node x="992.8024518194534" y="0.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.users</node>
+    <node x="4370.474721059966" y="1357.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_geo_location_logs</node>
+    <node x="3348.474721059966" y="1381.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_push_tokens</node>
+    <node x="2869.474721059966" y="1369.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_last_activity_logs</node>
+    <node x="3353.5" y="3235.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.spatial_ref_sys</node>
+    <node x="5146.474721059965" y="1369.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.restaurants</node>
+    <node x="9130.219118486119" y="2020.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.test_moments</node>
+    <node x="3869.474721059966" y="1333.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_offer_transactions</node>
+    <node x="7931.010785152786" y="2116.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_interests</node>
+    <node x="6533.121212121212" y="1333.0">8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_reward_transactions</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.comments" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.comment_sources" relationship="REFERENCES">
+      <point x="70.33333333333394" y="-149.5" />
+      <point x="10724.141387726633" y="1854.0" />
+      <point x="12077.302451819452" y="1854.0" />
+      <point x="0.0" y="89.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.comments" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.comments" relationship="REFERENCES">
+      <point x="-79.125" y="149.5" />
+      <point x="10574.6830543933" y="2423.0" />
+      <point x="10528.3080543933" y="2423.0" />
+      <point x="10528.3080543933" y="2253.5" />
+      <point x="-105.5" y="-0.0" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.had_cdn_moments" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_moments" relationship="REFERENCES">
+      <point x="0.0" y="-77.5" />
+      <point x="2367.7216701534103" y="2702.0" />
+      <point x="2598.974721059966" y="2702.0" />
+      <point x="0.0" y="221.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.admins" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.roles" relationship="REFERENCES">
+      <point x="0.0" y="-149.5" />
+      <point x="11846.302451819452" y="1240.0" />
+      <point x="11906.486821668579" y="1240.0" />
+      <point x="0.0" y="65.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_inquiries" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.users" relationship="REFERENCES">
+      <point x="0.0" y="-161.5" />
+      <point x="7864.621212121212" y="1220.0" />
+      <point x="5370.427451819453" y="1220.0" />
+      <point x="5370.427451819453" y="1200.0" />
+      <point x="1253.3933609103624" y="1200.0" />
+      <point x="124.09090909090901" y="569.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.like_details" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_shoutouts" relationship="REFERENCES">
+      <point x="70.33333333333348" y="-125.5" />
+      <point x="3451.535327120589" y="1844.0" />
+      <point x="9293.78532712059" y="1844.0" />
+      <point x="-56.25" y="245.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_interests" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.users" relationship="REFERENCES">
+      <point x="52.75" y="-137.5" />
+      <point x="8089.260785152786" y="1804.0" />
+      <point x="6522.621212121212" y="1804.0" />
+      <point x="6522.621212121212" y="1220.0" />
+      <point x="5370.427451819453" y="1220.0" />
+      <point x="5370.427451819453" y="1200.0" />
+      <point x="1253.3933609103624" y="1200.0" />
+      <point x="124.09090909090901" y="569.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_emergency_contacts" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.users" relationship="REFERENCES">
+      <point x="0.0" y="-125.5" />
+      <point x="4996.974721059965" y="1220.0" />
+      <point x="5370.427451819453" y="1220.0" />
+      <point x="5370.427451819453" y="1200.0" />
+      <point x="1253.3933609103624" y="1200.0" />
+      <point x="124.09090909090901" y="569.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.address_moment_mappings" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.address_components" relationship="REFERENCES">
+      <point x="68.5" y="-113.5" />
+      <point x="2969.704545454545" y="2692.0" />
+      <point x="7749.510785152786" y="2692.0" />
+      <point x="0.0" y="377.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.notification_records" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.users" relationship="REFERENCES">
+      <point x="-73.25" y="-233.5" />
+      <point x="3131.454545454545" y="2672.0" />
+      <point x="1846.704545454545" y="2672.0" />
+      <point x="1846.704545454545" y="1240.0" />
+      <point x="1488.2247210599653" y="1240.0" />
+      <point x="1488.2247210599653" y="1220.0" />
+      <point x="1203.7569972739984" y="1220.0" />
+      <point x="74.4545454545455" y="569.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_last_activity_logs" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.users" relationship="REFERENCES">
+      <point x="0.0" y="-137.5" />
+      <point x="2983.474721059966" y="1220.0" />
+      <point x="5370.427451819453" y="1220.0" />
+      <point x="5370.427451819453" y="1200.0" />
+      <point x="1253.3933609103624" y="1200.0" />
+      <point x="124.09090909090901" y="569.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.notification_records" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.comment_sources" relationship="REFERENCES">
+      <point x="122.08333333333348" y="-233.5" />
+      <point x="3326.7878787878785" y="2682.0" />
+      <point x="12077.302451819452" y="2682.0" />
+      <point x="0.0" y="89.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.notification_records" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.comments" relationship="REFERENCES">
+      <point x="73.25" y="-233.5" />
+      <point x="3277.954545454545" y="2672.0" />
+      <point x="10627.4330543933" y="2672.0" />
+      <point x="-26.375" y="149.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_filters" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.users" relationship="REFERENCES">
+      <point x="0.0" y="-209.5" />
+      <point x="4737.474721059965" y="1220.0" />
+      <point x="5370.427451819453" y="1220.0" />
+      <point x="5370.427451819453" y="1200.0" />
+      <point x="1253.3933609103624" y="1200.0" />
+      <point x="124.09090909090901" y="569.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_preferd_interests" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.users" relationship="REFERENCES">
+      <point x="-57.0" y="-89.5" />
+      <point x="6863.282276214033" y="1824.0" />
+      <point x="5135.974721059965" y="1824.0" />
+      <point x="5135.974721059965" y="1220.0" />
+      <point x="5370.427451819453" y="1220.0" />
+      <point x="5370.427451819453" y="1200.0" />
+      <point x="1253.3933609103624" y="1200.0" />
+      <point x="124.09090909090901" y="569.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.drop_down_sub_master_tables" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.drop_down_master_tables" relationship="REFERENCES">
+      <point x="-100.33333333333331" y="-137.5" />
+      <point x="398.371212121212" y="1160.0" />
+      <point x="131.0" y="1160.0" />
+      <point x="0.0" y="101.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_moments" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.users" relationship="REFERENCES">
+      <point x="0.0" y="-221.5" />
+      <point x="2598.974721059966" y="1220.0" />
+      <point x="5370.427451819453" y="1220.0" />
+      <point x="5370.427451819453" y="1200.0" />
+      <point x="1253.3933609103624" y="1200.0" />
+      <point x="124.09090909090901" y="569.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_referrals" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.users" relationship="REFERENCES">
+      <point x="0.0" y="-101.5" />
+      <point x="774.704545454545" y="1210.0" />
+      <point x="1104.4842700012714" y="1210.0" />
+      <point x="-24.818181818181756" y="569.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_countries" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.users" relationship="REFERENCES">
+      <point x="0.0" y="-125.5" />
+      <point x="7166.621212121212" y="1220.0" />
+      <point x="5370.427451819453" y="1220.0" />
+      <point x="5370.427451819453" y="1200.0" />
+      <point x="1253.3933609103624" y="1200.0" />
+      <point x="124.09090909090901" y="569.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_friends" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.users" relationship="REFERENCES">
+      <point x="52.75" y="-161.5" />
+      <point x="2015.454545454545" y="1220.0" />
+      <point x="5370.427451819453" y="1220.0" />
+      <point x="5370.427451819453" y="1200.0" />
+      <point x="1253.3933609103624" y="1200.0" />
+      <point x="124.09090909090901" y="569.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.notification_settings" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.users" relationship="REFERENCES">
+      <point x="-53.75" y="-113.5" />
+      <point x="10934.825757575758" y="1220.0" />
+      <point x="5370.427451819453" y="1220.0" />
+      <point x="5370.427451819453" y="1200.0" />
+      <point x="1253.3933609103624" y="1200.0" />
+      <point x="124.09090909090901" y="569.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.reward_images" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.reward_offers" relationship="REFERENCES">
+      <point x="0.0" y="-89.5" />
+      <point x="0.0" y="281.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.address_shoutout_mappings" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_shoutouts" relationship="REFERENCES">
+      <point x="70.25" y="-101.5" />
+      <point x="10128.121212121212" y="2662.0" />
+      <point x="10205.719118486119" y="2662.0" />
+      <point x="10205.719118486119" y="1854.0" />
+      <point x="9622.03532712059" y="1854.0" />
+      <point x="9622.03532712059" y="1844.0" />
+      <point x="9406.28532712059" y="1844.0" />
+      <point x="56.25" y="245.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_reports" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.users" relationship="REFERENCES">
+      <point x="0.0" y="-125.5" />
+      <point x="4244.974721059966" y="1220.0" />
+      <point x="5370.427451819453" y="1220.0" />
+      <point x="5370.427451819453" y="1200.0" />
+      <point x="1253.3933609103624" y="1200.0" />
+      <point x="124.09090909090901" y="569.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.address_shoutout_mappings" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.address_components" relationship="REFERENCES">
+      <point x="-70.25" y="-101.5" />
+      <point x="9987.621212121212" y="2692.0" />
+      <point x="7749.510785152786" y="2692.0" />
+      <point x="0.0" y="377.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.comments" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.users" relationship="REFERENCES">
+      <point x="0.0" y="-149.5" />
+      <point x="10653.8080543933" y="1844.0" />
+      <point x="10435.552451819452" y="1844.0" />
+      <point x="10435.552451819452" y="1220.0" />
+      <point x="5370.427451819453" y="1220.0" />
+      <point x="5370.427451819453" y="1200.0" />
+      <point x="1253.3933609103624" y="1200.0" />
+      <point x="124.09090909090901" y="569.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_profile_images" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.users" relationship="REFERENCES">
+      <point x="0.0" y="-125.5" />
+      <point x="7397.621212121212" y="1220.0" />
+      <point x="5370.427451819453" y="1220.0" />
+      <point x="5370.427451819453" y="1200.0" />
+      <point x="1253.3933609103624" y="1200.0" />
+      <point x="124.09090909090901" y="569.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_chat_sessions" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.users" relationship="REFERENCES">
+      <point x="52.75" y="-101.5" />
+      <point x="1058.454545454545" y="1230.0" />
+      <point x="1154.1206336376354" y="1230.0" />
+      <point x="24.818181818181756" y="569.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.had_cdn_users" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.users" relationship="REFERENCES">
+      <point x="0.0" y="-77.5" />
+      <point x="8095.621212121212" y="1220.0" />
+      <point x="5370.427451819453" y="1220.0" />
+      <point x="5370.427451819453" y="1200.0" />
+      <point x="1253.3933609103624" y="1200.0" />
+      <point x="124.09090909090901" y="569.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_shoutout_interests" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_shoutouts" relationship="REFERENCES">
+      <point x="81.33333333333394" y="-101.5" />
+      <point x="8864.240609547367" y="1854.0" />
+      <point x="9622.03532712059" y="1854.0" />
+      <point x="9622.03532712059" y="1844.0" />
+      <point x="9406.28532712059" y="1844.0" />
+      <point x="56.25" y="245.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.address_moment_mappings" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_moments" relationship="REFERENCES">
+      <point x="-68.5" y="-113.5" />
+      <point x="2832.704545454545" y="2702.0" />
+      <point x="2598.974721059966" y="2702.0" />
+      <point x="0.0" y="221.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.private_interests_codes" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.interests" relationship="REFERENCES">
+      <point x="0.0" y="-89.5" />
+      <point x="7449.010785152786" y="1794.0" />
+      <point x="6069.427451819453" y="1794.0" />
+      <point x="6069.427451819453" y="1784.0" />
+      <point x="5856.308054393299" y="1784.0" />
+      <point x="86.33333333333303" y="197.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.like_details" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.users" relationship="REFERENCES">
+      <point x="0.0" y="-125.5" />
+      <point x="3381.2019937872556" y="1844.0" />
+      <point x="2858.974721059966" y="1844.0" />
+      <point x="2858.974721059966" y="1220.0" />
+      <point x="5370.427451819453" y="1220.0" />
+      <point x="5370.427451819453" y="1200.0" />
+      <point x="1253.3933609103624" y="1200.0" />
+      <point x="124.09090909090901" y="569.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.invite_friend_requests" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.users" relationship="REFERENCES">
+      <point x="0.0" y="-173.5" />
+      <point x="6269.974721059965" y="1220.0" />
+      <point x="5370.427451819453" y="1220.0" />
+      <point x="5370.427451819453" y="1200.0" />
+      <point x="1253.3933609103624" y="1200.0" />
+      <point x="124.09090909090901" y="569.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_moment_likes" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.users" relationship="REFERENCES">
+      <point x="-52.75" y="-113.5" />
+      <point x="1759.9716701534107" y="2692.0" />
+      <point x="2078.704545454545" y="2692.0" />
+      <point x="2078.704545454545" y="1220.0" />
+      <point x="5370.427451819453" y="1220.0" />
+      <point x="5370.427451819453" y="1200.0" />
+      <point x="1253.3933609103624" y="1200.0" />
+      <point x="124.09090909090901" y="569.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_references" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_interests" relationship="REFERENCES">
+      <point x="-9.094947017729282E-13" y="-113.5" />
+      <point x="8082.871212121212" y="2652.0" />
+      <point x="8036.510785152786" y="2652.0" />
+      <point x="0.0" y="137.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_images" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.users" relationship="REFERENCES">
+      <point x="0.0" y="-113.5" />
+      <point x="3222.974721059966" y="1220.0" />
+      <point x="5370.427451819453" y="1220.0" />
+      <point x="5370.427451819453" y="1200.0" />
+      <point x="1253.3933609103624" y="1200.0" />
+      <point x="124.09090909090901" y="569.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_shoutout_interests" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.users" relationship="REFERENCES">
+      <point x="0.0" y="-101.5" />
+      <point x="8782.907276214033" y="1784.0" />
+      <point x="7748.621212121212" y="1784.0" />
+      <point x="7748.621212121212" y="1220.0" />
+      <point x="5370.427451819453" y="1220.0" />
+      <point x="5370.427451819453" y="1200.0" />
+      <point x="1253.3933609103624" y="1200.0" />
+      <point x="124.09090909090901" y="569.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_follows" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.users" relationship="REFERENCES">
+      <point x="52.75" y="-161.5" />
+      <point x="2535.724721059966" y="1220.0" />
+      <point x="5370.427451819453" y="1220.0" />
+      <point x="5370.427451819453" y="1200.0" />
+      <point x="1253.3933609103624" y="1200.0" />
+      <point x="124.09090909090901" y="569.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.register_user_with_private_interests" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.interests" relationship="REFERENCES">
+      <point x="0.0" y="-101.5" />
+      <point x="6612.282276214033" y="1834.0" />
+      <point x="5683.641387726633" y="1834.0" />
+      <point x="-86.33333333333303" y="197.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.push_notification_logs" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.users" relationship="REFERENCES">
+      <point x="-57.75" y="-173.5" />
+      <point x="1189.954545454545" y="1240.0" />
+      <point x="1208.579545454545" y="1240.0" />
+      <point x="1208.579545454545" y="1230.0" />
+      <point x="1178.9388154558164" y="1230.0" />
+      <point x="49.63636363636351" y="569.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_shoutout_images" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_shoutouts" relationship="REFERENCES">
+      <point x="0.0" y="-161.5" />
+      <point x="10330.719118486119" y="1854.0" />
+      <point x="9622.03532712059" y="1854.0" />
+      <point x="9622.03532712059" y="1844.0" />
+      <point x="9406.28532712059" y="1844.0" />
+      <point x="56.25" y="245.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_shoutouts_images" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_shoutouts" relationship="REFERENCES">
+      <point x="0.0" y="-89.5" />
+      <point x="9808.219118486119" y="1854.0" />
+      <point x="9622.03532712059" y="1854.0" />
+      <point x="9622.03532712059" y="1844.0" />
+      <point x="9406.28532712059" y="1844.0" />
+      <point x="56.25" y="245.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.notification_settings" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.notification_types" relationship="REFERENCES">
+      <point x="53.75" y="-113.5" />
+      <point x="11042.325757575758" y="1210.0" />
+      <point x="11294.677451819452" y="1210.0" />
+      <point x="0.0" y="89.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_offer_transactions" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.users" relationship="REFERENCES">
+      <point x="0.0" y="-173.5" />
+      <point x="3994.474721059966" y="1220.0" />
+      <point x="5370.427451819453" y="1220.0" />
+      <point x="5370.427451819453" y="1200.0" />
+      <point x="1253.3933609103624" y="1200.0" />
+      <point x="124.09090909090901" y="569.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_point_balances" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.users" relationship="REFERENCES">
+      <point x="0.0" y="-113.5" />
+      <point x="6925.121212121212" y="1220.0" />
+      <point x="5370.427451819453" y="1220.0" />
+      <point x="5370.427451819453" y="1200.0" />
+      <point x="1253.3933609103624" y="1200.0" />
+      <point x="124.09090909090901" y="569.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_reward_transactions" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.users" relationship="REFERENCES">
+      <point x="0.0" y="-173.5" />
+      <point x="6661.121212121212" y="1220.0" />
+      <point x="5370.427451819453" y="1220.0" />
+      <point x="5370.427451819453" y="1200.0" />
+      <point x="1253.3933609103624" y="1200.0" />
+      <point x="124.09090909090901" y="569.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_preferd_interests" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.interests" relationship="REFERENCES">
+      <point x="57.0" y="-89.5" />
+      <point x="6977.282276214033" y="1814.0" />
+      <point x="5731.808054393299" y="1814.0" />
+      <point x="5731.808054393299" y="1804.0" />
+      <point x="5769.974721059965" y="1804.0" />
+      <point x="0.0" y="197.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_prefered_friends" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.users" relationship="REFERENCES">
+      <point x="-55.5" y="-89.5" />
+      <point x="1669.704545454545" y="1230.0" />
+      <point x="1868.954545454545" y="1230.0" />
+      <point x="1868.954545454545" y="1210.0" />
+      <point x="1228.5751790921804" y="1210.0" />
+      <point x="99.27272727272725" y="569.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_comments_tagged" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.comment_sources" relationship="REFERENCES">
+      <point x="0.0" y="-137.5" />
+      <point x="12207.802451819452" y="1854.0" />
+      <point x="12077.302451819452" y="1854.0" />
+      <point x="0.0" y="89.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_shoutouts" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_post_types" relationship="REFERENCES">
+      <point x="75.0" y="-245.5" />
+      <point x="9425.03532712059" y="1190.0" />
+      <point x="10825.677451819452" y="1190.0" />
+      <point x="0.0" y="77.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_shoutouts" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.shoutout_types" relationship="REFERENCES">
+      <point x="0.0" y="-245.5" />
+      <point x="9350.03532712059" y="1180.0" />
+      <point x="10594.677451819452" y="1180.0" />
+      <point x="0.0" y="113.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_interests" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.interests" relationship="REFERENCES">
+      <point x="-52.75" y="-137.5" />
+      <point x="7983.760785152786" y="1814.0" />
+      <point x="5731.808054393299" y="1814.0" />
+      <point x="5731.808054393299" y="1804.0" />
+      <point x="5769.974721059965" y="1804.0" />
+      <point x="0.0" y="197.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.users_notifications_records" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.users" relationship="REFERENCES">
+      <point x="0.0" y="-113.5" />
+      <point x="3714.474721059966" y="1220.0" />
+      <point x="5370.427451819453" y="1220.0" />
+      <point x="5370.427451819453" y="1200.0" />
+      <point x="1253.3933609103624" y="1200.0" />
+      <point x="124.09090909090901" y="569.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.reward_offers" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.reward_tiers" relationship="REFERENCES">
+      <point x="0.0" y="-281.5" />
+      <point x="0.0" y="161.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.notification_records" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_shoutouts" relationship="REFERENCES">
+      <point x="24.416666666666515" y="-233.5" />
+      <point x="3229.1212121212116" y="2662.0" />
+      <point x="9409.719118486119" y="2662.0" />
+      <point x="9409.719118486119" y="1854.0" />
+      <point x="9622.03532712059" y="1854.0" />
+      <point x="9622.03532712059" y="1844.0" />
+      <point x="9406.28532712059" y="1844.0" />
+      <point x="56.25" y="245.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_preferences" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.users" relationship="REFERENCES">
+      <point x="0.0" y="-101.5" />
+      <point x="6024.974721059965" y="1220.0" />
+      <point x="5370.427451819453" y="1220.0" />
+      <point x="5370.427451819453" y="1200.0" />
+      <point x="1253.3933609103624" y="1200.0" />
+      <point x="124.09090909090901" y="569.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_social_accounts" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.users" relationship="REFERENCES">
+      <point x="0.0" y="-89.5" />
+      <point x="7630.621212121212" y="1220.0" />
+      <point x="5370.427451819453" y="1220.0" />
+      <point x="5370.427451819453" y="1200.0" />
+      <point x="1253.3933609103624" y="1200.0" />
+      <point x="124.09090909090901" y="569.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.drop_down_sub_master_tables" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.users" relationship="REFERENCES">
+      <point x="100.33333333333337" y="-137.5" />
+      <point x="599.0378787878781" y="1200.0" />
+      <point x="1079.6660881830894" y="1200.0" />
+      <point x="-49.63636363636374" y="569.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.comments" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_shoutouts" relationship="REFERENCES">
+      <point x="-70.33333333333394" y="-149.5" />
+      <point x="10583.474721059965" y="1854.0" />
+      <point x="9622.03532712059" y="1854.0" />
+      <point x="9622.03532712059" y="1844.0" />
+      <point x="9406.28532712059" y="1844.0" />
+      <point x="56.25" y="245.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_shoutouts_privates" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_shoutouts" relationship="REFERENCES">
+      <point x="0.0" y="-113.5" />
+      <point x="10072.719118486119" y="1854.0" />
+      <point x="9622.03532712059" y="1854.0" />
+      <point x="9622.03532712059" y="1844.0" />
+      <point x="9406.28532712059" y="1844.0" />
+      <point x="56.25" y="245.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_blocks" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.users" relationship="REFERENCES">
+      <point x="52.75" y="-101.5" />
+      <point x="275.45454545454504" y="1180.0" />
+      <point x="1030.0297245467264" y="1180.0" />
+      <point x="-99.27272727272725" y="569.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.like_details" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.like_sources" relationship="REFERENCES">
+      <point x="-70.33333333333348" y="-125.5" />
+      <point x="3310.868660453922" y="1854.0" />
+      <point x="1488.704545454545" y="1854.0" />
+      <point x="0.0" y="89.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_sessions" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.users" relationship="REFERENCES">
+      <point x="0.0" y="-113.5" />
+      <point x="5514.974721059965" y="1220.0" />
+      <point x="5370.427451819453" y="1220.0" />
+      <point x="5370.427451819453" y="1200.0" />
+      <point x="1253.3933609103624" y="1200.0" />
+      <point x="124.09090909090901" y="569.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.permissions" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.roles" relationship="REFERENCES">
+      <point x="-52.75" y="-89.5" />
+      <point x="12255.552451819452" y="1240.0" />
+      <point x="11906.486821668579" y="1240.0" />
+      <point x="0.0" y="65.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.permissions" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.resources" relationship="REFERENCES">
+      <point x="52.75" y="-89.5" />
+      <point x="12361.052451819452" y="1240.0" />
+      <point x="12313.302451819452" y="1240.0" />
+      <point x="0.0" y="65.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_interests_tagged" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.interests" relationship="REFERENCES">
+      <point x="0.0" y="-137.5" />
+      <point x="7190.510785152786" y="1794.0" />
+      <point x="6069.427451819453" y="1794.0" />
+      <point x="6069.427451819453" y="1784.0" />
+      <point x="5856.308054393299" y="1784.0" />
+      <point x="86.33333333333303" y="197.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.restaurants" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.users" relationship="REFERENCES">
+      <point x="0.0" y="-137.5" />
+      <point x="5267.974721059965" y="1220.0" />
+      <point x="5370.427451819453" y="1220.0" />
+      <point x="5370.427451819453" y="1200.0" />
+      <point x="1253.3933609103624" y="1200.0" />
+      <point x="124.09090909090901" y="569.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_geo_locations" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.city_lat_longs" relationship="REFERENCES">
+      <point x="55.5" y="-149.5" />
+      <point x="9649.03532712059" y="1200.0" />
+      <point x="11060.177451819452" y="1200.0" />
+      <point x="0.0" y="149.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_geo_locations" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.users" relationship="REFERENCES">
+      <point x="-55.5" y="-149.5" />
+      <point x="9538.03532712059" y="1220.0" />
+      <point x="5370.427451819453" y="1220.0" />
+      <point x="5370.427451819453" y="1200.0" />
+      <point x="1253.3933609103624" y="1200.0" />
+      <point x="124.09090909090901" y="569.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.report_messages" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.report_sources" relationship="REFERENCES">
+      <point x="0.0" y="-77.5" />
+      <point x="0.0" y="89.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.admin_tests" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.roles" relationship="REFERENCES">
+      <point x="0.0" y="-161.5" />
+      <point x="11615.302451819452" y="1240.0" />
+      <point x="11906.486821668579" y="1240.0" />
+      <point x="0.0" y="65.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_shoutouts" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.users" relationship="REFERENCES">
+      <point x="-75.0" y="-245.5" />
+      <point x="9275.03532712059" y="1220.0" />
+      <point x="5370.427451819453" y="1220.0" />
+      <point x="5370.427451819453" y="1200.0" />
+      <point x="1253.3933609103624" y="1200.0" />
+      <point x="124.09090909090901" y="569.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_moment_likes" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_moments" relationship="REFERENCES">
+      <point x="52.75" y="-113.5" />
+      <point x="1865.4716701534107" y="2702.0" />
+      <point x="2598.974721059966" y="2702.0" />
+      <point x="0.0" y="221.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.notification_records" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_moments" relationship="REFERENCES">
+      <point x="-24.416666666666515" y="-233.5" />
+      <point x="3180.2878787878785" y="2702.0" />
+      <point x="2598.974721059966" y="2702.0" />
+      <point x="0.0" y="221.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.comment_replies" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.comments" relationship="REFERENCES">
+      <point x="-52.75" y="-89.5" />
+      <point x="10658.8080543933" y="2672.0" />
+      <point x="10680.1830543933" y="2672.0" />
+      <point x="26.375" y="149.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_geo_location_logs" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.users" relationship="REFERENCES">
+      <point x="0.0" y="-149.5" />
+      <point x="4488.474721059966" y="1220.0" />
+      <point x="5370.427451819453" y="1220.0" />
+      <point x="5370.427451819453" y="1200.0" />
+      <point x="1253.3933609103624" y="1200.0" />
+      <point x="124.09090909090901" y="569.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_shoutouts_tagged" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_shoutouts" relationship="REFERENCES">
+      <point x="0.0" y="-161.5" />
+      <point x="9543.219118486119" y="1854.0" />
+      <point x="9622.03532712059" y="1854.0" />
+      <point x="9622.03532712059" y="1844.0" />
+      <point x="9406.28532712059" y="1844.0" />
+      <point x="56.25" y="245.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_moments_images" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_moments" relationship="REFERENCES">
+      <point x="0.0" y="-173.5" />
+      <point x="2090.2216701534107" y="2702.0" />
+      <point x="2598.974721059966" y="2702.0" />
+      <point x="0.0" y="221.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_roles" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.roles" relationship="REFERENCES">
+      <point x="52.75" y="-77.5" />
+      <point x="11274.325757575758" y="1240.0" />
+      <point x="11906.486821668579" y="1240.0" />
+      <point x="0.0" y="65.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_shoutout_interests" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.interests" relationship="REFERENCES">
+      <point x="-81.33333333333394" y="-101.5" />
+      <point x="8701.5739428807" y="1794.0" />
+      <point x="6069.427451819453" y="1794.0" />
+      <point x="6069.427451819453" y="1784.0" />
+      <point x="5856.308054393299" y="1784.0" />
+      <point x="86.33333333333303" y="197.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.test_moments" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_shoutouts" relationship="REFERENCES">
+      <point x="67.25" y="-233.5" />
+      <point x="9331.969118486119" y="1854.0" />
+      <point x="9622.03532712059" y="1854.0" />
+      <point x="9622.03532712059" y="1844.0" />
+      <point x="9406.28532712059" y="1844.0" />
+      <point x="56.25" y="245.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.test_moments" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.users" relationship="REFERENCES">
+      <point x="-67.25" y="-233.5" />
+      <point x="9197.469118486119" y="1774.0" />
+      <point x="8211.621212121212" y="1774.0" />
+      <point x="8211.621212121212" y="1220.0" />
+      <point x="5370.427451819453" y="1220.0" />
+      <point x="5370.427451819453" y="1200.0" />
+      <point x="1253.3933609103624" y="1200.0" />
+      <point x="124.09090909090901" y="569.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_roles" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.users" relationship="REFERENCES">
+      <point x="-52.75" y="-77.5" />
+      <point x="11168.825757575758" y="1220.0" />
+      <point x="5370.427451819453" y="1220.0" />
+      <point x="5370.427451819453" y="1200.0" />
+      <point x="1253.3933609103624" y="1200.0" />
+      <point x="124.09090909090901" y="569.5" />
+    </edge>
+    <edge source="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.user_push_tokens" target="8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.users" relationship="REFERENCES">
+      <point x="0.0" y="-125.5" />
+      <point x="3453.974721059966" y="1220.0" />
+      <point x="5370.427451819453" y="1220.0" />
+      <point x="5370.427451819453" y="1200.0" />
+      <point x="1253.3933609103624" y="1200.0" />
+      <point x="124.09090909090901" y="569.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.07259425998874508" showDependencies="false" x="6209.5" y="2200.0" />
+  <SelectedNodes>
+    <node>8cf050e6-be04-4e9f-bfeb-51cd84e3559a.TABLE:jetzy.public.address_components</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Columns</Category>
+    <Category>Comments</Category>
+    <Category>Key columns</Category>
+    <Category>Virtual foreign keys</Category>
+  </Categories>
+</Diagram>
+

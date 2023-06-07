@@ -1,0 +1,926 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>SaveCareer</title>
+
+
+    <script src="/bundles/jquery?v=lcLhCC1lrICeyIlwtkM3UbyKO5ZLOTgwoaYUXKV2sps1"></script>
+
+
+
+    <link rel="shortcut icon" href="/Images/favicon.ico">
+    <link rel="icon" type="image/gif" href="/Images/animated_favicon1.gif">
+    <link href="/Content/style.css" rel="stylesheet" />
+
+    <link href="/Content/kendo/kendo.common.min.css" rel="stylesheet" type="text/css" />
+    <link href="/Content/kendo/kendo.dataviz.min.css" rel="stylesheet" type="text/css" />
+    <link href="/Content/kendo/kendo.default.min.css" rel="stylesheet" type="text/css" />
+    <link href="/Content/kendo/kendo.dataviz.default.min.css" rel="stylesheet" type="text/css" />
+
+    <script src="/Scripts/kendo.all.min.js" type="text/javascript"></script>
+    <link href="/Content/jquery.Jcrop.min.css" rel="stylesheet" />
+    <link href="/Content/jquery.alerts.css" rel="stylesheet" />
+    <script src="/Scripts/jquery.validate.min.js"></script>
+    <script src="/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+
+    <link href="/Content/magnific-popup.css" rel="stylesheet" />
+    <script src="/Scripts/jquery.magnific-popup.js"></script>
+    <script type="text/javascript" lang="javascript">
+        function addEditPopup() {
+            $('.popup-with-zoom-anim').magnificPopup({
+                type: 'inline',
+                fixedContentPos: false,
+                fixedBgPos: true,
+                overflowY: 'auto',
+                closeBtnInside: true,
+                preloader: true,
+                midClick: true,
+                removalDelay: 300,
+                mainClass: 'my-mfp-zoom-in',
+                callbacks: {
+                    open: function () {
+                        $(".mfp-wrap").appendTo("#formta");
+                    }
+                }
+            });
+        }
+
+        $(function () {
+            addEditPopup();
+        });
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.slim.min.js"></script>
+    <script src="/Splash/js/scale.fix.js"></script>
+    <script src="/Splash/js/star-rating.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+    <!-- Facebook Pixel Code -->
+    <script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window,document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '364101934047376');
+fbq('track', 'PageView');
+    </script>
+    <noscript>
+        <img height="1" width="1"
+             src="https://www.facebook.com/tr?id=364101934047376&ev=PageView&noscript=1" />
+    </noscript>
+    <!-- End Facebook Pixel Code -->
+
+</head>
+<body>
+
+
+
+<meta name="description" content="Jetzy is the social media App for travelers and flashpackers, who love to travel the world.">
+<meta name="keywords" content="Jetzy, Jetzyapp, Jetzy app, Jetzy Social Media, Jetzy Travel, Travel, Travel deals, Travel deals to, Vegas travel, Travel beach, Travel hotels, Travel air, Travel spain Barcelona, Travel London, Travel, Katy Perry, Ty Sawyer, Shama Zehra, Best Travel, Fashion, Fashion travel, Shopping, Shopping travel, Travel new york city, Travel Orlando, Travel united states, European travel, Travel New york, Vacations, Holidays, Vacations travel, Beach, Beach travel, Deals on travel, Social, Social travel, Meet locals, Meet up, Trip, Islands, Island, Island travel, Travel Australia, Best travel deals, Flashpacker, Flashpacking, Millennial, Millennials, Dating, Travel app, Connect, Meet, Backpacks, Wine, Wine travel, Wine tours, Biking, Bike tours, Tours, Culture, Museums, Restaurants, LGBT travel, Paris, Paris Travel, Thailand, Thailand travel, Rome, Rome deals, Berlin, Berlin Travel, Barcelona, Barcelona travel, Spain travel, Italy, Germany, India, England, UK, Ireland, Russia, Turkey, China, Hong Kong, Singapore, Africa, Asia, New Zealand, Budapest, Instanbul, Spa, Spa travel, Cruise ship, Cruiseship deal, Brazil, Greece, Greek Island, Adventure, Escape, Green travel, Live like a local, Authentic travel, France, Portugal, Egypt, Sydney, Queensland Australia, Indonesia, Indonesia travel, Bali, Bali travel, Tahiti, Tahiti deals, Tahiti islands, Bora Bora, Bora Bora honeymoon, Destination, Wedding, Moorea, Surf Travel, Surf destination, Top 10 travel destinations, Food, travel, Milan Travel, Travel apparel, Travel bags , Free travel, Travel rewards " />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+<link href="/Splash/css/career.css?var=011322" rel="stylesheet" />
+<link href="/Splash/css/career-responsive.css?var=011022" rel="stylesheet" />
+<meta property="og:image" content="https://www.jetzyapp.com/images/logo.png" />
+<!-- Include this to make the og:image larger -->
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="/Splash/css/star-rating.css" rel="stylesheet" />
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/css/bootstrap-multiselect.css">
+<script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.js"></script>
+
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="//geodata.solutions/includes/countrystatecity.js"></script>
+
+
+<form action="/careers" enctype="multipart/form-data" method="post"><input name="__RequestVerificationToken" type="hidden" value="9krcm2IfSof6KdlhRhuZk4VC2L26T93FfyjbDMGJpvxMr-P95-W1wRKG-_6Cx-GWAWOPkKB1lGReFkjEoMY3Jj2T0Ta4Ai2GaxKCeOMF2BU1" />    <video controls="controls" autoplay poster="" id="bgvid" loop>
+    <source src="/Splash/video/1492354.mp4" type="video/mp4" />
+</video>
+    <div id="pageContainer">
+
+        <div class="wrapper clearfix">
+
+            <header class="footer clearfix">
+                <div class="contactWrap clearfix">
+                    <div class="contact fLeft">
+                        <ul class="footerNav">
+                            <li class="active"><a href="/">Home</a></li>
+                            <li style="display: none"><a href="/about-the-app.html">About</a></li>
+                            <li><a href="/termsofuse.html">Terms of Use</a></li>
+                            <li><a href="/privacy.html">Privacy Policy</a></li>
+                            <li><a href="/careers">Careers</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+
+            </header>
+
+
+            <div class="header innHeader clearfix">
+                <div class="headerInner clearfix">
+                    <h1 class="logo">
+                        <a href="https://www.jetzyapp.com/">
+                            <img src="/Splash/images/logo.png" />
+                        </a>
+                    </h1>
+                </div>
+            </div>
+
+            <div class="ourmissionCont content clearfix">
+                <div class="missionContent clearfix missionMain">
+                    <h2>&nbsp;<span>Jetzy Career Opportunities</span></h2>
+
+                    <hr>
+                    <div class="MainForm">
+                        <div class="form-group">
+                            <label class="lblWidth label_star" for="Name">Name</label>
+                            <div class="txtWidth">
+                                <input class="form-control innerTxt for_input_shape text-box single-line" id="Name" name="Name" placeholder="Please enter your name" type="text" value="" />
+                                <span class="field-validation-valid text-danger" data-valmsg-for="Name" data-valmsg-replace="true"></span>
+                            </div>
+                        </div>
+
+
+
+
+                        <div class="form-group">
+                            <label class="lblWidth label_star" for="EmailAddress">Email Address</label>
+                            <div class="txtWidth">
+                                <input class="form-control innerTxt for_input_shape text-box single-line" id="EmailAddress" name="EmailAddress" placeholder="Please enter your email" type="text" value="" />
+                                <span class="field-validation-valid text-danger" data-valmsg-for="EmailAddress" data-valmsg-replace="true"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="lblWidth label_star" for="PhoneNumber">Phone Number</label>
+                            <div class="txtWidth">
+                                <input class="form-control innerTxt for_input_shape text-box single-line" id="PhoneNumber" name="PhoneNumber" placeholder="Please enter your phone number" type="text" value="" />
+                                <span class="field-validation-valid text-danger" data-valmsg-for="PhoneNumber" data-valmsg-replace="true"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="lblWidth label_star" for="School">School</label>
+                            <div class="txtWidth">
+                                <input class="form-control innerTxt for_input_shape text-box single-line" id="School" name="School" placeholder="Please enter your school" type="text" value="" />
+                                <span class="field-validation-valid text-danger" data-valmsg-for="School" data-valmsg-replace="true"></span>
+                            </div>
+                        </div>
+                        <div class="form-group choosefile">
+                            <label class="lblWidth label_star" for="Resume">Resume</label>
+                            <div class="txtWidth">
+                                <div class="input-group browse">
+                                    <input type="text" id="txt_resume" class="form-control" readonly placeholder="Please upload your Resume file">
+                                    <span class="input-group-btn">
+                                        <span class="btn btn-primary btn-fileUpload">
+                                            Browse&hellip;<input id="Resume" name="Resume" type="file" value="" />
+                                        </span>
+                                    </span>
+                                </div>
+                                <span class="field-validation-valid text-danger" data-valmsg-for="Resume" data-valmsg-replace="true"></span>
+                                <div class="text-danger"></div>
+                            </div>
+                        </div>
+                        <div class="form-group choosefile">
+                            <label class="lblWidth " for="CoverLetter">Cover Letter</label>
+                            <div class="txtWidth">
+                                <div class="input-group browse">
+                                    <input type="text" class="form-control" readonly placeholder="Please upload your Cover Letter">
+                                    <span class="input-group-btn">
+                                        <span class="btn btn-primary btn-fileUpload">
+                                            Browse&hellip;<input id="CoverLetter" name="CoverLetter" type="file" value="" />
+                                        </span>
+                                    </span>
+                                </div>
+                                <span class="field-validation-valid text-danger" data-valmsg-for="CoverLetter" data-valmsg-replace="true"></span>
+                                <div class="text-danger"> </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group radioBtn">
+                            <label class="lblWidth label_star" for="Isdownloded">Have you downloaded the Jetzy app?</label>
+                            <span id="isdownlodedclick" class="refferalhelp" title="Jetzy is a lifestyle app, it's important for you to download and sign up for the app so that you can understand how Jetzy works.">?</span>
+
+                            <div class="control-group txtWidth objectTxt">
+                                <label class="control control--radio">
+                                    Yes
+                                    <input id="Downloded" name="Isdownloded" type="radio" value="true" />
+                                    <div class="control__indicator"></div>
+                                </label>
+                                <label class="control control--radio">
+                                    Not yet
+                                    <input id="Notyet" name="Isdownloded" type="radio" value="false" />
+                                    <div class="control__indicator"></div>
+                                </label>
+                                <span class="field-validation-valid text-danger" data-valmsg-for="Isdownloded" data-valmsg-replace="true"></span>
+                            </div>
+                        </div>
+                        <div>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label class="lblWidth label_star" for="RefferalCode">Referral Code</label>
+                            <span id="referalclick" class="refferalhelp" title="You can find the referral code on your Jetzy app account under Profile -> Settings -> Invite Friends section of Jetzy.">?</span>
+                            <div class="txtWidth">
+                                <input class="form-control innerTxt for_input_shape text-box single-line" id="RefferalCode" name="RefferalCode" placeholder="Please enter your referral code" type="text" value="" />
+                                <em style="font-size:12px;">kindly put your referral code so that we can check your profile.</em>
+                                <span class="field-validation-valid text-danger" data-valmsg-for="RefferalCode" data-valmsg-replace="true"></span>
+
+                                <div class="Isrefferalcodexist">
+
+                                    <label id="referexist" class="referexist"></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group radioBtn">
+                            <label class="lblWidth label_star" for="Worktype">Employment type</label>
+                            <div class="control-group txtWidth objectTxt">
+                                <label class="control control--radio">
+                                    Full time
+                                    <input id="Fulltime" name="Worktype" type="radio" value="true" />
+                                    <!--<input type="radio" name="radio" />-->
+                                    <div class="control__indicator"></div>
+                                </label>
+                                <label class="control control--radio">
+                                    Part time
+                                    <input id="Parttime " name="Worktype" type="radio" value="false" />
+                                    <!--<input type="radio" name="radio" />-->
+                                    <div class="control__indicator"></div>
+                                </label>
+                                <span class="field-validation-valid text-danger" data-valmsg-for="Worktype" data-valmsg-replace="true"></span>
+                            </div>
+                        </div>
+
+
+
+
+
+
+                        <div class="form-group">
+                            <label id="0" class="lblWidth label_star"><span>Select area of interest</span></label>
+                            <div class="txtWidth">
+                                <select id="areaOfInterestSelected" class="saver_dropdown form-control innerTxt for_input_shape" multiple>
+                                    <option value="Technology">Technology</option>
+                                    <option value="Marketing">Marketing</option>
+                                    <option value="Finance">Finance</option>
+                                    <option value="Management">Management</option>
+                                    <option value="Human Resource">Human Resource</option>
+                                    <option value="Creative">Creative</option>
+                                </select>
+                                <div class="txtWidth1 ">
+                                    <input class="form-control innerTxt for_input_shape text-box single-line" id="MytxtBox" name="AreaInterest" placeholder="Your Selection" readonly="readonly" type="text" value="" />
+                                    <span class="field-validation-valid text-danger" data-valmsg-for="AreaInterest" data-valmsg-replace="true"></span>
+                                </div>
+                                <em style="font-size:12px;">Press Ctrl. to make multiple selections</em>
+                            </div>
+                        </div>
+
+
+
+
+
+                        <div id="geoLocation" class="form-group">
+                            <!-- Sourabh Edited Start-->
+                            <label class="lblWidth label_star" for="ApplicantCountry" placeholder="Enter your Location">Your country of residence</label>
+                            <div class="txtWidth">
+                                <select class=" countries for_input_shape " id="countryId" name="ApplicantCountry"><option value="">Select Country</option>
+                                </select>
+                                <span class="field-validation-valid text-danger" data-valmsg-for="ApplicantCountry" data-valmsg-replace="true"></span>
+
+                                <div class="txtWidth1 ">
+                                    <select class=" states for_input_shape" id="stateId" name="ApplicantState"><option value="">Select State</option>
+                                    </select>
+                                    <span class="field-validation-valid text-danger" data-valmsg-for="ApplicantState" data-valmsg-replace="true"></span>
+                                    <div class="txtWidth1 ">
+                                        <select class="cities for_input_shape" id="cityId" name="ApplicantCity"><option value="">Select City</option>
+                                        </select>
+                                        <span class="field-validation-valid text-danger" data-valmsg-for="ApplicantCity" data-valmsg-replace="true"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+
+                        <div class="form-group">
+                            <label id="1" class="lblWidth label_star">How did you hear about us?</label>
+                            <div class="txtWidth">
+                                <select class=" saver_dropdown form-control innerTxt for_input_shape" id="MySuggestion1" name="HearAboutUs"><option value="">Please select</option>
+                                    <option value="JetzyCareerWebsite">Jetzy Career Website</option>
+                                    <option value="SchoolUniversityCollege">School / University / College</option>
+                                    <option value="JobPortal">Job Portal</option>
+                                    <option value="SocialMediaSites">Social Media Sites</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                                <span class="field-validation-valid text-danger" data-valmsg-for="HearAboutUs" data-valmsg-replace="true"></span>
+
+                                <div class="txtWidth1" id="OtherSpecifyFormGroup">
+                                    <input class="form-control innerTxt for_input_shape text-box single-line" id="HearAbtusTxtBox" name="HearAboutUsTextbox" type="text" value="" />
+                                    <span class="field-validation-valid text-danger" data-valmsg-for="HearAboutUsTextbox" data-valmsg-replace="true"></span>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="row btn_row">
+                            <div class=" col-sm-12">
+                                <input type="button" id="career_save_btn" value="Save" class="btn btn-default" />
+                                <input type="submit" id="career_save_btn1" value="Save" class="btn btn-default" style="display:none" />
+                            </div>
+                            <div class="bottom-line"><span>Please note that clicking on save will take you to a questionnaire. This questionnaire is mandatory to complete your application.</span></div>
+                        </div>
+                    </div>
+                    <div class="textBox">
+                    </div>
+                </div>
+            </div>
+
+            <footer class="footer clearfix">
+                <div class="contactWrap clearfix">
+                    <div class="contact fLeft" style="width: 528px; height: 29px">
+                        <ul class="footerNav">
+                            <li><a href="/">Home</a></li>
+                            <li><a href="/termsofuse.html">Terms of Use</a></li>
+                            <li><a href="/privacy.html">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                    <div class="contact fRight"><span>Contact Us:</span> <a href="mailto:contact@jetzyapp.com">contact@jetzyapp.com</a></div>
+                </div>
+                <div class="copyrightCont clearfix">
+                    <p class="copyright">
+                        S Z Global Inc.<br />
+
+                    </p>
+                    <span class="logo2">
+                        <img src="/Splash/images/logo2.png" alt="">
+                    </span>
+                    <div class="socialCont">
+                        <ul class="social">
+                            <li>Follow us</li>
+                            <li>
+                                <a href="https://www.facebook.com/jetzyapp" target="_blank">
+                                    <img src="/Splash/images/fb2.png" alt="">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://twitter.com/jetzyapp" target="_blank">
+                                    <img src="/Splash/images/twitter2.png" alt="">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://instagram.com/jetzyapp" target="_blank">
+                                    <img src="/Splash/images/instagram2.png" alt="">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </footer>
+
+
+        </div>
+    </div>
+    <!--Message Modal-1-->
+    <!-- Modal -->
+    <div class="modal fade" id="messageModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <img src="/Splash/images/white.png">
+                </div>
+                <div class="modal-body text-center">
+                    <div class="Message">
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <!-- Modal-1-->
+    <div class="modal fade " id="brand_Modal" role="dialog ">
+        <div class="modal-dialog model_wrapper clearfix">
+            <!-- Modal content-->
+            <div class="modal-content career_modal_content">
+                <div class="modal-header text-center">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <div class="logo_img_div">
+                        <a href="https://www.jetzyapp.com/">
+                            <img src="/Splash/images/logo.png" alt="">
+                        </a>
+                    </div>
+                </div>
+                <div class="modal-body career_modal_body">
+                    <div class="clearfix">
+                        <div class="modal_body_content">
+                            <h2 class="text-center">&nbsp;<span>Jetzy Career Opportunities</span></h2>
+                            <h3 style="display: none; opacity: 1; bottom: auto;">&nbsp;</h3>
+                            <p class="head" style="opacity: 1; bottom: 0px;">
+                                <b>
+                                    <i>
+                                        <span>POSITION: BRAND AMBASSADOR</span>
+                                    </i>
+                                </b>
+                            </p>
+                            <p class="" style="opacity: 1; bottom: 0px;">
+                                <span>
+                                    Jetzy is offering an 8 week brand
+                                    ambassador to internship program with rolling start dates.
+                                    This program will teach interns how a start up
+                                    technology/social media company works and give them hands on
+                                    experience in its operations. The program consists of three
+                                    stages including a trainee stage, a brand ambassador stage
+                                    and an internship stage. After successful completion of all
+                                    stages, many opportunities with Jetzy will be available.
+                                    These opportunities include full time positions, part time
+                                    positions, school credit, travel opportunities and more.
+                                    Ambassadors will be working directly with the founders and
+                                    corporate team, helping in multiple facets of the business.
+                                </span>
+                            </p>
+                            <p class="" style="opacity: 1; bottom: 0px;">
+                                <span>
+                                    Here is a general overview of the requirements for the
+                                    three stages of the program:
+                                </span>
+                            </p><p style="opacity: 1; bottom: 0px;">
+                            <strong>
+                                Trainee:
+                            </strong> Duration 3 weeks<br>&nbsp;&nbsp;&nbsp; -
+                            10 hours a week commitment<br>&nbsp;&nbsp;&nbsp; - Learn
+                            about Jetzy and the Jetzy way of life<br>&nbsp;&nbsp;&nbsp;
+                            - Spread the word about Jetzy to your social network and
+                            school to increase downloads<br>&nbsp;&nbsp;&nbsp; - Recruit
+                            2 additional Jetzy Interns<br>&nbsp;&nbsp;&nbsp; -
+                            Participate in assigned campaigns as required<br>&nbsp;&nbsp;&nbsp;
+                            - Weekly interns call participation<br>&nbsp;&nbsp;&nbsp; -
+                            Weekly communication with Jetzy Intern Coordinator<br><br>
+                            <strong>Brand Ambassador: </strong>Duration 5 weeks<br>&nbsp;&nbsp;&nbsp;
+                            - 10 hours a week commitment<br>&nbsp;&nbsp;&nbsp; - Daily
+                            and weekly goals for Jetzy engagement and recruitment<br>&nbsp;&nbsp;&nbsp;
+                            - School recruitment projects involvement<br>&nbsp;&nbsp;&nbsp;
+                            - Recruitment minimums<br>&nbsp;&nbsp;&nbsp; - Daily and
+                            weekly Jetzy interaction and recruitment minimums<br>&nbsp;&nbsp;&nbsp;
+                            - Create, plan and implement individual projects aligning to
+                            your interests<br>&nbsp;&nbsp;&nbsp; - Community
+                            involvements at networking events<br><br>Internship:
+                            Duration 3-6 months<br>&nbsp;&nbsp;&nbsp; - Specialized
+                            internships available including Marketing, Social Media
+                            Management, Advertising, Business Operations, Investor
+                            Relations, Technology, Management and more.<br><br>&nbsp;&nbsp;&nbsp;
+                            We have both full time and remote/part time assignment/
+                            project opportunities available. We are flexible in terms of
+                            hours, as people can do a part time project remotely from
+                            their locations (alongside their other full time
+                            job/internship). <br>&nbsp;&nbsp;&nbsp; Qualified interns
+                            can come from any field or major, so long as they have a
+                            passion for travel and a desire to work in a fast-paced, new
+                            start-up. The ideal candidate is organized, detailed,
+                            work-oriented, fun, and friendly!<br>&nbsp;&nbsp;&nbsp; This
+                            is an incredible opportunity to be on the ground with a
+                            startup from the inception of the product and gain in-depth
+                            entrepreneurial skill set. In addition, the ambassadors will
+                            be able to develop strong leadership, marketing, digital
+                            media, communication and people skills.<br>Please
+                            send your resume to <a href="mailto:careers@jetzyapp.com">
+                            careers@jetzyapp.com
+                        </a>
+                        </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default modal_close_btn" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /model-1 -->
+    <!-- Modal-2-->
+    <div class="modal fade" id="tech_Modal" role="dialog ">
+        <div class="modal-dialog model_wrapper clearfix">
+            <!-- Modal content-->
+            <div class="modal-content career_modal_content">
+                <div class="modal-header text-center">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <div class="logo_img_div">
+                        <a href="https://www.jetzyapp.com/">
+                            <img src="/Splash/images/logo.png" alt="">
+                        </a>
+                    </div>
+                </div>
+                <div class="modal-body career_modal_body">
+                    <div class="clearfix">
+                        <div class="modal_body_content">
+                            <h2 class="text-center">&nbsp;<span>JETZY Career Opportunities</span></h2>
+                            <h3 style="display: none; opacity: 1; bottom: auto;">&nbsp;</h3>
+                            <p class="head" style="opacity: 1; bottom: 0px;">
+                                <b>
+                                    <i>
+                                        <span>POSITION: TECHNOLOGY INTERN</span>
+                                    </i>
+                                </b>
+                            </p>
+                            <p style="opacity: 1; bottom: 0px;">
+                                The Technology intern
+                                is responsible for overseeing the app development and
+                                assisting with ongoing technology work. <br>This
+                                position contributes to the company's success by fine-tuning
+                                the detailed specifications of the app and ensuring the best
+                                quality and technical functionality for our users.<br>
+                                This is an incredible opportunity to be on the ground with a
+                                startup from the inception of the product and gain in-depth
+                                entrepreneurial skill set. <br><br>RESPONSIBILITIES<br><br>&nbsp;&nbsp;&nbsp;
+                                ● Oversee and assist with app development<br>&nbsp;&nbsp;&nbsp;
+                                ● Assist with ongoing technology work and researching best
+                                systems and solutions to supplement the technology platform<br>&nbsp;&nbsp;&nbsp;
+                                ● Maintain a log of technology points raised during meetings
+                                and follow up on those points with engineers<br>&nbsp;&nbsp;&nbsp;
+                                ● Identify and communicate any errors or improvements in the
+                                app development <br>&nbsp;&nbsp;&nbsp; ● Liaise with
+                                technology team to build creatives tailored for business
+                                partners<br>&nbsp;&nbsp;&nbsp; ● Serve as point person on
+                                all technology-related issues<br>&nbsp;&nbsp;&nbsp; ●
+                                Confirms project requirements by reviewing program
+                                objective, input data, and output requirements with analyst,
+                                supervisor, and client. <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                o Ensure any new requirements are communicated timely to
+                                engineers and included, to the extent possible<br>&nbsp;&nbsp;&nbsp;
+                                ● Arranges project requirements in programming sequence by
+                                analyzing requirements; preparing a work flow chart and
+                                diagram using knowledge of&nbsp;&nbsp;&nbsp;&nbsp; computer
+                                capabilities, subject matter, programming language, and
+                                logic.<br>&nbsp;&nbsp;&nbsp; ● Maintains historical records
+                                by documenting program development and revisions.<br>&nbsp;&nbsp;&nbsp;
+                                ● Maintains client confidence and protects operations by
+                                keeping information confidential.<br><br><br>REQUIREMENTS
+                                <br><br>&nbsp;&nbsp;&nbsp; ● Engineering or IT degree
+                                preferred, not required<br>&nbsp;&nbsp;&nbsp; ● App
+                                development experience REQUIRED (Front end iOS/android) and
+                                back-end developers<br>&nbsp;&nbsp;&nbsp; ● Coding
+                                experience<br>&nbsp;&nbsp;&nbsp; ● Strong organizational and
+                                communication skills<br>&nbsp;&nbsp;&nbsp; ● Ability to work
+                                independently and in a team environment<br>&nbsp;&nbsp;&nbsp;
+                                ● General Programming Skills <br>&nbsp;&nbsp;&nbsp; ●
+                                Software Algorithm Design <br>&nbsp;&nbsp;&nbsp; ● Software
+                                Performance Tuning<br>&nbsp;&nbsp;&nbsp; ● Software
+                                Debugging <br>&nbsp;&nbsp;&nbsp; ● Software Documentation
+                                <br>&nbsp;&nbsp;&nbsp; ● Software Testing<br><br>EXPECTED
+                                HOURS<br><br>We are flexible in terms of hours, as interns
+                                can do a part time project remotely from their locations
+                                (alongside another full-time internship they may have). We
+                                have both full time and remote/part time assignment
+                                opportunities available. <br><br>Please send your resume to
+                                <a href="mailto:careers@jetzyapp.com">careers@jetzyapp.com</a><br>
+                                <br>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default modal_close_btn" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Model for checkbox -->
+    <div id="myModal_checkbox" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content text-center">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <img src="/Splash/images/Download-Icon.png">
+                    <div class="modal-title">
+                        <span class="modal-title modelcontent">
+                            It's mandatory that you download the Jetzy app and sign up before applying for a position. If you haven't already please use the link below.
+                        </span>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <a href="https://www.jetzyapp.com/downloadapp.html" target="_blank"> https://www.jetzyapp.com/downloadapp.html</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="myModal_referal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content text-center">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <div class="modal-title modal-title_own">
+                        <span class="modal-title modelcontent">
+                            You can find the referral code on your <b><u>Jetzy app account</u></b> under Profile -> Settings -> Invite Friends section of Jetzy.
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="myModal_isdownloaded" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content text-center">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <div class="modal-title modal-title_own">
+                        <span class="modal-title modelcontent">
+                            Jetzy is a lifestyle app, it's important for you to
+                            download and sign up for the app so that you can
+                            understand how Jetzy works.
+                        </span>
+                    </div>
+
+                </div>
+
+                <!-- <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div> -->
+            </div>
+        </div>
+    </div>
+    <div class="overlay"></div>
+</form><!-- jQuery library -->
+
+<script>
+    var starrating1 = new StarRating(document.getElementById('star-rating-1'));
+
+    $('#star-rating-2').starrating();
+
+    var starrating3 = new StarRating(document.getElementById('star-rating-3'));
+    var starrating4 = new StarRating(document.getElementById('star-rating-4'));
+    var starrating5 = new StarRating(document.getElementById('star-rating-5'));
+    var starrating6 = new StarRating(document.getElementById('star-rating-6'));
+    var starrating7 = new StarRating(document.getElementById('star-rating-7'));
+    var starrating8 = new StarRating(document.getElementById('star-rating-8'));
+    var starrating9 = new StarRating(document.getElementById('star-rating-9'));
+    var starrating10 = new StarRating(document.getElementById('star-rating-10'), {
+        clearable: false,
+        showText: false,
+        onClick: function (el) {
+            console.log('I selected: ' + el[el.selectedIndex].text);
+        },
+    });
+</script>
+
+<script>
+    /* ***********************************************Show More Button Visibility**************************************** */
+    $(document).ready(function () {
+
+        var Message = '';
+        if (Message != '')
+            $("#messageModal").modal('show');
+        $(".saver_dropdown").change(function (e) {
+            if ($(this).val() == "Select")
+                $("#job_view_btn").css("display", "none");
+            else
+                //  $(".select_div").addClass('icon');
+                $("#job_view_btn").css("display", "block");
+        });
+
+        /*star rating for  isAppIntutive */
+        $("#isAppIntutive span.gl-star-rating-stars").click(function () {
+            $("#IsIntitutiveandEasy").val($("#isAppIntutive span.gl-star-rating-text").text())
+        })
+        /*star rating for  isfast */
+        $("#isfast span.gl-star-rating-stars").click(function () {
+            $("#Isfast").val($("#isfast span.gl-star-rating-text").text())
+        })
+        /*star rating for  iscoolandapealing */
+        $("#iscoolandapealing span.gl-star-rating-stars").click(function () {
+            $("#Iscoolandapealing").val($("#iscoolandapealing span.gl-star-rating-text").text())
+        })
+        /*star rating for  dowantTravel */
+        $("#dowantTravel span.gl-star-rating-stars").click(function () {
+            $("#DowantTravel").val($("#dowantTravel span.gl-star-rating-text").text())
+
+        })
+
+
+        /*Datepicker   */
+        //$("#GraduationDate").datepicker({
+        //    dateFormat: "dd/M/yy",
+        //    changeMonth: true,
+        //    changeYear: true,
+        //    yearRange: "-60:+33s"
+        //});
+
+
+        /*show model on not yet click*/
+        $("#Notyet").change(function () {
+
+            if (this.checked) {
+                $("#myModal_checkbox").modal('toggle');
+                $("#Notyet").prop("checked", false);
+            }
+        });
+
+        $("#referalclick").click(function () {
+
+
+            $("#myModal_referal").modal('toggle');
+            $("#Notyet").prop("checked", false);
+        });
+
+        //downloadable_fun
+        $("#isdownlodedclick").click(function () {
+
+            $("#myModal_isdownloaded").modal('toggle');
+            $("#Notyet").prop("checked", false);
+        });
+
+        //$("#career_save_btn").click(function (e) {
+        //   if( $("#Notyet").prop("checked")==true)
+        //   {
+        //       $("#notyetdiv").css("display", "block")
+        //       e.preventDefault();
+        //   }
+        //});
+
+
+
+        //This code is for New Tab______START
+
+
+
+
+        //This code is for New Tab______ENDs
+
+    });//End document ready
+
+
+
+
+    /* *********************************************** End_Show More Button Visibility**************************************** */
+
+    /* ***********************************************Binding Respective  Modal**************************************** */
+    //$("#job_view_btn").click(function () {
+
+      //  if ($(".saver_dropdown").val() == "Brand Ambassador")
+        //    $(this).attr("data-target", "#brand_Modal")
+        //else
+          //  $(this).attr("data-target", "#tech_Modal")
+
+    //})
+    /* ***********************************************End__Binding Respective  Modal**************************************** */
+
+
+    jQuery.each(jQuery('textarea[data-autoresize]'), function () {
+        var offset = this.offsetHeight - this.clientHeight;
+
+        var resizeTextarea = function (el) {
+            jQuery(el).css('height', 'auto').css('height', el.scrollHeight + offset);
+        };
+        jQuery(this).on('keyup input', function () { resizeTextarea(this); }).removeAttr('data-autoresize');
+    });
+</script>
+
+
+<script>
+    $(document).on('change', '.btn-fileUpload :file', function () {
+        var input = $(this),
+            numFiles = input.get(0).files ? input.get(0).files.length : 1,
+            label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+        input.trigger('fileselect', [numFiles, label]);
+    });
+
+    $(document).ready(function () {
+        $('.btn-fileUpload :file').on('fileselect', function (event, numFiles, label) {
+
+            var input = $(this).parents('.input-group').find(':text'),
+                log = numFiles > 1 ? numFiles + ' files selected' : label;
+
+            if (input.length) {
+                input.val(log);
+            } else {
+                if (log) alert(log);
+            }
+
+        });
+        $("#RefferalCode").focus(function () {
+            $("#referexist").text('');
+            $("#career_save_btn").prop('disabled', false);
+        });
+
+        //------------------------------------------------------------------------------------------
+        $("#career_save_btn").click(function () {
+            //alert("save aa gyo");
+
+            debugger;
+            var referalCode = $("#RefferalCode").val().trim();
+            if (referalCode != null && referalCode != '') {
+
+
+                $.ajax({
+                    url: "/Career/checkReferral",
+                    type: "POST",
+                    data: JSON.stringify({ 'referalcode': referalCode }),
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (data) {
+
+                        if (data) {
+                            $("#career_save_btn").prop('disabled', false);
+                            $("#career_save_btn1").click();
+                        }
+                        else {
+                            // $("#career_save_btn").prop('disabled', true);
+                            $("#referexist").text("Invalid referral code ");
+                        }
+                    },
+                    error: function () {
+
+
+                    }
+                });
+            }
+            else {
+                $("#career_save_btn1").click();
+            }
+
+        });
+        //--------------------------------------------------------------------------------------------------
+    });
+</script>
+
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $("#OtherSpecifyFormGroup").hide();
+
+        $("#MySuggestion1").change(function () {
+            var value = document.getElementById("MySuggestion1").value;
+            if (value == "JobPortal") {
+
+                $("#HearAbtusTxtBox").val("");
+                $("#HearAbtusTxtBox").attr("placeholder", "Eg. Indeed");
+                $("#OtherSpecifyFormGroup").show();
+
+            }
+            if (value == "SocialMediaSites") {
+                $("#HearAbtusTxtBox").attr("placeholder", "Eg. Facebook");
+                $("#HearAbtusTxtBox").val("");
+                $("#OtherSpecifyFormGroup").show();
+
+            }
+            if (value == "Other") {
+                $("#HearAbtusTxtBox").attr("placeholder", "Please Specify");
+                $("#HearAbtusTxtBox").val("");
+                $("#OtherSpecifyFormGroup").show();
+            }
+            if (value == "JetzyCareerWebsite" || value == "SchoolUniversityCollege") {
+
+                $("#HearAbtusTxtBox").val("NULL");
+
+                $("#OtherSpecifyFormGroup").hide();
+            }
+            if (value == "") {
+
+                $("#OtherSpecifyFormGroup").hide();
+            }
+        });
+    })
+</script>
+
+
+
+<script>
+    $(document).ready(function () {
+        $("#areaOfInterestSelected").change(function () {
+            var sel = $("#areaOfInterestSelected").val();
+            $("#MytxtBox").attr('value', sel);
+            $("#areaOfInterestSelected").val(sel);
+        });
+    });
+
+</script>
+
+
+
+
+
+</body>
+</html>

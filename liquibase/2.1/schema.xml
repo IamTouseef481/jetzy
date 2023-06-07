@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <include relativeToChangelogFile="true" file="001_environment.xml"/>
+    <include relativeToChangelogFile="true" file="002_record_mapping.xml"/>
+    <include relativeToChangelogFile="true" file="003_moderation.xml"/>
+    <include relativeToChangelogFile="true" file="004_content.xml"/>
+    <include relativeToChangelogFile="true" file="004_content_cms.xml"/>
+    <include relativeToChangelogFile="true" file="006_accounts_and_credentials.xml"/>
+    <include relativeToChangelogFile="true" file="007_user_extended.xml"/>
+    <include relativeToChangelogFile="true" file="008_interactions.xml"/>
+    <include relativeToChangelogFile="true" file="009_user_content.xml"/>
+    <include relativeToChangelogFile="true" file="010_locations.xml"/>
+    <include relativeToChangelogFile="true" file="011_audits_and_logging.xml"/>
+    <include relativeToChangelogFile="true" file="012_jetzy_careers_and_feedback.xml"/>
+    <include relativeToChangelogFile="true" file="013_user_relations.xml"/>
+    <include relativeToChangelogFile="true" file="014_reward_system.xml"/>
+    <include relativeToChangelogFile="true" file="015_notifications.xml"/>
+    <include relativeToChangelogFile="true" file="016_badges_and_event_engine.xml"/>
+    <include relativeToChangelogFile="true" file="017_select.xml"/>
+    <include relativeToChangelogFile="true" file="018_chat_room.xml"/>
+
+</databaseChangeLog>

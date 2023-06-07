@@ -1,0 +1,327 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <!-- ======================================================================================================== -->
+    <!-- notification_types                                                                                       -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="notification_types">
+        <createTable tableName="notification_types">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="notification_types_pkey"/>
+            </column>
+            <column name="description" type="TEXT"/>
+            <column defaultValueBoolean="false" name="is_deleted" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="event" type="VARCHAR(255)"/>
+            <column name="message" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_notification_types_deleted_at         -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:notification_types:deleted_at">
+        <createIndex indexName="idx_notification_types_deleted_at" tableName="notification_types">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_notification_types_is_deleted         -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:notification_types:is_deleted">
+        <createIndex indexName="idx_notification_types_is_deleted" tableName="notification_types">
+            <column name="is_deleted"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- notification_types                        -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="root (generated)" id="notification_types:initial_data">
+        <loadData
+                tableName="notification_types"
+                file="./csv/notification_types.csv"
+                commentLineStartsWith="#"
+                relativeToChangelogFile="true"
+                usePreparedStatements="true"
+        >
+            <column name="id" type="UUID"/>
+            <column name="description" type="STRING"/>
+            <column name="is_deleted" type="BOOLEAN"/>
+            <column name="deleted_at" type="DATE"/>
+            <column name="inserted_at" type="DATE"/>
+            <column name="updated_at" type="DATE"/>
+            <column name="event" type="STRING"/>
+            <column name="message" type="STRING"/>
+        </loadData>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- notification_records                                                                                     -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="notification_records">
+        <createTable tableName="notification_records">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="notification_records_pkey"/>
+            </column>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="type" type="VARCHAR(255)"/>
+            <column name="friend_activity_type" type="VARCHAR(255)"/>
+            <column name="pending_friend_request" type="VARCHAR(255)"/>
+            <column name="chat_message_type" type="VARCHAR(255)"/>
+            <column name="moment_message_type" type="VARCHAR(255)"/>
+            <column name="group_id" type="VARCHAR(255)"/>
+            <column defaultValueBoolean="false" name="is_deleted" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="sender_id" type="UUID"/>
+            <column name="receiver_id" type="UUID"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueBoolean="false" name="is_read" type="BOOLEAN"/>
+            <column name="resource_id" type="UUID"/>
+            <column defaultValueBoolean="false" name="is_opened" type="BOOLEAN"/>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_notification_records_deleted_at       -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:notification_records:deleted_at">
+        <createIndex indexName="idx_notification_records_deleted_at" tableName="notification_records">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_notification_records_is_deleted       -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:notification_records:is_deleted">
+        <createIndex indexName="idx_notification_records_is_deleted" tableName="notification_records">
+            <column name="is_deleted"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:notification_records.receiver_id">
+        <addForeignKeyConstraint baseColumnNames="receiver_id" baseTableName="notification_records" constraintName="notification_records_receiver_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:notification_records.sender_id">
+        <addForeignKeyConstraint baseColumnNames="sender_id" baseTableName="notification_records" constraintName="notification_records_sender_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- notification_settings                                                                                    -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="notification_settings">
+        <createTable tableName="notification_settings">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="notification_settings_pkey"/>
+            </column>
+            <column name="is_send_notification" type="BOOLEAN"/>
+            <column name="is_send_mail" type="BOOLEAN"/>
+            <column name="user_id" type="UUID"/>
+            <column name="notification_type_id" type="UUID"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:notification_settings:user_notification_type_id">
+        <createIndex indexName="user_notification_type_id" tableName="notification_settings" unique="true">
+            <column name="user_id"/>
+            <column name="notification_type_id"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_notification_settings_deleted_at      -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:notification_settings:deleted_at">
+        <createIndex indexName="idx_notification_settings_deleted_at" tableName="notification_settings">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:notification_settings.notification_type_id">
+        <addForeignKeyConstraint baseColumnNames="notification_type_id" baseTableName="notification_settings" constraintName="notification_settings_notification_type_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="notification_types" validate="true"/>
+    </changeSet>
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:notification_settings.user_id">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="notification_settings" constraintName="notification_settings_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- push_notification_logs                                                                                   -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="push_notification_logs">
+        <createTable tableName="push_notification_logs">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="push_notification_logs_pkey"/>
+            </column>
+            <column name="push_message" type="TEXT"/>
+            <column name="push_token" type="VARCHAR(255)"/>
+            <column name="device_id" type="VARCHAR(255)"/>
+            <column name="device_type" type="INTEGER"/>
+            <column name="api_version" type="INTEGER"/>
+            <column name="app_version" type="VARCHAR(255)"/>
+            <column name="notification_type_id" type="UUID"/>
+            <column name="sender_id" type="UUID"/>
+            <column name="receiver_id" type="UUID"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:push_notification_logs:push_notification_logs_sender_id_receiver_id_notification_type_">
+        <createIndex indexName="push_notification_logs_sender_id_receiver_id_notification_type_" tableName="push_notification_logs">
+            <column name="sender_id"/>
+            <column name="receiver_id"/>
+            <column name="notification_type_id"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_push_notification_logs_deleted_at     -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:push_notification_logs:deleted_at">
+        <createIndex indexName="idx_push_notification_logs_deleted_at" tableName="push_notification_logs">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:push_notification_logs.notification_type_id">
+        <addForeignKeyConstraint baseColumnNames="notification_type_id" baseTableName="push_notification_logs" constraintName="push_notification_logs_notification_type_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="notification_types" validate="true"/>
+    </changeSet>
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:push_notification_logs.receiver_id">
+        <addForeignKeyConstraint baseColumnNames="receiver_id" baseTableName="push_notification_logs" constraintName="push_notification_logs_receiver_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:push_notification_logs.sender_id">
+        <addForeignKeyConstraint baseColumnNames="sender_id" baseTableName="push_notification_logs" constraintName="push_notification_logs_sender_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!-- users_notifications_records                                                                              -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="users_notifications_records">
+        <createTable tableName="users_notifications_records">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="users_notifications_records_pkey"/>
+            </column>
+            <column name="type" type="INTEGER"/>
+            <column defaultValueBoolean="false" name="is_enable" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueBoolean="false" name="is_deleted" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="UUID"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:users_notifications_records:users_notifications_records_user_id_index">
+        <createIndex indexName="users_notifications_records_user_id_index" tableName="users_notifications_records">
+            <column name="user_id"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ............................................. -->
+    <!-- idx_users_notifications_records_deleted_at    -->
+    <!-- ............................................. -->
+    <changeSet author="kebrings" id="idx:users_notifications_records:deleted_at">
+        <createIndex indexName="idx_users_notifications_records_deleted_at" tableName="users_notifications_records">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ............................................. -->
+    <!-- idx_users_notifications_records_is_deleted    -->
+    <!-- ............................................. -->
+    <changeSet author="kebrings" id="idx:users_notifications_records:is_deleted">
+        <createIndex indexName="idx_users_notifications_records_is_deleted" tableName="users_notifications_records">
+            <column name="is_deleted"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:users_notifications_records.user_id">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="users_notifications_records" constraintName="users_notifications_records_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+
+</databaseChangeLog>

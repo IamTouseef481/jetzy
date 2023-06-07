@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Jetzy |Travel like a Local!</title>
+    <meta name="description" content="Jetzy is the social media App for travelers and flashpackers, who love to travel the world.">
+    <meta name="keywords" content="Jetzy, Jetzyapp, Jetzy app, Jetzy Social Media, Jetzy Travel, Travel, Travel deals, Travel deals to, Vegas travel, Travel beach, Travel hotels, Travel air, Travel spain Barcelona, Travel London, Travel, Katy Perry, Ty Sawyer, Shama Zehra, Best Travel, Fashion, Fashion travel, Shopping, Shopping travel, Travel new york city, Travel Orlando, Travel united states, European travel, Travel New york, Vacations, Holidays, Vacations travel, Beach, Beach travel, Deals on travel, Social, Social travel, Meet locals, Meet up, Trip, Islands, Island, Island travel, Travel Australia, Best travel deals, Flashpacker, Flashpacking, Millennial, Millennials, Dating, Travel app, Connect, Meet, Backpacks, Wine, Wine travel, Wine tours, Biking, Bike tours, Tours, Culture, Museums, Restaurants, LGBT travel, Paris, Paris Travel, Thailand, Thailand travel, Rome, Rome deals, Berlin, Berlin Travel, Barcelona, Barcelona travel, Spain travel, Italy, Germany, India, England, UK, Ireland, Russia, Turkey, China, Hong Kong, Singapore, Africa, Asia, New Zealand, Budapest, Instanbul, Spa, Spa travel, Cruise ship, Cruiseship deal, Brazil, Greece, Greek Island, Adventure, Escape, Green travel, Live like a local, Authentic travel, France, Portugal, Egypt, Sydney, Queensland Australia, Indonesia, Indonesia travel, Bali, Bali travel, Tahiti, Tahiti deals, Tahiti islands, Bora Bora, Bora Bora honeymoon, Destination, Wedding, Moorea, Surf Travel, Surf destination, Top 10 travel destinations, Food, travel, Milan Travel, Travel apparel, Travel bags , Free travel, Travel rewards " />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" href="Splash/css/style.css">
+    <link rel="stylesheet" href="Splash/css/responsive.css">
+    <meta property="og:image" content="https://www.jetzyapp.com/images/logo.png" />
+    <link rel="shortcut icon" href="Images/favicon.ico">
+    <link rel="icon" type="image/gif" href="Images/animated_favicon1.gif">
+    <!-- Include this to make the og:image larger -->
+    <meta name="twitter:card" content="summary_large_image">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <![endif]-->
+    <style>
+        .cont_mtrack {
+            max-width: 1250px;
+            width: 100%;
+        }
+
+        .mtrack_top {
+            display: table;
+            width: 100%;
+            position: relative;
+        }
+
+        .cont_mtrack .mtrack_title {
+            display: table-cell;
+            text-align: left;
+        }
+
+        .cont_mtrack .socialList {
+            display: table-cell;
+            text-align: right;
+        }
+
+        .join_app {
+            background: #ff9500;
+            color: #fff;
+            font-size: 16px;
+            padding: 5px 10px;
+            border-radius: 5px;
+            border: 2px solid #fff;
+            position: absolute;
+            right: 50px;
+            bottom: -70px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mtrack cont_mtrack">
+        <div class="mtrack_top">
+            <h3 class="mtrack_title">"Jetzy, Travel Like Local."</h3>
+            <ul class="socialList">
+                <li class="socialElm">
+                    <a href="https://www.facebook.com/jetzyapp" target="_blank">
+                        <img src="Splash/images/fb.png" alt="">
+                    </a>
+                </li>
+                <li class="socialElm">
+                    <a href="https://twitter.com/jetzyapp" target="_blank">
+                        <img src="Splash/images/twitter.png" alt="">
+                    </a>
+                </li>
+                <li class="socialElm">
+                    <a href="https://instagram.com/jetzyapp" target="_blank">
+                        <img src="Splash/images/instagram.png" alt="">
+                    </a>
+                </li>
+            </ul>
+            <a href="downloadapp.html" class="join_app">Join the app</a>
+        </div>
+        <img src="Images/harvardgroup.jpg" alt="">
+    </div>
+</body>
+</html>

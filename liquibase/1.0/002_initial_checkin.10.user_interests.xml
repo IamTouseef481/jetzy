@@ -1,0 +1,462 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+
+
+
+    <!-- ======================================================================================================== -->
+    <!-- interest_topics                                                                                          -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="interest_topics">
+        <createTable tableName="interest_topics">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="interest_topics_pkey"/>
+            </column>
+            <column name="topic_name" type="VARCHAR(255)"/>
+            <column name="interest_id" type="UUID"/>
+            <column name="room_id" type="UUID"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="NULL::character varying" name="description" type="VARCHAR(255)"/>
+            <column name="image_name" type="VARCHAR(255)"/>
+            <column name="image_identifier" type="BIGINT"/>
+            <column name="blur_hash" type="VARCHAR(255)"/>
+            <column name="created_by_id" type="UUID"/>
+            <column name="small_image_name" type="TEXT"/>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:interest_topics:interest_topics_room_id_index">
+        <createIndex indexName="interest_topics_room_id_index" tableName="interest_topics">
+            <column name="room_id"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_interest_topics_deleted_at            -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:interest_topics:deleted_at">
+        <createIndex indexName="idx_interest_topics_deleted_at" tableName="interest_topics">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:interest_topics.created_by_id">
+        <addForeignKeyConstraint baseColumnNames="created_by_id" baseTableName="interest_topics" constraintName="interest_topics_created_by_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:interest_topics.interest_id">
+        <addForeignKeyConstraint baseColumnNames="interest_id" baseTableName="interest_topics" constraintName="interest_topics_interest_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="interests" validate="true"/>
+    </changeSet>
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:interest_topics.room_id">
+        <addForeignKeyConstraint baseColumnNames="room_id" baseTableName="interest_topics" constraintName="interest_topics_room_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="rooms" validate="true"/>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- private_interests_codes                                                                                  -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="private_interests_codes">
+        <createTable tableName="private_interests_codes">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="private_interests_codes_pkey"/>
+            </column>
+            <column name="referal_code" type="VARCHAR(255)"/>
+            <column name="interest_id" type="UUID"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:private_interests_codes:private_interests_codes_interest_id_index">
+        <createIndex indexName="private_interests_codes_interest_id_index" tableName="private_interests_codes">
+            <column name="interest_id"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_private_interests_codes_deleted_at    -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:private_interests_codes:deleted_at">
+        <createIndex indexName="idx_private_interests_codes_deleted_at" tableName="private_interests_codes">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:private_interests_codes.interest_id">
+        <addForeignKeyConstraint baseColumnNames="interest_id" baseTableName="private_interests_codes" constraintName="private_interests_codes_interest_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="interests" validate="true"/>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- user_interests                                                                                           -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="user_interests">
+        <createTable tableName="user_interests">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_interests_pkey"/>
+            </column>
+            <column defaultValueBoolean="false" name="is_admin" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueBoolean="false" name="is_active" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="UUID"/>
+            <column name="interest_id" type="UUID"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="INTEREST_FOLLOW_STATUS"/>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:user_interests:user_interests_user_id_interest_id_unique_index">
+        <createIndex indexName="user_interests_user_id_interest_id_unique_index" tableName="user_interests" unique="true">
+            <column name="user_id"/>
+            <column name="interest_id"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_user_interests_deleted_at             -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:user_interests:deleted_at">
+        <createIndex indexName="idx_user_interests_deleted_at" tableName="user_interests">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:user_interests.interest_id">
+        <addForeignKeyConstraint baseColumnNames="interest_id" baseTableName="user_interests" constraintName="user_interests_interest_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="interests" validate="true"/>
+    </changeSet>
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:user_interests.user_id">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="user_interests" constraintName="user_interests_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!-- user_references                                                                                          -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="user_references">
+        <createTable tableName="user_references">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_references_pkey"/>
+            </column>
+            <column name="user_referral_code" type="VARCHAR(255)"/>
+            <column name="user_interest_id" type="UUID"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:user_references:user_references_user_interest_id_index">
+        <createIndex indexName="user_references_user_interest_id_index" tableName="user_references">
+            <column name="user_interest_id"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_user_references_deleted_at            -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:user_references:deleted_at">
+        <createIndex indexName="idx_user_references_deleted_at" tableName="user_references">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:user_references.user_interest_id">
+        <addForeignKeyConstraint baseColumnNames="user_interest_id" baseTableName="user_references" constraintName="user_references_user_interest_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user_interests" validate="true"/>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- user_interests_tagged                                                                                    -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="user_interests_tagged">
+        <createTable tableName="user_interests_tagged">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_interests_tagged_pkey"/>
+            </column>
+            <column name="emails" type="VARCHAR(255)"/>
+            <column name="contact_number" type="VARCHAR(255)"/>
+            <column defaultValueBoolean="false" name="is_active" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueBoolean="false" name="is_admin" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueBoolean="false" name="flag" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="interest_id" type="UUID"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:user_interests_tagged:user_interests_tagged_interest_id_index">
+        <createIndex indexName="user_interests_tagged_interest_id_index" tableName="user_interests_tagged">
+            <column name="interest_id"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_user_interests_tagged_deleted_at      -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:user_interests_tagged:deleted_at">
+        <createIndex indexName="idx_user_interests_tagged_deleted_at" tableName="user_interests_tagged">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:user_interests_tagged.interest_id">
+        <addForeignKeyConstraint baseColumnNames="interest_id" baseTableName="user_interests_tagged" constraintName="user_interests_tagged_interest_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="interests" validate="true"/>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- user_preferd_interests                                                                                   -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="user_preferd_interests">
+        <createTable tableName="user_preferd_interests">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_preferd_interests_pkey"/>
+            </column>
+            <column name="user_id" type="UUID"/>
+            <column name="interest_id" type="UUID"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:user_preferd_interests:user_preferd_interests_user_id_interest_id_index">
+        <createIndex indexName="user_preferd_interests_user_id_interest_id_index" tableName="user_preferd_interests">
+            <column name="user_id"/>
+            <column name="interest_id"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_user_preferd_interests_deleted_at     -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:user_preferd_interests:deleted_at">
+        <createIndex indexName="idx_user_preferd_interests_deleted_at" tableName="user_preferd_interests">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:user_preferd_interests.interest_id">
+        <addForeignKeyConstraint baseColumnNames="interest_id" baseTableName="user_preferd_interests" constraintName="user_preferd_interests_interest_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="interests" validate="true"/>
+    </changeSet>
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:user_preferd_interests.user_id">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="user_preferd_interests" constraintName="user_preferd_interests_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- user_interest_meta                                                                                       -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="user_interest_meta">
+        <createTable tableName="user_interest_meta">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_interest_meta_pkey"/>
+            </column>
+            <column name="total_members" type="INTEGER"/>
+            <column name="last_member_joined_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="last_message_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="interest_id" type="UUID"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:user_interest_meta:user_interest_meta_interest_id_index">
+        <createIndex indexName="user_interest_meta_interest_id_index" tableName="user_interest_meta">
+            <column name="interest_id"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_user_interest_meta_deleted_at         -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:user_interest_meta:deleted_at">
+        <createIndex indexName="idx_user_interest_meta_deleted_at" tableName="user_interest_meta">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:user_interest_meta.interest_id">
+        <addForeignKeyConstraint baseColumnNames="interest_id" baseTableName="user_interest_meta" constraintName="user_interest_meta_interest_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="interests" validate="true"/>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- user_interest_meta                        -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="root (generated)" id="user_interest_meta:initial_data">
+        <loadData
+                tableName="user_interest_meta"
+                file="./csv/user_interest_meta.csv"
+                commentLineStartsWith="#"
+                relativeToChangelogFile="true"
+                usePreparedStatements="true"
+        >
+        </loadData>
+    </changeSet>
+
+
+
+    <!-- ======================================================================================================== -->
+    <!-- register_user_with_private_interests                                                                     -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="register_user_with_private_interests">
+        <createTable tableName="register_user_with_private_interests">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="register_user_with_private_interests_pkey"/>
+            </column>
+            <column name="emails" type="VARCHAR(255)"/>
+            <column defaultValueBoolean="false" name="is_deleted" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="interest_id" type="UUID"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:register_user_with_private_interests:register_user_with_private_interests_interest_id_index">
+        <createIndex indexName="register_user_with_private_interests_interest_id_index" tableName="register_user_with_private_interests">
+            <column name="interest_id"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ..................................................... -->
+    <!-- idx_register_user_with_private_interests_deleted_at   -->
+    <!-- ..................................................... -->
+    <changeSet author="kebrings" id="idx:register_user_with_private_interests:deleted_at">
+        <createIndex indexName="idx_register_user_with_private_interests_deleted_at" tableName="register_user_with_private_interests">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ..................................................... -->
+    <!-- idx_register_user_with_private_interests_is_deleted   -->
+    <!-- ..................................................... -->
+    <changeSet author="kebrings" id="idx:register_user_with_private_interests:is_deleted">
+        <createIndex indexName="idx_register_user_with_private_interests_is_deleted" tableName="register_user_with_private_interests">
+            <column name="is_deleted"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:register_user_with_private_interests.interest_id">
+        <addForeignKeyConstraint baseColumnNames="interest_id" baseTableName="register_user_with_private_interests" constraintName="register_user_with_private_interests_interest_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="interests" validate="true"/>
+    </changeSet>
+</databaseChangeLog>

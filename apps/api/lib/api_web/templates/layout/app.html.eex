@@ -1,0 +1,7 @@
+<!DOCTYPE html>
+<!--
+  Rendering entire pages is not healthy at all,
+  please leave me alone I am tired and sad.
+-->
+
+<%= @inner_content %>

@@ -1,0 +1,769 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <!-- ######################################################################################################## -->
+    <!-- ........................................................................................................ -->
+    <!-- Lookup Tables                                                                                            -->
+    <!-- ........................................................................................................ -->
+    <!-- ######################################################################################################## -->
+
+    <!-- ======================================================================================================== -->
+    <!-- cms_article_type                                                                                         -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="cms_article_type">
+        <createTable tableName="vnext_cms_article_type" >
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="INT" autoIncrement="false"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="description" remarks="versioned_string" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+        <modifySql dbms="mariadb">
+            <append value="ENGINE=INNODB CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci"/>
+        </modifySql>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_cms_article_type:standard             -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_cms_article_type:standard">
+        <createIndex
+                indexName="idx_cms_article_type_created_on"
+                tableName="vnext_cms_article_type">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_cms_article_type_modified_on"
+                tableName="vnext_cms_article_type">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_cms_article_type_deleted_on"
+                tableName="vnext_cms_article_type">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_cms_article_type_description               -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_cms_article_type_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_cms_article_type"
+                                 constraintName="fk_cms_article_type_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_string"
+        />
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- cms_attribute                                                                                            -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="cms_attribute">
+        <createTable tableName="vnext_cms_attribute">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="INT" autoIncrement="false"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="description" remarks="versioned_string" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_cms_attribute:standard                -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_cms_attribute:standard">
+        <createIndex
+                indexName="idx_cms_attribute_created_on"
+                tableName="vnext_cms_attribute">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_cms_attribute_modified_on"
+                tableName="vnext_cms_attribute">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_cms_attribute_deleted_on"
+                tableName="vnext_cms_attribute">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_cms_attribute_description                  -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_cms_attribute_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_cms_attribute"
+                                 constraintName="fk_cms_attribute_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_string"
+        />
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!-- cms_article_revision_attribute_value_type                                                                -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="cms_article_revision_attribute_value_type">
+        <createTable tableName="vnext_cms_article_revision_attribute_value_type" remarks="Revision Tracking">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="INT" autoIncrement="false"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="description" remarks="versioned_string" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- cms_tag                                                                                                  -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="cms_tag">
+        <createTable tableName="vnext_cms_tag" remarks="Revision Tracking">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="INT" autoIncrement="false"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="description" remarks="versioned_string" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_cms_tag:standard                      -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_cms_tag:standard">
+        <createIndex
+                indexName="idx_cms_tag_created_on"
+                tableName="vnext_cms_tag">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_cms_tag_modified_on"
+                tableName="vnext_cms_tag">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_cms_tag_deleted_on"
+                tableName="vnext_cms_tag">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_cms_tag_description                        -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_cms_tag_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_cms_tag"
+                                 constraintName="fk_cms_tag_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_string"
+        />
+    </changeSet>
+
+    <!-- ######################################################################################################## -->
+    <!-- ........................................................................................................ -->
+    <!-- Standard Tables                                                                                          -->
+    <!-- ........................................................................................................ -->
+    <!-- ######################################################################################################## -->
+
+    <!-- ======================================================================================================== -->
+    <!-- cms_article                                                                                                -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="cms_article">
+        <createTable tableName="vnext_cms_article" remarks="Main entry listing cms articles">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Primary Relations -->
+            <column name="owner" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="article_type" type="INT"><constraints nullable="false"/></column>
+            <column name="active_version" type="UUID"><constraints nullable="false"/></column>
+            <column name="active_revision" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_cms_article_owner                     -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_cms_article_owner">
+        <createIndex
+                indexName="idx_cms_article_owner"
+                tableName="vnext_cms_article">
+            <column name="owner"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_cms_article_active_version            -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_cms_article_active_version">
+        <createIndex
+                indexName="idx_cms_article_active_version"
+                tableName="vnext_cms_article">
+            <column name="active_version"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_cms_article_active_revision           -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_cms_article_active_revision">
+        <createIndex
+                indexName="idx_cms_article_active_revision"
+                tableName="vnext_cms_article">
+            <column name="active_revision"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_cms_article:standard                  -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_cms_article:standard">
+        <createIndex
+                indexName="idx_cms_article_created_on"
+                tableName="vnext_cms_article">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_cms_article_modified_on"
+                tableName="vnext_cms_article">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_cms_article_deleted_on"
+                tableName="vnext_cms_article">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!-- cms_version                                                                                              -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="cms_version">
+        <createTable tableName="vnext_cms_version" remarks="Version Tracking">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Primary Relations -->
+            <column name="article" type="UUID"><constraints nullable="false"/></column>
+            <column name="editor" remarks="uid" type="UUID"><constraints nullable="false"/></column>
+            <column name="parent" remarks="0 for head, or version id of parent." type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="status" type="INT"><constraints nullable="false"/></column>
+            <column name="active_revision" type="UUID"><constraints nullable="true"/></column>
+
+            <!-- matrix encoded path -->
+            <column name="depth" type="INT" remarks="denormalized information contained in path matrix to make depth limited queries straight forward."><constraints nullable="false"/></column>
+            <column name="path_a11" type="BIGINT" ><constraints nullable="false"/></column>
+            <column name="path_a12" type="BIGINT" ><constraints nullable="false"/></column>
+            <column name="path_a21" type="BIGINT" ><constraints nullable="false"/></column>
+            <column name="path_a22" type="BIGINT" ><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+        <sql endDelimiter=";"
+             stripComments="true">
+            ALTER TABLE vnext_cms_version
+            ADD COLUMN path_left FLOAT
+            GENERATED ALWAYS AS (path_a11 / path_a21) STORED
+        </sql>
+        <sql endDelimiter=";"
+             stripComments="true">
+            ALTER TABLE vnext_cms_version
+            ADD COLUMN path_right FLOAT
+            GENERATED ALWAYS AS (((path_a11 - path_a12) / (path_a21 - path_a22)) + 0.0000001) STORED
+        </sql>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_cms_version_article                   -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_cms_version_article">
+        <createIndex
+                indexName="idx_cms_version_article"
+                tableName="vnext_cms_version">
+            <column name="article"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_cms_version_editor                    -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_cms_version_editor">
+        <createIndex
+                indexName="idx_cms_version_editor"
+                tableName="vnext_cms_version">
+            <column name="editor"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_cms_version_parent                    -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_cms_version_parent">
+        <createIndex
+                indexName="idx_cms_version_parent"
+                tableName="vnext_cms_version">
+            <column name="parent"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_cms_version - unique path             -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="comment path encoding uniqueness">
+        <addUniqueConstraint columnNames="article,path_a11,path_a21"
+                             constraintName="uniq_version_path"
+                             tableName="vnext_cms_version"
+        />
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_cms_version_path                      -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="article path key">
+        <createIndex
+                indexName="idx_cms_version_path"
+                tableName="vnext_cms_version">
+            <column name="article"/>
+            <column name="path_a12"/>
+            <column name="path_a21"/>
+            <column name="depth"/>
+            <column name="path_left"/>
+            <column name="path_right"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_cms_version_parent                    -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="article parent lookup">
+        <createIndex
+                indexName="idx_cms_version_parent_lookup"
+                tableName="vnext_cms_version">
+            <column name="article"/>
+            <column name="path_a12"/>
+            <column name="path_a22"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_cms_version:standard                  -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_cms_version:standard">
+        <createIndex
+                indexName="idx_cms_version_created_on"
+                tableName="vnext_cms_version">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_cms_version_modified_on"
+                tableName="vnext_cms_version">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_cms_version_deleted_on"
+                tableName="vnext_cms_version">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- cms_revision                                                                                             -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="cms_revision">
+        <createTable tableName="vnext_cms_revision" remarks="Revision Tracking">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Primary Relations -->
+            <column name="article" type="UUID"><constraints nullable="false"/></column>
+            <column name="version" type="UUID"><constraints nullable="false"/></column>
+            <column name="editor" remarks="uid" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="revision_number" remarks="Revision Number" type="BIGINT"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_cms_revision_article                  -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_cms_revision_article">
+        <createIndex
+                indexName="idx_cms_revision_article"
+                tableName="vnext_cms_revision">
+            <column name="article"/>
+            <column name="version"/>
+            <column name="revision_number"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_cms_revision_editor                   -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_cms_revision_editor">
+        <createIndex
+                indexName="idx_cms_revision_editor"
+                tableName="vnext_cms_revision">
+            <column name="editor"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_cms_revision:standard                 -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_cms_revision:standard">
+        <createIndex
+                indexName="idx_cms_revision_created_on"
+                tableName="vnext_cms_revision">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_cms_revision_modified_on"
+                tableName="vnext_cms_revision">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_cms_revision_deleted_on"
+                tableName="vnext_cms_revision">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- cms_article_revision                                                                                     -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="cms_article_revision">
+        <createTable tableName="vnext_cms_article_revision">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Primary Relations -->
+            <column name="article" type="UUID"><constraints nullable="false"/></column>
+            <column name="version" type="UUID"><constraints nullable="false"/></column>
+            <column name="revision" type="INT UNSIGNED"><constraints nullable="false"/></column>
+            <column name="editor" remarks="uid" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="article_name" type="NVARCHAR(255)"><constraints nullable="false"/></column>
+            <column name="article_description" type="NVARCHAR(1024)"><constraints nullable="false"/></column>
+            <column name="article_note" type="NVARCHAR(1024)"><constraints nullable="false"/></column>
+            <column name="article_type" type="INT"><constraints nullable="false"/></column>
+
+            <!-- Moderation  -->
+            <column name="moderation_status" type="INT"><constraints nullable="false"/></column>
+            <column name="flagged" type="INT"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_cms_article_revision_article          -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_cms_article_revision_article">
+        <createIndex
+                indexName="idx_cms_article_revision_article"
+                tableName="vnext_cms_article_revision">
+            <column name="article"/>
+            <column name="version"/>
+            <column name="revision"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_cms_article_revision_moderation       -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_cms_article_revision_moderation">
+        <createIndex
+                indexName="idx_cms_article_revision_moderation_status"
+                tableName="vnext_cms_article_revision">
+            <column name="moderation_status"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_cms_article_revision_flagged"
+                tableName="vnext_cms_article_revision">
+            <column name="flagged"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_cms_article_revision_revision         -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_cms_article_revision_revision">
+        <createIndex
+                indexName="idx_cms_article_revision_revision"
+                tableName="vnext_cms_article_revision">
+            <column name="revision"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_cms_article_revision_editor           -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_cms_article_revision_editor">
+        <createIndex
+                indexName="idx_cms_article_revision_editor"
+                tableName="vnext_cms_article_revision">
+            <column name="editor"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_cms_article_revision:standard         -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_cms_article_revision:standard">
+        <createIndex
+                indexName="idx_cms_article_revision_created_on"
+                tableName="vnext_cms_article_revision">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_cms_article_revision_modified_on"
+                tableName="vnext_cms_article_revision">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_cms_article_revision_deleted_on"
+                tableName="vnext_cms_article_revision">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- cms_article_revision_media                                                                               -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="cms_article_revision_media">
+        <createTable tableName="vnext_cms_article_revision_media">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Primary Relations -->
+            <column name="article_revision" remarks="uid" type="UUID"><constraints nullable="false"/></column>
+            <column name="media" remarks="uid" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="weight" type="BIGINT"><constraints nullable="false"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_cms_article_revision_media_revision   -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_cms_article_revision_media_revision">
+        <createIndex
+                indexName="idx_cms_article_revision_media_revision"
+                tableName="vnext_cms_article_revision_media">
+            <column name="article_revision"/>
+            <column name="media"/>
+            <column name="weight"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_cms_article_revision_media_media      -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_cms_article_revision_media_media">
+        <createIndex
+                indexName="idx_cms_article_revision_media_media"
+                tableName="vnext_cms_article_revision_media">
+            <column name="media"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- cms_article_revision_tag                                                                                 -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="cms_article_revision_tag">
+        <createTable tableName="vnext_cms_article_revision_tag">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Primary Relations -->
+            <column name="article_revision" remarks="uid" type="UUID"><constraints nullable="false"/></column>
+            <column name="tag" remarks="uid" type="INT"><constraints nullable="false"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_cms_article_revision_tag              -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_cms_article_revision_tag">
+        <createIndex
+                indexName="idx_cms_article_revision_tag"
+                tableName="vnext_cms_article_revision_tag">
+            <column name="article_revision"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- cms_article_revision_attribute                                                                           -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="cms_article_revision_attribute">
+        <createTable tableName="vnext_cms_article_revision_attribute">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Primary Relations -->
+            <column name="article_revision" remarks="uid" type="UUID"><constraints nullable="false"/></column>
+            <column name="attribute" remarks="uid" type="INT"><constraints nullable="false"/></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="value_type" type="INT"><constraints nullable="false"/></column>
+            <column name="string_value" type="NVARCHAR(255)"><constraints nullable="true"/></column>
+            <column name="integer_value" type="BIGINT"><constraints nullable="true"/></column>
+            <column name="double_value" type="double"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- .......................................... -->
+    <!-- idx_cms_article_revision_attribute_integer -->
+    <!-- .......................................... -->
+    <changeSet author="kebrings" id="idx_cms_article_revision_attribute_integer">
+        <createIndex
+                indexName="idx_cms_article_revision_attribute_integer"
+                tableName="vnext_cms_article_revision_attribute">
+            <column name="article_revision"/>
+            <column name="attribute"/>
+            <column name="integer_value"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- .......................................... -->
+    <!-- idx_cms_article_revision_attribute_string  -->
+    <!-- .......................................... -->
+    <changeSet author="kebrings" id="idx_cms_article_revision_attribute_string">
+        <createIndex
+                indexName="idx_cms_article_revision_attribute_string"
+                tableName="vnext_cms_article_revision_attribute">
+            <column name="article_revision"/>
+            <column name="attribute"/>
+            <column name="string_value"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- .......................................... -->
+    <!-- idx_cms_article_revision_attribute_double  -->
+    <!-- .......................................... -->
+    <changeSet author="kebrings" id="idx_cms_article_revision_attribute_double">
+        <createIndex
+                indexName="idx_cms_article_revision_attribute_double"
+                tableName="vnext_cms_article_revision_attribute">
+            <column name="article_revision"/>
+            <column name="attribute"/>
+            <column name="double_value"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- cms_description_article_revision                                                                         -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="cms_description_article_revision">
+        <createTable tableName="vnext_cms_description_article_revision" remarks="Revision Tracking">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="title" type="TEXT"><constraints nullable="false"/></column>
+            <column name="body" type="TEXT"><constraints nullable="false"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- cms_post_article_revision                                                                                -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="cms_post_article_revision">
+        <createTable tableName="vnext_cms_post_article_revision" remarks="Revision Tracking">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" remarks="same as cms_article_revision" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="title" type="TEXT"><constraints nullable="false"/></column>
+            <column name="body" type="TEXT"><constraints nullable="false"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- cms_crisis_post_article_revision                                                                         -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="cms_crisis_post_article_revision">
+        <createTable tableName="vnext_cms_crisis_post_article_revision" remarks="Revision Tracking">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="title" type="TEXT"><constraints nullable="false"/></column>
+            <column name="body" type="TEXT"><constraints nullable="false"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- cms_moment_article_revision                                                                              -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="cms_moment_article_revision">
+        <createTable tableName="vnext_cms_moment_article_revision" remarks="Revision Tracking">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="title" type="TEXT"><constraints nullable="false"/></column>
+            <column name="body" type="TEXT"><constraints nullable="false"/></column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

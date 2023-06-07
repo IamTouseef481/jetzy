@@ -1,0 +1,153 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+
+    <!-- ======================================================================================================== -->
+    <!-- user_images                                                                                              -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="user_images">
+        <createTable tableName="user_images">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_images_pkey"/>
+            </column>
+            <column name="images" type="VARCHAR(255)"/>
+            <column name="image_identifier" type="BIGINT"/>
+            <column name="blur_hash" type="VARCHAR(255)"/>
+            <column name="order_number" type="INTEGER"/>
+            <column defaultValueBoolean="false" name="is_deleted" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="UUID"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="small_images" type="TEXT"/>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:user_images:user_images_user_id_index">
+        <createIndex indexName="user_images_user_id_index" tableName="user_images">
+            <column name="user_id"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:user_images:user_images_user_id_with_is_deleted_index">
+        <createIndex indexName="user_images_user_id_with_is_deleted_index" tableName="user_images">
+            <column name="user_id"/>
+            <column name="is_deleted"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:user_images:user_images_user_id_with_deleted_index">
+        <createIndex indexName="user_images_user_id_with_deleted_index" tableName="user_images">
+            <column name="user_id"/>
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_user_images_deleted_at                -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:user_images:deleted_at">
+        <createIndex indexName="idx_user_images_deleted_at" tableName="user_images">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_user_images_is_deleted                -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:user_images:is_deleted">
+        <createIndex indexName="idx_user_images_is_deleted" tableName="user_images">
+            <column name="is_deleted"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:user_images.user_id">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="user_images" constraintName="user_images_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- user_profile_images                                                                                      -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="user_profile_images">
+        <createTable tableName="user_profile_images">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_profile_images_pkey"/>
+            </column>
+            <column name="image_name" type="VARCHAR(255)"/>
+            <column name="image_identifier" type="BIGINT"/>
+            <column name="blur_hash" type="VARCHAR(255)"/>
+            <column defaultValueBoolean="false" name="is_current" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_date" type="date"/>
+            <column name="last_modified_date" type="date"/>
+            <column name="user_id" type="UUID"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="small_image_name" type="TEXT"/>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:user_profile_images:user_profile_images_user_id_index">
+        <createIndex indexName="user_profile_images_user_id_index" tableName="user_profile_images">
+            <column name="user_id"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:user_profile_images:user_profile_images_user_id_with_deleted_index">
+        <createIndex indexName="user_profile_images_user_id_with_deleted_index" tableName="user_profile_images">
+            <column name="user_id"/>
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_user_profile_images_deleted_at                     -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:user_profile_images:deleted_at">
+        <createIndex indexName="idx_user_profile_images_deleted_at" tableName="user_profile_images">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:user_profile_images.user_id">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="user_profile_images" constraintName="user_profile_images_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+
+</databaseChangeLog>

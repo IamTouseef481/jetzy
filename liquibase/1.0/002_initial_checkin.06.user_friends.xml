@@ -1,0 +1,178 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <!-- ======================================================================================================== -->
+    <!-- user_friends                                                                                             -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="user_friends">
+        <createTable tableName="user_friends">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_friends_pkey"/>
+            </column>
+            <column name="user_id" type="UUID"/>
+            <column name="friend_id" type="UUID"/>
+            <column defaultValueBoolean="false" name="is_friend" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueBoolean="false" name="is_request_sent" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueBoolean="false" name="is_blocked" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueBoolean="false" name="friend_blocked" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:user_friends:user_friends_user_id_index">
+        <createIndex indexName="user_friends_user_id_index" tableName="user_friends">
+            <column name="user_id"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_user_friends_deleted_at               -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:user_friends:deleted_at">
+        <createIndex indexName="idx_user_friends_deleted_at" tableName="user_friends">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:user_friends.friend_id">
+        <addForeignKeyConstraint baseColumnNames="friend_id" baseTableName="user_friends" constraintName="user_friends_friend_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:user_friends.user_id">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="user_friends" constraintName="user_friends_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- user_prefered_friends                                                                                    -->
+    <!-- ======================================================================================================== -->
+    <!--
+    @todo address typo in name
+    -->
+    <changeSet author="root (generated)" id="user_prefered_friends">
+        <createTable tableName="user_prefered_friends">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_prefered_friends_pkey"/>
+            </column>
+            <column name="user_id" type="UUID"/>
+            <column name="friend_id" type="UUID"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:user_prefered_friends:user_prefered_friends_user_id_friend_id_index">
+        <createIndex indexName="user_prefered_friends_user_id_friend_id_index" tableName="user_prefered_friends">
+            <column name="user_id"/>
+            <column name="friend_id"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_user_prefered_friends_deleted_at      -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:user_prefered_friends:deleted_at">
+        <createIndex indexName="idx_user_prefered_friends_deleted_at" tableName="user_prefered_friends">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:user_prefered_friends.friend_id">
+        <addForeignKeyConstraint baseColumnNames="friend_id" baseTableName="user_prefered_friends" constraintName="user_prefered_friends_friend_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:user_prefered_friends.user_id">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="user_prefered_friends" constraintName="user_prefered_friends_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- invite_friend_requests                                                                                   -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="invite_friend_requests">
+        <createTable tableName="invite_friend_requests">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="invite_friend_requests_pkey"/>
+            </column>
+            <column name="emails" type="VARCHAR(255)"/>
+            <column name="contact_number" type="VARCHAR(255)"/>
+            <column name="friends_email" type="VARCHAR(255)"/>
+            <column name="request_code" type="VARCHAR(255)"/>
+            <column name="created_date" type="date"/>
+            <column name="last_modified_date" type="date"/>
+            <column name="first_name" type="VARCHAR(255)"/>
+            <column name="last_name" type="VARCHAR(255)"/>
+            <column name="user_id" type="UUID"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:invite_friend_requests:invite_friend_requests_user_id_index">
+        <createIndex indexName="invite_friend_requests_user_id_index" tableName="invite_friend_requests">
+            <column name="user_id"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_invite_friend_requests_deleted_at     -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:invite_friend_requests:deleted_at">
+        <createIndex indexName="idx_invite_friend_requests_deleted_at" tableName="invite_friend_requests">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:invite_friend_requests.user_id">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="invite_friend_requests" constraintName="invite_friend_requests_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+</databaseChangeLog>

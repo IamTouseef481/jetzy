@@ -1,0 +1,25 @@
+#-------------------------------------------------------------------------------
+# Author: Keith Brings <keith.brings@noizu.com>
+# Copyright (C) 2021 JetzyApp. All rights reserved.
+#-------------------------------------------------------------------------------
+
+defmodule Jetzy.Notification.Type.Enum do
+      @vsn 1.0
+      @nmid_index 262
+      @sref "notification-type"
+      use Jetzy.ElixirScaffolding.EnumEntity,
+          values: [
+                none: 0,
+                post_comment: 1,
+                shout_out_comment_reply: 2,
+                post_like: 3,
+                friend_request: 4,
+                message: 5,
+                shout_out_local_user: 6,
+                post_tagging: 7,
+                private_group: 8,
+                comment_tagging: 9,
+                friend_request_response: 10,
+                private_group_request: 11
+          ]
+end

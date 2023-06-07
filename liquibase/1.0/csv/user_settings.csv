@@ -1,0 +1,2 @@
+id,user_id,is_show_on_profile,is_push_notification,is_enable_chat,is_groupchat_enable,is_moments_enable,is_info,user_invite_type,un_subscribe,is_profile_image_sync,is_follow_public,is_show_followings,deleted_at,inserted_at,updated_at
+4a99c886-2da6-11ed-a6a5-a8a1592b79d6,a711bf85-963f-42ed-9728-c2047d5694fb,false,false,false,false,false,false,,false,false,true,true,,2022-09-06 05:39:36.000000,2022-09-06 05:39:36.000000

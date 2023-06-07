@@ -1,0 +1,194 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+
+    <changeSet author="kebrings" id="extension:postgis">
+        <sql dbms="postgresql" splitStatements="true" stripComments="true">
+            CREATE EXTENSION IF NOT EXISTS postgis
+        </sql>
+    </changeSet>
+
+
+    <changeSet author="kebrings" id="extension:pg_trgm">
+        <sql dbms="postgresql" splitStatements="true" stripComments="true">
+            CREATE EXTENSION pg_trgm
+        </sql>
+    </changeSet>
+
+    <changeSet author="kebrings" id="extension:citext">
+        <sql dbms="postgresql" splitStatements="true" stripComments="true">
+            CREATE EXTENSION IF NOT EXISTS citext WITH SCHEMA public;
+        </sql>
+    </changeSet>
+
+    <changeSet author="kebrings" id="extension:timescaledb">
+        <sql dbms="postgresql" splitStatements="true" stripComments="true">
+            CREATE EXTENSION IF NOT EXISTS timescaledb
+        </sql>
+    </changeSet>
+
+    <changeSet author="kebrings" id="type:update_source">
+        <sql dbms="postgresql" splitStatements="true" stripComments="true">
+            DO $$ BEGIN
+            CREATE TYPE update_source as ENUM ('system', 'legacy', 'admin', 'user', 'group', 'auto');
+            EXCEPTION
+            WHEN duplicate_object THEN null;
+            END $$;
+        </sql>
+    </changeSet>
+
+
+    <changeSet author="kebrings" id="type:permission_status">
+        <sql dbms="postgresql" splitStatements="true" stripComments="true">
+            DO $$ BEGIN
+            CREATE TYPE permission_status as ENUM ('approved', 'pending', 'paused', 'denied', 'review');
+            EXCEPTION
+            WHEN duplicate_object THEN null;
+            END $$;
+        </sql>
+    </changeSet>
+
+    <changeSet author="kebrings" id="type:user_level">
+        <sql dbms="postgresql" splitStatements="true" stripComments="true">
+            DO $$ BEGIN
+            CREATE TYPE user_level as ENUM ('pending', 'unverified', 'verified', 'exclusive', 'staff');
+            EXCEPTION
+            WHEN duplicate_object THEN null;
+            END $$;
+        </sql>
+    </changeSet>
+
+    <changeSet author="kebrings" id="type:user_role">
+        <sql dbms="postgresql" splitStatements="true" stripComments="true">
+            DO $$ BEGIN
+            CREATE TYPE user_role AS ENUM('member', 'admin');
+            EXCEPTION
+            WHEN duplicate_object THEN null;
+            END $$;
+        </sql>
+    </changeSet>
+
+    <changeSet author="kebrings" id="type:follow_status">
+        <sql dbms="postgresql" splitStatements="true" stripComments="true">
+            DO $$ BEGIN
+            CREATE TYPE follow_status AS ENUM('requested', 'followed', 'blocked', 'unfollowed', 'cancelled');
+            EXCEPTION
+            WHEN duplicate_object THEN null;
+            END $$;
+        </sql>
+    </changeSet>
+
+
+    <changeSet author="kebrings" id="type:interest_follow_status">
+        <sql dbms="postgresql" splitStatements="true" stripComments="true">
+            DO $$ BEGIN
+            CREATE TYPE interest_follow_status AS ENUM('pending', 'accepted', 'cancelled', 'rejected', 'blocked');
+            EXCEPTION
+            WHEN duplicate_object THEN null;
+            END $$;
+        </sql>
+    </changeSet>
+
+
+    <changeSet author="kebrings" id="type:post_type">
+        <sql dbms="postgresql" splitStatements="true" stripComments="true">
+            DO $$ BEGIN
+            CREATE TYPE post_type AS ENUM('activity', 'post', 'question', 'recommendation', 'moment');
+            EXCEPTION
+            WHEN duplicate_object THEN null;
+            END $$;
+        </sql>
+    </changeSet>
+
+
+    <changeSet author="kebrings" id="type:message_type">
+        <sql dbms="postgresql" splitStatements="true" stripComments="true">
+            DO $$ BEGIN
+            CREATE TYPE message_type as ENUM ('caption', 'comment');
+            EXCEPTION
+            WHEN duplicate_object THEN null;
+            END $$;
+        </sql>
+    </changeSet>
+
+
+
+    <changeSet author="kebrings" id="type:permission_status">
+        <sql dbms="postgresql" splitStatements="true" stripComments="true">
+            DO $$ BEGIN
+            CREATE TYPE permission_status as ENUM ('approved', 'pending', 'paused', 'denied', 'review');
+            EXCEPTION
+            WHEN duplicate_object THEN null;
+            END $$;
+        </sql>
+    </changeSet>
+
+
+    <changeSet author="kebrings" id="type:update_source">
+        <sql dbms="postgresql" splitStatements="true" stripComments="true">
+            DO $$ BEGIN
+            CREATE TYPE update_source as ENUM ('system', 'legacy', 'admin', 'user', 'group', 'auto');
+            EXCEPTION
+            WHEN duplicate_object THEN null;
+            END $$;
+        </sql>
+    </changeSet>
+
+
+    <changeSet author="kebrings" id="type:effective_user_status">
+        <sql dbms="postgresql" splitStatements="true" stripComments="true">
+            DO $$ BEGIN
+            CREATE TYPE effective_user_status as ENUM ('active', 'private', 'pending', 'deactivated', 'deleted');
+            EXCEPTION
+            WHEN duplicate_object THEN null;
+            END $$;
+        </sql>
+    </changeSet>
+
+
+    <changeSet author="kebrings" id="type:user_level">
+        <sql dbms="postgresql" splitStatements="true" stripComments="true">
+            DO $$ BEGIN
+            CREATE TYPE user_level as ENUM ('pending', 'unverified', 'verified', 'exclusive', 'staff');
+            EXCEPTION
+            WHEN duplicate_object THEN null;
+            END $$;
+        </sql>
+    </changeSet>
+
+
+    <changeSet author="kebrings" id="type:influencer_level">
+        <sql dbms="postgresql" splitStatements="true" stripComments="true">
+            DO $$ BEGIN
+            CREATE TYPE influencer_level as ENUM ('none', 'basic', 'standard', 'celebrity');
+            EXCEPTION
+            WHEN duplicate_object THEN null;
+            END $$;
+        </sql>
+    </changeSet>
+
+
+    <changeSet author="kebrings" id="type:feature_grant">
+        <sql dbms="postgresql" splitStatements="true" stripComments="true">
+            DO $$ BEGIN
+            CREATE TYPE feature_grant as ENUM ('unlimited', 'quota', 'revoked');
+            EXCEPTION
+            WHEN duplicate_object THEN null;
+            END $$;
+        </sql>
+    </changeSet>
+
+    <changeSet author="kebrings" id="type:deletion_status">
+        <sql dbms="postgresql" splitStatements="true" stripComments="true">
+            DO $$ BEGIN
+            CREATE TYPE deletion_status AS ENUM ('completed', 'not_completed');
+            EXCEPTION
+            WHEN duplicate_object THEN null;
+            END $$;
+        </sql>
+    </changeSet>
+
+
+
+
+</databaseChangeLog>

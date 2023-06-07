@@ -1,0 +1,410 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <!-- ======================================================================================================== -->
+    <!-- reward_tiers                                                                                             -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="reward_tiers">
+        <createTable tableName="reward_tiers">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="reward_tiers_pkey"/>
+            </column>
+            <column name="tier_name" type="VARCHAR(255)"/>
+            <column name="description" type="TEXT"/>
+            <column name="start_point" type="FLOAT8"/>
+            <column name="end_point" type="FLOAT8"/>
+            <column name="address" type="VARCHAR(255)"/>
+            <column defaultValueBoolean="false" name="is_deleted" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_reward_tiers_deleted_at               -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:reward_tiers:deleted_at">
+        <createIndex indexName="idx_reward_tiers_deleted_at" tableName="reward_tiers">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_reward_tiers_is_deleted               -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:reward_tiers:is_deleted">
+        <createIndex indexName="idx_reward_tiers_is_deleted" tableName="reward_tiers">
+            <column name="is_deleted"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- reward_offers                                                                                            -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="reward_offers">
+        <createTable tableName="reward_offers">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="reward_offers_pkey"/>
+            </column>
+            <column name="offer_name" type="VARCHAR(255)"/>
+            <column name="point_required" type="INTEGER"/>
+            <column defaultValueBoolean="false" name="is_deleted" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="offer_description" type="TEXT"/>
+            <column name="image_name" type="VARCHAR(255)"/>
+            <column name="image_identifier" type="BIGINT"/>
+            <column name="blur_hash" type="VARCHAR(255)"/>
+            <column defaultValueBoolean="false" name="multi_redeem_allowed" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="latitude" type="FLOAT8"/>
+            <column name="longitude" type="FLOAT8"/>
+            <column defaultValueBoolean="false" name="is_pinned" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="event_start_date" type="date"/>
+            <column name="event_end_date" type="date"/>
+            <column name="pin_date" type="date"/>
+            <column name="price_of_ticket" type="FLOAT8"/>
+            <column name="link" type="VARCHAR(255)"/>
+            <column name="location" type="VARCHAR(255)"/>
+            <column name="tier_id" type="UUID"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status_id" type="UUID"/>
+            <column name="small_image_name" type="TEXT"/>
+            <column name="shareable_link" type="TEXT"/>
+            <column name="order" type="INTEGER"/>
+            <column name="code" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:reward_offers:reward_offers_tier_id_index">
+        <createIndex indexName="reward_offers_tier_id_index" tableName="reward_offers">
+            <column name="tier_id"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_reward_offers_deleted_at              -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:reward_offers:deleted_at">
+        <createIndex indexName="idx_reward_offers_deleted_at" tableName="reward_offers">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_reward_offers_is_deleted              -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:reward_offers:is_deleted">
+        <createIndex indexName="idx_reward_offers_is_deleted" tableName="reward_offers">
+            <column name="is_deleted"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:reward_offers.status_id">
+        <addForeignKeyConstraint baseColumnNames="status_id" baseTableName="reward_offers" constraintName="reward_offers_status_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="statuses" validate="true"/>
+    </changeSet>
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:reward_offers.tier_id">
+        <addForeignKeyConstraint baseColumnNames="tier_id" baseTableName="reward_offers" constraintName="reward_offers_tier_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="reward_tiers" validate="true"/>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- reward_managers                                                                                          -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="reward_managers">
+        <createTable tableName="reward_managers">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="reward_managers_pkey"/>
+            </column>
+            <column name="winning_point" type="FLOAT8"/>
+            <column name="activity" type="VARCHAR(255)"/>
+            <column defaultValueBoolean="false" name="is_deleted" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="activity_type" type="INTEGER"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:reward_managers:reward_managers_activity_type_index">
+        <createIndex indexName="reward_managers_activity_type_index" tableName="reward_managers">
+            <column name="activity_type"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_reward_managers_deleted_at            -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:reward_managers:deleted_at">
+        <createIndex indexName="idx_reward_managers_deleted_at" tableName="reward_managers">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+
+
+    <!-- ......................................... -->
+    <!-- idx_reward_managers_is_deleted            -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:reward_managers:is_deleted">
+        <createIndex indexName="idx_reward_managers_is_deleted" tableName="reward_managers">
+            <column name="is_deleted"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- reward_images                                                                                            -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="reward_images">
+        <createTable tableName="reward_images">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="reward_images_pkey"/>
+            </column>
+            <column name="image_name" type="VARCHAR(255)"/>
+            <column name="image_identifier" type="BIGINT"/>
+            <column name="blur_hash" type="VARCHAR(255)"/>
+            <column name="reward_offer_id" type="UUID"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="small_image_name" type="TEXT"/>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:reward_images:reward_images_reward_offer_id_index">
+        <createIndex indexName="reward_images_reward_offer_id_index" tableName="reward_images">
+            <column name="reward_offer_id"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_reward_images_deleted_at              -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:reward_images:deleted_at">
+        <createIndex indexName="idx_reward_images_deleted_at" tableName="reward_images">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:reward_images.reward_offer_id">
+        <addForeignKeyConstraint baseColumnNames="reward_offer_id" baseTableName="reward_images" constraintName="reward_images_reward_offer_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="reward_offers" validate="true"/>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- user_offer_transactions                                                                                  -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="user_offer_transactions">
+        <createTable tableName="user_offer_transactions">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_offer_transactions_pkey"/>
+            </column>
+            <column name="offer_id" type="UUID"/>
+            <column name="point" type="FLOAT8"/>
+            <column name="balance_point" type="FLOAT8"/>
+            <column defaultValueBoolean="false" name="is_completed" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueBoolean="false" name="is_canceled" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="remarks" type="VARCHAR(255)"/>
+            <column name="user_id" type="UUID"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:user_offer_transactions:user_offer_transactions_user_id_index">
+        <createIndex indexName="user_offer_transactions_user_id_index" tableName="user_offer_transactions">
+            <column name="user_id"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_user_offer_transactions_deleted_at    -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:user_offer_transactions:deleted_at">
+        <createIndex indexName="idx_user_offer_transactions_deleted_at" tableName="user_offer_transactions">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:user_offer_transactions.user_id">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="user_offer_transactions" constraintName="user_offer_transactions_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- user_reward_transactions                                                                                 -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="user_reward_transactions">
+        <createTable tableName="user_reward_transactions">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_reward_transactions_pkey"/>
+            </column>
+            <column name="point" type="FLOAT8"/>
+            <column name="balance_point" type="FLOAT8"/>
+            <column defaultValueBoolean="false" name="is_completed" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueBoolean="false" name="is_canceled" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="remarks" type="VARCHAR(255)"/>
+            <column name="user_id" type="UUID"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="reward_id" type="UUID"/>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:user_reward_transactions:user_reward_transactions_user_id_index">
+        <createIndex indexName="user_reward_transactions_user_id_index" tableName="user_reward_transactions">
+            <column name="user_id"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_user_reward_transactions_deleted_at   -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:user_reward_transactions:deleted_at">
+        <createIndex indexName="idx_user_reward_transactions_deleted_at" tableName="user_reward_transactions">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:user_reward_transactions.reward_id">
+        <addForeignKeyConstraint baseColumnNames="reward_id" baseTableName="user_reward_transactions" constraintName="user_reward_transactions_reward_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="reward_managers" validate="true"/>
+    </changeSet>
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:user_reward_transactions.user_id">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="user_reward_transactions" constraintName="user_reward_transactions_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- user_point_balances                                                                                      -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="user_point_balances">
+        <createTable tableName="user_point_balances">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_point_balances_pkey"/>
+            </column>
+            <column name="total_points" type="FLOAT8"/>
+            <column name="user_id" type="UUID"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:user_point_balances:user_point_balances_user_id_index">
+        <createIndex indexName="user_point_balances_user_id_index" tableName="user_point_balances">
+            <column name="user_id"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_user_point_balances_deleted_at        -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:user_point_balances:deleted_at">
+        <createIndex indexName="idx_user_point_balances_deleted_at" tableName="user_point_balances">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:user_point_balances.user_id">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="user_point_balances" constraintName="user_point_balances_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+
+</databaseChangeLog>

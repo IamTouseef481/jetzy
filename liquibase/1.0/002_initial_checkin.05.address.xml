@@ -1,0 +1,93 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <!-- ======================================================================================================== -->
+    <!-- address_components                                                                                       -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="address_components">
+        <createTable tableName="address_components">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="address_components_pkey"/>
+            </column>
+            <column name="place_id" type="VARCHAR(255)"/>
+            <column name="formatted_address" type="VARCHAR(255)"/>
+            <column name="url" type="VARCHAR(255)"/>
+            <column name="colloquial_area" type="VARCHAR(255)"/>
+            <column name="country" type="VARCHAR(255)"/>
+            <column name="intersection" type="VARCHAR(255)"/>
+            <column name="locality" type="VARCHAR(255)"/>
+            <column name="neighborhood" type="VARCHAR(255)"/>
+            <column name="premise" type="VARCHAR(255)"/>
+            <column name="route" type="VARCHAR(255)"/>
+            <column name="street_address" type="VARCHAR(255)"/>
+            <column name="street_number" type="VARCHAR(255)"/>
+            <column name="sublocality" type="VARCHAR(255)"/>
+            <column name="sublocality_level_1" type="VARCHAR(255)"/>
+            <column name="sublocality_level_2" type="VARCHAR(255)"/>
+            <column name="sublocality_level_3" type="VARCHAR(255)"/>
+            <column name="sublocality_level_4" type="VARCHAR(255)"/>
+            <column name="sublocality_level_5" type="VARCHAR(255)"/>
+            <column name="administrative_area_level_1" type="VARCHAR(255)"/>
+            <column name="administrative_area_level_2" type="VARCHAR(255)"/>
+            <column name="administrative_area_level_3" type="VARCHAR(255)"/>
+            <column name="administrative_area_level_4" type="VARCHAR(255)"/>
+            <column name="administrative_area_level_5" type="VARCHAR(255)"/>
+            <column name="other" type="VARCHAR(255)"/>
+            <column name="api_version" type="VARCHAR(255)"/>
+            <column defaultValueBoolean="false" name="is_new" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_address_components_deleted_at         -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:address_components:deleted_at">
+        <createIndex indexName="idx_address_components_deleted_at" tableName="address_components">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- city_lat_longs                                                                                           -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="city_lat_longs">
+        <createTable tableName="city_lat_longs">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="city_lat_longs_pkey"/>
+            </column>
+            <column name="city" type="VARCHAR(255)"/>
+            <column name="state" type="VARCHAR(255)"/>
+            <column name="country" type="VARCHAR(255)"/>
+            <column name="zip_code" type="VARCHAR(255)"/>
+            <column name="location" type="VARCHAR(255)"/>
+            <column name="latitude" type="FLOAT8"/>
+            <column name="longitude" type="FLOAT8"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_city_lat_longs_deleted_at             -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:city_lat_longs:deleted_at">
+        <createIndex indexName="idx_city_lat_longs_deleted_at" tableName="city_lat_longs">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+</databaseChangeLog>

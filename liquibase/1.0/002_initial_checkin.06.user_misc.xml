@@ -1,0 +1,178 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <!-- ======================================================================================================== -->
+    <!-- user_favorite_types                                                                                      -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="user_favorite_types">
+        <createTable tableName="user_favorite_types">
+            <column name="id" type="VARCHAR(255)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_favorite_types_pkey"/>
+            </column>
+            <column name="description" type="TEXT"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_user_favorite_types_deleted_at        -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:user_favorite_types:deleted_at">
+        <createIndex indexName="idx_user_favorite_types_deleted_at" tableName="user_favorite_types">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- user_favorite_types                       -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="root (generated)" id="user_favorite_types:initial_data">
+        <loadData
+                tableName="user_favorite_types"
+                file="./csv/user_favorite_types.csv"
+                commentLineStartsWith="#"
+                relativeToChangelogFile="true"
+                usePreparedStatements="true"
+        >
+            <column name="id" type="STRING"/>
+            <column name="description" type="STRING"/>
+            <column name="deleted_at" type="DATE"/>
+            <column name="inserted_at" type="DATE"/>
+            <column name="updated_at" type="DATE"/>
+        </loadData>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- user_favorites                                                                                           -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="user_favorites">
+        <createTable tableName="user_favorites">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_favorites_pkey"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="description" type="TEXT"/>
+            <column name="address" type="TEXT"/>
+            <column name="image" type="VARCHAR(255)"/>
+            <column name="image_identifier" type="BIGINT"/>
+            <column name="blur_hash" type="VARCHAR(255)"/>
+            <column name="user_favorite_type_id" type="VARCHAR(255)"/>
+            <column name="user_id" type="UUID"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="small_image" type="TEXT"/>
+            <column name="latitude" type="FLOAT8"/>
+            <column name="longitude" type="FLOAT8"/>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:user_favorites:user_favorites_user_id_user_favorite_type_id_index">
+        <createIndex indexName="user_favorites_user_id_user_favorite_type_id_index" tableName="user_favorites">
+            <column name="user_id"/>
+            <column name="user_favorite_type_id"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:user_favorites:user_favorites_user_id_user_favorite_type_id_with_deleted_index">
+        <createIndex indexName="user_favorites_user_id_user_favorite_type_id_with_deleted_index" tableName="user_favorites">
+            <column name="user_id"/>
+            <column name="user_favorite_type_id"/>
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_user_favorites_deleted_at             -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:user_favorites:deleted_at">
+        <createIndex indexName="idx_user_favorites_deleted_at" tableName="user_favorites">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:user_favorites.user_favorite_type_id">
+        <addForeignKeyConstraint baseColumnNames="user_favorite_type_id" baseTableName="user_favorites" constraintName="user_favorites_user_favorite_type_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user_favorite_types" validate="true"/>
+    </changeSet>
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:user_favorites.user_id">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="user_favorites" constraintName="user_favorites_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- user_inquiries                                                                                           -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="user_inquiries">
+        <createTable tableName="user_inquiries">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_inquiries_pkey"/>
+            </column>
+            <column name="to_address" type="VARCHAR(255)"/>
+            <column name="cc_address" type="VARCHAR(255)"/>
+            <column name="bcc_address" type="VARCHAR(255)"/>
+            <column name="subject" type="VARCHAR(255)"/>
+            <column name="description" type="TEXT"/>
+            <column name="created_date" type="date"/>
+            <column name="last_modified_date" type="date"/>
+            <column name="user_id" type="UUID"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:user_inquiries:user_inquiries_user_id_index">
+        <createIndex indexName="user_inquiries_user_id_index" tableName="user_inquiries">
+            <column name="user_id"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_user_inquiries_deleted_at             -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:user_inquiries:deleted_at">
+        <createIndex indexName="idx_user_inquiries_deleted_at" tableName="user_inquiries">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:user_inquiries.user_id">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="user_inquiries" constraintName="user_inquiries_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+
+</databaseChangeLog>

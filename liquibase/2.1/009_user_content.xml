@@ -1,0 +1,1264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <!-- ######################################################################################################## -->
+    <!-- ........................................................................................................ -->
+    <!-- Lookup Tables                                                                                            -->
+    <!-- ........................................................................................................ -->
+    <!-- ######################################################################################################## -->
+
+    <!-- ======================================================================================================== -->
+    <!-- share_type                                                                                                 -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="share_type">
+        <createTable tableName="vnext_share_type">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="INT" autoIncrement="false"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="description" remarks="versioned_string" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_share_type                              -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_share_type">
+        <createIndex
+                indexName="idx_share_type_created_on"
+                tableName="vnext_share_type">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_share_type_modified_on"
+                tableName="vnext_share_type">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_share_type_deleted_on"
+                tableName="vnext_share_type">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_share_type_description                   -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_share_type_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_share_type"
+                                 constraintName="fk_share_type_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_string"
+        />
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- tag_type                                                                                                 -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="tag_type">
+        <createTable tableName="vnext_tag_type">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="INT" autoIncrement="false"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="description" remarks="versioned_string" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_tag_type                              -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_tag_type">
+        <createIndex
+                indexName="idx_tag_type_created_on"
+                tableName="vnext_tag_type">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_tag_type_modified_on"
+                tableName="vnext_tag_type">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_tag_type_deleted_on"
+                tableName="vnext_tag_type">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_tag_type_description                   -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_tag_type_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_tag_type"
+                                 constraintName="fk_tag_type_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_string"
+        />
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!-- tag_state                                                                                                 -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="tag_state">
+        <createTable tableName="vnext_tag_state">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="INT" autoIncrement="false"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="description" remarks="versioned_string" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_tag_state                              -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_tag_state">
+        <createIndex
+                indexName="idx_tag_state_created_on"
+                tableName="vnext_tag_state">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_tag_state_modified_on"
+                tableName="vnext_tag_state">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_tag_state_deleted_on"
+                tableName="vnext_tag_state">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_tag_state_description                   -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_tag_state_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_tag_state"
+                                 constraintName="fk_tag_state_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_string"
+        />
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- comment_type                                                                                             -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="comment_type">
+        <createTable tableName="vnext_comment_type">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="INT" autoIncrement="false"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="description" remarks="versioned_string" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_comment_type                          -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_comment_type">
+        <createIndex
+                indexName="idx_comment_type_created_on"
+                tableName="vnext_comment_type">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_comment_type_modified_on"
+                tableName="vnext_comment_type">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_comment_type_deleted_on"
+                tableName="vnext_comment_type">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_comment_type_description                   -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_comment_type_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_comment_type"
+                                 constraintName="fk_comment_type_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_string"
+        />
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- visibility_type                                                                                          -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="visibility_type">
+        <createTable tableName="vnext_visibility_type">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="INT" autoIncrement="false"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="description" remarks="versioned_string" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_visibility_type                       -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_visibility_type">
+        <createIndex
+                indexName="idx_visibility_type_created_on"
+                tableName="vnext_visibility_type">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_visibility_type_modified_on"
+                tableName="vnext_visibility_type">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_visibility_type_deleted_on"
+                tableName="vnext_visibility_type">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_visibility_type_description                -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_visibility_type_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_visibility_type"
+                                 constraintName="fk_visibility_type_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_string"
+        />
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!-- search_visibility_level                                                                                          -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="search_visibility_level">
+        <createTable tableName="vnext_search_visibility_level">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="INT" autoIncrement="false"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="description" remarks="versioned_string" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_search_visibility_level                       -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_search_visibility_level">
+        <createIndex
+                indexName="idx_search_visibility_level_created_on"
+                tableName="vnext_search_visibility_level">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_search_visibility_level_modified_on"
+                tableName="vnext_search_visibility_level">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_search_visibility_level_deleted_on"
+                tableName="vnext_search_visibility_level">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_search_visibility_level_description                -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_search_visibility_level_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_search_visibility_level"
+                                 constraintName="fk_search_visibility_level_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_string"
+        />
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- shout_out_type                                                                                          -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="shout_out_type">
+        <createTable tableName="vnext_shout_out_type">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="INT" autoIncrement="false"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="description" remarks="versioned_string" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_shout_out_type                       -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_shout_out_type">
+        <createIndex
+                indexName="idx_shout_out_type_created_on"
+                tableName="vnext_shout_out_type">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_shout_out_type_modified_on"
+                tableName="vnext_shout_out_type">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_shout_out_type_deleted_on"
+                tableName="vnext_shout_out_type">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_shout_out_type_description                -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_shout_out_type_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_shout_out_type"
+                                 constraintName="fk_shout_out_type_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_string"
+        />
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- jetzy_post_type                                                                                          -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="jetzy_post_type">
+        <createTable tableName="vnext_jetzy_post_type">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="INT" autoIncrement="false"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="description" remarks="versioned_string" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_jetzy_post_type                       -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_jetzy_post_type">
+        <createIndex
+                indexName="idx_jetzy_post_type_created_on"
+                tableName="vnext_jetzy_post_type">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_jetzy_post_type_modified_on"
+                tableName="vnext_jetzy_post_type">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_jetzy_post_type_deleted_on"
+                tableName="vnext_jetzy_post_type">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_jetzy_post_type_description                -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_jetzy_post_type_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_jetzy_post_type"
+                                 constraintName="fk_jetzy_post_type_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_string"
+        />
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- post_content                                                                                                -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="post_content">
+        <createTable tableName="vnext_post_content">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="INT" autoIncrement="false"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="description" remarks="versioned_string" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_post_content                             -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_post_content">
+        <createIndex
+                indexName="idx_post_content_created_on"
+                tableName="vnext_post_content">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_post_content_modified_on"
+                tableName="vnext_post_content">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_post_content_deleted_on"
+                tableName="vnext_post_content">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_post_content_description                      -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_post_content_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_post_content"
+                                 constraintName="fk_post_content_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_string"
+        />
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- post_topic                                                                                                -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="post_topic">
+        <createTable tableName="vnext_post_topic">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="INT" autoIncrement="false"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="description" remarks="versioned_string" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_post_topic                             -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_post_topic">
+        <createIndex
+                indexName="idx_post_topic_created_on"
+                tableName="vnext_post_topic">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_post_topic_modified_on"
+                tableName="vnext_post_topic">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_post_topic_deleted_on"
+                tableName="vnext_post_topic">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_post_topic_description                      -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_post_topic_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_post_topic"
+                                 constraintName="fk_post_topic_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_string"
+        />
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- post_type                                                                                                -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="vnext_post_type">
+        <createTable tableName="vnext_vnext_post_type">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="INT" autoIncrement="false"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="description" remarks="versioned_string" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_post_type                             -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_vnext_post_type">
+        <createIndex
+                indexName="idx_vnext_post_type_created_on"
+                tableName="vnext_vnext_post_type">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_vnext_post_type_modified_on"
+                tableName="vnext_vnext_post_type">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_vnext_post_type_deleted_on"
+                tableName="vnext_vnext_post_type">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_post_type_description                      -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_vnext_post_type_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_vnext_post_type"
+                                 constraintName="fk_post_type_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_string"
+        />
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- jetzy_post_topic                                                                                         -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="jetzy_post_topic">
+        <createTable tableName="vnext_jetzy_post_topic">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="status" type="INT"><constraints nullable="false"/></column>
+            <column name="weight" type="BIGINT"><constraints nullable="false"/></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings & CMS -->
+            <column name="description" remarks="versioned_string" type="UUID"><constraints nullable="false"/></column>
+            <column name="details" remarks="cms" type="UUID"><constraints nullable="true"/></column>
+
+            <!-- Moderation  -->
+            <column name="moderation_status" type="INT"><constraints nullable="false"/></column>
+            <column name="flagged" type="INT"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_jetzy_post_topic:standard             -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_jetzy_post_topic:standard">
+        <createIndex
+                indexName="idx_jetzy_post_topic_moderation_status"
+                tableName="vnext_jetzy_post_topic">
+            <column name="moderation_status"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_jetzy_post_topic_flagged"
+                tableName="vnext_jetzy_post_topic">
+            <column name="flagged"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_jetzy_post_topic_created_on"
+                tableName="vnext_jetzy_post_topic">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_jetzy_post_topic_modified_on"
+                tableName="vnext_jetzy_post_topic">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_jetzy_post_topic_deleted_on"
+                tableName="vnext_jetzy_post_topic">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_jetzy_post_topic_description               -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_jetzy_post_topic_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_jetzy_post_topic"
+                                 constraintName="fk_jetzy_post_topic_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_string"
+        />
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- moment_type                                                                                              -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="moment_type">
+        <createTable tableName="vnext_moment_type">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="INT" autoIncrement="false"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="description" remarks="versioned_string" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_moment_type                           -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_moment_type">
+        <createIndex
+                indexName="idx_moment_type_created_on"
+                tableName="vnext_moment_type">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_moment_type_modified_on"
+                tableName="vnext_moment_type">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_moment_type_deleted_on"
+                tableName="vnext_moment_type">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_moment_type_description                    -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_moment_type_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_moment_type"
+                                 constraintName="fk_moment_type_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_string"
+        />
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- media_type                                                                                               -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="media_type">
+        <createTable tableName="vnext_media_type">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="INT" autoIncrement="false"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="description" remarks="versioned_string" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_media_type:standard                   -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_media_type:standard">
+        <createIndex
+                indexName="idx_media_type_created_on"
+                tableName="vnext_media_type">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_media_type_modified_on"
+                tableName="vnext_media_type">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_media_type_deleted_on"
+                tableName="vnext_media_type">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_media_type_description                     -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_media_type_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_media_type"
+                                 constraintName="fk_media_type_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_string"
+        />
+    </changeSet>
+
+    <!-- ######################################################################################################## -->
+    <!-- ........................................................................................................ -->
+    <!-- Standard Tables                                                                                          -->
+    <!-- ........................................................................................................ -->
+    <!-- ######################################################################################################## -->
+
+    <!-- ======================================================================================================== -->
+    <!-- comments                                                                                                 -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="comment">
+        <createTable tableName="vnext_comment" remarks="Entity comments, with matrix path encoding for path encoding (https://www.static-contents.youth4work.com/university/Documents/Colleges/CollegeSummaryAttach/3b7673f2-83f6-4e1c-aa8c-03bf6f31c83f.pdf) ">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+
+            <!-- Primary Relations -->
+            <column name="subject_type" type="INT"><constraints nullable="false"/></column>
+            <column name="subject" type="UUID" />
+            <column name="owner" type="UUID" />
+
+            <!-- Fields and Secondary Relations -->
+            <column name="status" type="INT" defaultValueNumeric="0"><constraints nullable="false"/></column>
+            <column name="comment_type" type="INT" />
+
+            <!-- Fields and Secondary Relations: Versioned Strings && CMS -->
+            <column name="snippet" remarks="versioned_string - denormalized" type="UUID"><constraints nullable="false"/></column>
+            <column name="content" remarks="cms" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Geo -->
+            <column name="location" type="UUID"><constraints nullable="true"/></column>
+            <column name="geo_latitude" type="double"><constraints nullable="true"/></column>
+            <column name="geo_longitude" type="double"><constraints nullable="true"/></column>
+            <column name="geo_radius" type="double"><constraints nullable="true"/></column>
+            <column name="geo_zone" type="BIGINT"><constraints nullable="true"/></column>
+
+            <column name="parent" type="UUID"><constraints nullable="false"/></column>
+            <!-- matrix encoded path -->
+            <column name="path_depth" type="INT" remarks="denormalized information contained in path matrix to make depth limited queries straight forward."><constraints nullable="false"/></column>
+            <column name="path_a11" type="BIGINT" ><constraints nullable="false"/></column>
+            <column name="path_a12" type="BIGINT" ><constraints nullable="false"/></column>
+            <column name="path_a21" type="BIGINT" ><constraints nullable="false"/></column>
+            <column name="path_a22" type="BIGINT" ><constraints nullable="false"/></column>
+
+            <!-- Moderation  -->
+            <column name="moderation_status" type="INT"><constraints nullable="false"/></column>
+            <column name="flagged" type="INT"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME(6)" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME(6)" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME(6)"><constraints nullable="true"/></column>
+        </createTable>
+        <sql endDelimiter=";"
+             stripComments="true">
+            ALTER TABLE vnext_comment
+                ADD COLUMN path_left FLOAT
+                    GENERATED ALWAYS AS (path_a11 / path_a21) STORED
+        </sql>
+        <sql endDelimiter=";"
+             stripComments="true">
+            ALTER TABLE vnext_comment
+                ADD COLUMN path_right FLOAT
+                    GENERATED ALWAYS AS (((path_a11 - path_a12) / (path_a21 - path_a22)) + 0.0000001) STORED
+        </sql>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_comment_query                         -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_comment_query">
+        <createIndex
+                indexName="idx_comment_query"
+                tableName="vnext_comment">
+            <column name="subject"/>
+            <column name="path_depth"/>
+            <column name="path_a11"/>
+            <column name="path_a12"/>
+            <column name="path_left"/>
+            <column name="path_right"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_comment                               -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_comment">
+        <createIndex
+                indexName="idx_comment_moderation_status"
+                tableName="vnext_comment">
+            <column name="moderation_status"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_comment_flagged"
+                tableName="vnext_comment">
+            <column name="flagged"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_comment_snippet"
+                tableName="vnext_comment">
+            <column name="snippet"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_comment_content"
+                tableName="vnext_comment">
+            <column name="content"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_comment_created_on"
+                tableName="vnext_comment">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_comment_modified_on"
+                tableName="vnext_comment">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_comment_deleted_on"
+                tableName="vnext_comment">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_comment_description                        -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_comment_description">
+        <addForeignKeyConstraint baseColumnNames="snippet"
+                                 baseTableName="vnext_comment"
+                                 constraintName="fk_comment_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_comment_versioned_string"
+        />
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!-- moment                                                                                                   -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="moment">
+        <createTable tableName="vnext_moment" remarks="local copy of MSSQL User Moments">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Primary Relations -->
+            <column name="owner" type="UUID" />
+
+            <!-- Fields and Secondary Relations: Versioned Strings && CMS -->
+            <column name="snippet" remarks="versioned_string - denormalized" type="UUID"><constraints nullable="false"/></column>
+            <column name="content" remarks="cms" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="moment_type" remarks="unsure of use" type="INT" />
+            <column name="post_type" remarks="unsure of use" type="INT" />
+            <column name="status" type="INT" />
+            <column name="visibility" remarks="public, private, group, friends, friend_group etc." type="INT" />
+
+            <!-- Fields and Secondary Relations: GEO -->
+            <column name="location" type="UUID" />
+            <column name="geo_radius" type="double"><constraints nullable="true"/></column>
+            <column name="geo_zone" type="BIGINT"><constraints nullable="true"/></column>
+            <column name="geo_latitude" type="double"/>
+            <column name="geo_longitude" type="double"/>
+
+            <!-- Moderation  -->
+            <column name="moderation_status" type="INT"><constraints nullable="false"/></column>
+            <column name="flagged" type="INT"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME(6)" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME(6)" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME(6)"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_moment:standard                       -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_moment:standard">
+        <createIndex
+                indexName="idx_moment_moderation_status"
+                tableName="vnext_moment">
+            <column name="moderation_status"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_moment_flagged"
+                tableName="vnext_moment">
+            <column name="flagged"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_moment_created_on"
+                tableName="vnext_moment">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_momentmodified_on"
+                tableName="vnext_moment">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_moment_deleted_on"
+                tableName="vnext_moment">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_moment_description                         -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_moment_description">
+        <addForeignKeyConstraint baseColumnNames="snippet"
+                                 baseTableName="vnext_moment"
+                                 constraintName="fk_moment_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_moment_versioned_string"
+        />
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- moment_mssql_synchronization                                                                             -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="moment_mssql_synchronization">
+        <createTable tableName="vnext_moment_mssql_synchronization" >
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+            <column name="guid" type="char(36)" />
+            <column name="synchronized_on" type="DATETIME(6)" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- moment_interest                                                                                          -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="moment_interest">
+        <createTable tableName="vnext_moment_interest" >
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Primary Relations -->
+            <column name="moment" type="UUID" ><constraints nullable="false"/></column>
+            <column name="interest" type="UUID" ><constraints nullable="false"/></column>
+            <column name="weight" type="BIGINT" defaultValueNumeric="0"><constraints nullable="false"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- post                                                                                                     -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="jetzy post updated version">
+        <createTable tableName="vnext_post" remarks="Post (shout out) table.">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Primary Relations -->
+            <column name="owner" type="UUID" />
+
+            <!-- Fields and Secondary Relations: Versioned Strings && CMS -->
+            <column name="snippet" remarks="versioned_string - denormalized" type="UUID"><constraints nullable="false"/></column>
+            <column name="content" remarks="cms" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="post_topic" type="INT" />
+            <column name="post_type" type="INT" />
+            <column name="media_type" type="INT" />
+            <column name="status" type="INT" />
+            <column name="visibility" remarks="public, private, group, friends, friend_groupm etc." type="INT" />
+
+            <!-- Fields and Secondary Relations: GEO -->
+            <column name="location" type="UUID" />
+
+            <column name="geo_radius" type="double"><constraints nullable="true"/></column>
+            <column name="geo_zone" type="BIGINT"><constraints nullable="true"/></column>
+            <column name="geo_latitude" type="double"/>
+            <column name="geo_longitude" type="double"/>
+
+            <column name="event_start_date" type="TIME()"><constraints nullable="true"/></column>
+            <column name="event_start_time" type="DATE()"><constraints nullable="true"/></column>
+
+            <column name="event_end_date" type="TIME()"><constraints nullable="true"/></column>
+            <column name="event_end_time" type="DATE()"><constraints nullable="true"/></column>
+
+            <!-- Moderation  -->
+            <column name="moderation_status" type="INT"><constraints nullable="false"/></column>
+            <column name="flagged" type="INT"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME(6)" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME(6)" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME(6)"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_post                                  -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_post">
+        <createIndex
+                indexName="idx_post_moderation_status"
+                tableName="vnext_post">
+            <column name="moderation_status"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_post_moderation_flagged"
+                tableName="vnext_post">
+            <column name="flagged"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_post_created_on"
+                tableName="vnext_post">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_post_modified_on"
+                tableName="vnext_post">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_post_deleted_on"
+                tableName="vnext_post">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_post_description                           -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_post_description">
+        <addForeignKeyConstraint baseColumnNames="snippet"
+                                 baseTableName="vnext_post"
+                                 constraintName="fk_post_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_post_versioned_string"
+        />
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- post_entity_tag                                                                                          -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="post_entity_tag">
+        <createTable tableName="vnext_post_entity_tag" >
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Primary Relations -->
+            <column name="post" type="UUID" ><constraints nullable="false"/></column>
+            <column name="tagged" type="UUID" ><constraints nullable="true"/></column>
+            <column name="contact" type="UUID" ><constraints nullable="true"/></column>
+            <column name="tagged_by" type="UUID" ><constraints nullable="false"/></column>
+            <column name="blocked_by" type="UUID" ><constraints nullable="true"/></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="status" type="INT" remarks="Default to enabled." defaultValueNumeric="1"><constraints nullable="false"/></column>
+            <column name="tag_type" type="INT" remarks="Default to poster_tag." defaultValueNumeric="1"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- post_entity_tag_contact                                                                                  -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="post_entity_tag_contact">
+        <createTable tableName="vnext_post_entity_tag_contact" >
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Primary Relations -->
+            <column name="name" type="VARCHAR(128)" ><constraints nullable="true"/></column>
+            <column name="email" type="VARCHAR(128)" ><constraints nullable="true"/></column>
+            <column name="mobile" type="VARCHAR(16)" ><constraints nullable="true"/></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="status" type="INT" remarks="Default to enabled." defaultValueNumeric="1"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_post_entity_tag:standard             -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_post_entity_tag:standard">
+        <createIndex
+                indexName="idx_post_entity_tag_created_on"
+                tableName="vnext_post_entity_tag">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_post_entity_tag_modified_on"
+                tableName="vnext_post_entity_tag">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_post_entity_tag_deleted_on"
+                tableName="vnext_post_entity_tag">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- post_mssql_synchronization                                                                               -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="post_mssql_synchronization">
+        <createTable tableName="vnext_post_mssql_synchronization" >
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+            <column name="guid" type="char(36)" />
+            <column name="synchronized_on" type="DATETIME(6)" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- post_interest                                                                                            -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="post_interest">
+        <createTable tableName="vnext_post_interest" >
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Primary Relations -->
+            <column name="post" type="UUID" ><constraints nullable="false"/></column>
+            <column name="interest" type="UUID" ><constraints nullable="false"/></column>
+            <column name="weight" type="BIGINT" defaultValueNumeric="0"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- entity_sharing                                                                                           -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="entity_share">
+        <createTable tableName="vnext_entity_share" >
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Primary Relations -->
+            <column name="status" type="INT" />
+            <column name="subject" type="UUID" />
+            <column name="share_type" type="INT" />
+            <column name="share_with" type="UUID" />
+
+            <!-- Fields and Secondary Relations -->
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_entity_share:standard                 -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_entity_share:standard">
+        <createIndex
+                indexName="idx_entity_share_created_on"
+                tableName="vnext_entity_share">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_entity_share_modified_on"
+                tableName="vnext_entity_share">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_entity_share_deleted_on"
+                tableName="vnext_entity_share">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>

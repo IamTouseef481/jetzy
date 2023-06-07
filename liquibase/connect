@@ -1,0 +1,1 @@
+psql -h jetzy.cluster-custom-cuqtxpor0ek6.us-east-2.rds.amazonaws.com -U postgres

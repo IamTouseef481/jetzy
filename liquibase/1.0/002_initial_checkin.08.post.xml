@@ -1,0 +1,435 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+
+    <!-- ======================================================================================================== -->
+    <!-- interests                                                                                                -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="interests">
+        <createTable tableName="interests">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="interests_pkey"/>
+            </column>
+            <column name="interest_name" type="VARCHAR(255)"/>
+            <column name="description" type="TEXT"/>
+            <column name="status" type="BOOLEAN"/>
+            <column name="background_colour" type="VARCHAR(255)"/>
+            <column name="image_name" type="TEXT"/>
+            <column name="image_identifier" type="BIGINT"/>
+            <column name="blur_hash" type="VARCHAR(255)"/>
+            <column defaultValueBoolean="false" name="is_private" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="small_image_name" type="TEXT"/>
+            <column defaultValueBoolean="false" name="is_deleted" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueBoolean="false" name="is_group_private" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_by_id" type="UUID"/>
+            <column defaultValueNumeric="0" name="popularity_score" type="INTEGER"/>
+            <column name="shareable_link" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_interests_deleted_at                  -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:interests:deleted_at">
+        <createIndex indexName="idx_interests_deleted_at" tableName="interests">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_interests_is_deleted                  -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:interests:is_deleted">
+        <createIndex indexName="idx_interests_is_deleted" tableName="interests">
+            <column name="is_deleted"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:interests.created_by_id">
+        <addForeignKeyConstraint baseColumnNames="created_by_id" baseTableName="interests" constraintName="interests_created_by_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- interests                                 -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="root (generated)" id="interests:initial_data">
+        <loadData
+                tableName="interests"
+                file="./csv/interests.csv"
+                commentLineStartsWith="#"
+                relativeToChangelogFile="true"
+                usePreparedStatements="true"
+        >
+
+            <column name="id" type="UUID"/>
+            <column name="interest_name" type="STRING"/>
+            <column name="description" type="STRING"/>
+            <column name="status" type="BOOLEAN"/>
+            <column name="background_colour" type="STRING"/>
+            <column name="image_name" type="STRING"/>
+            <column name="image_identifier" type="NUMERIC"/>
+            <column name="blur_hash" type="STRING"/>
+            <column name="is_private" type="BOOLEAN"/>
+            <column name="small_image_name" type="STRING"/>
+            <column name="is_deleted" type="BOOLEAN"/>
+            <column name="is_group_private" type="BOOLEAN"/>
+            <column name="deleted_at" type="DATE"/>
+            <column name="inserted_at" type="DATE"/>
+            <column name="updated_at" type="DATE"/>
+            <column name="created_by_id" type="UUID"/>
+            <column name="popularity_score" type="NUMERIC"/>
+            <column name="shareable_link" type="STRING"/>
+        </loadData>
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!--                                                                                                          -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="like_sources">
+        <createTable tableName="like_sources">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="like_sources_pkey"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+            <column defaultValueBoolean="false" name="is_deleted" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_like_sources_deleted_at               -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:like_sources:deleted_at">
+        <createIndex indexName="idx_like_sources_deleted_at" tableName="like_sources">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_like_sources_is_deleted               -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:like_sources:is_deleted">
+        <createIndex indexName="idx_like_sources_is_deleted" tableName="like_sources">
+            <column name="is_deleted"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- like_sources                              -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="root (generated)" id="like_sources:initial_data">
+        <loadData
+                tableName="like_sources"
+                file="./csv/like_sources.csv"
+                commentLineStartsWith="#"
+                relativeToChangelogFile="true"
+                usePreparedStatements="true"
+        >
+        </loadData>
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!--                                                                                                          -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="user_events">
+        <createTable tableName="user_events">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_events_pkey"/>
+            </column>
+            <column name="description" type="TEXT"/>
+            <column name="latitude" type="FLOAT8"/>
+            <column name="longitude" type="FLOAT8"/>
+            <column name="formatted_address" type="VARCHAR(255)"/>
+            <column name="event_start_date" type="date"/>
+            <column name="event_end_date" type="date"/>
+            <column name="interest_id" type="UUID"/>
+            <column name="user_id" type="UUID"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="NULL::character varying" name="image" type="VARCHAR(255)"/>
+            <column name="image_identifier" type="BIGINT"/>
+            <column name="blur_hash" type="VARCHAR(255)"/>
+            <column name="room_id" type="UUID"/>
+            <column defaultValueComputed="NULL::time without time zone" name="event_start_time" type="time(0) WITHOUT TIME ZONE"/>
+            <column defaultValueComputed="NULL::time without time zone" name="event_end_time" type="time(0) WITHOUT TIME ZONE"/>
+            <column name="group_chat_room_id" type="UUID"/>
+            <column name="post_tags" type="VARCHAR[]"/>
+            <column name="shareable_link_event" type="TEXT"/>
+            <column name="shareable_link_feed" type="TEXT"/>
+            <column name="small_image" type="TEXT"/>
+            <column defaultValue="moment" name="post_type" type="POST_TYPE"/>
+            <column name="post_email_tags" type="VARCHAR[]"/>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:user_events:user_events_user_id_interest_id_index">
+        <createIndex indexName="user_events_user_id_interest_id_index" tableName="user_events">
+            <column name="user_id"/>
+            <column name="interest_id"/>
+        </createIndex>
+    </changeSet>
+
+
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:user_events:user_events_user_id_interest_id_with_deleted_index">
+        <createIndex indexName="user_events_user_id_interest_id_with_deleted_index" tableName="user_events">
+            <column name="user_id"/>
+            <column name="interest_id"/>
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_user_events_deleted_at                -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:user_events:deleted_at">
+        <createIndex indexName="idx_user_events_deleted_at" tableName="user_events">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:user_events.group_chat_room_id">
+        <addForeignKeyConstraint baseColumnNames="group_chat_room_id" baseTableName="user_events" constraintName="user_events_group_chat_room_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="rooms" validate="true"/>
+    </changeSet>
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:user_events.interest_id">
+        <addForeignKeyConstraint baseColumnNames="interest_id" baseTableName="user_events" constraintName="user_events_interest_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="interests" validate="true"/>
+    </changeSet>
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:user_events.room_id">
+        <addForeignKeyConstraint baseColumnNames="room_id" baseTableName="user_events" constraintName="user_events_room_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="rooms" validate="true"/>
+    </changeSet>
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:user_events.user_id">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="user_events" constraintName="user_events_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!--                                                                                                          -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="user_event_images">
+        <createTable tableName="user_event_images">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_event_images_pkey"/>
+            </column>
+            <column name="image" type="VARCHAR(255)"/>
+            <column name="image_identifier" type="BIGINT"/>
+            <column name="blur_hash" type="VARCHAR(255)"/>
+            <column name="user_event_id" type="UUID"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="small_image" type="TEXT"/>
+        </createTable>
+    </changeSet>
+
+
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:user_event_images:user_event_images_user_event_id_index">
+        <createIndex indexName="user_event_images_user_event_id_index" tableName="user_event_images">
+            <column name="user_event_id"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:user_event_images.user_event_id">
+        <addForeignKeyConstraint baseColumnNames="user_event_id" baseTableName="user_event_images" constraintName="user_event_images_user_event_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="CASCADE" referencedColumnNames="id" referencedTableName="user_events" validate="true"/>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!--                                                                                                          -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="user_event_likes">
+        <createTable tableName="user_event_likes">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_event_likes_pkey"/>
+            </column>
+            <column name="item_id" type="UUID"/>
+            <column defaultValueBoolean="true" name="liked" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueBoolean="false" name="is_old_moment" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="like_source_id" type="UUID"/>
+            <column name="user_id" type="UUID"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_user_event_likes_deleted_at           -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:user_event_likes:deleted_at">
+        <createIndex indexName="idx_user_event_likes_deleted_at" tableName="user_event_likes">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:user_event_likes.item_id">
+        <addForeignKeyConstraint baseColumnNames="item_id" baseTableName="user_event_likes" constraintName="user_event_likes_item_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user_events" validate="true"/>
+    </changeSet>
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:user_event_likes.like_source_id">
+        <addForeignKeyConstraint baseColumnNames="like_source_id" baseTableName="user_event_likes" constraintName="user_event_likes_like_source_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="SET NULL" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="like_sources" validate="true"/>
+    </changeSet>
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:user_event_likes.user_id">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="user_event_likes" constraintName="user_event_likes_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!--                                                                                                          -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="event_emails">
+        <createTable tableName="event_emails">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="event_emails_pkey"/>
+            </column>
+            <column name="mail_to" type="VARCHAR(255)"/>
+            <column name="mail_from" type="VARCHAR(255)"/>
+            <column name="date" type="VARCHAR(255)"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_event_emails_deleted_at               -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:event_emails:deleted_at">
+        <createIndex indexName="idx_event_emails_deleted_at" tableName="event_emails">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!--                                                                                                          -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="user_event_comment_likes">
+        <createTable tableName="user_event_comment_likes">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_event_comment_likes_pkey"/>
+            </column>
+            <column name="room_message_id" type="UUID"/>
+            <column name="liked_by_id" type="UUID"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:user_event_comment_likes:user_event_comment_likes_liked_by_id_index">
+        <createIndex indexName="user_event_comment_likes_liked_by_id_index" tableName="user_event_comment_likes">
+            <column name="liked_by_id"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:user_event_comment_likes:user_event_comment_likes_room_message_id_index">
+        <createIndex indexName="user_event_comment_likes_room_message_id_index" tableName="user_event_comment_likes">
+            <column name="room_message_id"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:user_event_comment_likes.liked_by_id">
+        <addForeignKeyConstraint baseColumnNames="liked_by_id" baseTableName="user_event_comment_likes" constraintName="user_event_comment_likes_liked_by_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:user_event_comment_likes.room_message_id">
+        <addForeignKeyConstraint baseColumnNames="room_message_id" baseTableName="user_event_comment_likes" constraintName="user_event_comment_likes_room_message_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="room_messages" validate="true"/>
+    </changeSet>
+</databaseChangeLog>

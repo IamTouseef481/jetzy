@@ -1,0 +1,462 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <!-- ######################################################################################################## -->
+    <!-- ........................................................................................................ -->
+    <!-- Lookup Tables                                                                                            -->
+    <!-- ........................................................................................................ -->
+    <!-- ######################################################################################################## -->
+
+    <!-- ======================================================================================================== -->
+    <!-- chat_room_type                                                                                            -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="chat_room_type">
+        <createTable tableName="vnext_chat_room_type">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="INT" autoIncrement="false"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="description" remarks="versioned_string" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_chat_room_type:standard                -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_chat_room_type:standard">
+        <createIndex
+                indexName="idx_chat_room_type_created_on"
+                tableName="vnext_chat_room_type">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_chat_room_type_modified_on"
+                tableName="vnext_chat_room_type">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_chat_room_type_deleted_on"
+                tableName="vnext_chat_room_type">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_chat_room_type_description                  -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_chat_room_type_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_chat_room_type"
+                                 constraintName="fk_chat_room_type_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_string"
+        />
+    </changeSet>
+
+
+
+
+    <!-- ======================================================================================================== -->
+    <!-- chat_room_channel                                                                                            -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="chat_room_channel">
+        <createTable remarks="Chat Room/Group sub channel types. Whisper, Admin, System, Announcement, Standard, etc." tableName="vnext_chat_room_channel">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="INT" autoIncrement="false"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="description" remarks="versioned_string" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_chat_room_channel:standard            -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_chat_room_channel:standard">
+        <createIndex
+                indexName="idx_chat_room_channel_created_on"
+                tableName="vnext_chat_room_channel">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_chat_room_channel_modified_on"
+                tableName="vnext_chat_room_channel">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_chat_room_channel_deleted_on"
+                tableName="vnext_chat_room_channel">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_chat_room_channel_description              -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_chat_room_channel_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_chat_room_channel"
+                                 constraintName="fk_chat_room_channel_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_string"
+        />
+    </changeSet>
+
+
+
+    <!-- ======================================================================================================== -->
+    <!-- chat_message_type                                                                                            -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="chat_message_type">
+        <createTable tableName="vnext_chat_message_type">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="INT" autoIncrement="false"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="description" remarks="versioned_string" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_chat_message_type:standard                -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_chat_message_type:standard">
+        <createIndex
+                indexName="idx_chat_message_type_created_on"
+                tableName="vnext_chat_message_type">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_chat_message_type_modified_on"
+                tableName="vnext_chat_message_type">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_chat_message_type_deleted_on"
+                tableName="vnext_chat_message_type">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_chat_message_type_description                  -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_chat_message_type_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_chat_message_type"
+                                 constraintName="fk_chat_message_type_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_string"
+        />
+    </changeSet>
+
+
+    <!-- ######################################################################################################## -->
+    <!-- ........................................................................................................ -->
+    <!-- Standard Tables                                                                                          -->
+    <!-- ........................................................................................................ -->
+    <!-- ######################################################################################################## -->
+
+
+    <!-- ======================================================================================================== -->
+    <!-- chat_room                                                                                                -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="chat_room">
+        <createTable tableName="vnext_chat_room">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="description" remarks="versioned_string" type="UUID"><constraints nullable="false"/></column>
+            <column name="status" type="INT"><constraints nullable="false"/></column>
+            <column name="chat_room_type" type="INT"><constraints nullable="false"/></column>
+            <column name="slug" type="VARCHAR(64)"><constraints nullable="true"/></column>
+            <column name="owner" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!-- chat_room_member                                                                                         -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="chat_room_member">
+        <createTable tableName="vnext_chat_room_member">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="member" type="UUID"><constraints nullable="false"/></column>
+            <column name="chat_room" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Permissions: Blocked, Muted, Raise Hand, Post, Block/Mute other, Add Member, Grant Permission * to Member -->
+            <column name="permissions" remarks="Effective Permission Map used to reload elixir structure used for runtime permission checks." type="TEXT"><constraints nullable="false"/></column>
+            <column name="synchronized_on" type="DATETIME(6)" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="cache_id" remarks="Cache invalidation scheme" type="BIGINT"><constraints nullable="false"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- chat_room_message                                                                                        -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="chat_room_message">
+        <createTable tableName="vnext_chat_room_message">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="poster" type="UUID"><constraints nullable="false"/></column>
+            <column name="chat_room" type="UUID"><constraints nullable="false"/></column>
+            <column name="recipient" remarks="0 by default (global), specific UserID for whisper." type="UUID"><constraints nullable="false"/></column>
+            <column name="channel" remarks="Announcement, Chat, System, Automatic Reply, Whisper. etc." type="INT"><constraints nullable="false"/></column>
+            <column name="chat_room_versioned_message" remarks="Versioned Message" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="modified_on" type="DATETIME(6)" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+        </createTable>
+    </changeSet>
+
+
+
+    <!-- ======================================================================================================== -->
+    <!-- web_domain                                                                                               -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="web_domain">
+        <createTable tableName="vnext_web_domain">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="description" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Moderation  -->
+            <column name="moderation_status" type="INT"><constraints nullable="false"/></column>
+            <column name="flagged" type="INT"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!-- website                                                                                                  -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="website">
+        <createTable tableName="vnext_website">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="uri" type="NVARCHAR(128)"><constraints nullable="false"/></column>
+            <column name="web_domain" type="UUID"><constraints nullable="false"/></column>
+            <column name="description" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Moderation  -->
+            <column name="moderation_status" type="INT"><constraints nullable="false"/></column>
+            <column name="flagged" type="INT"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!-- web_link                                                                                                 -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="web_link">
+        <createTable tableName="vnext_web_link">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="uri" type="NVARCHAR(128)"><constraints nullable="false"/></column>
+            <column name="website" type="UUID"><constraints nullable="false"/></column>
+            <column name="description" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Moderation  -->
+            <column name="moderation_status" type="INT"><constraints nullable="false"/></column>
+            <column name="flagged" type="INT"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!-- web_link_share                                                                                           -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="web_link_share">
+        <createTable tableName="vnext_web_link_share">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="uri" type="NVARCHAR(1024)"><constraints nullable="false"/></column>
+            <column name="web_link" type="UUID"><constraints nullable="false"/></column>
+
+            <column name="link_media" remarks="remote image link, or video stream or local image cache if site allows." type="UUID"><constraints nullable="true"/></column>
+            <column name="link_site" type="NVARCHAR(128)"><constraints nullable="false"/></column>
+            <column name="link_title" type="NVARCHAR(255)"><constraints nullable="false"/></column>
+            <column name="link_description" type="NVARCHAR(512)"><constraints nullable="false"/></column>
+
+            <!-- Moderation  -->
+            <column name="moderation_status" type="INT"><constraints nullable="false"/></column>
+            <column name="flagged" type="INT"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ######################################################################################################## -->
+    <!-- ........................................................................................................ -->
+    <!-- Versioned String Tables                                                                                  -->
+    <!-- ........................................................................................................ -->
+    <!-- ######################################################################################################## -->
+
+    <!-- ======================================================================================================== -->
+    <!-- chat_room_versioned_message                                                                              -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="chat_room_versioned_message">
+        <createTable tableName="vnext_chat_room_versioned_message" remarks="">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" remarks="same as chat room message." type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="revision" remarks="revision number." type="INT UNSIGNED"><constraints nullable="true"/></column>
+            <column name="message_type" remarks="text message, emoji, emote, sticker, gallery, document, internal share, image, etc." type="INT"><constraints nullable="false"/></column>
+            <column name="message_embed" remarks="media, web link, emoji, sticker, video, share, etc." type="UUID"><constraints nullable="false"/></column>
+            <column name="message" type="NVARCHAR(4096)"><constraints nullable="false"/></column>
+
+            <!-- Moderation  -->
+            <column name="moderation_status" type="INT"><constraints nullable="false"/></column>
+            <column name="flagged" type="INT"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="modified_on" type="DATETIME(6)" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_chat_room_versioned_message:standard             -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_chat_room_versioned_message:standard">
+        <createIndex
+                indexName="idx_chat_room_versioned_message_moderation_status"
+                tableName="vnext_chat_room_versioned_message">
+            <column name="moderation_status"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_chat_room_versioned_message_flagged"
+                tableName="vnext_chat_room_versioned_message">
+            <column name="flagged"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_chat_room_versioned_message_modified_on"
+                tableName="vnext_chat_room_versioned_message">
+            <column name="modified_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- chat_room_versioned_message_history                                                                      -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="chat_room_versioned_message_history">
+        <createTable tableName="vnext_chat_room_versioned_message_history" remarks="Revision Tracking. For this table type only populated if initial post has been modified.">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <column name="chat_room_versioned_message" type="UUID"><constraints nullable="false"/></column>
+            <column name="editor" remarks="who made this revision." type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="revision" remarks="revision number." type="INT UNSIGNED"><constraints nullable="true"/></column>
+            <column name="message_type" remarks="text message, emoji, emote, sticker, gallery, document, internal share, image, etc." type="INT"><constraints nullable="false"/></column>
+            <column name="message_embed" remarks="media, web link(selection)., emoji, sticker, etc." type="UUID"><constraints nullable="false"/></column>
+            <column name="message" type="NVARCHAR(4096)"><constraints nullable="false"/></column>
+
+            <!-- Moderation  -->
+            <column name="moderation_status" type="INT"><constraints nullable="false"/></column>
+            <column name="flagged" type="INT"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="modified_on" type="DATETIME(6)" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ................................................... -->
+    <!-- idx_chat_room_versioned_message_history:standard    -->
+    <!-- ................................................... -->
+    <changeSet author="kebrings" id="idx_chat_room_versioned_message_history:standard">
+        <createIndex
+                indexName="idx_chat_room_versioned_message_history_string"
+                tableName="vnext_chat_room_versioned_message_history">
+            <column name="chat_room_versioned_message"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_chat_room_versioned_message_history_editor"
+                tableName="vnext_chat_room_versioned_message_history">
+            <column name="editor"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_chat_room_versioned_message_history_modified_on"
+                tableName="vnext_chat_room_versioned_message_history">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_chat_room_versioned_message_history_moderation_status"
+                tableName="vnext_chat_room_versioned_message_history">
+            <column name="moderation_status"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_chat_room_versioned_message_history_flagged"
+                tableName="vnext_chat_room_versioned_message_history">
+            <column name="flagged"/>
+        </createIndex>
+    </changeSet>
+
+
+
+    <!-- entity_permissions -->
+
+</databaseChangeLog>

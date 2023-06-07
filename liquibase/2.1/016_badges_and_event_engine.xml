@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <!-- ######################################################################################################## -->
+    <!-- ........................................................................................................ -->
+    <!-- Lookup Tables                                                                                            -->
+    <!-- ........................................................................................................ -->
+    <!-- ######################################################################################################## -->
+
+    <!-- ======================================================================================================== -->
+    <!-- achievement_type                                                                                         -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="achievement_type">
+        <createTable tableName="vnext_achievement_type" >
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="INT" autoIncrement="false"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings & CMS -->
+            <column name="description" remarks="versioned_string" type="UUID"><constraints nullable="false"/></column>
+            <column name="details" remarks="cms" type="UUID"><constraints nullable="true"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_achievement_type:standard             -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_achievement_type:standard">
+        <createIndex
+                indexName="idx_achievement_type_created_on"
+                tableName="vnext_achievement_type">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_achievement_type_modified_on"
+                tableName="vnext_achievement_type">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_achievement_type_deleted_on"
+                tableName="vnext_achievement_type">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_achievement_type_description               -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_achievement_type_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_achievement_type"
+                                 constraintName="fk_achievement_type_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_string"
+        />
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- achievement                                                                                              -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="achievement">
+        <createTable tableName="vnext_achievement">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="INT" autoIncrement="false"><constraints nullable="false" primaryKey="true" /></column>
+            <column name="achievement_type" type="INT"><constraints nullable="false"/></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings & CMS -->
+            <column name="description" remarks="versioned_string" type="UUID"><constraints nullable="false"/></column>
+            <column name="details" remarks="cms" type="UUID"><constraints nullable="true"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_achievement:standard                  -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_achievement">
+        <createIndex
+                indexName="idx_achievement_created_on"
+                tableName="vnext_achievement">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_achievement_modified_on"
+                tableName="vnext_achievement">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_achievement_deleted_on"
+                tableName="vnext_achievement">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_achievement_description                    -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_achievement_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_achievement"
+                                 constraintName="fk_achievement_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_string"
+        />
+    </changeSet>
+
+    <!-- ######################################################################################################## -->
+    <!-- ........................................................................................................ -->
+    <!-- Standard Tables                                                                                          -->
+    <!-- ........................................................................................................ -->
+    <!-- ######################################################################################################## -->
+
+    <!-- ======================================================================================================== -->
+    <!-- user_achievement                                                                                         -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="user_achievement">
+        <createTable tableName="vnext_user_achievement"  remarks="User's Achievements">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <column name="user" type="UUID"><constraints nullable="false"/></column>
+            <column name="achievement" type="INT"><constraints nullable="false"/></column>
+            <column name="awarded_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="status" type="INT"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_user_achievement:standard             -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_user_achievement:standard">
+        <createIndex
+                indexName="idx_user_achievement_created_on"
+                tableName="vnext_user_achievement">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_user_achievement_modified_on"
+                tableName="vnext_user_achievement">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_user_achievement_deleted_on"
+                tableName="vnext_user_achievement">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+</databaseChangeLog>

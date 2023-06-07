@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <include relativeToChangelogFile="true" file="001_extensions.xml"/>
+    <include relativeToChangelogFile="true" file="002_initial_checkin.01.interop.xml"/>
+    <include relativeToChangelogFile="true" file="002_initial_checkin.02.permission.xml"/>
+    <include relativeToChangelogFile="true" file="002_initial_checkin.03.settings.xml"/>
+    <include relativeToChangelogFile="true" file="002_initial_checkin.05.address.xml"/>
+    <include relativeToChangelogFile="true" file="002_initial_checkin.06.user.xml"/>
+    <include relativeToChangelogFile="true" file="002_initial_checkin.06.user_blocks.xml"/>
+    <include relativeToChangelogFile="true" file="002_initial_checkin.06.user_follows.xml"/>
+    <include relativeToChangelogFile="true" file="002_initial_checkin.06.user_friends.xml"/>
+    <include relativeToChangelogFile="true" file="002_initial_checkin.06.user_images.xml"/>
+    <include relativeToChangelogFile="true" file="002_initial_checkin.06.user_locations.xml"/>
+    <include relativeToChangelogFile="true" file="002_initial_checkin.06.user_misc.xml"/>
+    <include relativeToChangelogFile="true" file="002_initial_checkin.06.user_permissions.xml"/>
+    <include relativeToChangelogFile="true" file="002_initial_checkin.06.user_preferences.xml"/>
+    <include relativeToChangelogFile="true" file="002_initial_checkin.06.user_referrals.xml"/>
+    <include relativeToChangelogFile="true" file="002_initial_checkin.07.chat.xml"/>
+    <include relativeToChangelogFile="true" file="002_initial_checkin.08.post.xml"/>
+    <include relativeToChangelogFile="true" file="002_initial_checkin.09.comments.xml"/>
+    <include relativeToChangelogFile="true" file="002_initial_checkin.10.user_interests.xml"/>
+    <include relativeToChangelogFile="true" file="002_initial_checkin.11.guests.xml"/>
+    <include relativeToChangelogFile="true" file="002_initial_checkin.12.notifications.xml"/>
+    <include relativeToChangelogFile="true" file="002_initial_checkin.13.rewards.xml"/>
+    <include relativeToChangelogFile="true" file="002_initial_checkin.14.influencers.xml"/>
+    <include relativeToChangelogFile="true" file="002_initial_checkin.15.moderation.xml"/>
+    <include relativeToChangelogFile="true" file="002_initial_checkin.16.logging.xml"/>
+    <include relativeToChangelogFile="true" file="002_initial_checkin.17.assumed_deprecated.xml"/>
+    <include relativeToChangelogFile="true" file="002_initial_checkin.99.misc.xml"/>
+
+    <!--
+    <include relativeToChangelogFile="true" file="003_data_import.xml"/>
+    <include relativeToChangelogFile="true" file="004_select_related.xml"/>
+    -->
+
+</databaseChangeLog>

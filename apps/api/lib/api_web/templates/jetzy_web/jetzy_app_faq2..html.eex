@@ -1,0 +1,120 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Jetzy |Live the Jetzy Life!</title>
+    <meta name="description" content="Jetzy is the social media App for travelers and flashpackers, who love to travel the world.">
+    <meta name="keywords" content="Jetzy, Jetzyapp, Jetzy app, Jetzy Social Media, Jetzy Travel, Travel, Travel deals, Travel deals to, Vegas travel, Travel beach, Travel hotels, Travel air, Travel spain Barcelona, Travel London, Travel, Katy Perry, Ty Sawyer, Shama Zehra, Best Travel, Fashion, Fashion travel, Shopping, Shopping travel, Travel new york city, Travel Orlando, Travel united states, European travel, Travel New york, Vacations, Holidays, Vacations travel, Beach, Beach travel, Deals on travel, Social, Social travel, Meet locals, Meet up, Trip, Islands, Island, Island travel, Travel Australia, Best travel deals, Flashpacker, Flashpacking, Millennial, Millennials, Dating, Travel app, Connect, Meet, Backpacks, Wine, Wine travel, Wine tours, Biking, Bike tours, Tours, Culture, Museums, Restaurants, LGBT travel, Paris, Paris Travel, Thailand, Thailand travel, Rome, Rome deals, Berlin, Berlin Travel, Barcelona, Barcelona travel, Spain travel, Italy, Germany, India, England, UK, Ireland, Russia, Turkey, China, Hong Kong, Singapore, Africa, Asia, New Zealand, Budapest, Instanbul, Spa, Spa travel, Cruise ship, Cruiseship deal, Brazil, Greece, Greek Island, Adventure, Escape, Green travel, Live like a local, Authentic travel, France, Portugal, Egypt, Sydney, Queensland Australia, Indonesia, Indonesia travel, Bali, Bali travel, Tahiti, Tahiti deals, Tahiti islands, Bora Bora, Bora Bora honeymoon, Destination, Wedding, Moorea, Surf Travel, Surf destination, Top 10 travel destinations, Food, travel, Milan Travel, Travel apparel, Travel bags , Free travel, Travel rewards " />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" href="Splash/css/style.css">
+    <link rel="stylesheet" href="Splash/css/responsive.css">
+    <link rel="shortcut icon" href="Images/favicon.ico">
+    <link rel="icon" type="image/gif" href="Images/animated_favicon1.gif">
+    <meta property="og:image" content="https://www.jetzyapp.com/images/logo.png" />
+    <!-- Include this to make the og:image larger -->
+    <meta name="twitter:card" content="summary_large_image">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <![endif]-->
+    <script src="Splash/js/jquery-1.8.3.min.js"></script>
+    <script src="Splash/js/waypoints.min.js"></script>
+    <script src="Splash/js/TweenMax.min.js"></script>
+    <script src="Splash/js/jquery.video.js"></script>
+    <script src="Splash/js/TC.js"></script>
+
+</head>
+
+<body>
+    <video autoplay poster="" id="bgvid" loop>
+        <source src="Splash/video/1492354.webm" type="video/webm">
+        <source src="Splash/video/1492354.mp4" type="video/mp4">
+    </video>
+    <div id="pageContainer">
+        <div class="wrapper clearfix">
+            <div class="header innHeader clearfix">
+                <div class="headerInner clearfix">
+                    <h1 class="logo">
+                        <a href="https://www.jetzyapp.com/">
+                            <img src="Splash/images/logo.png" alt="">
+                        </a>
+                    </h1>
+                </div>
+            </div>
+            <div class="ourmissionCont content clearfix">
+                <div class="missionContent clearfix" style="height: auto">
+                    <h2>JETZY FAQ</h2>
+                    <h3 style="display: none">&nbsp;</h3>
+
+
+
+                    <p>
+                        <strong>How can I download my photos?</strong>
+                        <br />Downloading photos via Jetzy app is simple! First, go to your <strong>Moments</strong> by touching in the camera icon in the upper left corner of the screen. You will see “Take Photo” and “Image Gallery” at the bottom of the screen. Select to upload from your in-phone photo library or take a new photo. From your gallery, select the photo you wish to download and tap on the “OK” tab. In the upper right hand corner you will see three dots in a vertical line. Now write a caption, select your location and tap on the orange check in the upper right of the screen.
+                    </p>
+
+
+                    <p><strong>How can I delete a moment?</strong><br />To delete a moment, go to your profile and select <strong>Moments</strong>. Find the image you’d like to delete, and tap on it. Look for three vertical dots in the upper right and tap them. Choose <strong>Delete</strong> from the pop up screen. That’s it. </p>
+
+                    <p><strong>What can I do if someone posts an offensive comment?</strong><br />Unfortunately, our team cannot keep track of all comments on our app as we have many users frequently interacting with each other. If you see an offensive comment that you would like to report, please let us know immediately at <a href="mailto:contact@jetzyapp.com">contact@jetzyapp.com</a> and one of our customer service specialists will review the post as soon as possible.</p>
+
+                    <p><strong>Can I tag my friends on my moments?</strong><br />The Jetzy app is in its first stages of development, and while we would love to begin tagging our friends in our <strong>Moments</strong>, we currently have no means of doing so. Rest assured, we are in development for tagging friends. Keep an eye out for updates!</p>
+
+
+
+                </div>
+            </div>
+            <footer class="footer clearfix">
+                <div class="contactWrap clearfix">
+                    <div class="contact fLeft">
+                        <ul class="footerNav">
+                            <li><a href="/">Home</a></li>
+                            <!--<li><a href="about-the-app.html">About The App</a></li>-->
+                            <li><a href="termsofuse.html">Terms of Use</a></li>
+                            <li class="active"><a href="javascript:void(0)">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                    <div class="contact fRight"><span>Contact Us:</span> <a href="mailto:contact@jetzyapp.com">contact@jetzyapp.com</a></div>
+                </div>
+                <div class="copyrightCont clearfix">
+
+                    <p class="copyright">
+                        S Z Global Inc.<br />
+                        Designed and Developed by <a href="http://bit.ly/1BYKaMb" target="_blank" style="color: #97b0ff; text-decoration: underline">Icreon Tech</a>
+                    </p>
+                    <span class="logo2">
+                        <img src="Splash/images/logo2.png" alt="">
+                    </span>
+                    <div class="socialCont">
+                        <ul class="social">
+                            <li>Follow us</li>
+                            <li>
+                                <a href="https://www.facebook.com/jetzyapp" target="_blank">
+                                    <img src="Splash/images/fb2.png" alt="">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://twitter.com/jetzyapp" target="_blank">
+                                    <img src="Splash/images/twitter2.png" alt="">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://instagram.com/jetzyapp" target="_blank">
+                                    <img src="Splash/images/instagram2.png" alt="">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </footer>
+
+        </div>
+    </div>
+    <script>
+        $(function () {
+            TC.homePage.init();
+        });
+    </script>
+
+</body>
+</html>
+

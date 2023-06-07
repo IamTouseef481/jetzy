@@ -1,0 +1,19 @@
+{
+  "name": "assets",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@popperjs/core": "^2.11.6",
+    "@stripe/stripe-js": "^1.41.0",
+    "bootstrap": "^5.2.0",
+    "jquery": "^1.11.3",
+    "js-cookie": "^3.0.1"
+  }
+}

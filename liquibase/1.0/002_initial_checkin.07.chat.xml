@@ -1,0 +1,480 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <!-- ======================================================================================================== -->
+    <!-- rooms                                                                                                    -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="rooms">
+        <createTable tableName="rooms">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="rooms_pkey"/>
+            </column>
+            <column name="room_type" type="VARCHAR(255)"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueBoolean="false" name="is_private" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="group_name" type="VARCHAR(255)"/>
+            <column name="deleted_by" type="UUID"/>
+            <column name="created_by" type="UUID"/>
+            <column name="image_name" type="VARCHAR(255)"/>
+            <column name="image_identifier" type="BIGINT"/>
+            <column name="blur_hash" type="VARCHAR(255)"/>
+            <column name="small_image_name" type="TEXT"/>
+            <column name="shareable_link" type="TEXT"/>
+            <column name="last_message_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_rooms_deleted_at                      -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:rooms:deleted_at">
+        <createIndex indexName="idx_rooms_deleted_at" tableName="rooms">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:rooms.created_by">
+        <addForeignKeyConstraint baseColumnNames="created_by" baseTableName="rooms" constraintName="rooms_created_by_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:rooms.deleted_by">
+        <addForeignKeyConstraint baseColumnNames="deleted_by" baseTableName="rooms" constraintName="rooms_deleted_by_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- room_users                                                                                               -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="room_users">
+        <createTable tableName="room_users">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="room_users_pkey"/>
+            </column>
+            <column name="room_id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="room_users_pkey"/>
+            </column>
+            <column name="user_id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="room_users_pkey"/>
+            </column>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_role" type="USER_ROLE"/>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:room_users:room_users_room_id_index">
+        <createIndex indexName="room_users_room_id_index" tableName="room_users">
+            <column name="room_id"/>
+        </createIndex>
+    </changeSet>
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:room_users:room_users_user_id_index">
+        <createIndex indexName="room_users_user_id_index" tableName="room_users">
+            <column name="user_id"/>
+        </createIndex>
+    </changeSet>
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:room_users:room_users_user_id_room_id_index">
+        <createIndex indexName="room_users_user_id_room_id_index" tableName="room_users" unique="true">
+            <column name="user_id"/>
+            <column name="room_id"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:room_users:room_users_room_id_with_deleted_index">
+        <createIndex indexName="room_users_room_id_with_deleted_index" tableName="room_users">
+            <column name="room_id"/>
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:room_users:room_users_user_id_with_deleted_index">
+        <createIndex indexName="room_users_user_id_with_deleted_index" tableName="room_users">
+            <column name="user_id"/>
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:room_users:room_users_user_id_room_id_with_deleted_index">
+        <createIndex indexName="room_users_user_id_room_id_with_deleted_index" tableName="room_users" unique="true">
+            <column name="user_id"/>
+            <column name="room_id"/>
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_room_users_deleted_at                 -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:room_users:deleted_at">
+        <createIndex indexName="idx_room_users_deleted_at" tableName="room_users">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:room_users.room_id">
+        <addForeignKeyConstraint baseColumnNames="room_id" baseTableName="room_users" constraintName="room_users_room_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="rooms" validate="true"/>
+    </changeSet>
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:room_users.user_id">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="room_users" constraintName="room_users_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- room_referral_code                                                                                       -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="room_referral_code">
+        <createTable tableName="room_referral_code">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="room_referral_code_pkey"/>
+            </column>
+            <column name="referral_code" type="VARCHAR(255)"/>
+            <column name="room_id" type="UUID"/>
+            <column name="user_id" type="UUID"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:room_referral_code:room_referral_code_room_id_index">
+        <createIndex indexName="room_referral_code_room_id_index" tableName="room_referral_code">
+            <column name="room_id"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:room_referral_code:room_referral_code_user_id_index">
+        <createIndex indexName="room_referral_code_user_id_index" tableName="room_referral_code">
+            <column name="user_id"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_room_referral_code_deleted_at         -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:room_referral_code:deleted_at">
+        <createIndex indexName="idx_room_referral_code_deleted_at" tableName="room_referral_code">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:room_referral_code.room_id">
+        <addForeignKeyConstraint baseColumnNames="room_id" baseTableName="room_referral_code" constraintName="room_referral_code_room_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="rooms" validate="true"/>
+    </changeSet>
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:room_referral_code.user_id">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="room_referral_code" constraintName="room_referral_code_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:room_referral_code:room_referral_code_referral_code_index">
+        <createIndex indexName="room_referral_code_referral_code_index" tableName="room_referral_code" unique="true">
+            <column name="referral_code"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- room_messages                                                                                            -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="room_messages">
+        <createTable tableName="room_messages">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="room_messages_pkey"/>
+            </column>
+            <column name="message" type="VARCHAR(255)"/>
+            <column name="sender_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="room_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="parent_id" type="UUID"/>
+            <column name="callback_verification" type="TEXT"/>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_room_messages_deleted_at              -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:room_messages:deleted_at">
+        <createIndex indexName="idx_room_messages_deleted_at" tableName="room_messages">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:room_messages:room_messages_room_id_index">
+        <createIndex indexName="room_messages_room_id_index" tableName="room_messages">
+            <column name="room_id"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:room_messages.parent_id">
+        <addForeignKeyConstraint baseColumnNames="parent_id" baseTableName="room_messages" constraintName="room_messages_parent_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="room_messages" validate="true"/>
+    </changeSet>
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:room_messages.room_id">
+        <addForeignKeyConstraint baseColumnNames="room_id" baseTableName="room_messages" constraintName="room_messages_room_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="rooms" validate="true"/>
+    </changeSet>
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:room_messages.sender_id">
+        <addForeignKeyConstraint baseColumnNames="sender_id" baseTableName="room_messages" constraintName="room_messages_sender_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- room_message_images                                                                                      -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="room_message_images">
+        <createTable tableName="room_message_images">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="room_message_images_pkey"/>
+            </column>
+            <column name="image" type="VARCHAR(255)"/>
+            <column name="image_identifier" type="BIGINT"/>
+            <column name="blur_hash" type="VARCHAR(255)"/>
+            <column name="room_message_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="small_image" type="TEXT"/>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_room_message_images_deleted_at        -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:room_message_images:deleted_at">
+        <createIndex indexName="idx_room_message_images_deleted_at" tableName="room_message_images">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:room_message_images:room_message_images_room_message_id_index">
+        <createIndex indexName="room_message_images_room_message_id_index" tableName="room_message_images">
+            <column name="room_message_id"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:room_message_images.room_message_id">
+        <addForeignKeyConstraint baseColumnNames="room_message_id" baseTableName="room_message_images" constraintName="room_message_images_room_message_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="room_messages" validate="true"/>
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!-- room_messages_meta                                                                                       -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="room_messages_meta">
+        <createTable tableName="room_messages_meta">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="room_messages_meta_pkey"/>
+            </column>
+            <column defaultValueNumeric="0" name="no_of_likes" type="INTEGER"/>
+            <column name="room_message_id" type="UUID"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueBoolean="false" name="is_deleted" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueBoolean="false" name="favourite" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueBoolean="false" name="is_read" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="UUID"/>
+            <column name="room_id" type="UUID"/>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:room_messages_meta:room_messages_meta_room_message_id_user_id_index">
+        <createIndex indexName="room_messages_meta_room_message_id_user_id_index" tableName="room_messages_meta" unique="true">
+            <column name="room_message_id"/>
+            <column name="user_id"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_room_messages_meta_is_deleted         -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:room_messages_meta:is_deleted">
+        <createIndex indexName="idx_room_messages_meta_is_deleted" tableName="room_messages_meta">
+            <column name="is_deleted"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:room_messages_meta.room_id">
+        <addForeignKeyConstraint baseColumnNames="room_id" baseTableName="room_messages_meta" constraintName="room_messages_meta_room_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="rooms" validate="true"/>
+    </changeSet>
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:room_messages_meta.room_message_id">
+        <addForeignKeyConstraint baseColumnNames="room_message_id" baseTableName="room_messages_meta" constraintName="room_messages_meta_room_message_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="room_messages" validate="true"/>
+    </changeSet>
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:room_messages_meta.user_id">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="room_messages_meta" constraintName="room_messages_meta_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!-- user_chat_sessions                                                                                       -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="user_chat_sessions">
+        <createTable tableName="user_chat_sessions">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_chat_sessions_pkey"/>
+            </column>
+            <column name="last_chat_date" type="date"/>
+            <column name="first_user_id" type="UUID"/>
+            <column name="second_user_id" type="UUID"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:user_chat_sessions:user_chat_sessions_first_user_id_second_user_id_index">
+        <createIndex indexName="user_chat_sessions_first_user_id_second_user_id_index" tableName="user_chat_sessions">
+            <column name="first_user_id"/>
+            <column name="second_user_id"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_user_chat_sessions_deleted_at         -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:user_chat_sessions:deleted_at">
+        <createIndex indexName="idx_user_chat_sessions_deleted_at" tableName="user_chat_sessions">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:user_chat_sessions.first_user_id">
+        <addForeignKeyConstraint baseColumnNames="first_user_id" baseTableName="user_chat_sessions" constraintName="user_chat_sessions_first_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:user_chat_sessions.second_user_id">
+        <addForeignKeyConstraint baseColumnNames="second_user_id" baseTableName="user_chat_sessions" constraintName="user_chat_sessions_second_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+
+</databaseChangeLog>

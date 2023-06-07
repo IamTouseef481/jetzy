@@ -1,0 +1,997 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <!-- ######################################################################################################## -->
+    <!-- ........................................................................................................ -->
+    <!-- Lookup Tables                                                                                            -->
+    <!-- ........................................................................................................ -->
+    <!-- ######################################################################################################## -->
+
+    <!-- ======================================================================================================== -->
+    <!-- moderation_status                                                                                        -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="moderation_status">
+        <createTable tableName="vnext_moderation_status"  remarks="Moderation Status: Pending, Approved, Rejected, Closed, Flagged, etc.">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="INT" autoIncrement="false"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="description" remarks="versioned_string" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+        <modifySql dbms="mariadb">
+            <append value="ENGINE=INNODB CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci"/>
+        </modifySql>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_moderation_status:standard            -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_moderation_status:standard">
+        <createIndex
+                indexName="idx_moderation_status_created_on"
+                tableName="vnext_moderation_status">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_moderation_status_modified_on"
+                tableName="vnext_moderation_status">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_moderation_status_deleted_on"
+                tableName="vnext_moderation_status">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_moderation_status_description              -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_moderation_status_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_moderation_status"
+                                 constraintName="fk_moderation_status_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_string"
+        />
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- moderation_resolution                                                                                    -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="moderation_resolution">
+        <createTable tableName="vnext_moderation_resolution"  remarks="Moderation Resolution Lookup Table| approved, rejected, pending, contacted, etc.">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="INT" autoIncrement="false"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="description"  remarks="versioned_string" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+        <modifySql dbms="mariadb">
+            <append value="ENGINE=INNODB CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci"/>
+        </modifySql>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_moderation_resolution:standard        -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_moderation_resolution:standard">
+        <createIndex
+                indexName="idx_moderation_resolution_created_on"
+                tableName="vnext_moderation_resolution">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_moderation_resolution_modified_on"
+                tableName="vnext_moderation_resolution">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_moderation_resolution_deleted_on"
+                tableName="vnext_moderation_resolution">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_moderation_resolution_description          -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_moderation_resolution_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_moderation_resolution"
+                                 constraintName="fk_moderation_resolution_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_string"
+        />
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- moderation_type                                                                                          -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="moderation_type">
+        <createTable tableName="vnext_moderation_type"  remarks="Moderation Type: Auto, User Submitted, QA">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="INT" autoIncrement="false"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="description"  remarks="versioned_string" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+        <modifySql dbms="mariadb">
+            <append value="ENGINE=INNODB CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci"/>
+        </modifySql>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_moderation_type:standard              -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_moderation_type:standard">
+        <createIndex
+                indexName="idx_moderation_type_created_on"
+                tableName="vnext_moderation_type">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_moderation_type_modified_on"
+                tableName="vnext_moderation_type">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_moderation_type_deleted_on"
+                tableName="vnext_moderation_type">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_moderation_type_description                -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_moderation_type_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_moderation_type"
+                                 constraintName="fk_moderation_type_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_string"
+        />
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- content_flag                                                                                             -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="content_flag">
+        <createTable tableName="vnext_content_flag"  remarks="Content flag types.">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="INT" autoIncrement="false"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="description"  remarks="versioned_string" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+        <modifySql dbms="mariadb">
+            <append value="ENGINE=INNODB CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci"/>
+        </modifySql>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_content_flag:standard                 -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_content_flag:standard">
+        <createIndex
+                indexName="idx_content_flag_created_on"
+                tableName="vnext_content_flag">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_content_flag_modified_on"
+                tableName="vnext_content_flag">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_content_flag_deleted_on"
+                tableName="vnext_content_flag">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_content_flag_description                   -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_content_flag_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_content_flag"
+                                 constraintName="fk_content_flag_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_string"
+        />
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- jetzy_system                                                                                             -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="jetzy_system">
+        <createTable tableName="vnext_jetzy_system" remarks="Internal Jetzy System accounts for tracking internally owned/generated content/flags.">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="INT" autoIncrement="false"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="description"  remarks="versioned_string" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+        <modifySql dbms="mariadb">
+            <append value="ENGINE=INNODB CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci"/>
+        </modifySql>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_jetzy_system:standard                 -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_jetzy_system:standard">
+        <createIndex
+                indexName="idx_jetzy_system_created_on"
+                tableName="vnext_jetzy_system">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_jetzy_system_modified_on"
+                tableName="vnext_jetzy_system">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_jetzy_system_deleted_on"
+                tableName="vnext_jetzy_system">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_jetzy_system_description                   -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_jetzy_system_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_jetzy_system"
+                                 constraintName="fk_jetzy_system_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_string"
+        />
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- staff_role                                                                                               -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="staff_role">
+        <createTable tableName="vnext_staff_role" remarks="Staff Role Lookup Table">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="INT" autoIncrement="false"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="description"  remarks="versioned_string" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+        <modifySql dbms="mariadb">
+            <append value="ENGINE=INNODB CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci"/>
+        </modifySql>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_staff_role:standard                   -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_staff_role:standard">
+        <createIndex
+                indexName="idx_staff_role_created_on"
+                tableName="vnext_staff_role">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_staff_role_modified_on"
+                tableName="vnext_staff_role">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_staff_role_deleted_on"
+                tableName="vnext_staff_role">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_staff_role_description                     -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_staff_role_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_staff_role"
+                                 constraintName="fk_staff_role_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_string"
+        />
+    </changeSet>
+
+    <!-- ######################################################################################################## -->
+    <!-- ........................................................................................................ -->
+    <!-- Standard Tables                                                                                          -->
+    <!-- ........................................................................................................ -->
+    <!-- ######################################################################################################## -->
+
+    <!-- ======================================================================================================== -->
+    <!-- staff_role_permission                                                                                    -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="staff_role_permission">
+        <createTable tableName="vnext_staff_role_permission" remarks="Staff Role Permissions Mapping Table">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="staff_role" type="INT"><constraints nullable="false"/></column>
+            <column name="permission" type="UUID"><constraints nullable="false"/></column>
+            <column name="grant_type" type="INT"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_staff_role_permission                 -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_staff_role_permission">
+        <createIndex
+                indexName="idx_staff_role_permission"
+                tableName="vnext_staff_role_permission">
+            <column name="staff_role"/>
+            <column name="permission"/>
+            <column name="grant_type"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_staff_role_permission_permission      -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_staff_role_permission_permission">
+        <createIndex
+                indexName="idx_staff_role_permission_permission"
+                tableName="vnext_staff_role_permission">
+            <column name="permission"/>
+            <column name="grant_type"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_staff_role_permission:standard        -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_staff_role_permission:standard">
+        <createIndex
+                indexName="idx_staff_role_permission_created_on"
+                tableName="vnext_staff_role_permission">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_staff_role_permission_modified_on"
+                tableName="vnext_staff_role_permission">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_staff_role_permission_deleted_on"
+                tableName="vnext_staff_role_permission">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- moderation_queue                                                                                         -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="moderation_queue">
+        <createTable tableName="vnext_moderation_queue"  remarks="Master moderation queue for entities pending approval">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Primary Relations -->
+
+            <!-- Universal Link -->
+            <column name="subject_type" type="INT"><constraints nullable="false"/></column>
+            <column name="subject_identifier" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Universal Link : To allow moderation of types that don't provide universal ids-->
+            <column name="parent_type" type="INT"><constraints nullable="true"/></column>
+            <column name="parent_identifier" type="UUID"><constraints nullable="true"/></column>
+
+            <column name="reviewer" remarks="reviewer may be internal user, automated system, etc." type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="description"  remarks="moderation_versioned_string" type="UUID"><constraints nullable="true"/></column>
+            <column name="resolution_comment" remarks="moderation_versioned_string"  type="UUID"><constraints nullable="true"/></column>
+            <column name="internal_comment" remarks="moderation_versioned_string"  type="UUID"><constraints nullable="true"/></column>
+            <column name="submitter_comment" remarks="moderation_versioned_string"  type="UUID"><constraints nullable="true"/></column>
+
+            <!-- Fields and Secondary Relations: Moderation Details -->
+            <column name="moderation_type" type="INT" remarks="New Record, Auto Flagged Record, Updated Record, User Flagged Record, Correctness Check, etc."><constraints nullable="false"/></column>
+            <column name="moderation_status" type="INT"><constraints nullable="false"/></column>
+            <column name="moderation_resolution" type="INT"><constraints nullable="false"/></column>
+            <column name="reviewed_on" type="DATETIME"><constraints nullable="true"/></column>
+            <column name="retain_until" type="DATETIME"><constraints nullable="true"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_moderation_queue_subject              -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_moderation_queue_subject">
+        <createIndex
+                indexName="idx_moderation_queue_subject"
+                tableName="vnext_moderation_queue">
+            <column name="subject_identifier"/>
+            <column name="subject_type"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_moderation_queue_parent               -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_moderation_queue_parent">
+        <createIndex
+                indexName="idx_moderation_queue_parent"
+                tableName="vnext_moderation_queue">
+            <column name="parent_identifier"/>
+            <column name="subject_identifier"/>
+            <column name="parent_type"/>
+            <column name="subject_type"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_moderation_queue_reviewer             -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_moderation_queue_reviewer">
+        <createIndex
+                indexName="idx_moderation_queue_reviewer"
+                tableName="vnext_moderation_queue">
+            <column name="reviewer"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_moderation_queue_status               -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_moderation_queue_status">
+        <createIndex
+                indexName="idx_moderation_queue_status"
+                tableName="vnext_moderation_queue">
+            <column name="moderation_status"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_moderation_queue_retention            -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_moderation_queue_retention">
+        <createIndex
+                indexName="idx_moderation_queue_retention"
+                tableName="vnext_moderation_queue">
+            <column name="retain_until"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_moderation_queue:standard             -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_moderation_queue:standard">
+        <createIndex
+                indexName="idx_moderation_queue_created_on"
+                tableName="vnext_moderation_queue">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_moderation_queue_modified_on"
+                tableName="vnext_moderation_queue">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_moderation_queue_deleted_on"
+                tableName="vnext_moderation_queue">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_moderation_queue_description               -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_moderation_queue_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_moderation_queue"
+                                 constraintName="fk_moderation_queue_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_moderation_versioned_string"
+        />
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_moderation_queue_resolution_comment        -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_moderation_queue_resolution_comment">
+        <addForeignKeyConstraint baseColumnNames="resolution_comment"
+                                 baseTableName="vnext_moderation_queue"
+                                 constraintName="fk_moderation_queue_resolution_comment"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_moderation_versioned_string"
+        />
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_moderation_queue_internal_comment          -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_moderation_queue_internal_comment">
+        <addForeignKeyConstraint baseColumnNames="internal_comment"
+                                 baseTableName="vnext_moderation_queue"
+                                 constraintName="fk_moderation_queue_internal_comment"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_moderation_versioned_string"
+        />
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_moderation_queue_submitter_comment         -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_moderation_queue_submitter_comment">
+        <addForeignKeyConstraint baseColumnNames="submitter_comment"
+                                 baseTableName="vnext_moderation_queue"
+                                 constraintName="fk_moderation_queue_submitter_comment"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_moderation_versioned_string"
+        />
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!-- auto_moderation                                                                                          -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="auto_moderation">
+        <createTable tableName="vnext_auto_moderation"  remarks="Auto Moderation Entries">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Primary Relations -->
+
+            <!-- Universal Link -->
+            <column name="subject_type" type="INT"><constraints nullable="false"/></column>
+            <column name="subject_identifier" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Universal Link : To allow moderation of types that don't provide universal ids-->
+            <column name="parent_type" type="INT"><constraints nullable="true"/></column>
+            <column name="parent_identifier" type="UUID"><constraints nullable="true"/></column>
+
+            <column name="reviewer" remarks="reviewer may be internal user, automated system, etc." type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="description"  remarks="moderation_versioned_string" type="UUID"><constraints nullable="true"/></column>
+            <column name="resolution_comment" remarks="moderation_versioned_string"  type="UUID"><constraints nullable="true"/></column>
+            <column name="internal_comment" remarks="moderation_versioned_string"  type="UUID"><constraints nullable="true"/></column>
+            <column name="submitter_comment" remarks="moderation_versioned_string"  type="UUID"><constraints nullable="true"/></column>
+
+            <!-- Fields and Secondary Relations: Moderation Details -->
+            <column name="moderation_type" type="INT" remarks="New Record, Auto Flagged Record, Updated Record, User Flagged Record, Correctness Check, etc."><constraints nullable="false"/></column>
+            <column name="moderation_status" type="INT"><constraints nullable="false"/></column>
+            <column name="moderation_resolution" type="INT"><constraints nullable="false"/></column>
+            <column name="reviewed_on" type="DATETIME"><constraints nullable="true"/></column>
+            <column name="retain_until" type="DATETIME"><constraints nullable="true"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_auto_moderation_subject              -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_auto_moderation_subject">
+        <createIndex
+                indexName="idx_auto_moderation_subject"
+                tableName="vnext_auto_moderation">
+            <column name="subject_identifier"/>
+            <column name="subject_type"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_auto_moderation_parent               -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_auto_moderation_parent">
+        <createIndex
+                indexName="idx_auto_moderation_parent"
+                tableName="vnext_auto_moderation">
+            <column name="parent_identifier"/>
+            <column name="subject_identifier"/>
+            <column name="parent_type"/>
+            <column name="subject_type"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_auto_moderation_reviewer             -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_auto_moderation_reviewer">
+        <createIndex
+                indexName="idx_auto_moderation_reviewer"
+                tableName="vnext_auto_moderation">
+            <column name="reviewer"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_auto_moderation_status               -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_auto_moderation_status">
+        <createIndex
+                indexName="idx_auto_moderation_status"
+                tableName="vnext_auto_moderation">
+            <column name="moderation_status"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_auto_moderation_retention            -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_auto_moderation_retention">
+        <createIndex
+                indexName="idx_auto_moderation_retention"
+                tableName="vnext_auto_moderation">
+            <column name="retain_until"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_auto_moderation:standard             -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_auto_moderation:standard">
+        <createIndex
+                indexName="idx_auto_moderation_created_on"
+                tableName="vnext_auto_moderation">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_auto_moderation_modified_on"
+                tableName="vnext_auto_moderation">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_auto_moderation_deleted_on"
+                tableName="vnext_auto_moderation">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_auto_moderation_description               -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_auto_moderation_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_auto_moderation"
+                                 constraintName="fk_auto_moderation_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_moderation_versioned_string"
+        />
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_auto_moderation_resolution_comment        -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_auto_moderation_resolution_comment">
+        <addForeignKeyConstraint baseColumnNames="resolution_comment"
+                                 baseTableName="vnext_auto_moderation"
+                                 constraintName="fk_auto_moderation_resolution_comment"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_moderation_versioned_string"
+        />
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_auto_moderation_internal_comment          -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_auto_moderation_internal_comment">
+        <addForeignKeyConstraint baseColumnNames="internal_comment"
+                                 baseTableName="vnext_auto_moderation"
+                                 constraintName="fk_auto_moderation_internal_comment"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_moderation_versioned_string"
+        />
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_auto_moderation_submitter_comment         -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_auto_moderation_submitter_comment">
+        <addForeignKeyConstraint baseColumnNames="submitter_comment"
+                                 baseTableName="vnext_auto_moderation"
+                                 constraintName="fk_auto_moderation_submitter_comment"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_moderation_versioned_string"
+        />
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!-- moderation_content_flag                                                                                  -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="moderation_content_flag">
+        <createTable tableName="vnext_moderation_content_flag"  remarks="Track user and machine learning generated flags against content that generated moderation queue entries.">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Primary Relations -->
+
+            <!-- Universal Link -->
+            <column name="subject_type" type="INT"><constraints nullable="false"/></column>
+            <column name="subject_identifier" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Universal Link : To allow moderation of types that don't provide universal ids-->
+            <column name="parent_type" type="INT"><constraints nullable="true"/></column>
+            <column name="parent_identifier" type="UUID"><constraints nullable="true"/></column>
+
+            <column name="content_flag_source" type="UUID" remarks="moderation_queue, auto_moderation_queue"><constraints nullable="true"/></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="note"  remarks="moderation_versioned_string" type="UUID"><constraints nullable="true"/></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="content_flag" type="INT" remarks="Content, Correction, Spam, etc."><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_moderation_content_flag_subject     -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_moderation_content_flag_subject">
+        <createIndex
+                indexName="idx_moderation_content_flag_subject"
+                tableName="vnext_moderation_content_flag">
+            <column name="subject_identifier"/>
+            <column name="subject_type"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_moderation_content_flag_parent      -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_moderation_content_flag_parent">
+        <createIndex
+                indexName="idx_moderation_content_flag_parent"
+                tableName="vnext_moderation_content_flag">
+            <column name="parent_identifier"/>
+            <column name="subject_identifier"/>
+            <column name="parent_type"/>
+            <column name="subject_type"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_moderation_content_flag:standard    -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_moderation_content_flag:standard">
+        <createIndex
+                indexName="idx_moderation_content_flag_source"
+                tableName="vnext_moderation_content_flag">
+            <column name="content_flag_source"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_moderation_content_flag_created_on"
+                tableName="vnext_moderation_content_flag">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_moderation_content_flag_modified_on"
+                tableName="vnext_moderation_content_flag">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_moderation_content_flag_deleted_on"
+                tableName="vnext_moderation_content_flag">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_moderation_content_flag_note             -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_moderation_content_flag_note">
+        <addForeignKeyConstraint baseColumnNames="note"
+                                 baseTableName="vnext_moderation_content_flag"
+                                 constraintName="fk_moderation_content_flag_note"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_moderation_versioned_string"
+        />
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!-- entity_content_flag                                                                                      -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="entity_content_flag">
+        <createTable tableName="vnext_entity_content_flag"  remarks="Denormalized moderation_content_flag for quicker lookups">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Primary Relations -->
+
+            <!-- Universal Link -->
+            <column name="subject_type" type="INT"><constraints nullable="false"/></column>
+            <column name="subject_identifier" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="moderation_content_flag" type="UUID"><constraints nullable="false"/></column>
+            <column name="content_flag" type="INT" remarks="Content, Correction, Spam, etc."><constraints nullable="false"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_entity_content_flag_subject     -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_entity_content_flag_subject">
+        <createIndex
+                indexName="idx_entity_content_flag_subject"
+                tableName="vnext_entity_content_flag">
+            <column name="subject_identifier"/>
+            <column name="subject_type"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_entity_content_flag:standard    -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_entity_content_flag:standard">
+        <createIndex
+                indexName="idx_entity_content_flag_source"
+                tableName="vnext_entity_content_flag">
+            <column name="moderation_content_flag"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- staff                                                                                                    -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="staff">
+        <createTable tableName="vnext_staff" remarks="Correlated to mssql admin table, unique email/login information has been stripped. Secondary login should be required to access pages.">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Primary Relations -->
+            <column name="user" type="UUID"><constraints nullable="false"/></column>
+            <column name="staff_role" type="INT"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_staff_user                            -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_staff_user">
+        <createIndex
+                indexName="idx_staff_user"
+                tableName="vnext_staff">
+            <column name="user"/>
+            <column name="staff_role"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_staff_staff_role                      -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_staff_staff_role">
+        <createIndex
+                indexName="idx_staff_staff_role"
+                tableName="vnext_staff">
+            <column name="staff_role"/>
+            <column name="user"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_staff:standard                        -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_staff:standard">
+        <createIndex
+                indexName="idx_staff_created_on"
+                tableName="vnext_staff">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_staff_modified_on"
+                tableName="vnext_staff">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_staff_deleted_on"
+                tableName="vnext_staff">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_staff_staff_role                            -->
+    <!-- ++++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_staff_staff_role">
+        <addForeignKeyConstraint baseColumnNames="staff_role"
+                                 baseTableName="vnext_staff"
+                                 constraintName="fk_staff_staff_role"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_staff_role"
+        />
+    </changeSet>
+
+</databaseChangeLog>

@@ -1,0 +1,94 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+
+    <!-- ======================================================================================================== -->
+    <!-- user_follows                                                                                             -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="user_follows">
+        <createTable tableName="user_follows">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_follows_pkey"/>
+            </column>
+            <column name="followed_id" type="UUID"/>
+            <column name="follower_id" type="UUID"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="follow_status" type="FOLLOW_STATUS"/>
+        </createTable>
+    </changeSet>
+
+
+
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:user_follows:user_follows_user_id_friend_id_index">
+        <createIndex indexName="user_follows_user_id_friend_id_index" tableName="user_follows">
+            <column name="followed_id"/>
+            <column name="follower_id"/>
+        </createIndex>
+    </changeSet>
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:user_follows:user_follows_follower_id_followed_id_index">
+        <createIndex indexName="user_follows_follower_id_followed_id_index" tableName="user_follows">
+            <column name="follower_id"/>
+            <column name="followed_id"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:user_follows:user_follows_user_id_friend_id_with_deleted_index">
+        <createIndex indexName="user_follows_user_id_friend_id_with_deleted_index" tableName="user_follows">
+            <column name="followed_id"/>
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:user_follows:user_follows_follower_id_followed_id_with_deleted_index">
+        <createIndex indexName="user_follows_follower_id_followed_id_with_deleted_index" tableName="user_follows">
+            <column name="follower_id"/>
+            <column name="followed_id"/>
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_user_follows_deleted_at               -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:user_follows:deleted_at">
+        <createIndex indexName="idx_user_follows_deleted_at" tableName="user_follows">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:user_follows.follower_id">
+        <addForeignKeyConstraint baseColumnNames="follower_id" baseTableName="user_follows" constraintName="user_follows_friend_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:user_follows.followed_id">
+        <addForeignKeyConstraint baseColumnNames="followed_id" baseTableName="user_follows" constraintName="user_follows_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+
+
+
+</databaseChangeLog>

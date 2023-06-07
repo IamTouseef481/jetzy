@@ -1,0 +1,139 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <!-- ======================================================================================================== -->
+    <!-- add roles                                                                                                -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="tanbits" id="update_admin_post_influences_permission">
+        <sql dbms="postgresql" splitStatements="true" stripComments="true">
+            INSERT INTO permissions(id, permission, role_id, resource_id, inserted_at, updated_at)
+            VALUES(gen_random_uuid(), 3, 'admin', 'post-influences', now(), now())
+            ON CONFLICT (role_id, resource_id) DO UPDATE SET permission = 3, updated_at = now();
+        </sql>
+    </changeSet>
+
+
+
+    <!-- ======================================================================================================== -->
+    <!-- reward_tiers                                                                                             -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="tnabits" id="user_deletion_logs">
+        <createTable tableName="user_deletion_logs">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="event" type="VARCHAR(255)"/>
+            <column name="error" type="TEXT"/>
+            <column name="deleted_by_user_id" remarks="FK relationship not created as underlying entry may be removed" type="UUID"/>
+            <column name="deleted_user_id" remarks="FK relationship not created as underlying entry may be removed" type="UUID"/>
+            <column name="status" type="DELETION_STATUS"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_reward_tiers_deleted_by_user_id       -->
+    <!-- ......................................... -->
+    <changeSet author="tanbits" id="idx_reward_tiers_deleted_by_user_id">
+        <createIndex indexName="idx_reward_tiers_deleted_by_user_id" tableName="user_deletion_logs">
+            <column name="deleted_by_user_id"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_reward_tiers_deleted_user_id          -->
+    <!-- ......................................... -->
+    <changeSet author="tanbits" id="idx_reward_tiers_deleted_user_id">
+        <createIndex indexName="idx_reward_tiers_deleted_user_id" tableName="user_deletion_logs">
+            <column name="deleted_user_id"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_reward_tiers_status                   -->
+    <!-- ......................................... -->
+    <changeSet author="tanbits" id="idx_reward_tiers_status">
+        <createIndex indexName="idx_reward_tiers_status" tableName="user_deletion_logs">
+            <column name="status"/>
+            <column name="inserted_at"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- uniq_influencer_messages - drop previous  -->
+    <!-- ......................................... -->
+    <changeSet author="tanbits" id="uniq_influencer_messages - drop previous (v2)">
+        <preConditions onFail="CONTINUE" onError="CONTINUE" onFailMessage="index already exists">
+                <indexExists
+                        indexName="influencer_messages_message_type_index"
+                        tableName="influencer_messages"
+                />
+        </preConditions>
+        <dropIndex indexName="influencer_messages_message_type_index"
+                   tableName="influencer_messages"/>
+    </changeSet>
+
+    <changeSet author="tanbits" id="uniq_influencer_messages - drop previous (v3)">
+        <preConditions onFail="CONTINUE" onError="CONTINUE" onFailMessage="index already exists">
+            <indexExists
+                    indexName="uniq_influencer_messages"
+                    tableName="influencer_messages"
+            />
+        </preConditions>
+        <dropIndex indexName="uniq_influencer_messages"
+                   tableName="influencer_messages"/>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- uniq_influencer_messages                  -->
+    <!-- ......................................... -->
+    <changeSet author="tanbits" id="uniq_influencer_messages (v3)">
+        <createIndex indexName="uniq_influencer_messages" tableName="influencer_messages" unique="true">
+            <column name="type"/>
+            <column name="category"/>
+            <column name="message"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- user_event_images - add deleted_at column                                                                -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="tanbits" id="user_event_images:add_column:deleted_at">
+        <addColumn tableName="user_event_images">
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="true"/>
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_user_event_images_deleted_at          -->
+    <!-- ......................................... -->
+    <changeSet author="tanbits" id="idx:user_event_images:deleted_at">
+        <createIndex indexName="idx_user_event_images_deleted_at" tableName="user_event_images">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:user_event_images:user_event_images_user_event_id_with_deleted_index">
+        <createIndex indexName="user_event_images_user_event_id_with_deleted_index" tableName="user_event_images">
+            <column name="user_event_id"/>
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+
+
+</databaseChangeLog>

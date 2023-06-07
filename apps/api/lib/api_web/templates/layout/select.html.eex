@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html class="avada-html-layout-wide avada-html-header-position-top avada-is-100-percent-template avada-header-color-not-opaque avada-mobile-header-color-not-opaque ua-chrome ua-chrome-104 ua-chrome-104-0 ua-chrome-104-0-0 ua-chrome-104-0-0-0 ua-desktop ua-desktop-macintosh ua-mac_os_x ua-mac_os_x-10 ua-mac_os_x-10-15 ua-mac_os_x-10-15-7 ua-webkit ua-webkit-537 ua-webkit-537-36 js touchevents no-applicationcache audio audio-ogg audio-mp3 audio-opus audio-wav audio-m4a canvas canvastext hashchange geolocation history inputtypes-search inputtypes-tel inputtypes-url inputtypes-email no-inputtypes-datetime inputtypes-date inputtypes-month inputtypes-week inputtypes-time inputtypes-datetime-local inputtypes-number inputtypes-range inputtypes-color postmessage postmessage-structuredclones video video-ogg video-h264 no-video-h265 video-webm video-vp9 no-video-hls no-video-av1 webgl websockets cssanimations backgroundsize borderimage borderradius boxshadow flexbox fontface generatedcontent cssgradients hsla multiplebgs opacity cssreflections rgba textshadow csstransforms supports csstransforms3d csstransitions localstorage sessionstorage websqldatabase svgclippaths inlinesvg smil webworkers" lang="en-US" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#" data-useragent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Jetzy - Select</title>
+    <meta name="robots" content="max-image-preview:large">
+    <link rel="dns-prefetch" href="//s.w.org">
+    <link rel="alternate" type="application/rss+xml" title="jetzy" href="https://jetzy.com">
+    <meta property="og:title" content="Home">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://select.jetzy.com/">
+    <meta property="og:site_name" content="jetzy">
+    <meta property="og:description" content="EXPLORE THE WORLD WITH US BOOK NOW
+         Travel
+         Travel suggestions provides access to the greatest and most exclusive travel destinations across the world, providing unprecedented expertise and bespoke itineraries.
+         Restaurant
+         Jetzy Select’s experts with their personal connections and deep relationships with leading chefs and sommeliers,">
+    <meta property="og:image" content="img/logo.png">
+    <script type="text/javascript" id="www-widgetapi-script" src="./js/widgetapi.js" async=""></script>
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script type="text/javascript">
+    window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/svg\/","svgExt":".svg","source":{"concatemoji":"js/wpemoji.js"}};
+    /*! This file is auto-generated */
+    !function(e,a,t){var n,r,o,i=a.createElement("canvas"),p=i.getContext&&i.getContext("2d");function s(e,t){var a=String.fromCharCode,e=(p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,e),0,0),i.toDataURL());return p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,t),0,0),e===i.toDataURL()}function c(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(o=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},r=0;r<o.length;r++)t.supports[o[r]]=function(e){if(!p||!p.fillText)return!1;switch(p.textBaseline="top",p.font="600 32px Arial",e){case"flag":return s([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])?!1:!s([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!s([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]);case"emoji":return!s([129777,127995,8205,129778,127999],[129777,127995,8203,129778,127999])}return!1}(o[r]),t.supports.everything=t.supports.everything&&t.supports[o[r]],"flag"!==o[r]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[o[r]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(e=t.source||{}).concatemoji?c(e.concatemoji):e.wpemoji&&e.twemoji&&(c(e.twemoji),c(e.wpemoji)))}(window,document,window._wpemojiSettings);
+    </script>
+    <script src="js/wpemoji.js" type="text/javascript" defer=""></script>
+    <link rel="stylesheet" id="wp-block-library-css" href="css/select-style_min.css" type="text/css" media="all">
+
+    <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/assets/select.css") %>" media="all" />
+
+    <link rel="stylesheet" id="fusion-dynamic-css-css" href="css/fusion-min.css" type="text/css" media="all">
+    <script type="text/javascript" src="js/jquery.js" id="jquery-core-js"></script>
+    <script type="text/javascript" src="js/jquery_migrate.js" id="jquery-migrate-js"></script>
+    <link rel="canonical" href="https://wordpress-649294-2801231.cloudwaysapps.com/">
+    <link rel="shortlink" href="https://wordpress-649294-2801231.cloudwaysapps.com/">
+    <link rel="alternate" type="application/json+oembed" href="https://wordpress-649294-2801231.cloudwaysapps.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwordpress-649294-2801231.cloudwaysapps.com%2F">
+    <link rel="alternate" type="text/xml+oembed" href="https://wordpress-649294-2801231.cloudwaysapps.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwordpress-649294-2801231.cloudwaysapps.com%2F&amp;format=xml">
+    <link rel="preload" href="/fonts/common/awb-icons.woff" as="font" type="font/woff" crossorigin="">
+    <link rel="preload" href="/fonts/fontawesome/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin="">
+    <link rel="preload" href="/fonts/fontawesome/webfonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin="">
+    <link rel="preload" href="/fonts/fontawesome/webfonts/fa-solid-900.woff" as="font" type="font/woff2" crossorigin="">
+    <script>function setREVStartSize(e){
+        //window.requestAnimationFrame(function() {
+        window.RSIW = window.RSIW===undefined ? window.innerWidth : window.RSIW;
+        window.RSIH = window.RSIH===undefined ? window.innerHeight : window.RSIH;
+        try {
+            var pw = document.getElementById(e.c).parentNode.offsetWidth,
+                newh;
+            pw = pw===0 || isNaN(pw) || (e.l=="fullwidth" || e.layout=="fullwidth") ? window.RSIW : pw;
+            e.tabw = e.tabw===undefined ? 0 : parseInt(e.tabw);
+            e.thumbw = e.thumbw===undefined ? 0 : parseInt(e.thumbw);
+            e.tabh = e.tabh===undefined ? 0 : parseInt(e.tabh);
+            e.thumbh = e.thumbh===undefined ? 0 : parseInt(e.thumbh);
+            e.tabhide = e.tabhide===undefined ? 0 : parseInt(e.tabhide);
+            e.thumbhide = e.thumbhide===undefined ? 0 : parseInt(e.thumbhide);
+            e.mh = e.mh===undefined || e.mh=="" || e.mh==="auto" ? 0 : parseInt(e.mh,0);
+            if(e.layout==="fullscreen" || e.l==="fullscreen")
+                newh = Math.max(e.mh,window.RSIH);
+            else{
+                e.gw = Array.isArray(e.gw) ? e.gw : [e.gw];
+                for (var i in e.rl) if (e.gw[i]===undefined || e.gw[i]===0) e.gw[i] = e.gw[i-1];
+                e.gh = e.el===undefined || e.el==="" || (Array.isArray(e.el) && e.el.length==0)? e.gh : e.el;
+                e.gh = Array.isArray(e.gh) ? e.gh : [e.gh];
+                for (var i in e.rl) if (e.gh[i]===undefined || e.gh[i]===0) e.gh[i] = e.gh[i-1];
+
+                var nl = new Array(e.rl.length),
+                    ix = 0,
+                    sl;
+                e.tabw = e.tabhide>=pw ? 0 : e.tabw;
+                e.thumbw = e.thumbhide>=pw ? 0 : e.thumbw;
+                e.tabh = e.tabhide>=pw ? 0 : e.tabh;
+                e.thumbh = e.thumbhide>=pw ? 0 : e.thumbh;
+                for (var i in e.rl) nl[i] = e.rl[i]<window.RSIW ? 0 : e.rl[i];
+                sl = nl[0];
+                for (var i in nl) if (sl>nl[i] && nl[i]>0) { sl = nl[i]; ix=i;}
+                var m = pw>(e.gw[ix]+e.tabw+e.thumbw) ? 1 : (pw-(e.tabw+e.thumbw)) / (e.gw[ix]);
+                newh =  (e.gh[ix] * m) + (e.tabh + e.thumbh);
+            }
+            var el = document.getElementById(e.c);
+            if (el!==null && el) el.style.height = newh+"px";
+            el = document.getElementById(e.c+"_wrapper");
+            if (el!==null && el) {
+                el.style.height = newh+"px";
+                el.style.display = "block";
+            }
+        } catch(e){
+            console.log("Failure at Presize of Slider:" + e)
+        }
+        //});
+    };
+    </script>
+    <script type="text/javascript">
+        var doc = document.documentElement;
+        doc.setAttribute( 'data-useragent', navigator.userAgent );
+    </script>
+
+</head>
+<body class="home page-template page-template-100-width page-template-100-width-php page page-id-10 fusion-image-hovers fusion-pagination-sizing fusion-button_type-flat fusion-button_span-no fusion-button_gradient-linear avada-image-rollover-circle-yes avada-image-rollover-yes avada-image-rollover-direction-left fusion-body ltr no-tablet-sticky-header no-mobile-sticky-header no-mobile-slidingbar no-mobile-totop fusion-disable-outline fusion-sub-menu-fade mobile-logo-pos-left layout-wide-mode avada-has-boxed-modal-shadow- layout-scroll-offset-full avada-has-zero-margin-offset-top fusion-top-header menu-text-align-center mobile-menu-design-modern fusion-show-pagination-text fusion-header-layout-v1 avada-responsive avada-footer-fx-sticky avada-menu-highlight-style-bar fusion-search-form-clean fusion-main-menu-search-overlay fusion-avatar-circle avada-dropdown-styles avada-blog-layout-large avada-blog-archive-layout-large avada-header-shadow-no avada-menu-icon-position-left avada-has-megamenu-shadow avada-has-mobile-menu-search avada-has-main-nav-search-icon avada-has-breadcrumb-mobile-hidden avada-has-titlebar-hide avada-header-border-color-full-transparent avada-has-pagination-width_height avada-flyout-menu-direction-fade avada-ec-views-v1 do-animate fusion-no-touch" data-awb-post-id="10" style="--viewportWidth:1920;">
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false"  style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+    <defs>
+        <filter id="wp-duotone-dark-grayscale">
+            <feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 "></feColorMatrix>
+            <feComponentTransfer color-interpolation-filters="sRGB">
+                <feFuncR type="table" tableValues="0 0.49803921568627"></feFuncR>
+                <feFuncG type="table" tableValues="0 0.49803921568627"></feFuncG>
+                <feFuncB type="table" tableValues="0 0.49803921568627"></feFuncB>
+                <feFuncA type="table" tableValues="1 1"></feFuncA>
+            </feComponentTransfer>
+            <feComposite in2="SourceGraphic" operator="in"></feComposite>
+        </filter>
+    </defs>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+    <defs>
+        <filter id="wp-duotone-grayscale">
+            <feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 "></feColorMatrix>
+            <feComponentTransfer color-interpolation-filters="sRGB">
+                <feFuncR type="table" tableValues="0 1"></feFuncR>
+                <feFuncG type="table" tableValues="0 1"></feFuncG>
+                <feFuncB type="table" tableValues="0 1"></feFuncB>
+                <feFuncA type="table" tableValues="1 1"></feFuncA>
+            </feComponentTransfer>
+            <feComposite in2="SourceGraphic" operator="in"></feComposite>
+        </filter>
+    </defs>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false"  style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+    <defs>
+        <filter id="wp-duotone-purple-yellow">
+            <feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 "></feColorMatrix>
+            <feComponentTransfer color-interpolation-filters="sRGB">
+                <feFuncR type="table" tableValues="0.54901960784314 0.98823529411765"></feFuncR>
+                <feFuncG type="table" tableValues="0 1"></feFuncG>
+                <feFuncB type="table" tableValues="0.71764705882353 0.25490196078431"></feFuncB>
+                <feFuncA type="table" tableValues="1 1"></feFuncA>
+            </feComponentTransfer>
+            <feComposite in2="SourceGraphic" operator="in"></feComposite>
+        </filter>
+    </defs>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+    <defs>
+        <filter id="wp-duotone-blue-red">
+            <feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 "></feColorMatrix>
+            <feComponentTransfer color-interpolation-filters="sRGB">
+                <feFuncR type="table" tableValues="0 1"></feFuncR>
+                <feFuncG type="table" tableValues="0 0.27843137254902"></feFuncG>
+                <feFuncB type="table" tableValues="0.5921568627451 0.27843137254902"></feFuncB>
+                <feFuncA type="table" tableValues="1 1"></feFuncA>
+            </feComponentTransfer>
+            <feComposite in2="SourceGraphic" operator="in"></feComposite>
+        </filter>
+    </defs>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false"  style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+    <defs>
+        <filter id="wp-duotone-midnight">
+            <feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 "></feColorMatrix>
+            <feComponentTransfer color-interpolation-filters="sRGB">
+                <feFuncR type="table" tableValues="0 0"></feFuncR>
+                <feFuncG type="table" tableValues="0 0.64705882352941"></feFuncG>
+                <feFuncB type="table" tableValues="0 1"></feFuncB>
+                <feFuncA type="table" tableValues="1 1"></feFuncA>
+            </feComponentTransfer>
+            <feComposite in2="SourceGraphic" operator="in"></feComposite>
+        </filter>
+    </defs>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false"  style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+    <defs>
+        <filter id="wp-duotone-magenta-yellow">
+            <feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 "></feColorMatrix>
+            <feComponentTransfer color-interpolation-filters="sRGB">
+                <feFuncR type="table" tableValues="0.78039215686275 1"></feFuncR>
+                <feFuncG type="table" tableValues="0 0.94901960784314"></feFuncG>
+                <feFuncB type="table" tableValues="0.35294117647059 0.47058823529412"></feFuncB>
+                <feFuncA type="table" tableValues="1 1"></feFuncA>
+            </feComponentTransfer>
+            <feComposite in2="SourceGraphic" operator="in"></feComposite>
+        </filter>
+    </defs>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+    <defs>
+        <filter id="wp-duotone-purple-green">
+            <feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 "></feColorMatrix>
+            <feComponentTransfer color-interpolation-filters="sRGB">
+                <feFuncR type="table" tableValues="0.65098039215686 0.40392156862745"></feFuncR>
+                <feFuncG type="table" tableValues="0 1"></feFuncG>
+                <feFuncB type="table" tableValues="0.44705882352941 0.4"></feFuncB>
+                <feFuncA type="table" tableValues="1 1"></feFuncA>
+            </feComponentTransfer>
+            <feComposite in2="SourceGraphic" operator="in"></feComposite>
+        </filter>
+    </defs>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false"  style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;">
+    <defs>
+        <filter id="wp-duotone-blue-orange">
+            <feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 "></feColorMatrix>
+            <feComponentTransfer color-interpolation-filters="sRGB">
+                <feFuncR type="table" tableValues="0.098039215686275 1"></feFuncR>
+                <feFuncG type="table" tableValues="0 0.66274509803922"></feFuncG>
+                <feFuncB type="table" tableValues="0.84705882352941 0.41960784313725"></feFuncB>
+                <feFuncA type="table" tableValues="1 1"></feFuncA>
+            </feComponentTransfer>
+            <feComposite in2="SourceGraphic" operator="in"></feComposite>
+        </filter>
+    </defs>
+</svg>
+<%= @inner_content %>
+
+
+</body>
+</html>

@@ -1,0 +1,120 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <!-- ======================================================================================================== -->
+    <!-- user_referrals                                                                                           -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="user_referrals">
+        <createTable tableName="user_referrals">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_referrals_pkey"/>
+            </column>
+            <column name="referred_to" type="VARCHAR(255)"/>
+            <column defaultValueBoolean="false" name="is_accept" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="referred_from_id" type="UUID"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValue="NULL::character varying" name="referral_code" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:user_referrals:user_referrals_referred_to_index">
+        <createIndex indexName="user_referrals_referred_to_index" tableName="user_referrals">
+            <column name="referred_to"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:user_referrals:user_referrals_referred_from_id_index">
+        <createIndex indexName="user_referrals_referred_from_id_index" tableName="user_referrals">
+            <column name="referred_from_id"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:user_referrals:user_referrals_referred_from_id_with_deleted_index">
+        <createIndex indexName="user_referrals_referred_from_id_with_deleted_index" tableName="user_referrals">
+            <column name="referred_from_id"/>
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_user_referrals_deleted_at             -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:user_referrals:deleted_at">
+        <createIndex indexName="idx_user_referrals_deleted_at" tableName="user_referrals">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:user_referrals.referred_from_id">
+        <addForeignKeyConstraint baseColumnNames="referred_from_id" baseTableName="user_referrals" constraintName="user_referrals_referred_from_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!-- user_referral_code_logs                                                                                  -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="user_referral_code_logs">
+        <createTable tableName="user_referral_code_logs">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_referral_code_logs_pkey"/>
+            </column>
+            <column name="referral_code" type="VARCHAR(255)"/>
+            <column name="user_id" type="UUID"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:user_referral_code_logs:user_referral_code_logs_user_id_index">
+        <createIndex indexName="user_referral_code_logs_user_id_index" tableName="user_referral_code_logs">
+            <column name="user_id"/>
+        </createIndex>
+    </changeSet>
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:user_referral_code_logs:user_referral_code_logs_referral_code_index">
+        <createIndex indexName="user_referral_code_logs_referral_code_index" tableName="user_referral_code_logs" unique="true">
+            <column name="referral_code"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:user_referral_code_logs.user_id">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="user_referral_code_logs" constraintName="user_referral_code_logs_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+
+
+</databaseChangeLog>

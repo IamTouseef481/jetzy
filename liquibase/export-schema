@@ -1,0 +1,1 @@
+JAVA_OPTS="-Xmx10g" bin/liquibase --logLevel=fine --driver=org.postgresql.Driver --url=jdbc:postgresql://127.0.0.1:5432/jetzy --diffTypes=tables,functions,views,columns,indexes,foreignkeys,primarykeys,uniqueconstraints,data,storedprocedures,triggers,sequences --excludeObjects=table:spatial_.* --changelog-file=test2.xml generate-changelog

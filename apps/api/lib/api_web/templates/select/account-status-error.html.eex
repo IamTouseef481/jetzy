@@ -1,0 +1,7 @@
+<div class="row  mt-5">
+    <div class="col-auto align-self-center">
+        <div class="alert alert-danger">
+            An unexpected internal error has occurred. Please try again later.
+        </div>
+    </div>
+</div>

@@ -1,0 +1,1787 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+
+
+
+    <!-- ======================================================================================================== -->
+    <!-- user_post_types                                                                                          -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="user_post_types">
+        <createTable tableName="user_post_types">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_post_types_pkey"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_user_post_types_deleted_at            -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:user_post_types:deleted_at">
+        <createIndex indexName="idx_user_post_types_deleted_at" tableName="user_post_types">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- user_moments                                                                                             -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="user_moments">
+        <createTable tableName="user_moments">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_moments_pkey"/>
+            </column>
+            <column name="moment_title" type="VARCHAR(255)"/>
+            <column name="moment_description" type="TEXT"/>
+            <column name="moment_country" type="VARCHAR(255)"/>
+            <column name="moment_city" type="VARCHAR(255)"/>
+            <column name="moment_location" type="VARCHAR(255)"/>
+            <column name="moment_latitude" type="VARCHAR(255)"/>
+            <column name="moment_longitude" type="VARCHAR(255)"/>
+            <column defaultValueBoolean="false" name="is_shared" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueBoolean="false" name="is_deleted" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueBoolean="false" name="is_moment_image_sync" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="api_version" type="INTEGER"/>
+            <column name="user_id" type="UUID"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:user_moments:user_moments_user_id_index">
+        <createIndex indexName="user_moments_user_id_index" tableName="user_moments">
+            <column name="user_id"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_user_moments_deleted_at               -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:user_moments:deleted_at">
+        <createIndex indexName="idx_user_moments_deleted_at" tableName="user_moments">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_user_moments_is_deleted               -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:user_moments:is_deleted">
+        <createIndex indexName="idx_user_moments_is_deleted" tableName="user_moments">
+            <column name="is_deleted"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:user_moments.user_id">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="user_moments" constraintName="user_moments_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- user_moments_images                                                                                      -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="user_moments_images">
+        <createTable tableName="user_moments_images">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_moments_images_pkey"/>
+            </column>
+            <column name="thumb_image_name" type="VARCHAR(255)"/>
+            <column name="small_image_name" type="TEXT"/>
+            <column name="medium_image_name" type="VARCHAR(255)"/>
+            <column name="large_image_name" type="VARCHAR(255)"/>
+            <column name="compressed_image_name" type="VARCHAR(255)"/>
+            <column name="image_identifier" type="BIGINT"/>
+            <column name="blur_hash" type="VARCHAR(255)"/>
+            <column defaultValueBoolean="false" name="is_deleted" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueBoolean="false" name="is_image_sync" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueBoolean="false" name="is_current" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="moment_id" type="UUID"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:user_moments_images:user_moments_images_moment_id_index">
+        <createIndex indexName="user_moments_images_moment_id_index" tableName="user_moments_images">
+            <column name="moment_id"/>
+        </createIndex>
+    </changeSet>
+
+
+
+    <!-- ......................................... -->
+    <!-- idx_user_moments_images_deleted_at        -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:user_moments_images:deleted_at">
+        <createIndex indexName="idx_user_moments_images_deleted_at" tableName="user_moments_images">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_user_moments_images_is_deleted        -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:user_moments_images:is_deleted">
+        <createIndex indexName="idx_user_moments_images_is_deleted" tableName="user_moments_images">
+            <column name="is_deleted"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:user_moments_images.moment_id">
+        <addForeignKeyConstraint baseColumnNames="moment_id" baseTableName="user_moments_images" constraintName="user_moments_images_moment_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user_moments" validate="true"/>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- address_moment_mappings                                                                                  -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="address_moment_mappings">
+        <createTable tableName="address_moment_mappings">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="address_moment_mappings_pkey"/>
+            </column>
+            <column name="api_version" type="VARCHAR(255)"/>
+            <column defaultValueBoolean="false" name="is_new" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="address_component_id" type="UUID"/>
+            <column name="moment_id" type="UUID"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:address_moment_mappings:address_moment_mappings_address_component_id_moment_id_index">
+        <createIndex indexName="address_moment_mappings_address_component_id_moment_id_index" tableName="address_moment_mappings">
+            <column name="address_component_id"/>
+            <column name="moment_id"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_address_moment_mappings_deleted_at    -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:address_moment_mappings:deleted_at">
+        <createIndex indexName="idx_address_moment_mappings_deleted_at" tableName="address_moment_mappings">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:address_moment_mappings.address_component_id">
+        <addForeignKeyConstraint baseColumnNames="address_component_id" baseTableName="address_moment_mappings" constraintName="address_moment_mappings_address_component_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="address_components" validate="true"/>
+    </changeSet>
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:address_moment_mappings.moment_id">
+        <addForeignKeyConstraint baseColumnNames="moment_id" baseTableName="address_moment_mappings" constraintName="address_moment_mappings_moment_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user_moments" validate="true"/>
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!-- shoutout_types                                                                                           -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="shoutout_types">
+        <createTable tableName="shoutout_types">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="shoutout_types_pkey"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="sort_order" type="INTEGER"/>
+            <column defaultValueBoolean="false" name="is_deleted" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="INTEGER"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_shoutout_types_deleted_at             -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:shoutout_types:deleted_at">
+        <createIndex indexName="idx_shoutout_types_deleted_at" tableName="shoutout_types">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_shoutout_types_is_deleted             -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:shoutout_types:is_deleted">
+        <createIndex indexName="idx_shoutout_types_is_deleted" tableName="shoutout_types">
+            <column name="is_deleted"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- shoutout_types                            -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="root (generated)" id="shoutout_types:initial_data">
+        <loadData
+                tableName="shoutout_types"
+                file="./csv/shoutout_types.csv"
+                commentLineStartsWith="#"
+                relativeToChangelogFile="true"
+                usePreparedStatements="true"
+        >
+        </loadData>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- user_shoutouts                                                                                           -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="user_shoutouts">
+        <createTable tableName="user_shoutouts">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_shoutouts_pkey"/>
+            </column>
+            <column name="shoutout_guid" type="VARCHAR(255)"/>
+            <column name="title" type="VARCHAR(255)"/>
+            <column name="description" type="TEXT"/>
+            <column name="latitude" type="FLOAT8"/>
+            <column name="longitude" type="FLOAT8"/>
+            <column name="image_name" type="VARCHAR(255)"/>
+            <column name="image_identifier" type="BIGINT"/>
+            <column name="blur_hash" type="VARCHAR(255)"/>
+            <column name="image_extn" type="VARCHAR(255)"/>
+            <column defaultValueBoolean="false" name="is_shared" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueBoolean="false" name="is_deleted" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_image_sync" type="BOOLEAN"/>
+            <column name="updated_by" type="VARCHAR(255)"/>
+            <column defaultValueBoolean="false" name="is_old_moment" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="UUID"/>
+            <column name="shoutout_type_id" type="UUID"/>
+            <column name="post_type_id" type="UUID"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:user_shoutouts:user_shoutouts_user_id_shoutout_type_id_post_type_id_index">
+        <createIndex indexName="user_shoutouts_user_id_shoutout_type_id_post_type_id_index" tableName="user_shoutouts">
+            <column name="user_id"/>
+            <column name="shoutout_type_id"/>
+            <column name="post_type_id"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_user_shoutouts_deleted_at             -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:user_shoutouts:deleted_at">
+        <createIndex indexName="idx_user_shoutouts_deleted_at" tableName="user_shoutouts">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_user_shoutouts_is_deleted             -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:user_shoutouts:is_deleted">
+        <createIndex indexName="idx_user_shoutouts_is_deleted" tableName="user_shoutouts">
+            <column name="is_deleted"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:user_shoutouts.post_type_id">
+        <addForeignKeyConstraint baseColumnNames="post_type_id" baseTableName="user_shoutouts" constraintName="user_shoutouts_post_type_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user_post_types" validate="true"/>
+    </changeSet>
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:user_shoutouts.shoutout_type_id">
+        <addForeignKeyConstraint baseColumnNames="shoutout_type_id" baseTableName="user_shoutouts" constraintName="user_shoutouts_shoutout_type_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="shoutout_types" validate="true"/>
+    </changeSet>
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:user_shoutouts.user_id">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="user_shoutouts" constraintName="user_shoutouts_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- user_shoutouts_privates                                                                                  -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="user_shoutouts_privates">
+        <createTable tableName="user_shoutouts_privates">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_shoutouts_privates_pkey"/>
+            </column>
+            <column name="is_old_moment" type="BOOLEAN"/>
+            <column defaultValueBoolean="false" name="is_private" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="group_id" type="INTEGER"/>
+            <column name="shoutout_id" type="UUID"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:user_shoutouts_privates:user_shoutouts_privates_shoutout_id_index">
+        <createIndex indexName="user_shoutouts_privates_shoutout_id_index" tableName="user_shoutouts_privates">
+            <column name="shoutout_id"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_user_shoutouts_privates_deleted_at    -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:user_shoutouts_privates:deleted_at">
+        <createIndex indexName="idx_user_shoutouts_privates_deleted_at" tableName="user_shoutouts_privates">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:user_shoutouts_privates.shoutout_id">
+        <addForeignKeyConstraint baseColumnNames="shoutout_id" baseTableName="user_shoutouts_privates" constraintName="user_shoutouts_privates_shoutout_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user_shoutouts" validate="true"/>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- user_shoutouts_tagged                                                                                    -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="user_shoutouts_tagged">
+        <createTable tableName="user_shoutouts_tagged">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_shoutouts_tagged_pkey"/>
+            </column>
+            <column name="is_old_moment" type="BOOLEAN"/>
+            <column defaultValueBoolean="false" name="is_private" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="group_id" type="INTEGER"/>
+            <column name="email" type="VARCHAR(255)"/>
+            <column name="contact_number" type="VARCHAR(255)"/>
+            <column defaultValueBoolean="false" name="flag" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="shoutout_id" type="UUID"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="UUID"/>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:user_shoutouts_tagged:user_shoutouts_tagged_shoutout_id_index">
+        <createIndex indexName="user_shoutouts_tagged_shoutout_id_index" tableName="user_shoutouts_tagged">
+            <column name="shoutout_id"/>
+        </createIndex>
+    </changeSet>
+
+
+
+    <!-- ......................................... -->
+    <!-- idx_user_shoutouts_tagged_deleted_at      -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:user_shoutouts_tagged:deleted_at">
+        <createIndex indexName="idx_user_shoutouts_tagged_deleted_at" tableName="user_shoutouts_tagged">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:user_shoutouts_tagged.shoutout_id">
+        <addForeignKeyConstraint baseColumnNames="shoutout_id" baseTableName="user_shoutouts_tagged" constraintName="user_shoutouts_tagged_shoutout_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user_shoutouts" validate="true"/>
+    </changeSet>
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:user_shoutouts_tagged.user_id">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="user_shoutouts_tagged" constraintName="user_shoutouts_tagged_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!-- address_shoutout_mappings                                                                                -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="address_shoutout_mappings">
+        <createTable tableName="address_shoutout_mappings">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="address_shoutout_mappings_pkey"/>
+            </column>
+            <column name="is_old_moment" type="BOOLEAN"/>
+            <column name="address_component_id" type="UUID"/>
+            <column name="shoutout_id" type="UUID"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_address_shoutout_mappings_deleted_at  -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:address_shoutout_mappings:deleted_at">
+        <createIndex indexName="idx_address_shoutout_mappings_deleted_at" tableName="address_shoutout_mappings">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:address_shoutout_mappings:address_shoutout_mappings_address_component_id_shoutout_id_inde">
+        <createIndex indexName="address_shoutout_mappings_address_component_id_shoutout_id_inde" tableName="address_shoutout_mappings">
+            <column name="address_component_id"/>
+            <column name="shoutout_id"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:address_shoutout_mappings.address_component_id">
+        <addForeignKeyConstraint baseColumnNames="address_component_id" baseTableName="address_shoutout_mappings" constraintName="address_shoutout_mappings_address_component_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="address_components" validate="true"/>
+    </changeSet>
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:address_shoutout_mappings.shoutout_id">
+        <addForeignKeyConstraint baseColumnNames="shoutout_id" baseTableName="address_shoutout_mappings" constraintName="address_shoutout_mappings_shoutout_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user_shoutouts" validate="true"/>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- user_shoutout_images                                                                                     -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="user_shoutout_images">
+        <createTable tableName="user_shoutout_images">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_shoutout_images_pkey"/>
+            </column>
+            <column name="image_name" type="VARCHAR(255)"/>
+            <column name="image_identifier" type="BIGINT"/>
+            <column name="blur_hash" type="VARCHAR(255)"/>
+            <column name="image_extn" type="VARCHAR(255)"/>
+            <column name="sort_order" type="INTEGER"/>
+            <column defaultValueBoolean="false" name="is_current" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueBoolean="false" name="is_shared" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueBoolean="false" name="is_deleted" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueBoolean="false" name="is_image_sync" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="shoutout_id" type="UUID"/>
+            <column name="shoutout_images" type="TEXT"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:user_shoutout_images:user_shoutout_images_shoutout_id_index">
+        <createIndex indexName="user_shoutout_images_shoutout_id_index" tableName="user_shoutout_images">
+            <column name="shoutout_id"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_user_shoutout_images_deleted_at       -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:user_shoutout_images:deleted_at">
+        <createIndex indexName="idx_user_shoutout_images_deleted_at" tableName="user_shoutout_images">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_user_shoutout_images_is_deleted       -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:user_shoutout_images:is_deleted">
+        <createIndex indexName="idx_user_shoutout_images_is_deleted" tableName="user_shoutout_images">
+            <column name="is_deleted"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:user_shoutout_images.shoutout_id">
+        <addForeignKeyConstraint baseColumnNames="shoutout_id" baseTableName="user_shoutout_images" constraintName="user_shoutout_images_shoutout_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user_shoutouts" validate="true"/>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- user_shoutout_interests                                                                                  -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="user_shoutout_interests">
+        <createTable tableName="user_shoutout_interests">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_shoutout_interests_pkey"/>
+            </column>
+            <column name="shoutout_id" type="UUID"/>
+            <column name="user_id" type="UUID"/>
+            <column name="interest_id" type="UUID"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:user_shoutout_interests:user_shoutout_interests_shoutout_id_user_id_interest_id_index">
+        <createIndex indexName="user_shoutout_interests_shoutout_id_user_id_interest_id_index" tableName="user_shoutout_interests">
+            <column name="shoutout_id"/>
+            <column name="user_id"/>
+            <column name="interest_id"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_user_shoutout_interests_deleted_at    -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:user_shoutout_interests:deleted_at">
+        <createIndex indexName="idx_user_shoutout_interests_deleted_at" tableName="user_shoutout_interests">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:user_shoutout_interests.interest_id">
+        <addForeignKeyConstraint baseColumnNames="interest_id" baseTableName="user_shoutout_interests" constraintName="user_shoutout_interests_interest_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="interests" validate="true"/>
+    </changeSet>
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:user_shoutout_interests.shoutout_id">
+        <addForeignKeyConstraint baseColumnNames="shoutout_id" baseTableName="user_shoutout_interests" constraintName="user_shoutout_interests_shoutout_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user_shoutouts" validate="true"/>
+    </changeSet>
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:user_shoutout_interests.user_id">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="user_shoutout_interests" constraintName="user_shoutout_interests_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- user_shoutouts_images                                                                                    -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="user_shoutouts_images">
+        <createTable tableName="user_shoutouts_images">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_shoutouts_images_pkey"/>
+            </column>
+            <column name="shoutout_images" type="VARCHAR(255)"/>
+            <column name="image_identifier" type="BIGINT"/>
+            <column name="blur_hash" type="VARCHAR(255)"/>
+            <column name="shoutout_id" type="UUID"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:user_shoutouts_images:user_shoutouts_images_shoutout_id_index">
+        <createIndex indexName="user_shoutouts_images_shoutout_id_index" tableName="user_shoutouts_images">
+            <column name="shoutout_id"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_user_shoutouts_images_deleted_at      -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:user_shoutouts_images:deleted_at">
+        <createIndex indexName="idx_user_shoutouts_images_deleted_at" tableName="user_shoutouts_images">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:user_shoutouts_images.shoutout_id">
+        <addForeignKeyConstraint baseColumnNames="shoutout_id" baseTableName="user_shoutouts_images" constraintName="user_shoutouts_images_shoutout_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user_shoutouts" validate="true"/>
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!-- splashs                                                                                                  -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="splashs">
+        <createTable tableName="splashs">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="splashs_pkey"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="email" type="VARCHAR(255)"/>
+            <column defaultValueBoolean="false" name="is_deleted" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="city" type="VARCHAR(255)"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_splashs_deleted_at                    -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:splashs:deleted_at">
+        <createIndex indexName="idx_splashs_deleted_at" tableName="splashs">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_splashs_is_deleted                    -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:splashs:is_deleted">
+        <createIndex indexName="idx_splashs_is_deleted" tableName="splashs">
+            <column name="is_deleted"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!-- drop_down_master_tables                                                                                  -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="drop_down_master_tables">
+        <createTable tableName="drop_down_master_tables">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="drop_down_master_tables_pkey"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+            <column defaultValueBoolean="false" name="is_child_control" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="section" type="VARCHAR(255)"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_drop_down_master_tables_deleted_at    -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:drop_down_master_tables:deleted_at">
+        <createIndex indexName="idx_drop_down_master_tables_deleted_at" tableName="drop_down_master_tables">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- drop_down_sub_master_tables                                                                              -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="drop_down_sub_master_tables">
+        <createTable tableName="drop_down_sub_master_tables">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="drop_down_sub_master_tables_pkey"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="sort_order" type="INTEGER"/>
+            <column name="status_id" type="UUID"/>
+            <column name="drop_down_master_table_id" type="UUID"/>
+            <column name="updated_by" type="VARCHAR(255)"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:drop_down_sub_master_tables:drop_down_sub_master_tables_drop_down_master_table_id_index">
+        <createIndex indexName="drop_down_sub_master_tables_drop_down_master_table_id_index" tableName="drop_down_sub_master_tables">
+            <column name="drop_down_master_table_id"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ............................................. -->
+    <!-- idx_drop_down_sub_master_tables_deleted_at    -->
+    <!-- ............................................. -->
+    <changeSet author="kebrings" id="idx:drop_down_sub_master_tables:deleted_at">
+        <createIndex indexName="idx_drop_down_sub_master_tables_deleted_at" tableName="drop_down_sub_master_tables">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:drop_down_sub_master_tables.drop_down_master_table_id">
+        <addForeignKeyConstraint baseColumnNames="drop_down_master_table_id" baseTableName="drop_down_sub_master_tables" constraintName="drop_down_sub_master_tables_drop_down_master_table_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="drop_down_master_tables" validate="true"/>
+    </changeSet>
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:drop_down_sub_master_tables.status_id">
+        <addForeignKeyConstraint baseColumnNames="status_id" baseTableName="drop_down_sub_master_tables" constraintName="drop_down_sub_master_tables_status_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="statuses" validate="true"/>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- had_cdn_moments                                                                                          -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="had_cdn_moments">
+        <createTable tableName="had_cdn_moments">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="had_cdn_moments_pkey"/>
+            </column>
+            <column name="moment_id" type="UUID"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:had_cdn_moments:had_cdn_moments_moment_id_index">
+        <createIndex indexName="had_cdn_moments_moment_id_index" tableName="had_cdn_moments">
+            <column name="moment_id"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_had_cdn_moments_deleted_at            -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:had_cdn_moments:deleted_at">
+        <createIndex indexName="idx_had_cdn_moments_deleted_at" tableName="had_cdn_moments">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:had_cdn_moments.moment_id">
+        <addForeignKeyConstraint baseColumnNames="moment_id" baseTableName="had_cdn_moments" constraintName="had_cdn_moments_moment_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user_moments" validate="true"/>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- had_cdn_users                                                                                            -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="had_cdn_users">
+        <createTable tableName="had_cdn_users">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="had_cdn_users_pkey"/>
+            </column>
+            <column name="user_id" type="UUID"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:had_cdn_users:had_cdn_users_user_id_index">
+        <createIndex indexName="had_cdn_users_user_id_index" tableName="had_cdn_users">
+            <column name="user_id"/>
+        </createIndex>
+    </changeSet>
+
+
+
+    <!-- ......................................... -->
+    <!-- idx_had_cdn_users_deleted_at              -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:had_cdn_users:deleted_at">
+        <createIndex indexName="idx_had_cdn_users_deleted_at" tableName="had_cdn_users">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:had_cdn_users.user_id">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="had_cdn_users" constraintName="had_cdn_users_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!-- test_moments                                                                                             -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="test_moments">
+        <createTable tableName="test_moments">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="test_moments_pkey"/>
+            </column>
+            <column name="moment_title" type="VARCHAR(255)"/>
+            <column name="moment_description" type="TEXT"/>
+            <column name="moment_country" type="VARCHAR(255)"/>
+            <column name="moment_city" type="VARCHAR(255)"/>
+            <column name="moment_location" type="VARCHAR(255)"/>
+            <column name="moment_latitude" type="VARCHAR(255)"/>
+            <column name="moment_longitude" type="VARCHAR(255)"/>
+            <column defaultValueBoolean="false" name="is_shared" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueBoolean="false" name="is_deleted" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueBoolean="false" name="is_moment_image_sync" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="api_version" type="INTEGER"/>
+            <column name="created_date" type="date"/>
+            <column name="last_modified_date" type="date"/>
+            <column name="user_id" type="UUID"/>
+            <column name="shoutout_id" type="UUID"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:test_moments:test_moments_user_id_shoutout_id_index">
+        <createIndex indexName="test_moments_user_id_shoutout_id_index" tableName="test_moments">
+            <column name="user_id"/>
+            <column name="shoutout_id"/>
+        </createIndex>
+    </changeSet>
+
+
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:test_moments.shoutout_id">
+        <addForeignKeyConstraint baseColumnNames="shoutout_id" baseTableName="test_moments" constraintName="test_moments_shoutout_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user_shoutouts" validate="true"/>
+    </changeSet>
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:test_moments.user_id">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="test_moments" constraintName="test_moments_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- careers                                                                                                  -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="careers">
+        <createTable tableName="careers">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="careers_pkey"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="email_address" type="VARCHAR(255)"/>
+            <column name="phone_number" type="VARCHAR(255)"/>
+            <column name="school" type="VARCHAR(255)"/>
+            <column name="major" type="VARCHAR(255)"/>
+            <column name="graduation_date" type="date"/>
+            <column name="resume" type="VARCHAR(255)"/>
+            <column name="cover_letter" type="VARCHAR(255)"/>
+            <column defaultValueBoolean="false" name="is_downloaded" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="referal_code" type="VARCHAR(255)"/>
+            <column defaultValueBoolean="false" name="is_android_ios" type="BOOLEAN"/>
+            <column defaultValueBoolean="false" name="is_intitutiveand_easy" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueBoolean="false" name="is_fast" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueBoolean="false" name="is_coolandapealing" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="dowant_travel" type="INTEGER"/>
+            <column name="features_you_like" type="VARCHAR(255)"/>
+            <column name="suggestion" type="VARCHAR(255)"/>
+            <column name="why_applying" type="VARCHAR(255)"/>
+            <column name="why_fit_for_position" type="VARCHAR(255)"/>
+            <column name="hobbies" type="VARCHAR(255)"/>
+            <column defaultValueBoolean="false" name="is_deleted" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="job_type" type="VARCHAR(255)"/>
+            <column name="work_type" type="VARCHAR(255)"/>
+            <column name="area_interest" type="VARCHAR(255)"/>
+            <column name="applicant_country" type="VARCHAR(255)"/>
+            <column name="applicant_state" type="VARCHAR(255)"/>
+            <column name="applicant_city" type="VARCHAR(255)"/>
+            <column name="hear_about_us" type="VARCHAR(255)"/>
+            <column name="hear_about_us_textbox" type="VARCHAR(255)"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_careers_deleted_at                    -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:careers:deleted_at">
+        <createIndex indexName="idx_careers_deleted_at" tableName="careers">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_careers_is_deleted                    -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:careers:is_deleted">
+        <createIndex indexName="idx_careers_is_deleted" tableName="careers">
+            <column name="is_deleted"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- restaurants                                                                                              -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="restaurants">
+        <createTable tableName="restaurants">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="restaurants_pkey"/>
+            </column>
+            <column name="restaurant_name" type="VARCHAR(255)"/>
+            <column name="latitude" type="FLOAT8"/>
+            <column name="longitude" type="FLOAT8"/>
+            <column name="address" type="VARCHAR(255)"/>
+            <column defaultValueBoolean="false" name="is_deleted" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="UUID"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:restaurants:restaurants_user_id_index">
+        <createIndex indexName="restaurants_user_id_index" tableName="restaurants">
+            <column name="user_id"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_restaurants_deleted_at                -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:restaurants:deleted_at">
+        <createIndex indexName="idx_restaurants_deleted_at" tableName="restaurants">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_restaurants_is_deleted                -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:restaurants:is_deleted">
+        <createIndex indexName="idx_restaurants_is_deleted" tableName="restaurants">
+            <column name="is_deleted"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:restaurants.user_id">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="restaurants" constraintName="restaurants_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- user_moment_likes                                                                                        -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="user_moment_likes">
+        <createTable tableName="user_moment_likes">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_moment_likes_pkey"/>
+            </column>
+            <column name="is_liked" type="BOOLEAN"/>
+            <column name="user_id" type="UUID"/>
+            <column name="moment_id" type="UUID"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:user_moment_likes:user_moment_likes_user_id_moment_id_index">
+        <createIndex indexName="user_moment_likes_user_id_moment_id_index" tableName="user_moment_likes">
+            <column name="user_id"/>
+            <column name="moment_id"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_user_moment_likes_deleted_at          -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:user_moment_likes:deleted_at">
+        <createIndex indexName="idx_user_moment_likes_deleted_at" tableName="user_moment_likes">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:user_moment_likes.moment_id">
+        <addForeignKeyConstraint baseColumnNames="moment_id" baseTableName="user_moment_likes" constraintName="user_moment_likes_moment_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user_moments" validate="true"/>
+    </changeSet>
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:user_moment_likes.user_id">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="user_moment_likes" constraintName="user_moment_likes_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- elmah_errors                                                                                             -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="elmah_errors">
+        <createTable tableName="elmah_errors">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="elmah_errors_pkey"/>
+            </column>
+            <column name="application" type="VARCHAR(255)"/>
+            <column name="host" type="VARCHAR(255)"/>
+            <column name="error_type" type="VARCHAR(255)"/>
+            <column name="source" type="VARCHAR(255)"/>
+            <column name="message" type="VARCHAR(255)"/>
+            <column name="status_code" type="INTEGER"/>
+            <column name="time_utc" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="sequence" type="INTEGER"/>
+            <column name="all_xml" type="TEXT"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!-- admin_tests                                                                                              -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="admin_tests">
+        <createTable tableName="admin_tests">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="admin_tests_pkey"/>
+            </column>
+            <column name="first_name" type="VARCHAR(255)"/>
+            <column name="last_name" type="VARCHAR(255)"/>
+            <column name="city" type="VARCHAR(255)"/>
+            <column name="password" type="VARCHAR(255)"/>
+            <column name="role_id" type="VARCHAR(255)"/>
+            <column defaultValueBoolean="false" name="is_super_admin" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="VARCHAR(255)"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_admin_tests_deleted_at                -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:admin_tests:deleted_at">
+        <createIndex indexName="idx_admin_tests_deleted_at" tableName="admin_tests">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:admin_tests.role_id">
+        <addForeignKeyConstraint baseColumnNames="role_id" baseTableName="admin_tests" constraintName="admin_tests_role_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="roles" validate="true"/>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- user_notifications_types                                                                                 -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="user_notifications_types">
+        <createTable tableName="user_notifications_types">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_notifications_types_pkey"/>
+            </column>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_user_notifications_types_deleted_at   -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:user_notifications_types:deleted_at">
+        <createIndex indexName="idx_user_notifications_types_deleted_at" tableName="user_notifications_types">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- frequently_asked_questions                                                                               -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="frequently_asked_questions">
+        <createTable tableName="frequently_asked_questions">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="frequently_asked_questions_pkey"/>
+            </column>
+            <column name="question" type="TEXT"/>
+            <column name="answer" type="TEXT"/>
+            <column name="category" type="VARCHAR(255)"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ........................................... -->
+    <!-- idx_frequently_asked_questions_deleted_at   -->
+    <!-- ........................................... -->
+    <changeSet author="kebrings" id="idx:frequently_asked_questions:deleted_at">
+        <createIndex indexName="idx_frequently_asked_questions_deleted_at" tableName="frequently_asked_questions">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- jetzy_test_septs                                                                                         -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="jetzy_test_septs">
+        <createTable tableName="jetzy_test_septs">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="jetzy_test_septs_pkey"/>
+            </column>
+            <column name="first_name" type="VARCHAR(255)"/>
+            <column name="last_name" type="VARCHAR(255)"/>
+            <column name="address" type="VARCHAR(255)"/>
+            <column name="city" type="VARCHAR(255)"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_jetzy_test_septs_deleted_at       -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:jetzy_test_septs:deleted_at">
+        <createIndex indexName="idx_jetzy_test_septs_deleted_at" tableName="jetzy_test_septs">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- comment_sources                                                                                          -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="comment_sources">
+        <createTable tableName="comment_sources">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="comment_sources_pkey"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+            <column defaultValueBoolean="false" name="is_deleted" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_comment_sources_deleted_at            -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:comment_sources:deleted_at">
+        <createIndex indexName="idx_comment_sources_deleted_at" tableName="comment_sources">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_comment_sources_is_deleted            -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:comment_sources:is_deleted">
+        <createIndex indexName="idx_comment_sources_is_deleted" tableName="comment_sources">
+            <column name="is_deleted"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- comment_sources                           -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="root (generated)" id="comment_sources:initial_data">
+        <loadData
+                tableName="comment_sources"
+                file="./csv/comment_sources.csv"
+                commentLineStartsWith="#"
+                relativeToChangelogFile="true"
+                usePreparedStatements="true"
+        >
+        </loadData>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- comments                                                                                                 -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="comments">
+        <createTable tableName="comments">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="comments_pkey"/>
+            </column>
+            <column name="description" type="TEXT"/>
+            <column defaultValueBoolean="false" name="is_deleted" type="BOOLEAN"/>
+            <column name="comment_source_id" type="UUID"/>
+            <column name="user_id" type="UUID"/>
+            <column name="parent_id" type="UUID"/>
+            <column name="shoutout_id" type="UUID"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_by_id" type="UUID"/>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:comments:comments_comment_source_id_user_id_parent_id_shoutout_id_index">
+        <createIndex indexName="comments_comment_source_id_user_id_parent_id_shoutout_id_index" tableName="comments">
+            <column name="comment_source_id"/>
+            <column name="user_id"/>
+            <column name="parent_id"/>
+            <column name="shoutout_id"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_comments_deleted_at                   -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:comments:deleted_at">
+        <createIndex indexName="idx_comments_deleted_at" tableName="comments">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_comments_is_deleted                   -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:comments:is_deleted">
+        <createIndex indexName="idx_comments_is_deleted" tableName="comments">
+            <column name="is_deleted"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:comments.comment_source_id">
+        <addForeignKeyConstraint baseColumnNames="comment_source_id" baseTableName="comments" constraintName="comments_comment_source_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="comment_sources" validate="true"/>
+    </changeSet>
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:comments.shoutout_id">
+        <addForeignKeyConstraint baseColumnNames="shoutout_id" baseTableName="comments" constraintName="comments_shoutout_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user_shoutouts" validate="true"/>
+    </changeSet>
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:comments.updated_by_id">
+        <addForeignKeyConstraint baseColumnNames="updated_by_id" baseTableName="comments" constraintName="comments_updated_by_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:comments.user_id">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="comments" constraintName="comments_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!-- shoutout_comment_likes                                                                                   -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="shoutout_comment_likes">
+        <createTable tableName="shoutout_comment_likes">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="shoutout_comment_likes_pkey"/>
+            </column>
+            <column name="is_liked" type="BOOLEAN"/>
+            <column name="user_id" type="UUID"/>
+            <column name="comment_id" type="UUID"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_shoutout_comment_likes_deleted_at     -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:shoutout_comment_likes:deleted_at">
+        <createIndex indexName="idx_shoutout_comment_likes_deleted_at" tableName="shoutout_comment_likes">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:shoutout_comment_likes.comment_id">
+        <addForeignKeyConstraint baseColumnNames="comment_id" baseTableName="shoutout_comment_likes" constraintName="shoutout_comment_likes_comment_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="comments" validate="true"/>
+    </changeSet>
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:shoutout_comment_likes.user_id">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="shoutout_comment_likes" constraintName="shoutout_comment_likes_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!-- comment_replies                                                                                          -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="comment_replies">
+        <createTable tableName="comment_replies">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="comment_replies_pkey"/>
+            </column>
+            <column name="parent_comment_id" type="UUID"/>
+            <column name="child_comment_id" type="UUID"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:comment_replies:comment_replies_parent_comment_id_child_comment_id_index">
+        <createIndex indexName="comment_replies_parent_comment_id_child_comment_id_index" tableName="comment_replies">
+            <column name="parent_comment_id"/>
+            <column name="child_comment_id"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_comment_replies_deleted_at            -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:comment_replies:deleted_at">
+        <createIndex indexName="idx_comment_replies_deleted_at" tableName="comment_replies">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:comment_replies.child_comment_id">
+        <addForeignKeyConstraint baseColumnNames="child_comment_id" baseTableName="comment_replies" constraintName="comment_replies_child_comment_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="comments" validate="true"/>
+    </changeSet>
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:comment_replies.parent_comment_id">
+        <addForeignKeyConstraint baseColumnNames="parent_comment_id" baseTableName="comment_replies" constraintName="comment_replies_parent_comment_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="comments" validate="true"/>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- user_comments_tagged                                                                                     -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="user_comments_tagged">
+        <createTable tableName="user_comments_tagged">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_comments_tagged_pkey"/>
+            </column>
+            <column name="parent_id" type="UUID"/>
+            <column name="user_id" type="UUID"/>
+            <column name="email" type="VARCHAR(255)"/>
+            <column name="contact_number" type="VARCHAR(255)"/>
+            <column defaultValueBoolean="false" name="flag" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="comment_source_id" type="UUID"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="shoutout_id" type="UUID"/>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:user_comments_tagged:user_comments_tagged_comment_source_id_index">
+        <createIndex indexName="user_comments_tagged_comment_source_id_index" tableName="user_comments_tagged">
+            <column name="comment_source_id"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_user_comments_tagged_deleted_at       -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:user_comments_tagged:deleted_at">
+        <createIndex indexName="idx_user_comments_tagged_deleted_at" tableName="user_comments_tagged">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:user_comments_tagged.comment_source_id">
+        <addForeignKeyConstraint baseColumnNames="comment_source_id" baseTableName="user_comments_tagged" constraintName="user_comments_tagged_comment_source_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="comment_sources" validate="true"/>
+    </changeSet>
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:user_comments_tagged.parent_id">
+        <addForeignKeyConstraint baseColumnNames="parent_id" baseTableName="user_comments_tagged" constraintName="user_comments_tagged_parent_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="comments" validate="true"/>
+    </changeSet>
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:user_comments_tagged.shoutout_id">
+        <addForeignKeyConstraint baseColumnNames="shoutout_id" baseTableName="user_comments_tagged" constraintName="user_comments_tagged_shoutout_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user_shoutouts" validate="true"/>
+    </changeSet>
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:user_comments_tagged.user_id">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="user_comments_tagged" constraintName="user_comments_tagged_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!-- like_details                                                                                             -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="like_details">
+        <createTable tableName="like_details">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="like_details_pkey"/>
+            </column>
+            <column name="is_old_moment" type="BOOLEAN"/>
+            <column name="like_source_id" type="UUID"/>
+            <column name="user_id" type="UUID"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueBoolean="true" name="liked" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="item_id" type="UUID"/>
+        </createTable>
+    </changeSet>
+
+
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:like_details:like_details_like_source_id_user_id_index">
+        <createIndex indexName="like_details_like_source_id_user_id_index" tableName="like_details">
+            <column name="like_source_id"/>
+            <column name="user_id"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:like_details:like_details_item_id_index">
+        <createIndex indexName="like_details_item_id_index" tableName="like_details">
+            <column name="item_id"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_like_details_deleted_at               -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:like_details:deleted_at">
+        <createIndex indexName="idx_like_details_deleted_at" tableName="like_details">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:like_details.item_id">
+        <addForeignKeyConstraint baseColumnNames="item_id" baseTableName="like_details" constraintName="like_details_item_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="user_shoutouts" validate="true"/>
+    </changeSet>
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:like_details.like_source_id">
+        <addForeignKeyConstraint baseColumnNames="like_source_id" baseTableName="like_details" constraintName="like_details_like_source_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="like_sources" validate="true"/>
+    </changeSet>
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:like_details.user_id">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="like_details" constraintName="like_details_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+
+
+</databaseChangeLog>

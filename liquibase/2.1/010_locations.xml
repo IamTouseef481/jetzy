@@ -1,0 +1,1089 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <!-- ######################################################################################################## -->
+    <!-- ........................................................................................................ -->
+    <!-- Lookup Tables                                                                                            -->
+    <!-- ........................................................................................................ -->
+    <!-- ######################################################################################################## -->
+
+    <!-- ======================================================================================================== -->
+    <!-- location_type                                                                                            -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="location_type">
+        <createTable tableName="vnext_location_type" remarks="Location Type Lookup Table: Neighborhood, region, borough, etc.">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="INT" autoIncrement="false"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="description" remarks="versioned_string" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_location_type:standard                -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_location_type:standard">
+        <createIndex
+                indexName="idx_location_type_created_on"
+                tableName="vnext_location_type">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_location_type_modified_on"
+                tableName="vnext_location_type">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_location_type_deleted_on"
+                tableName="vnext_location_type">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_location_type_description                  -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_location_type_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_location_type"
+                                 constraintName="fk_location_type_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_string"
+        />
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!-- location_zone                                                                                            -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="location_zone">
+        <createTable tableName="vnext_location_zone" remarks="Location Type Lookup Table: Neighborhood, region, borough, etc.">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="INT" autoIncrement="false"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="description" remarks="versioned_string" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_location_zone:standard                -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_location_zone:standard">
+        <createIndex
+                indexName="idx_location_zone_created_on"
+                tableName="vnext_location_zone">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_location_zone_modified_on"
+                tableName="vnext_location_zone">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_location_zone_deleted_on"
+                tableName="vnext_location_zone">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_location_zone_description                  -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_location_zone_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_location_zone"
+                                 constraintName="fk_location_zone_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_string"
+        />
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!-- location_image_type                                                                                      -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="location_image_type">
+        <createTable tableName="vnext_location_image_type" remarks="Location Type Lookup Table: Neighborhood, region, borough, etc.">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="INT" autoIncrement="false"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="description" remarks="versioned_string" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_location_image_type:standard                -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_location_image_type:standard">
+        <createIndex
+                indexName="idx_location_image_type_created_on"
+                tableName="vnext_location_image_type">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_location_image_type_modified_on"
+                tableName="vnext_location_image_type">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_location_image_type_deleted_on"
+                tableName="vnext_location_image_type">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_location_image_type_description                  -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_location_image_type_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_location_image_type"
+                                 constraintName="fk_location_image_type_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_string"
+        />
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- location_source                                                                                          -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="location_source">
+        <createTable tableName="vnext_location_source" remarks="Location Source Lookup Table: Google, Bing, Baidu, etc.">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="INT" autoIncrement="false"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="description" remarks="versioned_string" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_location_source                       -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_location_source">
+        <createIndex
+                indexName="idx_location_source_created_on"
+                tableName="vnext_location_source">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_location_source_modified_on"
+                tableName="vnext_location_source">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_location_source_deleted_on"
+                tableName="vnext_location_source">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_location_source_description                -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_location_source_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_location_source"
+                                 constraintName="fk_location_source_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_string"
+        />
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- address_type                                                                                             -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="address_type">
+        <createTable tableName="vnext_address_type">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="INT" autoIncrement="false"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="description" remarks="versioned_string" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_address_type:standard                 -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_address_type:standard">
+        <createIndex
+                indexName="idx_address_type_created_on"
+                tableName="vnext_address_type">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_address_type_modified_on"
+                tableName="vnext_address_type">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_address_type_deleted_on"
+                tableName="vnext_address_type">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_address_type_description                   -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_address_type_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_address_type"
+                                 constraintName="fk_address_type_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_string"
+        />
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!-- location_relation_type                                                                                   -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="location_relation_type">
+        <createTable tableName="vnext_location_relation_type">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="INT" autoIncrement="false"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="description" remarks="versioned_string" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_location_relation_type:standard       -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_location_relation_type:standard">
+        <createIndex
+                indexName="idx_location_relation_type_created_on"
+                tableName="vnext_location_relation_type">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_location_relation_type_modified_on"
+                tableName="vnext_location_relation_type">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_location_relation_type_deleted_on"
+                tableName="vnext_location_relation_type">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_location_relation_type_description         -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_location_relation_type_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_location_relation_type"
+                                 constraintName="fk_location_relation_type_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_string"
+        />
+    </changeSet>
+
+
+
+    <!-- ######################################################################################################## -->
+    <!-- ........................................................................................................ -->
+    <!-- Standard Tables                                                                                          -->
+    <!-- ........................................................................................................ -->
+    <!-- ######################################################################################################## -->
+
+    <!-- ........................................................................................................ -->
+    <!-- ======================================================================================================== -->
+    <!-- Core Location Tables                                                                                     -->
+    <!-- ======================================================================================================== -->
+    <!-- ........................................................................................................ -->
+
+    <!-- ======================================================================================================== -->
+    <!-- location_country                                                                                         -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="location_country">
+        <createTable tableName="vnext_location_country">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="status" type="INT"><constraints nullable="false"/></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings & CMS -->
+            <column name="name" type="varchar(256)"/>
+            <column name="details" remarks="cms" type="UUID"><constraints nullable="true"/></column>
+
+            <!-- <column name="official_name" type="nvarchar(255)" defaultValue=""><constraints nullable="false"/></column> -->
+            <column name="iso_3166_code" type="char(2)"><constraints nullable="true"/></column>
+            <column name="flag_emoji" type="varchar(2)"><constraints nullable="true"/></column>
+
+            <column name="geo_latitude" type="double"><constraints nullable="true"/></column>
+            <column name="geo_longitude" type="double"><constraints nullable="true"/></column>
+            <column name="geo_radius" type="double"><constraints nullable="true"/></column>
+            <column name="geo_zone" type="BIGINT"><constraints nullable="true"/></column>
+            <column name="geo_geometry" type="geometry"><constraints nullable="true"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+        <sql dbms="mariadb" splitStatements="true" stripComments="true">
+            ALTER TABLE jetzy.location_country MODIFY COLUMN flag_emoji VARCHAR(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL;
+        </sql>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_location_country:standard             -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_location_country:standard">
+        <createIndex
+                indexName="idx_location_country_code"
+                tableName="vnext_location_country">
+            <column name="iso_3166_code"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_location_country_created_on"
+                tableName="vnext_location_country">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_location_country_modified_on"
+                tableName="vnext_location_country">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_location_country_deleted_on"
+                tableName="vnext_location_country">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!-- location_state                                                                                           -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="location_state">
+        <createTable tableName="vnext_location_state">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+            <column name="location_country" remarks="denormalized from address field" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="status" type="INT"><constraints nullable="false"/></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings & CMS -->
+            <column name="name" type="varchar(256)"/>
+            <column name="details" remarks="cms" type="UUID"><constraints nullable="true"/></column>
+
+            <column name="geo_latitude" type="double"><constraints nullable="true"/></column>
+            <column name="geo_longitude" type="double"><constraints nullable="true"/></column>
+            <column name="geo_radius" type="double"><constraints nullable="true"/></column>
+            <column name="geo_zone" type="BIGINT"><constraints nullable="true"/></column>
+            <column name="geo_geometry" type="geometry"><constraints nullable="true"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_location_state:standard               -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_location_state:standard">
+        <createIndex
+                indexName="idx_location_state_country"
+                tableName="vnext_location_state">
+            <column name="location_country"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_location_state_created_on"
+                tableName="vnext_location_state">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_location_state_modified_on"
+                tableName="vnext_location_state">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_location_state_deleted_on"
+                tableName="vnext_location_state">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- location_city                                                                                            -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="location_city">
+        <createTable tableName="vnext_location_city" >
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings & CMS -->
+            <column name="location_state" remarks="denormalized from address field" type="UUID"><constraints nullable="false"/></column>
+
+            <column name="name" type="varchar(256)"/>
+            <column name="location_country" type="UUID"/>
+
+            <column name="details" remarks="cms" type="UUID"><constraints nullable="true"/></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="status" type="INT"><constraints nullable="false"/></column>
+
+            <column name="geo_latitude" type="double"><constraints nullable="true"/></column>
+            <column name="geo_longitude" type="double"><constraints nullable="true"/></column>
+            <column name="geo_radius" type="double"><constraints nullable="true"/></column>
+            <column name="geo_zone" type="BIGINT"><constraints nullable="true"/></column>
+            <column name="geo_geometry" type="geometry"><constraints nullable="true"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_location_city:standard                -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_location_city:standard">
+        <createIndex
+                indexName="idx_location_city_state"
+                tableName="vnext_location_city">
+            <column name="location_state"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_location_city_created_on"
+                tableName="vnext_location_city">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_location_city_modified_on"
+                tableName="vnext_location_city">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_location_city_deleted_on"
+                tableName="vnext_location_city">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- location_place                                                                                           -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="location_place">
+        <createTable tableName="vnext_location_place" >
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings & CMS -->
+            <column name="location_country" remarks="denormalized from address field" type="UUID"><constraints nullable="true"/></column>
+            <column name="location_state" remarks="denormalized from address field" type="UUID"><constraints nullable="true"/></column>
+            <column name="location_city" remarks="denormalized from address field" type="UUID"><constraints nullable="true"/></column>
+
+            <column name="address" remarks="versioned_address" type="UUID"><constraints nullable="false"/></column>
+            <column name="details" remarks="cms" type="UUID"><constraints nullable="true"/></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="location_type" defaultValueNumeric="0" type="INT"><constraints nullable="false"/></column>
+            <column name="status" type="INT"><constraints nullable="false"/></column>
+
+            <column name="geo_latitude" type="double"><constraints nullable="true"/></column>
+            <column name="geo_longitude" type="double"><constraints nullable="true"/></column>
+            <column name="geo_radius" type="double"><constraints nullable="true"/></column>
+            <column name="geo_zone" type="BIGINT"><constraints nullable="true"/></column>
+            <column name="geo_geometry" type="geometry"><constraints nullable="true"/></column>
+
+            <column name="place_key" type="VARCHAR(256)"/>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="kebrings" id="idx_location_place_key:standard">
+    <createIndex
+            indexName="idx_location_place_key"
+            tableName="vnext_location_place">
+        <column name="place_key"/>
+    </createIndex>
+    </changeSet>
+    <!-- ......................................... -->
+    <!-- idx_location_place:standard               -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_location_place:standard">
+        <createIndex
+                indexName="idx_location_place_country"
+                tableName="vnext_location_place">
+            <column name="location_country"/>
+            <column name="location_state"/>
+            <column name="location_city"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_location_place_state"
+                tableName="vnext_location_place">
+            <column name="location_state"/>
+            <column name="location_city"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_location_place_city"
+                tableName="vnext_location_place">
+            <column name="location_city"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_location_place_created_on"
+                tableName="vnext_location_place">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_location_place_modified_on"
+                tableName="vnext_location_place">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_location_place_deleted_on"
+                tableName="vnext_location_place">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_location_place_address                     -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_location_place_address">
+        <addForeignKeyConstraint baseColumnNames="address"
+                                 baseTableName="vnext_location_place"
+                                 constraintName="fk_location_place_address"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_address"
+        />
+    </changeSet>
+
+    <!-- ........................................................................................................ -->
+    <!-- ======================================================================================================== -->
+    <!-- Extension Tables                                                                                         -->
+    <!-- ======================================================================================================== -->
+    <!-- ........................................................................................................ -->
+
+    <!-- ======================================================================================================== -->
+    <!-- location_image                                                                                           -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="location_image">
+        <createTable tableName="vnext_location_image" remarks="designate a location as part of or near other locations/landmarks, etc.">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Primary Relations -->
+            <column name="location" type="UUID" remarks="location"><constraints nullable="false"/></column>
+            <column name="image" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="locale_language" type="INT" remarks="Locale Language"><constraints nullable="false"/></column>
+            <column name="locale_country" type="INT" remarks="Locale Country"><constraints nullable="false"/></column>
+            <column name="localized" type="boolean" defaultValueNumeric="0"><constraints nullable="false"/></column>
+            <column name="status" type="INT"><constraints nullable="false"/></column>
+            <column name="added_by" remarks="entity/user/system" type="UUID"><constraints nullable="false"/></column>
+            <column name="location_image_type" type="INT"><constraints nullable="false"/></column>
+            <column name="weight" type="BIGINT"><constraints nullable="true"/></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="description" type="UUID" remarks="versioned_image_string"><constraints nullable="true"/></column>
+
+            <!-- Moderation  -->
+            <column name="moderation_status" type="INT"><constraints nullable="false"/></column>
+            <column name="flagged" type="INT"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_location_image:standard               -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_location_image:standard">
+        <createIndex
+                indexName="idx_location_image"
+                tableName="vnext_location_image">
+            <column name="location"/>
+            <column name="image"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_location_image_moderation_status"
+                tableName="vnext_location_image">
+            <column name="moderation_status"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_location_image_flagged"
+                tableName="vnext_location_image">
+            <column name="flagged"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_location_image_added_by"
+                tableName="vnext_location_image">
+            <column name="added_by"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_location_image_created_on"
+                tableName="vnext_location_image">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_location_image_modified_on"
+                tableName="vnext_location_image">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_location_image_deleted_on"
+                tableName="vnext_location_image">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_location_image_description                 -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_location_image_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_location_image"
+                                 constraintName="fk_location_image_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_image_string"
+        />
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- location_redirect                                                                                        -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="location_redirect">
+        <createTable tableName="vnext_location_redirect" remarks="collapse duplicate entries">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="location" type="UUID"><constraints nullable="false"/></column>
+            <column name="redirect_to" type="UUID"><constraints nullable="false"/></column>
+            <column name="added_by" remarks="entity/user/system" type="UUID"><constraints nullable="false"/></column>
+            <column name="note" type="UUID"><constraints nullable="true"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_location_redirect:standard            -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_location_redirect:standard">
+        <createIndex
+                indexName="idx_location_redirect"
+                tableName="vnext_location_redirect">
+            <column name="location"/>
+            <column name="redirect_to"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_location_redirect_created_on"
+                tableName="vnext_location_redirect">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_location_redirect_modified_on"
+                tableName="vnext_location_redirect">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_location_redirect_deleted_on"
+                tableName="vnext_location_redirect">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_location_redirect_note                     -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_location_redirect_note">
+        <addForeignKeyConstraint baseColumnNames="note"
+                                 baseTableName="vnext_location_redirect"
+                                 constraintName="fk_location_redirect_note"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_location_versioned_string"
+        />
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- location_relation                                                                               -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="location_relation">
+        <createTable tableName="vnext_location_relation" remarks="designate a location as part of or near other locations/landmarks, etc.">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="location" type="UUID"><constraints nullable="false"/></column>
+            <column name="location_relation" type="UUID"><constraints nullable="false"/></column>
+            <column name="location_relation_type" type="INT"><constraints nullable="false"/></column>
+            <column name="added_by" remarks="entity/user/system" type="UUID"><constraints nullable="false"/></column>
+            <column name="description" type="UUID"><constraints nullable="true"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_location_relation:standard   -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_location_relation:standard">
+        <createIndex
+                indexName="idx_location_relation"
+                tableName="vnext_location_relation">
+            <column name="location"/>
+            <column name="location_relation"/>
+        </createIndex>
+
+        <createIndex
+                indexName="idx_location_relation_location_by_type"
+                tableName="vnext_location_relation">
+            <column name="location"/>
+            <column name="location_relation_type"/>
+            <column name="location_relation"/>
+        </createIndex>
+
+        <createIndex
+                indexName="idx_location_relation_location_to_type"
+                tableName="vnext_location_relation">
+            <column name="location_relation"/>
+            <column name="location_relation_type"/>
+            <column name="location"/>
+        </createIndex>
+
+        <createIndex
+                indexName="idx_location_relation_added_by"
+                tableName="vnext_location_relation">
+            <column name="added_by"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_location_relation_created_on"
+                tableName="vnext_location_relation">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_location_relation_modified_on"
+                tableName="vnext_location_relation">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_location_relation_deleted_on"
+                tableName="vnext_location_relation">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_location_relation_description     -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_location_relation_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_location_relation"
+                                 constraintName="fk_location_relation_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_location_versioned_string"
+        />
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- location_alternative_name                                                                                -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="location_alternative_name">
+        <createTable tableName="vnext_location_alternative_name" remarks="alternative names for location places and other types.">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="location" remarks="any type of location" type="UUID"><constraints nullable="false"/></column>
+            <column name="alternative_name" type="UUID"><constraints nullable="false"/></column>
+            <column name="added_by" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="status" type="INT"><constraints nullable="false"/></column>
+
+            <!-- Moderation  -->
+            <column name="moderation_status" type="INT"><constraints nullable="false"/></column>
+            <column name="flagged" type="INT"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_location_alternative_name:standard    -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_location_alternative_name:standard">
+        <createIndex
+                indexName="idx_location_alternative_name_location"
+                tableName="vnext_location_alternative_name">
+            <column name="location"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_location_alternative_name_added_by"
+                tableName="vnext_location_alternative_name">
+            <column name="added_by"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_location_alternative_name_moderation_status"
+                tableName="vnext_location_alternative_name">
+            <column name="moderation_status"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_location_alternative_name_flagged"
+                tableName="vnext_location_alternative_name">
+            <column name="flagged"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_location_alternative_name_created_on"
+                tableName="vnext_location_alternative_name">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_location_alternative_name_modified_on"
+                tableName="vnext_location_alternative_name">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_location_alternative_name_deleted_on"
+                tableName="vnext_location_alternative_name">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_location_alternative_name_alt              -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_location_alternative_name_alt">
+        <addForeignKeyConstraint baseColumnNames="alternative_name"
+                                 baseTableName="vnext_location_alternative_name"
+                                 constraintName="fk_location_alternative_name_alt"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_location_versioned_string"
+        />
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- location_source_google                                                                                             -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="location_source_google">
+        <createTable tableName="vnext_location_source_google" remarks="Locations, bouroughs, neighborhoods, etc.">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations -->
+            <column name="location" type="UUID"><constraints nullable="false"/></column>
+            <column name="location_type" type="INT"><constraints nullable="false"/></column>
+            <column name="added_by" type="UUID"><constraints nullable="false"/></column>
+
+            <column name="hash" type="CHAR(32)"><constraints nullable="false"/></column>
+	    <column name="place" type="NVARCHAR(512)"><constraints nullable="false"/></column>
+            <column name="url" type="NVARCHAR(1024)"><constraints nullable="false"/></column>
+            <column name="icon" type="NVARCHAR(1024)"><constraints nullable="false"/></column>
+            <column name="address" type="TEXT"><constraints nullable="false"/></column>
+            <column name="raw" type="TEXT"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_location_source_google:standard                 -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_location_source_google:standard">
+        <createIndex
+                indexName="idx_location_source_google_location_type"
+                tableName="vnext_location_source_google">
+            <column name="location_type"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_location_source_google_location"
+                tableName="vnext_location_source_google">
+            <column name="location"/>
+        </createIndex>
+
+        <createIndex
+                indexName="idx_location_source_google_added_by"
+                tableName="vnext_location_source_google">
+            <column name="added_by"/>
+        </createIndex>
+
+        <createIndex
+                indexName="idx_location_source_google_hash"
+                tableName="vnext_location_source_google">
+            <column name="hash"/>
+        </createIndex>
+
+	<!--
+	<createIndex
+                indexName="idx_location_source_google_place"
+                tableName="vnext_location_source_google">
+            <column name="place"/>
+        </createIndex>
+        -->
+
+        <createIndex
+                indexName="idx_location_source_google_created_on"
+                tableName="vnext_location_source_google">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_location_source_google_modified_on"
+                tableName="vnext_location_source_google">
+            <column name="modified_on"/>
+        </createIndex>
+
+        <createIndex
+                indexName="idx_location_source_google_deleted_on"
+                tableName="vnext_location_source_google">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!-- location_source_legacy                                                                                    -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="location_source_legacy">
+        <createTable tableName="vnext_location_source_legacy">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Primary Relations -->
+            <column name="location" type="UUID"><constraints nullable="false"/></column>
+            <column name="location_type" type="INT"><constraints nullable="false"/></column>
+            <column name="legacy_record" remarks="legacy_identifier_mapping" type="UUID"><constraints nullable="false"/></column>
+            <column name="added_by" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_location_source_legacy:standard        -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_location_source_legacy:standard">
+        <createIndex
+                indexName="idx_location_source_legacy_location_type"
+                tableName="vnext_location_source_legacy">
+            <column name="location_type"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_location_source_legacy_location"
+                tableName="vnext_location_source_legacy">
+            <column name="location"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_location_source_legacy_legacy_record"
+                tableName="vnext_location_source_legacy">
+            <column name="legacy_record"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_location_source_legacy_added_by"
+                tableName="vnext_location_source_legacy">
+            <column name="added_by"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_location_source_legacy_created_on"
+                tableName="vnext_location_source_legacy">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_location_source_legacy_modified_on"
+                tableName="vnext_location_source_legacy">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_location_source_legacy_deleted_on"
+                tableName="vnext_location_source_legacy">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+</databaseChangeLog>

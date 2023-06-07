@@ -1,0 +1,139 @@
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0, maximum-scale=1.0" />
+    <title>Site Name</title>
+    <style>@media screen and (max-device-width:480px){body{-webkit-text-size-adjust:none}}</style>
+	 <p> <a id = "demo" href="#" onclick="return launch_app_or_alt_url()">Open Jetzy</a><br/> </p>
+	 <script>
+	 var custom = "jetzyapp-shoutouts://1508205151000";
+    var alt = "https://play.google.com/store/apps/details?id=com.icreon.travelconnect";
+    var g_intent = "intent://scan/#Intent;scheme=jetzyapp-shoutouts://1508205151000;package=com.icreon.travelconnect;end";
+    var timer;
+    var heartbeat;
+    var iframe_timer;
+	 
+	 
+	 
+var osType =  getMobileOperatingSystem();
+
+
+ if (osType == "Android"){
+		
+	 var shoutout = getParameterByName('shoutout')
+	//document.getElementById("demo").href = "jetzyapp-shoutouts://" + shoutout;
+     //g_intent = "intent://scan/#Intent;scheme=jetzyapp-shoutouts://1508205151000;package=com.icreon.travelconnect;end";
+	 custom = "jetzyapp-shoutouts://" + shoutout;
+	  g_intent = "intent://scan/#Intent;scheme=jetzyapp-shoutouts://" + shoutout + ";package=com.icreon.travelconnect;end";
+	  
+	  launch_app_or_alt_url()
+
+  }
+  else if(osType == 'iOS'){
+  document.getElementById("demo").innerHTML = "";
+  var shoutout = getParameterByName('shoutout')
+  window.location = 'jetzyapp-shoutouts://' + shoutout; // will result in error message if app not installed
+	
+setTimeout(function() {
+ 
+	window.location = 'fb390436884414356://shoutouts';
+   
+   setTimeout(function() {
+   // Link to the App Store should go here -- only fires if deep link fails                
+   window.location = "https://itunes.apple.com/us/app/jetzy/id1019546379?mt=8";
+}, 1000);
+   
+   
+   
+}, 1000);
+  }
+  else{
+  window.location = "https://www.jetzyapp.com/downloadapp.html";
+  }
+	 
+	 
+	function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+} 
+	 
+function getMobileOperatingSystem() {
+  var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+      // Windows Phone must come first because its UA also contains "Android"
+    if (/windows phone/i.test(userAgent)) {
+        return "Windows Phone";
+    }
+
+    if (/android/i.test(userAgent)) {
+        return "Android";
+    }
+
+    // iOS detection from: http://stackoverflow.com/a/9039885/177710
+    if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+        return "iOS";
+    }
+
+    return "unknown";
+}
+
+function clearTimers() {
+        clearTimeout(timer);
+        clearTimeout(heartbeat);
+        clearTimeout(iframe_timer);
+    }
+
+    function intervalHeartbeat() {
+        if (document.webkitHidden || document.hidden) {
+            clearTimers();
+        }
+    }
+
+    function tryIframeApproach() {
+        var iframe = document.createElement("iframe");
+        iframe.style.border = "none";
+        iframe.style.width = "1px";
+        iframe.style.height = "1px";
+        iframe.onload = function () {
+            document.location = alt;
+        };
+        iframe.src = custom;
+        document.body.appendChild(iframe);
+    }
+
+    function tryWebkitApproach() {
+        document.location = custom;
+        timer = setTimeout(function () {
+            document.location = alt;
+        }, 2500);
+    }
+
+    function useIntent() {
+        document.location = g_intent;
+    }
+
+    function launch_app_or_alt_url(el) {
+        heartbeat = setInterval(intervalHeartbeat, 200);
+        if (navigator.userAgent.match(/Chrome/)) {
+            useIntent();
+        } else if (navigator.userAgent.match(/Firefox/)) {
+            tryWebkitApproach();
+            iframe_timer = setTimeout(function () {
+                tryIframeApproach();
+            }, 1500);
+        } else {
+            tryIframeApproach();
+        }
+    }
+	 
+	 </script>
+	 
+
+</head>
+</html>

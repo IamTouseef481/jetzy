@@ -1,0 +1,117 @@
+
+header = """
+#-------------------------------------------------------------------------------
+# Author: Keith Brings <keith.brings@noizu.com>
+# Copyright (C) 2021 JetzyApp. All rights reserved.
+#-------------------------------------------------------------------------------
+
+require JetzySchema.EnumTableBehaviour
+"""
+
+rows = [
+"JetzySchema.EnumTableBehaviour.table(:vnext_account_flag, Jetzy.Account.Flag.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_achievement_type, Jetzy.Achievement.Type.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_activity_type, Jetzy.Activity.Type.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_address_type, Jetzy.Address.Type.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_channel_field_type, Jetzy.Channel.Field.Type.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_channel_type, Jetzy.Channel.Type.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_channel_handler, Jetzy.Channel.Handler.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_check_in_type, Jetzy.CheckIn.Type.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_cms_attribute, Jetzy.CMS.Article.Attribute.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_cms_article_revision_attribute_value_type, Jetzy.CMS.Article.Revision.Attribute.Value.Type.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_cms_tag, Jetzy.CMS.Article.Tag.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_cms_article_type, Jetzy.CMS.Article.Type.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_comment_type, Jetzy.Comment.Type.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_contact_type, Jetzy.Contact.Type.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_content_flag, Jetzy.Content.Flag.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_credential_provider, Jetzy.Credential.Provider.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_credential_type, Jetzy.Credential.Type.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_degree_status, Jetzy.Degree.Status.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_degree_type, Jetzy.Degree.Type.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_device_token_type, Jetzy.Device.Token.Type.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_device_type, Jetzy.Device.Type.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_document_type, Jetzy.Document.Type.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_emergency_contact_type, Jetzy.EmergencyContact.Type.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_employment_status, Jetzy.Employment.Status.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_employment_type, Jetzy.Employment.Type.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_entity_aspect, Jetzy.Entity.Aspect.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_file_format, Jetzy.File.Format.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_friend_status, Jetzy.Friend.Status.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_gender, Jetzy.Gender.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_grant_type, Jetzy.Grant.Type.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_group_grant_type, Jetzy.Group.Grant.Type.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_group_join_type, Jetzy.Group.Join.Type.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_group_lookup_rule, Jetzy.Group.LookupRule.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_group_permission, Jetzy.Group.Permission.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_group_perm_rule, Jetzy.Group.Permission.Rule.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_group_sign_up_type, Jetzy.Group.SignUp.Type.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_image_type, Jetzy.Image.Type.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_video_type, Jetzy.Video.Type.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_interaction_type, Jetzy.Interaction.Type.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_location_image_type, Jetzy.Location.Image.Type.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_location_relation_type, Jetzy.Location.Relation.Type.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_location_source, Jetzy.Location.Source.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_location_type, Jetzy.Location.Type.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_location_zone, Jetzy.Location.Zone.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_managed_group_type, Jetzy.ManagedGroup.Type.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_media_type, Jetzy.Media.Type.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_moderation_resolution, Jetzy.Moderation.Resolution.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_moderation_status, Jetzy.Moderation.Status.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_moderation_type, Jetzy.Moderation.Type.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_moment_type, Jetzy.Moment.Type.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_notification_delivery_type, Jetzy.Notification.Deliver.Type.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_notification_type, Jetzy.Notification.Type.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_opportunity_type, Jetzy.Opportunity.Type.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_origin, Jetzy.Origin.Source.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_permission, Jetzy.Permission.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_post_content, Jetzy.Post.Content.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_post_topic, Jetzy.Post.Topic.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_vnext_post_type, Jetzy.Post.Type.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_question_type, Jetzy.Question.Type.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_reaction_event_type, Jetzy.Reaction.Event.Type.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_reaction_type, Jetzy.Reaction.Type.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_redeem_type, Jetzy.Redeem.Type.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_relationship_type, Jetzy.Relationship.Type.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_relative_type, Jetzy.Relative.Type.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_search_visibility_level, Jetzy.SearchVisibility.Level.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_session_status, Jetzy.Session.Status.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_shout_out_type, Jetzy.ShoutOut.Type.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_sphinx_index_type, Jetzy.Sphinx.Index.Type.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_staff_role, Jetzy.Staff.Role.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_state, Jetzy.State.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_status, Jetzy.Status.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_share_type, Jetzy.Share.Type.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_api_system, Jetzy.System.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_system_event_type, Jetzy.System.Event.Type.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_tag_state, Jetzy.Tag.State.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_tag_type, Jetzy.Tag.Type.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_transaction_type, Jetzy.Transaction.Type.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_user_relation_group_type, Jetzy.User.Relation.Group.Type.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:cc, Jetzy.User.Relation.Status.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_visibility_type, Jetzy.Visibility.Type.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_data_source, Jetzy.Data.Source.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_data_source_type, Jetzy.Data.Source.Type.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_business_activity_event_attribute_type, Jetzy.Business.Attribute.Type.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_business_activity_event_type, Jetzy.Business.Type.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_business_activity_event_sub_type, Jetzy.Business.SubType.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_price_point, Jetzy.Business.PricePoint.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_dress_code, Jetzy.Business.DressCode.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_offer_deal_type, Jetzy.Offer.Deal.Type.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_offer_activity_type, Jetzy.Offer.Activity.Type.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_offer_deal_category, Jetzy.Offer.Deal.Category.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_share_event_type, Jetzy.Share.Event.Type.Enum)",
+"JetzySchema.EnumTableBehaviour.table(:vnext_comment_event_type, Jetzy.Comment.Event.Type.Enum)",
+]
+
+Enum.map(rows, fn(row) ->
+  case Regex.run(~r/JetzySchema.*, ([A-Za-z0-9_.]*)\)/, row) do
+    [_, f] ->
+    IO.puts "#{f}.ex"
+    {:ok, file} = File.open("#{f}.ex", [:write])
+    IO.write(file, header)
+    IO.write(file, row)
+    File.close(file)
+    :ok
+    _ -> :error
+  end
+end)

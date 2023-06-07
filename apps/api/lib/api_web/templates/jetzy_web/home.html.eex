@@ -1,0 +1,847 @@
+﻿<!--﻿@{
+Layout = null;
+}-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <!-- Primary Meta Tags -->
+    <title>Jetzy | Live the Jetzy Life!</title>
+    <meta name="title" content="Jetzy | Live the Jetzy Life!">
+    <meta name="description" content="Jetzy is the social media App for travelers and flashpackers, who love to travel the world.">
+
+    <meta name="keywords" content="Jetzy, Jetzyapp, Jetzy app, Jetzy Social Media, Jetzy Travel, Travel, Travel deals, Travel deals to, Vegas travel, Travel beach, Travel hotels, Travel air, Travel spain Barcelona, Travel London, Travel, Katy Perry, Ty Sawyer, Shama Zehra, Best Travel, Fashion, Fashion travel, Shopping, Shopping travel, Travel new york city, Travel Orlando, Travel united states, European travel, Travel New york, Vacations, Holidays, Vacations travel, Beach, Beach travel, Deals on travel, Social, Social travel, Meet locals, Meet up, Trip, Islands, Island, Island travel, Travel Australia, Best travel deals, Flashpacker, Flashpacking, Millennial, Millennials, Dating, Travel app, Connect, Meet, Backpacks, Wine, Wine travel, Wine tours, Biking, Bike tours, Tours, Culture, Museums, Restaurants, LGBT travel, Paris, Paris Travel, Thailand, Thailand travel, Rome, Rome deals, Berlin, Berlin Travel, Barcelona, Barcelona travel, Spain travel, Italy, Germany, India, England, UK, Ireland, Russia, Turkey, China, Hong Kong, Singapore, Africa, Asia, New Zealand, Budapest, Instanbul, Spa, Spa travel, Cruise ship, Cruiseship deal, Brazil, Greece, Greek Island, Adventure, Escape, Green travel, Live like a local, Authentic travel, France, Portugal, Egypt, Sydney, Queensland Australia, Indonesia, Indonesia travel, Bali, Bali travel, Tahiti, Tahiti deals, Tahiti islands, Bora Bora, Bora Bora honeymoon, Destination, Wedding, Moorea, Surf Travel, Surf destination, Top 10 travel destinations, Food, travel, Milan Travel, Travel apparel, Travel bags , Free travel, Travel rewards " />
+
+    <meta name="apple-itunes-app" content="app-id=1019546379,  app-argument=jetzy://page=people">
+    <meta name="google-play-app" content="app-id=com.icreon.travelconnect">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://jetzy.com/">
+    <meta property="og:title" content="Jetzy | Live the Jetzy Life!">
+    <meta property="og:description" content="Jetzy is the social media App for travelers and flashpackers, who love to travel the world.">
+    <meta property="og:image" content="https://jetzy.com/Splash/images/jetzy-live-life.png">
+    <meta property="og:image:width" content="900" />
+    <meta property="og:image:height" content="581" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://jetzy.com/">
+    <meta property="twitter:title" content="Jetzy | Live the Jetzy Life!">
+    <meta property="twitter:description" content="Jetzy is the social media App for travelers and flashpackers, who love to travel the world.">
+    <meta property="twitter:image" content="https://jetzy.com/Splash/images/jetzy-live-life.png">
+
+    <link rel="shortcut icon" href="/Images/favicon.ico">
+    <link rel="icon" type="image/gif" href="/Images/animated_favicon1.gif">
+
+    <link rel="stylesheet" href="/Splash/css/style.css?v=4">
+    <link rel="stylesheet" href="/Splash/css/responsive.css">
+    <link rel="stylesheet" href="/Splash/css/media.css">
+    <link rel="stylesheet" href="https://owlcarousel2.github.io/OwlCarousel2/assets/owlcarousel/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://owlcarousel2.github.io/OwlCarousel2/assets/owlcarousel/assets/owl.theme.default.min.css">
+    <link rel="shortcut icon" href="/Images/favicon.ico">
+    <link rel="icon" type="image/gif" href="/Images/animated_favicon1.gif">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <script src="/Scripts/jquery-1.8.2.min.js"></script>
+
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <![endif]-->
+    <!--  ---------------------------------------------------------------Start_MC----------------------------------------------------- -->
+    <!-- Facebook Pixel Code -->
+    <script>
+        !function (f, b, e, v, n, t, s) {
+            if (f.fbq) return; n = f.fbq = function () {
+                n.callMethod ?
+                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            };
+            if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+            n.queue = []; t = b.createElement(e); t.async = !0;
+            t.src = v; s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+        }(window, document, 'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '364101934047376');
+        fbq('track', 'PageView');
+    </script>
+    <script>
+        $(document).ready(function () {
+
+            $('#leftbtn').click(function () {
+                var leftPos = $('#mainHomeLogos').scrollLeft();
+                $("#mainHomeLogos").animate({
+                    scrollLeft: leftPos - 1000
+                }, 800);
+            });
+
+            $('#rightbtn').click(function () {
+                var leftPos = $('#mainHomeLogos').scrollLeft();
+                $("#mainHomeLogos").animate({
+                    scrollLeft: leftPos + 1000
+                }, 800);
+            });
+        });
+    </script>
+    <style type="text/css">
+
+        video#bgvid {
+            position: fixed;
+            width: auto;
+            height: auto;
+            display: block !important;
+        }
+        video#VisaChipCardVideo {
+            max-width: 760px;
+            max-height: 560px;
+            width: 100%;
+            height: auto;
+            position: relative;
+            display: block !important;
+        }
+        #fade {
+            display: none;
+            position: fixed;
+            top: 0%;
+            left: 0%;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            z-index: 1001;
+            -moz-opacity: 0.8;
+            opacity: .80;
+            filter: alpha(opacity=80);
+        }
+
+        #light {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            max-width: 760px;
+            max-height: 560px;
+            margin-left: auto;
+            margin-right: auto;
+            border: 0px;
+            background: transparent;
+            z-index: 1002;
+            overflow: visible;
+            transform: translateY(-50%);
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        #boxclose {
+            float: right;
+            cursor: pointer;
+            color: #fff;
+            border: 1px solid #AEAEAE;
+            border-radius: 3px;
+            background: #222222;
+            font-size: 31px;
+            font-weight: bold;
+            display: inline-block;
+            line-height: 0px;
+            padding: 11px 3px;
+            position: absolute;
+            right: 26px;
+            top: 26px;
+            z-index: 1002;
+            opacity: 0.9;
+        }
+
+        .boxclose:before {
+            content: "×";
+        }
+
+        #fade:hover  #boxclose {
+            display: none;
+        }
+        .play_icon {
+            top: 71%;
+            left: 50%;
+            position: absolute;
+            transform: translate(-50%,-50%);
+            margin-left: auto;
+            margin-right: auto;
+            width: 56px;
+        }
+
+        .formCont p {
+            font-family: 'gothambook', Arial;
+            font-size: 18px;
+            line-height: 21px;
+            color: #898287;
+            padding: 0 0 10px 0;
+            margin-top: 94px;
+        }
+
+    </style>
+
+    <script src="/Splash/js/jquery-1.8.3.min.js"></script>
+    <script src="/Splash/js/waypoints.min.js"></script>
+    <script src="/Splash/js/TweenMax.min.js"></script>
+    <script src="/Splash/js/jquery.video.js"></script>
+    <script src="/Splash/js/TC.js"></script>
+    <link href="/Content/PerfectScrollbar/PerfectScrollbar.css" rel="stylesheet" />
+    <script src="/Content/PerfectScrollbar/PerfectScrollbar.js"></script>
+    <script src="https://owlcarousel2.github.io/OwlCarousel2/assets/owlcarousel/owl.carousel.js"></script>
+
+
+    <noscript>
+        <img height="1" width="1"
+             src="https://www.facebook.com/tr?id=364101934047376&ev=PageView&noscript=1" />
+    </noscript>
+    <!-- End Facebook Pixel Code -->
+    <!-- -----------------------------------------------------------------------End_MC----------------------------------------------------- -->
+</head>
+<body>
+<video autoplay poster="" id="bgvid" loop>
+    <source src="/Splash/video/1492354.webm" type="video/webm">
+    <source src="/Splash/video/1492354.mp4" type="video/mp4">
+</video>
+
+<div id="pageContainer">
+    <div class="wrapper clearfix">
+        <div class="contactWrap clearfix">
+            <div class="contact fLeft">
+                <ul class="footerNav">
+                    <li class="active"><a href="/">Home</a></li>
+                    <li style="display: none"><a href="/about-the-app.html">About</a></li>
+                    <li><a href="/termsofuse.html">Terms of Use</a></li>
+                    <li><a href="/privacy.html">Privacy Policy</a></li>
+                    <li><a href="/careers">Careers</a></li>
+                </ul>
+            </div>
+            <div>
+                <ul class="socialList" align="right">
+                    <li class="socialElm">
+                        <a href="https://www.facebook.com/jetzyapp" target="_blank">
+                            <img src="/Splash/images/fb.png" alt="">
+                        </a>
+                    </li>
+                    <li class="socialElm">
+                        <a href="https://twitter.com/jetzyapp" target="_blank">
+                            <img src="/Splash/images/twitter.png" alt="">
+                        </a>
+                    </li>
+                    <li class="socialElm">
+                        <a href="https://instagram.com/jetzyapp" target="_blank">
+                            <img src="/Splash/images/instagram.png" alt="">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!--Edit Start-->
+        <div class="header clearfix">
+            <div class="headerInner clearfix">
+                <!--Edit End-->
+                <h1 class="logo">
+                    <a href="https://jetzyapp.com">
+                        <img src="/Splash/images/logo.png" alt="">
+                    </a>
+                </h1>
+
+                <h2>
+                    <span style="color: #cac8ae; font-size: 70px; line-height: 66px;">Jetzy</span>
+                </h2>
+
+                <h3>
+                    <span style="color: #cac8ae;font-size: 28px; line-height: 21px;"> <i> Live the Jetzy Life! </i> </span>
+                </h3>
+
+                <!--Edit Start-->
+
+                <h3>
+                    Jetzy is a global social network of people who enjoy travel and unique lifestyle experiences. Whether it's culture, food, nightlife or outdoors, on our interest and location based Jetzy app you can contact like-minded people for authentic local recommendations or even plan to meet in person so you're never lost or alone anywhere you go.
+                </h3>
+
+                <!--Edit End-->
+                <div class="formCont clearfix">
+                    <p class="app-download">
+                        <span class="dj">Download Jetzy.</span>
+                        <a href="http://apple.co/1NIKmDI">
+                            <img src="/Splash/images/4.png" alt="">
+                        </a>
+                        <a href="http://bit.ly/1hrx5Sc">
+                            <img src="/Splash/images/5.png" alt="">
+                        </a>
+                    </p>
+
+                    <div id="light">
+                        <a class="boxclose" id="boxclose" onclick="lightbox_close();"></a>
+                        <video id="VisaChipCardVideo" width="500" controls>
+                            <source src="/Splash/video/JETZY_APP.mp4" type="video/mp4">
+                            <!--Browser does not support <video> tag -->
+                        </video>
+                    </div>
+
+                    <div id="fade" onClick="lightbox_close();"></div>
+
+                    <div class="play_icon">
+                        <a href="#" onclick="lightbox_open();">
+                            <img src="/Splash/images/play-jetzy.png" alt="play_icons">
+                        </a>
+                    </div>
+
+                    <div style="display: none">
+                    <p>Receive an exclusive invitation to earn double JetPoints on signup and our newsletter</p>
+                    <div class="frmRow clearfix" id="divSplashInput">
+                        <div class="frmCol">
+                            <input type="text" id="txtUserName" maxlength="50" name="txtUserName" placeholder="Enter Name" class="name" onblur="validateControlValue(this,'textbox','lblUserName','Please enter your name.');" />
+                            <span class="msgError" id="lblUserName"></span>
+                        </div>
+                        <div class="frmCol">
+                            <input type="text" id="txtCity" maxlength="50" name="txtCity" placeholder="Enter City" class="city" onblur="validateControlValue(this,'textbox','lblCity','Please enter city came.');" />
+                            <span class="msgError" id="lblCity"></span>
+                        </div>
+                        <div class="frmCol">
+                            <input type="text" id="txtUserEmail" maxlength="50" name="txtUserEmail" placeholder="Enter Email" class="email" onblur="validateControlValue(this,'textbox','lblUserEmail','Please enter your name.');displayLoader();return ShowAvailability();" />
+                            <span class="msgError" id="lblUserEmail"></span>
+                            <span class="msgError" id="mesg"></span>
+                        </div>
+                        <div class="frmCol">
+                            <input type="submit" onclick="return ValidateSplash();" value="Request Invite" class="btnSubmit" id="btnSubmit" name="btnSubmit" />
+                        </div>
+                    </div>
+                </div>
+                    <div class="frmRow clearfix" id="divSplashSuccess" style="display: none">
+                            <span class="msgThankyou">
+                                Thank You for Signing Up!<br />
+                                Please follow us on Facebook, Twitter and Instagram to get the latest updates about Jetzy.
+                            </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row home-page-logos">
+            <div class="asSeenOn">
+                <h1>As seen on</h1>
+            </div>
+            <div class="asSeenOnInner MainHomeLogos">
+                <div class="images-arrow">
+                    <i class="fa fa-angle-left" id="leftbtn" aria-hidden="true"></i>
+                    <i class="fa fa-angle-right" id="rightbtn" aria-hidden="true"></i>
+                </div>
+                <div id="mainHomeLogos">
+                    <ul class="mainHomeLogosInner">
+                        <li>
+                            <a href="https://www.google.com/url?q=https%3A%2F%2Fwww.huffpost.com%2Fentry%2Fentrepreneur-shama-zehras_b_10938190&sa=D&sntz=1&usg=AFQjCNFwxe2auzfh6xrcMPFSUOkm_LEmzw"
+                               target="_blank">
+                                <img src="/Splash/Logo/15 list.png" />
+                            </a>
+                            <a class="home-logo-title" href="https://www.google.com/url?q=https%3A%2F%2Fwww.huffpost.com%2Fentry%2Fentrepreneur-shama-zehras_b_10938190&sa=D&sntz=1&usg=AFQjCNFwxe2auzfh6xrcMPFSUOkm_LEmzw"
+                               target="_blank">
+                                Jetzy founder Shama was published on Huffington Post
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.google.com/url?q=https%3A%2F%2Fwww.facebook.com%2Fjetzyapp%2Fposts%2Fjetzy-co-founder-shama-zehra-interviewed-by-nasdaq-in-new-orleans-louisiana-at-c%2F1707768002774039%2F&sa=D&sntz=1&usg=AFQjCNGB-Uc83Uaoa9dL0itow3eYKvB1jg"
+                               target="_blank">
+                                <img src="/Splash/Logo/17 list.png" />
+                            </a>
+                            <a class="home-logo-title" href="https://www.google.com/url?q=https%3A%2F%2Fwww.facebook.com%2Fjetzyapp%2Fposts%2Fjetzy-co-founder-shama-zehra-interviewed-by-nasdaq-in-new-orleans-louisiana-at-c%2F1707768002774039%2F&sa=D&sntz=1&usg=AFQjCNGB-Uc83Uaoa9dL0itow3eYKvB1jg"
+                               target="_blank">
+                                Jetzy founder Shama was published on NASDAQ
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://tripit.wpengine.com/blog/travel-tips/food-travel-8-apps-tools-you-need-to-have.html"
+                               target="_blank">
+                                <img src="/Splash/Logo/9 list.png" />
+                            </a>
+                            <a class="home-logo-title" href="https://tripit.wpengine.com/blog/travel-tips/food-travel-8-apps-tools-you-need-to-have.html"
+                               target="_blank">
+                                Jetzy was listed #2 in favorite apps for travel and food on Tripit
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.google.com/url?q=https%3A%2F%2Fwww.jetsetter.com%2Fmagazine%2Flast-minute-vacation-planning%2F&sa=D&sntz=1&usg=AFQjCNEORjrHS5SicTgphgfVfS6w2HgGuw"
+                               target="_blank">
+                                <img src="/Splash/Logo/3 list.png" />
+                            </a>
+                            <a class="home-logo-title" href="https://www.google.com/url?q=https%3A%2F%2Fwww.jetsetter.com%2Fmagazine%2Flast-minute-vacation-planning%2F&sa=D&sntz=1&usg=AFQjCNEORjrHS5SicTgphgfVfS6w2HgGuw"
+                               target="_blank">
+                                Jetzy recommended by Jetsetter.com
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.refinery29.com/en-us/best-travel-dating-app"
+                               target="_blank">
+                                <img src="/Splash/Logo/5 list.jpg" />
+                            </a>
+                            <a class="home-logo-title" href="https://www.refinery29.com/en-us/best-travel-dating-app"
+                               target="_blank">
+                                Jetzy published No. 3 just after Tinder & Bumble for finding romance during travel by Refinery29.
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.google.com/url?q=https%3A%2F%2Fwww.businessnewsdaily.com%2F7740-best-apps-business-travel.html&sa=D&sntz=1&usg=AFQjCNFm92MXfZFLJBDAQY2qn99kca1Qzw" target="_blank">
+                                <img src="/Splash/Logo/6 list.png" />
+                            </a>
+                            <a class="home-logo-title" href="https://www.google.com/url?q=https%3A%2F%2Fwww.businessnewsdaily.com%2F7740-best-apps-business-travel.html&sa=D&sntz=1&usg=AFQjCNFm92MXfZFLJBDAQY2qn99kca1Qzw" target="_blank">
+                                Jetzy was published by Business News Daily as the best social app for business travel
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.google.com/url?q=https%3A%2F%2Fwww.forbes.com%2Fsites%2Fhollieslade%2F2014%2F08%2F05%2Ffrom-a-clothing-business-in-pakistan-to-a-wall-street-firm-lessons-from-a-serial-female-entrepreneur%2F%3Fsh%3D758bed395e37&sa=D&sntz=1&usg=AFQjCNHWEUElA2TiBFGr7lD_RX6qWgwAtg"
+                               target="_blank">
+                                <img src="/Splash/Logo/16 list.jpg" />
+                            </a>
+                            <a class="home-logo-title" href="https://www.google.com/url?q=https%3A%2F%2Fwww.forbes.com%2Fsites%2Fhollieslade%2F2014%2F08%2F05%2Ffrom-a-clothing-business-in-pakistan-to-a-wall-street-firm-lessons-from-a-serial-female-entrepreneur%2F%3Fsh%3D758bed395e37&sa=D&sntz=1&usg=AFQjCNHWEUElA2TiBFGr7lD_RX6qWgwAtg"
+                               target="_blank">
+                                Jetzy founder Shama was published on the cover of Forbes entrepreneurs cover story
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.google.com/url?q=https%3A%2F%2Fissuu.com%2Fswiss5%2Fdocs%2Fswma19_10_web_pdf_icons&sa=D&sntz=1&usg=AFQjCNH1jgn0EgwNvPFqkcLnoAo1yuh-lw"
+                               target="_blank">
+                                <img src="/Splash/Logo/1 list.jpg" />
+                            </a>
+                            <a class="home-logo-title" href="https://www.google.com/url?q=https%3A%2F%2Fissuu.com%2Fswiss5%2Fdocs%2Fswma19_10_web_pdf_icons&sa=D&sntz=1&usg=AFQjCNH1jgn0EgwNvPFqkcLnoAo1yuh-lw"
+                               target="_blank">
+                                Jetzy is Swiss Airlines’ choice for traveling like a local (see pg 50)
+
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.google.com/url?q=https%3A%2F%2Fthepointsguy.com%2Fnews%2Fbest"
+                               target="_blank">
+                                <img src="/Splash/Logo/2 list.png" />
+                            </a>
+                            <a class="home-logo-title" href="https://www.google.com/url?q=https%3A%2F%2Fthepointsguy.com%2Fnews%2Fbest"
+                               target="_blank">
+                                Jetzy was published by The Points Guy as one of the best apps to travel
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="https://vimeo.com/224218767/414551bf08"
+                               target="_blank">
+                                <img src="/Splash/Logo/4 list.jpg" />
+                            </a>
+                            <a class="home-logo-title" href="https://vimeo.com/224218767/414551bf08"
+                               target="_blank">
+                                Maurice Levy (Head of Publicis) praising Jetzy and its founder. Maurice says: “Jetzy is very interesting”.
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://vivalifestyleandtravel.com/general/travel-and-lifestyle/list/authentic-local-apps/flipboardM" target="_blank">
+                                <img src="/Splash/Logo/7 list.png" />
+                            </a>
+                            <a class="home-logo-title" href="http://vivalifestyleandtravel.com/general/travel-and-lifestyle/list/authentic-local-apps/flipboardM"
+                               target="_blank">
+                                Jetzy was published by VIVA Lifestyle & Travel as the best app to link you with locals while traveling
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);">
+                                <img src="/Splash/Logo/8 list.jpg" />
+                            </a>
+                            <a class="home-logo-title" href="javascript:void(0);">
+                                Head of Innovation for Red Bull Andreas Gall says “not only I love Jetzy but my 15 year old son does too”
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="https://www.google.com/url?q=https%3A%2F%2Fwww.offthemrkt.com%2Fblogs%2Fjetzy-your-new-favorite-travel-app&sa=D&sntz=1&usg=AFQjCNH6SKYpYhJK5iP13OmzCtC_JnrcCg"
+                               target="_blank">
+                                <img src="/Splash/Logo/10 list.png" />
+                            </a>
+                            <a class="home-logo-title" href="https://www.google.com/url?q=https%3A%2F%2Fwww.offthemrkt.com%2Fblogs%2Fjetzy-your-new-favorite-travel-app&sa=D&sntz=1&usg=AFQjCNH6SKYpYhJK5iP13OmzCtC_JnrcCg"
+                               target="_blank">
+                                Off the Market publishes Jetzy as one of their favorite travel apps
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.google.com/url?q=https%3A%2F%2Fwww.mic.com%2Farticles%2F151648%2Fthis-travel-app-helps-you-hook-up-with-fellow-travelers-but-not-in-the-way-you-d-expect%23.vIj1KWcU8&sa=D&sntz=1&usg=AFQjCNHHuQJallCO_4Ba2fvQITAskkEAyw"
+                               target="_blank">
+                                <img src="/Splash/Logo/11 list.jpeg" />
+                            </a>
+                            <a class="home-logo-title" href="https://www.google.com/url?q=https%3A%2F%2Fwww.mic.com%2Farticles%2F151648%2Fthis-travel-app-helps-you-hook-up-with-fellow-travelers-but-not-in-the-way-you-d-expect%23.vIj1KWcU8&sa=D&sntz=1&usg=AFQjCNHHuQJallCO_4Ba2fvQITAskkEAyw"
+                               target="_blank">
+                                Jetzy was recommended on Travel Mic
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.cheapoair.com/miles-away/5-apps-that-can-enrich-your-travel-experience/
+                                   target="_blank">
+                            <img src="/Splash/Logo/12 list.png" />
+                            </a>
+                            <a class="home-logo-title" href="https://www.cheapoair.com/miles-away/5-apps-that-can-enrich-your-travel-experience/"
+                               target="_blank">
+                                Cheap O air publishes Jetzy as one of 5 apps that can enrich your travel experience
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://irishtechnews.ie/vivatech-2017-a-3-day-event-bringing-together-top-leaders-innovators-tech-lovers-pioneers-of-the-future/amp/"
+                               target="_blank">
+                                <img src="/Splash/Logo/13 list.jpg" />
+                            </a>
+                            <a class="home-logo-title" href="https://irishtechnews.ie/vivatech-2017-a-3-day-event-bringing-together-top-leaders-innovators-tech-lovers-pioneers-of-the-future/amp/"
+                               target="_blank">
+                                Jetzy awarded and included in the pioneers of the future list by VivaTech Paris (150 thousand attendees)
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.harpersbazaar.com/culture/travel-dining/advice/a4736/apps-to-use-while-traveling/"
+                               target="_blank">
+                                <img src="/Splash/Logo/14 list.jpg" />
+                            </a>
+                            <a class="home-logo-title" href="https://www.harpersbazaar.com/culture/travel-dining/advice/a4736/apps-to-use-while-traveling/"
+                               target="_blank">
+                                Jetzy was no.3 on "14 Must-Have Apps To Use on Vacation" by Harper's Bazaar
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="https://www.google.com/url?q=https%3A%2F%2Fwww.wework.com%2Fideas%2Fcommunity-stories%2Fmember-spotlight%2Fleaving-behind-banking-career-shama-zehra-helps-travelers-connect-jetzy&sa=D&sntz=1&usg=AFQjCNHe4fgNFzLn-dJzyzQChyHnIta9aA"
+                               target="_blank">
+                                <img src="/Splash/Logo/18 list.jpg" />
+                            </a>
+                            <a class="home-logo-title" href="https://www.google.com/url?q=https%3A%2F%2Fwww.wework.com%2Fideas%2Fcommunity-stories%2Fmember-spotlight%2Fleaving-behind-banking-career-shama-zehra-helps-travelers-connect-jetzy&sa=D&sntz=1&usg=AFQjCNHe4fgNFzLn-dJzyzQChyHnIta9aA"
+                               target="_blank">
+                                Jetzy founder Shama was published on Wework's Creator
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.google.com/url?q=https%3A%2F%2Fmichiganross.umich.edu%2Four-community%2Falumni%2Fdividend%2Ffall2014%2Fwhen-stars-align&sa=D&sntz=1&usg=AFQjCNG9wRt8oJQxen9xG7non5UUn6Py_Q"
+                               target="_blank">
+                                <img src="/Splash/Logo/19 list.png" />
+                            </a>
+                            <a class="home-logo-title" href="https://www.google.com/url?q=https%3A%2F%2Fmichiganross.umich.edu%2Four-community%2Falumni%2Fdividend%2Ffall2014%2Fwhen-stars-align&sa=D&sntz=1&usg=AFQjCNG9wRt8oJQxen9xG7non5UUn6Py_Q"
+                               target="_blank">
+                                Jetzy founder Shama was published on Michigan Ross
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.google.com/url?q=https%3A%2F%2Fwww.crainsnewyork.com%2Farticle%2F20140923%2FFINANCE%2F140929969%2Fno-one-told-her-she-couldn-t-have-a-career&sa=D&sntz=1&usg=AFQjCNGJ7wWrtXnFeNW5Qn_8cjXw9xbkOw"
+                               target="_blank">
+                                <img src="/Splash/Logo/20 list.jpg" />
+                            </a>
+                            <a class="home-logo-title" href="https://www.google.com/url?q=https%3A%2F%2Fwww.crainsnewyork.com%2Farticle%2F20140923%2FFINANCE%2F140929969%2Fno-one-told-her-she-couldn-t-have-a-career&sa=D&sntz=1&usg=AFQjCNGJ7wWrtXnFeNW5Qn_8cjXw9xbkOw"
+                               target="_blank">
+                                Jetzy founder Shama was published by Crain’s New York
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.google.com/url?q=https%3A%2F%2Fwww.techjuice.pk%2Fpakistani-woman-sheba-zehra-launches-kickstarter-for-jetzy-a-social-network-for-travelers%2F&sa=D&sntz=1&usg=AFQjCNGVIUy74L36ZHOUYrCGh3Acc-SUHw"
+                               target="_blank">
+                                <img src="/Splash/Logo/21 list.png" />
+                            </a>
+                            <a class="home-logo-title" href="https://www.google.com/url?q=https%3A%2F%2Fwww.techjuice.pk%2Fpakistani-woman-sheba-zehra-launches-kickstarter-for-jetzy-a-social-network-for-travelers%2F&sa=D&sntz=1&usg=AFQjCNGVIUy74L36ZHOUYrCGh3Acc-SUHw"
+                               target="_blank">
+                                Jetzy founder Shama Zehra featured on Tech Juice
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://www.google.com/url?q=http%3A%2F%2Fthejerseytomatopress.com%2Fstories%2Fshama-zehra-breaking-the-glass-ceiling-of-wall-street-and-an-entire-country-is-all-part-of-the-plan%2C15070%3Ftown_id%3D1%26sub_type%3Dstories&sa=D&sntz=1&usg=AFQjCNGxb7N9Gh41drGHXI8q_t2rXpAlVg"
+                               target="_blank">
+                                <img src="/Splash/Logo/22 list.png" />
+                            </a>
+                            <a class="home-logo-title" href="http://www.google.com/url?q=http%3A%2F%2Fthejerseytomatopress.com%2Fstories%2Fshama-zehra-breaking-the-glass-ceiling-of-wall-street-and-an-entire-country-is-all-part-of-the-plan%2C15070%3Ftown_id%3D1%26sub_type%3Dstories&sa=D&sntz=1&usg=AFQjCNGxb7N9Gh41drGHXI8q_t2rXpAlVg"
+                               target="_blank">
+                                Jetzy founder Shama Zehra featured on Jersey Tomato Press
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://pakwired.com/shama-zehra-begins-a-kickstarter-campaign-for-a-travel-social-network-jetzy/"
+                               target="_blank">
+                                <img src="/Splash/Logo/23 list.jpeg" />
+                            </a>
+                            <a class="home-logo-title" href="https://pakwired.com/shama-zehra-begins-a-kickstarter-campaign-for-a-travel-social-network-jetzy/"
+                               target="_blank">
+                                Jetzy founder Shama Zehra featured on Pakwired
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--Edit End-->
+        <div class="ourmissionCont clearfix" style="padding-bottom: 40px;">
+            <div class="missionContent clearfix">
+                <h3>What We Do</h3>
+                <p style="padding-bottom: 10px;">
+                    Connect you with like-minded people for authentic local recommendations.
+                </p>
+                <p style="padding: 0px 0 20px; font-weight: bold; text-transform: uppercase;">BENEFITS OF USING THE APP</p>
+                <ul class="missionList clearfix">
+                    <li>Get Instant Gratification</li>
+                    <li>Meet Like-minded People</li>
+                    <li>Discover Hidden Gems</li>
+                    <li>Authentic Recommendations</li>
+                    <li>Make Friends Globally</li>
+                    <li>Travel On Your Terms</li>
+                    <li>Get Global Exposure</li>
+                    <li>Travel Like a Local</li>
+                    <li>Mingle With Singles</li>
+                    <li>Geo-Location Based</li>
+                    <li>Find Travel Buddies</li>
+                    <li>Earn FREE Rewards</li>
+                </ul>
+                <div class="earnFreeCont clearfix">
+                    <div class="earnFreeContInner clearfix">
+                        <div class="earnLeft">Social <span>Responsibility</span></div>
+                        <div class="earnRight">
+                            For our social responsibility, we plan to build career development and entrepreneurial programs for all, and mentorship initiatives for women. Jetzy is a network but what we are passionately fostering is a lifestyle: an attitude of global citizens to be innately curious about the world, endearingly inspiring for our community and infectiously supportive of living a life of purpose. That's what we call "Jetzy Life".
+                        </div>
+                    </div>
+                </div>
+                <div class="earnFreeCont clearfix">
+                    <div class="earnFreeContInner clearfix">
+                        <div class="earnLeft">Free <span>REWARDS</span></div>
+                        <div class="earnRight">
+                            More you use the app, more you earn. The world’s first social app that rewards you with free travel, experiences and gifts around the world
+                        </div>
+                    </div>
+                </div>
+                <div class="changingWay clearfix">
+                    <h5>LIVE THE JETZY LIFE here there and EVERYWHERE!</h5>
+                </div>
+            </div>
+        </div>
+        <div class="aboutusCont clearfix">
+            <div class="aboutContent clearfix" style="display: none">
+                <h3>About Us</h3>
+                <p>We do one thing: connect travelers with travelers and travelers with locals, in real time, with direct user-to-user connections.</p>
+            </div>
+        </div>
+        <div class="founderCont clearfix">
+            <div class="founderInner clearfix">
+                <h3>Meet the Founders</h3>
+                <div class="founderRow clearfix">
+                    <div class="founderRowInner clearfix">
+                        <div class="founderLeft">
+                            <div class="thumbLeft">
+                                <img src="/Splash/images/thumb2.png" alt="">
+                            </div>
+                            <div class="thumbRight">
+                                <h4>Shama Zehra</h4>
+                                <h5>Founder</h5>
+                            </div>
+                        </div>
+                        <div class="founderRight">
+                            <p> Shama Zehra is the Founder and CEO of Jetzy. Shama is a serial entrepreneur and has built several successful businesses in technology, financial services and fashion space. Shama began her career as one of the youngest female entrepreneurs in Pakistan where she started a women apparel firm with her mother and sister when she was 16. Within a few years, Shama had opened a small factory and three sales channels (1. retail store, 2. sales via department stores, 3. exports), and successfully sold the business at the age of 19. Shama’s passion for travel and technology led her to brand the first frequent flyer credit card in Pakistan, spearhead mobile and interactive voice responder (IVR) applications in early 2000’s in South Asia (pre-US market adoption) and take pilot training aspiring to become the second female pilot in Pakistan. Shama’s most recent venture is Aligned Independent Advisors. An alum of Goldman Sachs and Morgan Stanley, Shama’s entrepreneurial vision and success has been the subject of cover stories on Forbes, Crains, and several other publications. Shama holds two MBA degrees: one in Finance & Strategy from Michigan Ross School, and second in International Business from IBA, Karachi (the oldest business school outside North America to award an MBA degree formed in affiliation with Wharton, University of Pennsylvania). Shama lives in the West Village in New York City and enjoys travel, yoga, and adventure sports.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="founderRow clearfix">
+                    <div class="founderRowInner clearfix">
+                        <div class="founderLeft">
+                            <div class="thumbLeft">
+                                <img src="/Splash/images/thumb1.png" alt="">
+                            </div>
+                            <div class="thumbRight">
+                                <h4>Ty Sawyer</h4>
+                                <h5>Co-Founder</h5>
+                            </div>
+                        </div>
+                        <div class="founderRight">
+                            <p>Ty is a 20-year, multi-award winning travel media expert; content engagement specialist, editor, writer, photographer and a proven entrepreneur. His first app, Dive Traveler, won an Innovations Excellence award. He is a new media expert, an expert commentator on the Travel Channel and has hosted a popular travel-based TV show, Another Shade of Blue with Ty Sawyer. He has consulted as a media and branding specialist for ultra high-end media start-ups, numerous tourism boards including Italy, Puerto Rico, Cayman Islands, Abu Dhabi, Tahiti etc., and founded a content-driven digital application technology company, Sawyer Media. Ty has visited 108 countries and brings a unique skill set that combines travel, digital media, creative vision, mobile expertise and entrepreneurship.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer clearfix">
+            <div class="contactWrap clearfix">
+                <div class="contact fLeft">
+                    <ul class="footerNav">
+                        <li class="active"><a href="/">Home</a></li>
+                        <li style="display: none"><a href="/about-the-app.html">About</a></li>
+                        <li><a href="/termsofuse.html">Terms of Use</a></li>
+                        <li><a href="/privacy.html">Privacy Policy</a></li>
+                        <li><a href="/careers">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="contact fRight"><span>Contact Us:</span> <a href="mailto:contact@jetzyapp.com">contact@jetzyapp.com</a></div>
+            </div>
+            <div class="copyrightCont clearfix">
+                <p class="copyright">
+                    S Z Global Inc.<br />
+                </p>
+                <span class="logo2">
+                        <img src="/Splash/images/logo2.png" alt="">
+                    </span>
+                <div class="socialCont">
+                    <ul class="social">
+                        <li>Follow us</li>
+                        <li>
+                            <a href="https://www.facebook.com/jetzyapp" target="_blank">
+                                <img src="/Splash/images/fb2.png" alt="">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://twitter.com/jetzyapp" target="_blank">
+                                <img src="/Splash/images/twitter2.png" alt="">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://instagram.com/jetzyapp" target="_blank">
+                                <img src="/Splash/images/instagram2.png" alt="">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+    </div>
+</div>
+
+<div id="dvLoading" class="loader_bg">
+    <div class="loader"></div>
+</div>
+
+<div class="overlay"></div>
+
+<script>
+        $(document).ready(function () {
+            $('.owl-carousel').owlCarousel({
+                autoplay: true,
+                margin: 0,
+                navText: ["<a class='prev'>&#10094;</a>", "<a class='next'>&#10095;</a>"],
+                responsiveClass: true,
+                responsive: {
+                    0: {
+                        items: 1,
+                        nav: true,
+                        loop: true
+                    },
+                    600: {
+                        items: 1,
+                        nav: true,
+                        loop: true
+                    },
+                    1000: {
+                        items: 1,
+                        nav: true,
+                        loop: true
+                    }
+                }
+            })
+        })
+    </script>
+
+<script>
+        $(function () {
+            TC.homePage.init();
+        });
+    </script>
+
+<script>
+        var main = function () {
+
+            var paused = false
+
+            $('.next').click(function () {
+                paused = true;
+                $('#slideshow > .mySlides:first')
+                    .fadeOut(1000)
+                    .next()
+                    .fadeIn(1000)
+                    .end()
+                    .appendTo('#slideshow');
+            });
+
+            $('.prev').click(function () {
+                paused = true;
+                $('#slideshow > .mySlides:last')
+                    .fadeIn(1000)
+                    .prependTo('#slideshow')
+                    .next()
+                    .fadeOut(1000)
+                    .end();
+            });
+
+
+
+            setInterval(function () {
+                if (paused === false) {
+                    $('#slideshow > .mySlides:first')
+                        .fadeOut(1000)
+                        .next()
+                        .fadeIn(1000)
+                        .end()
+                        .appendTo('#slideshow');
+                };
+            }, 5000);
+
+            $("#mainHomeLogos").perfectScrollbar();
+
+            //var _logosLength = $('.mainHomeLogosInner a').length;
+            //for (var k = 0; k < _logosLength; k++) {
+            //    var _logoTitle = $('.mainHomeLogosInner a')[k].innerText;
+            //    if (_logoTitle.length > 70) {
+            //        var _fixLengthTitle = _logoTitle.substring(0, 70) + "...";
+            //        $('.mainHomeLogosInner a')[k].text = _fixLengthTitle;
+            //    }
+            //}
+
+        };
+
+        $(document).ready(main);
+
+    </script>
+
+<script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-64967311-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+<script>
+        window.document.onkeydown = function (e) {
+            if (!e) {
+                e = event;
+            }
+            if (e.keyCode == 27) {
+                lightbox_close();
+            }
+        }
+
+        function lightbox_open() {
+            var lightBoxVideo = document.getElementById("VisaChipCardVideo");
+            window.scrollTo(0, 0);
+            document.getElementById('light').style.display = 'block';
+            document.getElementById('fade').style.display = 'block';
+            lightBoxVideo.play();
+        }
+
+        function lightbox_close() {
+            var lightBoxVideo = document.getElementById("VisaChipCardVideo");
+            document.getElementById('light').style.display = 'none';
+            document.getElementById('fade').style.display = 'none';
+            lightBoxVideo.pause();
+        }
+
+    </script>
+
+<script>
+        $('#myvideo').click(function () {
+            $('#maqu').stop();
+        });
+        $(window).resize(function () {
+            var divHeight = $('.slide-img').height();
+            $('.videoIframe').css('height', divHeight + 'px');
+        });
+        $(window).ready(function () {
+            var divHeight = $('.slide-img').height();
+            $('.videoIframe').css('height', divHeight + 'px');
+        });
+
+    </script>
+</body>
+</html>

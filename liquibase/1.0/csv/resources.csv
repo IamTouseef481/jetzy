@@ -1,0 +1,104 @@
+id,name,inserted_at,updated_at
+users,Users,2018-08-02 11:54:27.000000,2018-08-02 11:54:27.000000
+comments,Comments,2018-08-02 11:54:37.000000,2018-08-02 11:54:37.000000
+roles,Roles,2018-08-02 11:54:44.000000,2018-08-02 11:54:44.000000
+permissions,Permissions,2018-08-02 11:54:44.000000,2018-08-02 11:54:44.000000
+user-roles,User Roles,2018-08-02 11:54:44.000000,2018-08-02 11:54:44.000000
+resources,Resources,2018-08-02 11:54:44.000000,2018-08-02 11:54:44.000000
+replies,Comment Replies,2018-08-02 11:54:44.000000,2018-08-02 11:54:44.000000
+posts,Posts,2018-08-02 11:54:44.000000,2018-08-02 11:54:44.000000
+timeline,Timeline,2018-08-02 11:54:44.000000,2018-08-02 11:54:44.000000
+nearby-users,Nearby Users,2018-08-02 11:54:44.000000,2018-08-02 11:54:44.000000
+posts-search,Posts Search,2018-08-02 11:54:44.000000,2018-08-02 11:54:44.000000
+post-types,Post Types,2018-08-02 11:54:44.000000,2018-08-02 11:54:44.000000
+user-profile,User Profile,2018-08-02 11:54:44.000000,2018-08-02 11:54:44.000000
+user-blocks,User Blocks,2018-08-02 11:54:44.000000,2018-08-02 11:54:44.000000
+logout,Logout,2018-08-02 11:54:44.000000,2018-08-02 11:54:44.000000
+invite-user,Invite User,2018-08-02 11:54:44.000000,2018-08-02 11:54:44.000000
+faqs,Frequently Asked Question,2018-08-02 11:54:44.000000,2018-08-02 11:54:44.000000
+update-status,Update Status,2018-08-02 11:54:44.000000,2018-08-02 11:54:44.000000
+reward-offers,Reward Offers,2018-08-02 11:54:44.000000,2018-08-02 11:54:44.000000
+total-reward-points,Total Reward Points,2018-08-02 11:54:44.000000,2018-08-02 11:54:44.000000
+friend,Friends,2018-08-02 11:54:44.000000,2018-08-02 11:54:44.000000
+redeem-reward,Redeem Reward,2018-08-02 11:54:44.000000,2018-08-02 11:54:44.000000
+user-profile-update,Update User Profile,2018-08-02 11:54:27.000000,2018-08-02 11:54:27.000000
+add-user-image,Add User Image,2018-08-02 11:54:37.000000,2018-08-02 11:54:37.000000
+interests,Interests,2018-08-02 11:54:27.000000,2018-08-02 11:54:27.000000
+user-interests,User Interests List,2018-08-02 11:54:27.000000,2018-08-02 11:54:27.000000
+user-city,Add User City,2018-08-02 11:54:37.000000,2018-08-02 11:54:37.000000
+complete-signup,Complete User Signup,2018-08-02 11:54:37.000000,2018-08-02 11:54:37.000000
+user-events,User Events,2018-08-02 11:54:37.000000,2018-08-02 11:54:37.000000
+verify-user-image,verify user image,2018-08-02 11:54:37.000000,2018-08-02 11:54:37.000000
+user-events-attendees,User Event Attendees,2018-08-02 11:54:37.000000,2018-08-02 11:54:37.000000
+user-events-add-attendee,Add User Event Attendee,2018-08-02 11:54:37.000000,2018-08-02 11:54:37.000000
+personal-user-events,User own events,2018-08-02 11:54:37.000000,2018-08-02 11:54:37.000000
+start-user-chat,Start User Chat,2018-08-02 11:54:37.000000,2018-08-02 11:54:37.000000
+user-chats,User Chat List,2018-08-02 11:54:37.000000,2018-08-02 11:54:37.000000
+interest-topics,Interest Topics,2018-08-02 11:54:37.000000,2018-08-02 11:54:37.000000
+sync-contacts,Sync Contacts,2018-08-02 11:54:37.000000,2018-08-02 11:54:37.000000
+add-interest-users,Add Users to Interest,2018-08-02 11:54:37.000000,2018-08-02 11:54:37.000000
+like,Create/Delete post like,2018-08-02 11:54:37.000000,2018-08-02 11:54:37.000000
+add-jetpoints,Add claim jetpoints from front end,2018-08-02 11:54:37.000000,2018-08-02 11:54:37.000000
+user-favourite,User Favourite,2018-08-02 11:54:37.000000,2018-08-02 11:54:37.000000
+interest-topic-list,Get Interest Topics based on an Interest,2022-01-12 18:13:54.000000,2022-01-12 18:13:59.000000
+user-room-chat,Get Comments or Messages by room ID,2022-01-13 21:10:35.000000,2022-01-13 21:10:40.000000
+get-interest-users,Get Interest User by Interest ID,2022-01-13 21:10:35.000000,2022-01-13 21:10:35.000000
+get-interest-events,Get Interest Events by Interest ID,2022-01-13 21:10:35.000000,2022-01-13 21:10:35.000000
+get-interest-topics,Get Interest Topics by Interest ID,2022-01-13 21:10:35.000000,2022-01-13 21:10:35.000000
+room-user,Add/Delete a user to/from chat,2022-01-19 20:31:54.000000,2022-01-19 20:31:56.000000
+user-event-likes,Like or Unlike a comment or reply,2022-01-25 20:59:27.000000,2022-01-25 20:59:28.000000
+user,user,2022-01-25 20:59:27.000000,2022-01-25 20:59:28.000000
+remove-event-attendee,remove event attendee from event API,2022-02-01 14:38:50.000000,2022-02-01 14:38:54.000000
+list-users,List Users based on active or inactive status,2022-02-01 20:12:33.000000,2022-02-01 20:12:34.000000
+user-status,Update User status as Active or Inactive,2022-02-01 20:12:57.000000,2022-02-01 20:12:59.000000
+report-messages,report messages,2022-02-01 20:12:57.000000,2022-02-01 20:12:59.000000
+report-messages-review,list of report messages for admin review,2022-02-01 20:12:57.000000,2022-02-01 20:12:59.000000
+chat-group-members,list of all group chat members,2022-02-01 20:12:57.000000,2022-02-01 20:12:59.000000
+send-invite,send invite,2022-02-01 20:12:57.000000,2022-02-01 20:12:59.000000
+report-source,report source,2022-02-01 20:12:57.000000,2022-02-01 20:12:59.000000
+delete-user,delete user,2022-02-01 20:12:57.000000,2022-02-01 20:12:59.000000
+notification-status,notification status,2022-02-01 20:12:57.000000,2022-02-01 20:12:59.000000
+request-reactivate-account,Send mail to admin for reactivating account,2022-02-21 16:28:15.000000,2022-02-21 16:28:16.000000
+interests-feed,interests feed for user,2022-02-21 16:28:15.000000,2022-02-21 16:28:16.000000
+shoutout-comment-like,Shoutout Comment Like,2022-02-21 16:28:15.000000,2022-02-21 16:28:16.000000
+room-message,delete a chat from room,2022-02-21 16:28:15.000000,2022-02-21 16:28:16.000000
+follow,Follow,2022-02-21 16:28:15.000000,2022-02-21 16:28:16.000000
+delete-user-chat,Delete user chat,2022-03-16 14:21:22.000000,2022-03-16 14:21:22.000000
+start-group-chat,Start a group chat,2022-03-16 14:21:22.000000,2022-03-16 14:21:22.000000
+list-likes,See Who Liked a Post or Comment,2022-03-19 17:40:00.000000,2022-03-19 17:40:01.000000
+users-for-chat,List Users to start group chat,2022-03-21 17:04:40.000000,2022-03-21 17:04:41.000000
+public-interest,Public-interest,2022-03-22 15:35:50.000000,2022-03-22 15:35:50.000000
+interest-invite,Invite User to follow a private Interest,2022-03-24 15:38:28.000000,2022-03-24 15:38:29.000000
+accept-interest-request,Accept-interest-request,2022-03-24 14:59:08.000000,2022-03-24 14:59:08.000000
+redeemed-reward-history,redeemed reward history,2022-03-24 14:59:08.000000,2022-03-24 14:59:08.000000
+user-referred,Get The List Of Referred Users,2022-03-25 19:23:54.000000,2022-03-25 19:23:57.000000
+private-user-interest,private user interest,2022-03-28 12:50:49.000000,2022-03-28 12:50:49.000000
+update-group-chat,Update a group chat details,2022-03-30 11:00:49.000000,2022-03-30 11:00:49.000000
+chat-group-detail,Get Detail of a room,2022-03-30 15:59:50.000000,2022-03-30 15:59:50.000000
+make-group-admin,Make user admin of a group,2022-03-31 10:42:12.000000,2022-03-31 10:42:12.000000
+room_users,Room Users,2022-03-31 12:54:42.000000,2022-03-31 12:54:42.000000
+add-invited-user-in-room,add invited user in room,2022-03-31 12:54:42.000000,2022-03-31 12:54:42.000000
+admin-interest,Admin Interest,2022-04-08 11:13:58.000000,2022-04-13 11:49:46.000000
+sort-profile-images,Sort Profile Images,2022-05-07 07:32:00.000000,2022-05-07 07:32:00.000000
+selective-users-for-chat,Selective users for chat,2022-05-25 16:13:55.000000,2022-05-25 16:13:57.000000
+activate-user-account,Activate a deleted account,2022-05-30 18:54:11.000000,2022-05-30 18:54:17.000000
+post-influences,Post Influences,2022-06-06 18:37:59.000000,2022-06-09 07:31:30.000000
+get-follow-status,Get follow status between users,2022-08-11 19:15:01.000000,2022-08-11 19:15:02.000000
+comment-categories,Get list of comment categories,2022-08-30 15:56:23.000000,2022-08-30 15:56:25.000000
+max-comments-likes,Get max comments and likes,2022-09-01 18:51:36.000000,2022-09-01 18:51:37.000000
+user-settings,user settings,2022-03-09 14:51:08.000000,2022-09-06 05:38:23.000000
+accept-decline-request,accept decline request,2022-03-10 16:15:43.000000,2022-09-06 05:38:23.000000
+follow-request-list,follow request list,2022-03-10 16:16:24.000000,2022-09-06 05:38:23.000000
+notification-setting,Notification Setting,2022-03-21 17:04:40.000000,2022-09-06 05:38:23.000000
+ask-for-recommendation,Ask for recommendations,2022-09-06 05:38:23.000000,2022-09-06 05:38:23.000000
+personal-post-feed,Personal Post Feed,2022-03-21 17:04:40.000000,2022-09-06 05:38:23.000000
+room-users,Room Users,2022-09-06 05:38:23.000000,2022-09-06 05:38:23.000000
+admin-posts,podt for admin,2022-09-06 05:39:34.000000,2022-09-06 05:39:34.000000
+delete-user-image,Delete User Image,2022-05-10 07:32:00.000000,2022-09-06 05:39:34.000000
+user-detail,Delete User Image,2022-09-06 05:39:35.000000,2022-09-06 05:39:35.000000
+admin-reward-offers,Admin reward offers,2022-09-06 05:39:35.000000,2022-09-06 05:39:35.000000
+update-user-location,Update User's Location,2022-09-06 05:39:35.000000,2022-09-06 05:39:35.000000
+list-statuses,Reward Statuses,2022-09-06 05:39:35.000000,2022-09-06 05:39:35.000000
+list-reward-tiers,Reward Tiers,2022-09-06 05:39:35.000000,2022-09-06 05:39:35.000000
+upload-message-csv,Upload comments and captions,2022-09-06 05:39:35.000000,2022-09-06 05:39:35.000000
+messages,List of comments and captions,2022-09-06 05:39:35.000000,2022-09-06 05:39:35.000000

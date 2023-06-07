@@ -1,0 +1,91 @@
+#!/bin/bash
+
+export node=sphinx@127.0.0.1
+# DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+DIR="$(dirname "$(readlink -f "$0")")"
+cd $DIR/../../
+
+if [  "$1" = "primary" ] ; then
+  if [ "$2" == "crisis-posts" ] ; then
+     MIX_ENV=sphinx elixir --name $node --cookie $JETZY_COOKIE -S mix sphinx generate primary crisis-posts
+  elif [ "$2" == "crisis-topics" ] ; then
+     MIX_ENV=sphinx elixir --name $node --cookie $JETZY_COOKIE -S mix sphinx generate primary crisis-topics
+  elif [ "$2" == "comments" ] ; then
+     MIX_ENV=sphinx elixir --name $node --cookie $JETZY_COOKIE -S mix sphinx generate primary comments
+  elif [ "$2" == "users" ] ; then
+     MIX_ENV=sphinx elixir --name $node --cookie $JETZY_COOKIE -S mix sphinx generate primary users
+  elif [ "$2" == "interests" ] ; then
+     MIX_ENV=sphinx elixir --name $node --cookie $JETZY_COOKIE -S mix sphinx generate primary interests
+  elif [ "$2" == "schools" ] ; then
+     MIX_ENV=sphinx elixir --name $node --cookie $JETZY_COOKIE -S mix sphinx generate primary schools
+  elif [ "$2" == "employers" ] ; then
+     MIX_ENV=sphinx elixir --name $node --cookie $JETZY_COOKIE -S mix sphinx generate primary employers
+  elif [ "$2" == "vocations" ] ; then
+     MIX_ENV=sphinx elixir --name $node --cookie $JETZY_COOKIE -S mix sphinx generate primary vocations
+  elif [ "$2" == "college-majors" ] ; then
+     MIX_ENV=sphinx elixir --name $node --cookie $JETZY_COOKIE -S mix sphinx generate primary college-majors
+  elif [ "$2" == "locations" ] ; then
+     MIX_ENV=sphinx elixir --name $node --cookie $JETZY_COOKIE -S mix sphinx generate primary locations
+  elif [ "$2" == "location_cities" ] ; then
+     MIX_ENV=sphinx elixir --name $node --cookie $JETZY_COOKIE -S mix sphinx generate primary location_cities
+  elif [ "$2" == "location_states" ] ; then
+     MIX_ENV=sphinx elixir --name $node --cookie $JETZY_COOKIE -S mix sphinx generate primary location_states
+  elif [ "$2" == "location_countries" ] ; then
+     MIX_ENV=sphinx elixir --name $node --cookie $JETZY_COOKIE -S mix sphinx generate primary location_countries
+  elif [ "$2" == "moderation-and-reports" ] ; then
+     MIX_ENV=sphinx elixir --name $node --cookie $JETZY_COOKIE -S mix sphinx generate primary moderation-and-reports
+  elif [ "$2" == "documents" ] ; then
+     MIX_ENV=sphinx elixir --name $node --cookie $JETZY_COOKIE -S mix sphinx generate primary documents
+  elif [ "$2" == "images" ] ; then
+     MIX_ENV=sphinx elixir --name $node --cookie $JETZY_COOKIE -S mix sphinx generate primary images
+  elif [ "$2" == "posts" ] ; then
+     MIX_ENV=sphinx elixir --name $node --cookie $JETZY_COOKIE -S mix sphinx generate primary posts
+  else
+    MIX_ENV=sphinx elixir --name $node --cookie $JETZY_COOKIE -S mix sphinx
+  fi
+fi
+
+
+if [  "$1" = "delta" ] ; then
+  if [ "$2" == "crisis-posts" ] ; then
+     MIX_ENV=sphinx elixir --name $node --cookie $JETZY_COOKIE -S mix sphinx generate delta crisis-posts
+  elif [ "$2" == "crisis-topics" ] ; then
+     MIX_ENV=sphinx elixir --name $node --cookie $JETZY_COOKIE -S mix sphinx generate delta crisis-topics
+  elif [ "$2" == "comments" ] ; then
+     MIX_ENV=sphinx elixir --name $node --cookie $JETZY_COOKIE -S mix sphinx generate delta comments
+  elif [ "$2" == "users" ] ; then
+     MIX_ENV=sphinx elixir --name $node --cookie $JETZY_COOKIE -S mix sphinx generate delta users
+  elif [ "$2" == "interests" ] ; then
+     MIX_ENV=sphinx elixir --name $node --cookie $JETZY_COOKIE -S mix sphinx generate delta interests
+  elif [ "$2" == "schools" ] ; then
+     MIX_ENV=sphinx elixir --name $node --cookie $JETZY_COOKIE -S mix sphinx generate delta schools
+  elif [ "$2" == "employers" ] ; then
+     MIX_ENV=sphinx elixir --name $node --cookie $JETZY_COOKIE -S mix sphinx generate delta employers
+  elif [ "$2" == "vocations" ] ; then
+     MIX_ENV=sphinx elixir --name $node --cookie $JETZY_COOKIE -S mix sphinx generate delta vocations
+  elif [ "$2" == "college-majors" ] ; then
+     MIX_ENV=sphinx elixir --name $node --cookie $JETZY_COOKIE -S mix sphinx generate delta college-majors
+  elif [ "$2" == "locations" ] ; then
+     MIX_ENV=sphinx elixir --name $node --cookie $JETZY_COOKIE -S mix sphinx generate delta locations
+  elif [ "$2" == "moderation-and-reports" ] ; then
+     MIX_ENV=sphinx elixir --name $node --cookie $JETZY_COOKIE -S mix sphinx generate delta moderation-and-reports
+  elif [ "$2" == "documents" ] ; then
+     MIX_ENV=sphinx elixir --name $node --cookie $JETZY_COOKIE -S mix sphinx generate delta documents
+  elif [ "$2" == "images" ] ; then
+     MIX_ENV=sphinx elixir --name $node --cookie $JETZY_COOKIE -S mix sphinx generate delta images
+  elif [ "$2" == "posts" ] ; then
+     MIX_ENV=sphinx elixir --name $node --cookie $JETZY_COOKIE -S mix sphinx generate delta posts
+  elif [ "$2" == "locations" ] ; then
+     MIX_ENV=sphinx elixir --name $node --cookie $JETZY_COOKIE -S mix sphinx generate delta locations
+  elif [ "$2" == "location_cities" ] ; then
+     MIX_ENV=sphinx elixir --name $node --cookie $JETZY_COOKIE -S mix sphinx generate delta location_cities
+  elif [ "$2" == "location_states" ] ; then
+     MIX_ENV=sphinx elixir --name $node --cookie $JETZY_COOKIE -S mix sphinx generate delta location_states
+  elif [ "$2" == "location_countries" ] ; then
+     MIX_ENV=sphinx elixir --name $node --cookie $JETZY_COOKIE -S mix sphinx generate delta location_countries
+  else
+    MIX_ENV=sphinx elixir --name $node --cookie $JETZY_COOKIE -S mix sphinx
+  fi
+fi
+
+cd $DIR

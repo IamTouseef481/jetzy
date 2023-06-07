@@ -1,0 +1,11 @@
+<div class="row  mt-5">
+    <div class="col-auto align-self-center">
+        <div class="alert alert-danger">
+            There was an unexpected error. Please try again later.
+        </div>
+    </div>
+</div>
+
+<script>
+    setTimeout('window.close', 5_000)
+</script>

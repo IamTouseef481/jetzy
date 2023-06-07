@@ -1,0 +1,221 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <!-- ======================================================================================================== -->
+    <!-- user_countries                                                                                           -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="user_countries">
+        <createTable tableName="user_countries">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_countries_pkey"/>
+            </column>
+            <column name="city" type="VARCHAR(255)"/>
+            <column name="country" type="VARCHAR(255)"/>
+            <column name="from_date" type="date"/>
+            <column name="to_date" type="date"/>
+            <column name="user_id" type="UUID"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:user_countries:user_countries_user_id_index">
+        <createIndex indexName="user_countries_user_id_index" tableName="user_countries">
+            <column name="user_id"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:user_countries:user_countries_user_id_with_deleted_index">
+        <createIndex indexName="user_countries_user_id_with_deleted_index" tableName="user_countries">
+            <column name="user_id"/>
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_user_countries_deleted_at             -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:user_countries:deleted_at">
+        <createIndex indexName="idx_user_countries_deleted_at" tableName="user_countries">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:user_countries.user_id">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="user_countries" constraintName="user_countries_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- user_geo_locations                                                                                       -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="user_geo_locations">
+        <createTable tableName="user_geo_locations">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_geo_locations_pkey"/>
+            </column>
+            <column name="geo_location" type="GEOMETRY"/>
+            <column name="location" type="VARCHAR(255)"/>
+            <column name="latitude" type="FLOAT8"/>
+            <column name="longitude" type="FLOAT8"/>
+            <column defaultValueBoolean="false" name="is_actual_location" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="UUID"/>
+            <column name="city_lat_long_id" type="UUID"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:user_geo_locations:user_geo_locations_user_id_city_lat_long_id_index">
+        <createIndex indexName="user_geo_locations_user_id_city_lat_long_id_index" tableName="user_geo_locations">
+            <column name="user_id"/>
+            <column name="city_lat_long_id"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:user_geo_locations:user_geo_locations_user_id_index">
+        <createIndex indexName="user_geo_locations_user_id_index" tableName="user_geo_locations" unique="true">
+            <column name="user_id"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:user_geo_locations:user_geo_locations_user_id_city_lat_long_id_with_deleted_index">
+        <createIndex indexName="user_geo_locations_user_id_city_lat_long_id_with_deleted_index" tableName="user_geo_locations">
+            <column name="user_id"/>
+            <column name="city_lat_long_id"/>
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:user_geo_locations:user_geo_locations_user_id_with_deleted_index">
+        <createIndex indexName="user_geo_locations_user_id_with_deleted_index" tableName="user_geo_locations" unique="true">
+            <column name="user_id"/>
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_user_geo_locations_deleted_at         -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:user_geo_locations:deleted_at">
+        <createIndex indexName="idx_user_geo_locations_deleted_at" tableName="user_geo_locations">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:user_geo_locations.city_lat_long_id">
+        <addForeignKeyConstraint baseColumnNames="city_lat_long_id" baseTableName="user_geo_locations" constraintName="user_geo_locations_city_lat_long_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="city_lat_longs" validate="true"/>
+    </changeSet>
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:user_geo_locations.user_id">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="user_geo_locations" constraintName="user_geo_locations_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!-- user_geo_location_logs                                                                                   -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="user_geo_location_logs">
+        <createTable tableName="user_geo_location_logs">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="user_geo_location_logs_pkey"/>
+            </column>
+            <column name="geo_location" type="GEOMETRY"/>
+            <column name="location" type="VARCHAR(255)"/>
+            <column name="latitude" type="FLOAT8"/>
+            <column name="longitude" type="FLOAT8"/>
+            <column defaultValueBoolean="false" name="is_actual_location" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="log_created_on" type="date"/>
+            <column name="user_id" type="UUID"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:user_geo_location_logs:user_geo_location_logs_user_id_index">
+        <createIndex indexName="user_geo_location_logs_user_id_index" tableName="user_geo_location_logs">
+            <column name="user_id"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:user_geo_location_logs:user_geo_location_logs_user_id_with_deleted_index">
+        <createIndex indexName="user_geo_location_logs_user_id_with_deleted_index" tableName="user_geo_location_logs">
+            <column name="user_id"/>
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_user_geo_location_logs_deleted_at     -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:user_geo_location_logs:deleted_at">
+        <createIndex indexName="idx_user_geo_location_logs_deleted_at" tableName="user_geo_location_logs">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <!--                                           -->
+    <!-- ,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,, -->
+    <changeSet author="root (generated)" id="fk:user_geo_location_logs.user_id">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="user_geo_location_logs" constraintName="user_geo_location_logs_user_id_fkey" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="users" validate="true"/>
+    </changeSet>
+
+</databaseChangeLog>

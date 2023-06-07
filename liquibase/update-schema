@@ -1,0 +1,82 @@
+#!/bin/bash
+
+# working dir
+DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+
+HP=1
+print_heading() {
+  echo ""
+  echo "$HP. $1"
+  echo "------------------------------------------------------------"
+  HP=$((HP + 1))
+}
+
+early_exit() {
+  if [ $1 -eq 0 ]
+  then
+    echo "[Success] Proceeding"
+  else
+    echo "[Failure] Halting Build"
+    exit $1
+  fi
+}
+
+check_outcome() {
+  OUTCOME=$?
+  echo $1
+  log_verbose $1
+  early_exit $OUTCOME
+}
+
+
+
+update_schema() {
+FILE=$1
+if [ -f "$FILE" ]
+then
+   bin/liquibase --logLevel=info --defaultsFile=$FILE update
+else
+   print_heading "Configuration Not Found: [$FILE]"
+   echo "liquibase.properties file not found. "
+   echo "if you are working from you dev environment run the following command to copy over defualt settings:"
+   echo ""
+   echo "cp $DIR/liquibase.properties.template $DIR/liquibase.properties.dev"
+   echo ""
+   echo ""
+   echo ""
+fi
+}
+
+
+print_heading "RAN WITH: [$1]"
+
+if [ -z "$1" ]
+then
+SENTINEL="${DIR}/.live"
+  if [ -f "$SENTINEL" ];
+  then 
+     update_schema "${DIR}/liquibase.properties"
+  else 
+     update_schema "${DIR}/liquibase.properties.dev"
+  fi
+
+elif [ $1 == "dev" ]
+then
+  print_heading "CASE 2"
+  update_schema "${DIR}/liquibase.properties.dev"
+elif [ $1 == "prod" ]
+then
+  print_heading "CASE 3"
+  update_schema "${DIR}/liquibase.properties.prod"
+elif [ $1 == "stage" ]
+then
+  update_schema "${DIR}/liquibase.properties.stage"
+else
+  print_heading "Invalid First Arg: $1 - Allowed values [stage,prod,dev]"
+fi
+
+
+
+# FYI
+# bin/liquibase --logLevel=info --defaultsFile=liquibase.properties.dev update
+# 

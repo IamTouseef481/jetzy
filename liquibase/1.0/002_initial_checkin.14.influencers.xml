@@ -1,0 +1,46 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <!-- ======================================================================================================== -->
+    <!-- influencer_messages                                                                                      -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="root (generated)" id="influencer_messages">
+        <createTable tableName="influencer_messages">
+            <column name="id" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="influencer_messages_pkey"/>
+            </column>
+            <column name="message" type="VARCHAR(255)"/>
+            <column name="type" type="VARCHAR(255)"/>
+            <column name="deleted_at" type="TIMESTAMP WITHOUT TIME ZONE"/>
+            <column name="inserted_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="TIMESTAMP WITHOUT TIME ZONE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="category" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!--                                           -->
+    <!-- ......................................... -->
+    <changeSet author="root (generated)" id="idx:influencer_messages:influencer_messages_message_type_index">
+        <createIndex indexName="influencer_messages_message_type_index" tableName="influencer_messages" unique="true">
+            <column name="message"/>
+            <column name="type"/>
+        </createIndex>
+    </changeSet>
+
+
+    <!-- ......................................... -->
+    <!-- idx_influencer_messages_deleted_at        -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx:influencer_messages:deleted_at">
+        <createIndex indexName="idx_influencer_messages_deleted_at" tableName="influencer_messages">
+            <column name="deleted_at"/>
+        </createIndex>
+    </changeSet>
+    
+</databaseChangeLog>

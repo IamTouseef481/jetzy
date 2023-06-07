@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <!-- ######################################################################################################## -->
+    <!-- ........................................................................................................ -->
+    <!-- Lookup Tables                                                                                            -->
+    <!-- ........................................................................................................ -->
+    <!-- ######################################################################################################## -->
+
+    <!-- ======================================================================================================== -->
+    <!-- question_type                                                                                            -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="question_type">
+        <createTable tableName="vnext_question_type">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="INT" autoIncrement="false"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="description" remarks="versioned_string" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_question_type:standard                -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_question_type:standard">
+        <createIndex
+                indexName="idx_question_type_created_on"
+                tableName="vnext_question_type">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_question_type_modified_on"
+                tableName="vnext_question_type">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_question_type_deleted_on"
+                tableName="vnext_question_type">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_question_type_description                  -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_question_type_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_question_type"
+                                 constraintName="fk_question_type_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_string"
+        />
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- opportunity_type                                                                                         -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="opportunity_type">
+        <createTable tableName="vnext_opportunity_type">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="INT" autoIncrement="false"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="description" remarks="versioned_string" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_opportunity_type:standard             -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_opportunity_type:standard">
+        <createIndex
+                indexName="idx_opportunity_type_created_on"
+                tableName="vnext_opportunity_type">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_opportunity_type_modified_on"
+                tableName="vnext_opportunity_type">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_opportunity_type_deleted_on"
+                tableName="vnext_opportunity_type">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_opportunity_type_description               -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_opportunity_type_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_opportunity_type"
+                                 constraintName="fk_opportunity_type_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_string"
+        />
+    </changeSet>
+
+    <!-- ######################################################################################################## -->
+    <!-- ........................................................................................................ -->
+    <!-- Standard Tables                                                                                          -->
+    <!-- ........................................................................................................ -->
+    <!-- ######################################################################################################## -->
+
+    <!-- ======================================================================================================== -->
+    <!-- Questions (Reviews, Jobs Applications, etc.)                                                             -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="question">
+        <createTable tableName="vnext_question" remarks="type dependent tables include more details and constraints, e.g. multiple choice question, form submission (accepted types), essay, etc.">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+            <!-- Primary Relations -->
+            <column name="question_type" type="INT" />
+
+            <!-- Fields and Secondary Relations: Versioned Strings -->
+            <column name="description" remarks="versioned_string" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_question:standard                     -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_question:standard">
+        <createIndex
+                indexName="idx_question_created_on"
+                tableName="vnext_question">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_question_modified_on"
+                tableName="vnext_question">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_question_deleted_on"
+                tableName="vnext_question">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_question_description                       -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_question_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_question"
+                                 constraintName="fk_question_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_string"
+        />
+    </changeSet>
+
+    <!-- ======================================================================================================== -->
+    <!-- Jetzy Opportunities & Applications                                                                       -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="opportunity">
+        <createTable tableName="vnext_opportunity">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+
+            <!-- Fields and Secondary Relations -->
+            <column name="opportunity_type" type="INT" />
+
+            <!-- Fields and Secondary Relations: Versioned Strings & CMS -->
+            <column name="description" remarks="versioned_string" type="UUID"><constraints nullable="false"/></column>
+            <column name="details" remarks="cms" type="UUID"><constraints nullable="true"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_opportunity:standard                  -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_opportunity:standard">
+        <createIndex
+                indexName="idx_opportunity_created_on"
+                tableName="vnext_opportunity">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_opportunity_modified_on"
+                tableName="vnext_opportunity">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_opportunity_deleted_on"
+                tableName="vnext_opportunity">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_opportunity_description                    -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_opportunity_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_opportunity"
+                                 constraintName="fk_opportunity_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_string"
+        />
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!-- opportunity_question                                                                                     -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="opportunity_question">
+        <createTable tableName="vnext_opportunity_question">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+
+
+            <!-- Primary Relations -->
+            <column name="opportunity" type="UUID" />
+            <column name="question" type="UUID" />
+
+            <!-- Fields and Secondary Relations -->
+            <column name="required" type="BOOLEAN" />
+            <column name="weight" type="BIGINT" />
+
+            <!-- Fields and Secondary Relations: Versioned Strings & CMS -->
+            <column name="description" remarks="versioned_string" type="UUID"><constraints nullable="false"/></column>
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_opportunity_question:standard         -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_opportunity_question">
+        <createIndex
+                indexName="idx_opportunity_question_created_on"
+                tableName="vnext_opportunity_question">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_opportunity_question_modified_on"
+                tableName="vnext_opportunity_question">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_opportunity_question_deleted_on"
+                tableName="vnext_opportunity_question">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <!-- fk_opportunity_question_description           -->
+    <!-- +++++++++++++++++++++++++++++++++++++++++++++ -->
+    <changeSet author="kebrings" id="fk_opportunity_question_description">
+        <addForeignKeyConstraint baseColumnNames="description"
+                                 baseTableName="vnext_opportunity_question"
+                                 constraintName="fk_opportunity_question_description"
+                                 onDelete="CASCADE"
+                                 onUpdate="RESTRICT"
+                                 referencedColumnNames="identifier"
+                                 referencedTableName="vnext_versioned_string"
+        />
+    </changeSet>
+
+
+    <!-- ======================================================================================================== -->
+    <!-- application                                                                                              -->
+    <!-- ======================================================================================================== -->
+    <changeSet author="kebrings" id="application">
+        <createTable tableName="vnext_application" remarks="replacement for dbo.Career, contact details, question answers, resume, cover letter, etc. associated using document and content tables.">
+            <!-- Primary Key and Global Ref Indicator -->
+            <column name="identifier" type="UUID"><constraints nullable="false" primaryKey="true" /></column>
+            
+            <!-- Primary Relations -->
+            <column name="opportunity" type="UUID" />
+            <column name="applicant" type="UUID" />
+
+            <!-- Standard Time Stamps -->
+            <column name="created_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="modified_on" type="DATETIME" defaultValueComputed="NOW()"><constraints nullable="false"/></column>
+            <column name="deleted_on" type="DATETIME"><constraints nullable="true"/></column>
+        </createTable>
+    </changeSet>
+
+    <!-- ......................................... -->
+    <!-- idx_application:standard                  -->
+    <!-- ......................................... -->
+    <changeSet author="kebrings" id="idx_application:standard">
+        <createIndex
+                indexName="idx_application_created_on"
+                tableName="vnext_application">
+            <column name="created_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_application_modified_on"
+                tableName="vnext_application">
+            <column name="modified_on"/>
+        </createIndex>
+        <createIndex
+                indexName="idx_application_deleted_on"
+                tableName="vnext_application">
+            <column name="deleted_on"/>
+        </createIndex>
+    </changeSet>
+
+</databaseChangeLog>

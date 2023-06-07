@@ -1,0 +1,120 @@
+<div class="container-fluid" style="min-height:100vh">
+    <div class="row">
+        <div class="col-10 align-right text-right">
+        </div>
+
+        <div class="col align-right text-right">
+            <a class="text-right align-right float-right" href="/logout">logout</a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <% name = Jetzy.User.Entity.name(@user) %>
+            <h1 class="display-5 text-gold">Welcome <%= name && "#{name.last}, #{name.first}" || @user.email %>
+
+            </h1>
+        </div>
+    </div>
+
+    <%= if !@subs  do %>
+        <div class="row mb-5">
+            <div class="col text-center">
+                <form method="post" action="/checkout-begin">
+                    <p class="lead">Jetzy Select lets you travel the world in style.</p>
+                    <input name="_csrf_token" type="hidden" value="<%= @csrf_token %>" />
+                    <input class="btn btn-lg btn-gold" value="Start my Free Trial" type="submit" />
+                </form>
+            </div>
+        </div>
+    <% end %>
+    <%= if @subs do %>
+        <div class="row">
+            <div class="col">
+                <h1 class="display-6">Manage Subscriptions</h1>
+            </div>
+        </div>
+        <%=  for sub <- @subs do %>
+            <div class="row mb-5">
+                <div class="col-12 col-lg-9 m-auto">
+
+                    <div class="card">
+                        <%
+                                    style = case sub.status do
+                                        :active -> "bg-success"
+                                        :paused -> "bg-info"
+                                        :cancelled -> "bg-dark"
+                                        _ -> "bg-primary"
+                                    end
+
+                                    accent = case sub.status do
+                                        :active -> "border-success"
+                                        :paused -> "border-info"
+                                        :cancelled -> "border-dark"
+                                        _ -> "border-primary"
+                                    end
+
+                                    %>
+
+
+                        <div class="card-header <%= accent %>">
+                            <%= Noizu.ERP.sref(sub) %>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <%
+                                sd = Noizu.ERP.entity!(sub.subscription_definition)
+                                description = Jetzy.Subscription.Entity.description(sd)
+                                %>
+                                    <h3 class="card-title" >
+                                        <%= description && description.title && description.title.markdown || "Title Not Set" %>
+                                    </h3>
+                                </div>
+                            </div>
+
+                            <div class="row  mt-3">
+                                <div class="col-4"><strong>Membership End Date</strong></div>
+                                <div class="col"><%= humanized_date_time(sub.coverage_start) %></div>
+                            </div>
+
+                            <div class="row  mt-3">
+                                <div class="col-4"><strong>Membership Start Date</strong></div>
+                                <div class="col"><%= humanized_date_time(sub.coverage_end) || sub.status == :active && "Until Cancelled." %></div>
+                            </div>
+
+                            <div class="row  mt-3">
+                                <div class="col-4"><strong>Status</strong></div>
+                                <div class="col"><%= sub.status %></div>
+                            </div>
+
+                            <%= if sub.payment_type == :stripe_checkout do  %>
+                                <div class="row mt-3">
+                                    <div class="col-4"><strong>Manage</strong></div>
+                                    <div class="col">
+                                        <% o = Jetzy.User.Subscription.Entity.get_management_link(sub, @context) %>
+                                        <%= if Kernel.match?({:ok, _}, o) do %>
+                                        <a class="btn btn-gold" href="<%= elem(o, 1) %>">Stripe Portal</a>
+                                        <% end %>
+                                        <%= if !Kernel.match?({:ok, _}, o) do %>
+                                        [Unable to obtain management link.]
+                                        <% end %>
+                                    </div>
+                                </div>
+                            <% end %>
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        <% end %>
+        <div class="row">
+            <div class="col text-center">
+                <a class="btn btn-gold" href="<%= @shareable_link %>">Explore Jetzy Select Deals</a>
+            </div>
+        </div>
+    <% end %>
+
+</div>
